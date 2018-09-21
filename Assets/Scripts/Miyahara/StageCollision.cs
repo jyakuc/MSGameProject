@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StageCollision : MonoBehaviour {
 
-    public GameObject Collsion;
-
     private Rigidbody Rb;
 
     private bool WobblyFlg;
@@ -35,10 +33,13 @@ public class StageCollision : MonoBehaviour {
         
     }
 
-    void OnTriggerExit(Collider Collsion)
+    void OnTriggerExit(Collider other)
     {
-        WobblyFlg = true;
-        Debug.Log("hanareta");
+        if (other.tag == "OutsideColl")
+        {
+            WobblyFlg = true;
+            Debug.Log("hanareta");
+        }
     }
 
     void Update()
@@ -71,6 +72,10 @@ public class StageCollision : MonoBehaviour {
             {
                 Rb.useGravity = true;
                 Rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+            }
+            if (this.transform.position.y <= -50)
+            {
+                Destroy(this.gameObject);
             }
         }
         
