@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: be8584f56ee94c845845045936ab69e5
-timeCreated: 1536552367
+guid: 1886a283a7d2caa4da254a75bb53e7be
+timeCreated: 1538092826
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,61 +10,68 @@ ModelImporter:
     100004: Arms_R
     100006: Ass_L
     100008: Ass_R
-    100010: Calf_L
-    100012: Calf_R
-    100014: Feet_L
-    100016: Feet_L_end
-    100018: Feet_R
-    100020: Feet_R_end
-    100022: Hand_L
-    100024: Hand_L_end
-    100026: Hand_R
-    100028: Hand_R_end
-    100030: Head
-    100032: Head_end
-    100034: Human
-    100036: //RootNode
-    100038: Lower
-    100040: Neck
-    100042: Shoulder_L
-    100044: Shoulder_R
-    100046: Thighs_L
-    100048: Thighs_R
-    100050: UpperArms_L
-    100052: UpperArms_R
-    100054: UpperBody
+    100010: Belly
+    100012: Calf_L
+    100014: Calf_R
+    100016: Chest
+    100018: Feet_L
+    100020: Feet_L_end
+    100022: Feet_R
+    100024: Feet_R_end
+    100026: Hand_L
+    100028: Hand_L_end
+    100030: Hand_R
+    100032: Hand_R_end
+    100034: Head
+    100036: Head_end
+    100038: Human
+    100040: //RootNode
+    100042: Lower
+    100044: MasterBone
+    100046: Neck
+    100048: Shoulder_L
+    100050: Shoulder_R
+    100052: Thighs_L
+    100054: Thighs_R
+    100056: UpperArms_L
+    100058: UpperArms_R
     400000: Armature
     400002: Arms_L
     400004: Arms_R
     400006: Ass_L
     400008: Ass_R
-    400010: Calf_L
-    400012: Calf_R
-    400014: Feet_L
-    400016: Feet_L_end
-    400018: Feet_R
-    400020: Feet_R_end
-    400022: Hand_L
-    400024: Hand_L_end
-    400026: Hand_R
-    400028: Hand_R_end
-    400030: Head
-    400032: Head_end
-    400034: Human
-    400036: //RootNode
-    400038: Lower
-    400040: Neck
-    400042: Shoulder_L
-    400044: Shoulder_R
-    400046: Thighs_L
-    400048: Thighs_R
-    400050: UpperArms_L
-    400052: UpperArms_R
-    400054: UpperBody
-    2100000: No Name
+    400010: Belly
+    400012: Calf_L
+    400014: Calf_R
+    400016: Chest
+    400018: Feet_L
+    400020: Feet_L_end
+    400022: Feet_R
+    400024: Feet_R_end
+    400026: Hand_L
+    400028: Hand_L_end
+    400030: Hand_R
+    400032: Hand_R_end
+    400034: Head
+    400036: Head_end
+    400038: Human
+    400040: //RootNode
+    400042: Lower
+    400044: MasterBone
+    400046: Neck
+    400048: Shoulder_L
+    400050: Shoulder_R
+    400052: Thighs_L
+    400054: Thighs_R
+    400056: UpperArms_L
+    400058: UpperArms_R
+    2100000: Pants
+    2100002: Clothes
+    2100004: Skin
+    2100006: face
     4300000: Human
+    7400000: Armature|Wait
     9500000: //RootNode
-    11100000: //RootNode
     13700000: Human
   externalObjects: {}
   materials:
@@ -137,10 +144,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
