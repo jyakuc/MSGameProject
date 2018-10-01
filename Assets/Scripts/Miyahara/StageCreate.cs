@@ -7,18 +7,19 @@ public class StageCreate : MonoBehaviour {
     // プレハブを取得
     public GameObject prefab;       //生成するステージ
     public GameObject Collision;     //生成するコリジョン
-    private int Random;
-    private int min = 0;
-    private int max = 10;
+    private int RandomX;
+    private int RandomZ;
+    private int min = -2;
+    private int max = 2;
 	// Use this for initialization
 	void Start () {
-        Random = UnityEngine.Random.Range(min,max);
-
+        RandomX = UnityEngine.Random.Range(min,max);
+        RandomZ = UnityEngine.Random.Range(min, max);
         // プレハブからコリジョンを生成
-        Instantiate(Collision, new Vector3(Random, 0.0f, Random), Quaternion.identity);
+        Instantiate(Collision, new Vector3(0, 0.0f, 0), Quaternion.identity);
 
         // プレハブからインスタンスを生成
-        Instantiate(prefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        Instantiate(prefab, new Vector3(-10.0f, 0.0f, -10.0f), Quaternion.identity);
         
 
 	}
