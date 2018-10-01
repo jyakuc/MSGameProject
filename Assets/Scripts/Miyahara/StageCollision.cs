@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StageCollision : MonoBehaviour {
-
-    private Rigidbody Rb;
+    
 
     private bool WobblyFlg;
-
+    private bool gravityFlg;
     private int MaxWobbly = 10;
 
     private float Angle;
@@ -15,7 +14,9 @@ public class StageCollision : MonoBehaviour {
     private float Maxangle = 30.0f;
     private float Minangle = -30.0f;
     private int Count = 0;
-    
+
+
+    private float gravitySpeed = -0.1f;
 
     public enum Direction
     {
@@ -27,10 +28,9 @@ public class StageCollision : MonoBehaviour {
 
     void Start()
     {
-        Rb = this.GetComponent<Rigidbody>();
-        Rb.useGravity = false;
+       
         WobblyFlg = false;
-        
+        gravityFlg = false;
     }
 
     void OnTriggerExit(Collider other)
@@ -70,13 +70,19 @@ public class StageCollision : MonoBehaviour {
             }
             if (Count >= MaxWobbly)
             {
-                Rb.useGravity = true;
-                Rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+                gravityFlg = true;
+                
             }
             if (this.transform.position.y <= -50)
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        if (gravityFlg)
+        {
+            transform.position += new Vector3(0, gravitySpeed, 0);
+            gravitySpeed -= 0.008f;
         }
         
     }
