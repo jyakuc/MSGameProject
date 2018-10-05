@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CharacterSelect : MonoBehaviour {
 
-    public GameObject Player1, Player2, Player3;
-
+    [SerializeField]
+    private GameObject Player1, Player2, Player3;
+    
 
     public enum Select
     {
@@ -18,9 +19,7 @@ public class CharacterSelect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Instantiate(Player1, new Vector3(-5.0f, 0.0f, 0.0f), Quaternion.identity);
-        Instantiate(Player2, new Vector3( 0.0f, 0.0f, 0.0f), Quaternion.identity);
-        Instantiate(Player3, new Vector3( 5.0f, 0.0f, 0.0f), Quaternion.identity);
+        PlayerInit();
         Status = Select.Left;
 	}
 	
@@ -30,6 +29,8 @@ public class CharacterSelect : MonoBehaviour {
         {
             case Select.Left:
                 Player1.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
+                Player2.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                Player3.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     Status = Select.Right;
@@ -38,10 +39,11 @@ public class CharacterSelect : MonoBehaviour {
                 {
                     Status = Select.Center;
                 }
-                Debug.Log("player1");
                 break;
             case Select.Center:
+                Player1.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 Player2.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
+                Player3.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     Status = Select.Left;
@@ -50,9 +52,10 @@ public class CharacterSelect : MonoBehaviour {
                 {
                     Status = Select.Right;
                 }
-                Debug.Log("player2");
                 break;
             case Select.Right:
+                Player1.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                Player2.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 Player3.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
@@ -65,4 +68,13 @@ public class CharacterSelect : MonoBehaviour {
                 break;
         }
 	}
+    void PlayerInit()
+    {
+        Instantiate(Player1, new Vector3(-5.0f, 0.0f, 0.0f), Quaternion.identity);
+        Instantiate(Player2, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        Instantiate(Player3, new Vector3(5.0f, 0.0f, 0.0f), Quaternion.identity);
+        Player1 = GameObject.Find("Character1(Clone)");
+        Player2 = GameObject.Find("Character2(Clone)");
+        Player3 = GameObject.Find("Character3(Clone)");
+    }
 }
