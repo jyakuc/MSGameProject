@@ -31,6 +31,22 @@ public class ControllerTest : MonoBehaviour {
         //L Stick
         float lsh = Input.GetAxis ("GameController_Hori1");
         float lsv = Input.GetAxis ("GameController_Vert1");
+        if (Input.GetKey(KeyCode.A) || lsh < 0)
+        {
+            Debug.Log("left move");
+        }
+        if (Input.GetKey(KeyCode.D) || lsh > 0)
+        {
+            Debug.Log("right move");
+        }
+        if (Input.GetKey(KeyCode.W) || lsv > 0)
+        {
+            Debug.Log("advance move");
+        }
+        if (Input.GetKey(KeyCode.S) || lsv < 0)
+        {
+            Debug.Log("back move");
+        }
         if(( lsh != 0) || (lsv != 0 )){
             Debug.Log ("GameController_Hori1:"+lsh+","+lsv );
         }
