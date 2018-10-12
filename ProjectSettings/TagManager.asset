@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - OutsideColl
+  - IKRangeCollider
   layers:
   - Default
   - TransparentFX
@@ -14,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player_01
+  - IKOperationCollider
+  - IKRangeCollider
+  - Ground
   - 
   - 
   - 
