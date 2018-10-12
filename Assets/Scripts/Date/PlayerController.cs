@@ -129,6 +129,11 @@ public class PlayerController : MonoBehaviour {
             Move(1);
         }
 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            //m_rightHand_rg.AddRelativeForce(-m_rightHandForce, ForceMode.Force);
+            m_rightHand_rg.velocity = Vector3.zero;
+        }
         
         /*
         // 上スティック
@@ -188,10 +193,10 @@ public class PlayerController : MonoBehaviour {
                 m_leftFootForce = m_leftFootForceInit;
             }else if(dir == RayTest.RayDirection.Forward)
             {
-                m_rightHandForce = m_leftHandForceInit;
-                m_rightFootForce = m_leftFootForceInit;
-                m_leftHandForce = m_rightHandForceInit;
-                m_leftFootForce = m_rightFootForceInit;
+                m_rightHandForce = -m_rightHandForceInit;
+                m_rightFootForce = -m_rightFootForceInit;
+                m_leftHandForce = -m_leftHandForceInit;
+                m_leftFootForce = -m_leftFootForceInit;
             }
         }
     }
@@ -234,15 +239,15 @@ public class PlayerController : MonoBehaviour {
             //GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, m_aroundSpeed);
             
             m_rightHand_rg.AddRelativeForce(m_rightHandForce, ForceMode.Force);
-            m_rightFoot_rg.AddRelativeForce(m_rightFootForce, ForceMode.Force);
-            m_leftHand_rg.AddRelativeForce(m_leftHandForce, ForceMode.Force);
-            m_leftFoot_rg.AddRelativeForce(m_leftFootForce, ForceMode.Force);
+            //m_rightFoot_rg.AddRelativeForce(m_rightFootForce, ForceMode.Force);
+            //m_leftHand_rg.AddRelativeForce(m_leftHandForce, ForceMode.Force);
+            //m_leftFoot_rg.AddRelativeForce(m_leftFootForce, ForceMode.Force);
             if (!jj)
             {
                // m_rightHand_rg.AddRelativeTorque(1f, 0, 0.0f, ForceMode.Impulse);
                 jj = true;
             }
-                GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, m_aroundSpeed);
+            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, m_aroundSpeed);
 
 
             m_state = State.RightMove;
