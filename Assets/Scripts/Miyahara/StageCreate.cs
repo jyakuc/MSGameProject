@@ -18,11 +18,14 @@ public class StageCreate : MonoBehaviour {
 	void Start () {
         RandomX = UnityEngine.Random.Range(min,max);
         RandomZ = UnityEngine.Random.Range(min, max);
-        // プレハブからコリジョンを生成
-        Instantiate(Collision, new Vector3(x,y,z), Quaternion.identity);
 
         // プレハブからインスタンスを生成
-        Instantiate(prefab, new Vector3(-10.0f, 0.0f, -10.0f), Quaternion.identity);
+        Instantiate(prefab, new Vector3(x, y, z), Quaternion.identity);
+
+        // プレハブからコリジョンを生成
+        Instantiate(Collision, new Vector3(0, 0.0f, 0), Quaternion.identity);
+
+        
         
 
 	}
