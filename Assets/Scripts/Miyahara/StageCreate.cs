@@ -11,12 +11,15 @@ public class StageCreate : MonoBehaviour {
     private int RandomZ;
     private int min = -2;
     private int max = 2;
+
+    [SerializeField]
+    private float x, y, z;
 	// Use this for initialization
 	void Start () {
         RandomX = UnityEngine.Random.Range(min,max);
         RandomZ = UnityEngine.Random.Range(min, max);
         // プレハブからコリジョンを生成
-        Instantiate(Collision, new Vector3(0, 0.0f, 0), Quaternion.identity);
+        Instantiate(Collision, new Vector3(x,y,z), Quaternion.identity);
 
         // プレハブからインスタンスを生成
         Instantiate(prefab, new Vector3(-10.0f, 0.0f, -10.0f), Quaternion.identity);
