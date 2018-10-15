@@ -18,61 +18,59 @@ public class PlayerController : MonoBehaviour {
         Idle
     }
 
+    [System.Serializable]
+    struct Force
+    {
+        public Vector3 cntForce;
+        public Vector3 maxForce;
+        public Vector3 decayForce;
+        public void Init()
+        {
+            cntForce = maxForce;
+        }
+    }
+
     private int m_playerID;
- 
+
     // 手足制御用オブジェクト
+    public GameObject m_bodyObj;
     public GameObject m_rightHandObj;
     public GameObject m_leftHandObj;
     public GameObject m_rightFootObj;
     public GameObject m_leftFootObj;
-    public GameObject[] m_centerObj;
-    public GameObject m_FootObj;
-    public GameObject m_shoulder_R;
-    public GameObject m_partsMove;
 
-    public string[] KeyName = new string[(int)EInput.MAX];
-
-    [SerializeField]
-    private float m_initspeed;
-    [SerializeField]
-    private float m_aroundSpeed;
-    [SerializeField]
-    private float m_aroundSpeedDecay;
-
-    [SerializeField]
-    private Vector3 m_rightHandForce;
-    private Vector3 m_rightHandForceInit;
-    [SerializeField]
-    private Vector3 m_rightFootForce;
-    private Vector3 m_rightFootForceInit;
-    [SerializeField]
-    private Vector3 m_leftHandForce;
-    private Vector3 m_leftHandForceInit;
-    [SerializeField]
-    private Vector3 m_leftFootForce;
-    private Vector3 m_leftFootForceInit;
-
-    [SerializeField]
-    private Vector3 m_rightForceDecay;
-    [SerializeField]
-    private Vector3 m_leftForceDecay;
-    private State m_state;
-
-    [SerializeField]
-    private Vector2 m_handlimit_rotation;
-    [SerializeField]
-    private Vector2 m_shoulderlimit_rotation;
-
+    // 手足制御オブジェクト（Rigidbody）
+    private Rigidbody m_body_rg;
     private Rigidbody m_rightHand_rg;
     private Rigidbody m_leftHand_rg;
     private Rigidbody m_rightFoot_rg;
     private Rigidbody m_leftFoot_rg;
 
-    bool jj = false;
-    Ray ray;
-    LayerMask mask;
-    public RayTest rayTest;
+    public string[] InputName = new string[(int)EInput.MAX];
+
+    // 力（パラメータ）
+    [SerializeField]
+    private Force m_bodyForce;
+    [SerializeField]
+    private Force m_rightHand;
+    [SerializeField]
+    private Force m_leftHand;
+    [SerializeField]
+    private Force m_rightFoot;
+    [SerializeField]
+    private Force m_leftFoot;
+
+    // ベクトルの軸
+   // [SerializeField]
+   // private Transform m_shoulderR;
+
+   // [SerializeField]
+   // private GameObject m_shoulder_R;
+
+    private State m_state;
+    
     private RayTest.RayDirection dir;
+    public RayTest rayTest;
     // Use this for initialization
     void Start ()
     {
@@ -81,124 +79,113 @@ public class PlayerController : MonoBehaviour {
         //    KeyName[i] += m_playerID.ToString();
         //}
 
+        m_body_rg = m_bodyObj.GetComponent<Rigidbody>();
         m_rightHand_rg = m_rightHandObj.GetComponent<Rigidbody>();
         m_leftHand_rg = m_leftHandObj.GetComponent<Rigidbody>();
         m_rightFoot_rg = m_rightFootObj.GetComponent<Rigidbody>();
         m_leftFoot_rg = m_leftHandObj.GetComponent<Rigidbody>();
 
+        m_bodyForce.Init();
+        m_rightHand.Init();
+        m_rightFoot.Init();
+        m_leftHand.Init();
+        m_leftFoot.Init();
+
         m_state = State.Idle;
-
-        ray = new Ray(transform.position, transform.forward);
-        int no = LayerMask.NameToLayer("Ground");
-        mask = 1 << no;
+        
         dir = rayTest.Dir;
-
-        m_rightHandForceInit = m_rightHandForce;
-        m_rightFootForceInit = m_rightFootForce;
-        m_leftHandForceInit = m_leftHandForce;
-        m_leftFootForceInit = m_leftFootForce;
 
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        //m_partsMove.transform.position = transform.position;
-        //m_centerObj[0].transform.position = transform.position;
-
-        //  float stickvalue;
-        // 右スティック
-        //if(stickvalue = Input.GetAxis(KeyName[(int)EInput.Horizontal]) > 0 || Input.GetKeyDown(KeyCode.D))
-        //   {
-        //       Move(true);
-        //   }
-        //   // 左スティック
-        //   else if(stickvalue = Input.GetAxis(KeyName[(int)EInput.Horizontal]) < 0 || Input.GetKeyDown(KeyCode.A))
-        //   {
-        //       Move(false);
-        //   }
-
 
         // 右スティック
         if (Input.GetKey(KeyCode.D))
         {
-            Move(-1);
+            Move(1);
+            m_state = State.RightMove;
         }
         // 左スティック
-         if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
-            Move(1);
+            Move(-1);
+            m_state = State.LeftMove;
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        else if(!Input.GetKey(KeyCode.D) )
         {
-            //m_rightHand_rg.AddRelativeForce(-m_rightHandForce, ForceMode.Force);
-            m_rightHand_rg.velocity = Vector3.zero;
+            //m_state = State.Idle;
+            m_bodyForce.Init();
+            m_rightHand.Init();
+            m_rightFoot.Init();
+            m_leftHand.Init();
+            m_leftFoot.Init();
         }
-        
-        /*
-        // 上スティック
-        if (Input.GetAxis(KeyName[(int)EInput.Vertical]) > 0)
+        else if(!Input.GetKey(KeyCode.A))
+        {
+            m_bodyForce.Init();
+            m_rightHand.Init();
+            m_rightFoot.Init();
+            m_leftHand.Init();
+            m_leftFoot.Init();
+        }
+
+        if (Input.GetKey(KeyCode.K))
+        {
+            Extend(m_rightHand_rg,m_rightHandObj.GetComponent<SpringJoint>(),new Vector3(20,0,0));
+        }
+        else
+        {
+           // m_rightHandObj.GetComponent<SpringJoint>().spring = 20;
+        }
+
+
+        if (Input.GetKey(KeyCode.L))
+        {
+            Extend(m_leftHand_rg, m_leftHandObj.GetComponent<SpringJoint>(),new Vector3(-20,0,0));
+        }
+        else
+        {
+           // m_leftHandObj.GetComponent<SpringJoint>().spring = 20;
+        }
+        if (Input.GetKey(KeyCode.O))
         {
 
         }
-        // 下スティック
-        else if(Input.GetAxis(KeyName[(int)EInput.Vertical]) < 0)
+        if (Input.GetKey(KeyCode.P))
         {
 
         }
-
-        if (Input.GetButtonDown(KeyName[(int)EInput.A]))
-        {
-
-        }
-        if (Input.GetButtonDown(KeyName[(int)EInput.B]))
-        {
-
-        }
-        if (Input.GetButtonDown(KeyName[(int)EInput.X]))
-        {
-
-        }
-        if (Input.GetButtonDown(KeyName[(int)EInput.Y]))
-        {
-
-        }*/
-
+       // if(Input)
+         
+         // 回転減衰
         if(m_state == State.LeftMove || m_state == State.RightMove)
         {
-            //
-            m_aroundSpeed *= 0.996f;
-            m_rightHandForce.x = m_rightHandForce.x * m_rightForceDecay.x ;
-            m_rightHandForce.z = m_rightHandForce.z * m_rightForceDecay.z ;
-            m_rightFootForce.x = m_rightFootForce.x * m_rightForceDecay.x;
-            m_rightFootForce.z = m_rightFootForce.z * m_rightForceDecay.z;
+            m_bodyForce.cntForce.x *= m_bodyForce.decayForce.x;
+            m_bodyForce.cntForce.y *= m_bodyForce.decayForce.y;
+            m_bodyForce.cntForce.z *= m_bodyForce.decayForce.z;
 
-            m_leftHandForce.x = m_leftHandForce.x * m_leftForceDecay.x;
-            m_leftHandForce.z = m_leftHandForce.z * m_leftForceDecay.z;
-            m_leftFootForce.x = m_leftFootForce.x * m_leftForceDecay.x;
-            m_leftFootForce.z = m_leftFootForce.z * m_leftForceDecay.z;
+
+        }
+        else
+        {
+            m_bodyForce.Init();
         }
 
+        // キャラクターの向き
         if(dir != rayTest.Dir)
         {
-            m_state = State.Idle;
+            // パラメータ初期化
             dir = rayTest.Dir;
-            m_aroundSpeed = m_initspeed;
-
-            if (dir == RayTest.RayDirection.Back)
-            {
-                m_rightHandForce = m_rightHandForceInit;
-                m_rightFootForce = m_rightFootForceInit;
-                m_leftHandForce = m_leftHandForceInit;
-                m_leftFootForce = m_leftFootForceInit;
-            }else if(dir == RayTest.RayDirection.Forward)
-            {
-                m_rightHandForce = -m_rightHandForceInit;
-                m_rightFootForce = -m_rightFootForceInit;
-                m_leftHandForce = -m_leftHandForceInit;
-                m_leftFootForce = -m_leftFootForceInit;
-            }
+            m_state = State.Idle;
+            m_bodyForce.Init();
+            m_rightHand.Init();
+            m_rightFoot.Init();
+            m_leftHand.Init();
+            m_leftFoot.Init();
         }
+        Debug.Log(m_state);
     }
 
     
@@ -206,57 +193,58 @@ public class PlayerController : MonoBehaviour {
     void Move(float value)
     {
 
-        m_rightHand_rg.centerOfMass = m_centerObj[0].transform.position;
-        m_rightFoot_rg.centerOfMass = m_centerObj[1].transform.position;
-        m_leftHand_rg.centerOfMass = m_centerObj[0].transform.position;
-        m_leftFoot_rg.centerOfMass = m_centerObj[1].transform.position;
+        //m_rightHand.cntForce.x *= value;
+        //m_leftHand.cntForce.x *= value;
+        Vector3 worldAngulerVelocity = transform.TransformDirection(m_bodyForce.cntForce * value);
+        Vector3 worldRightHandVelocity = transform.TransformDirection(m_rightHand.cntForce );
+        Vector3 worldLeftHandVelocity = transform.TransformDirection(m_leftHand.cntForce );
+        Vector3 worldFootVelocity = transform.TransformDirection(m_rightFoot.cntForce);
 
-        // 右
-        if (value < 0)
+
+        m_body_rg.angularVelocity = worldAngulerVelocity;
+        // 前
+        if (dir == RayTest.RayDirection.Forward)
         {
-            //m_rightHandSpeed += m_aroundSpeed;
-            //if (m_rightHandSpeed >= 30.0f && m_rightHandSpeed <= 120.0f)
-            {
-                //m_rightHandObj.transform.RotateAround(m_centerObj[0].transform.position, Vector3.forward, m_aroundSpeed * 2.0f);
-                //m_rightFootObj.transform.RotateAround(m_centerObj[1].transform.position, Vector3.forward, m_aroundSpeed * 2.0f);
-                //m_leftHandObj.transform.RotateAround(m_centerObj[0].transform.position, Vector3.forward, m_aroundSpeed * 2.0f);
-                //m_leftFootObj.transform.RotateAround(m_centerObj[1].transform.position, Vector3.forward, m_aroundSpeed * 2.0f);
+            m_rightHand_rg.AddRelativeForce(worldRightHandVelocity, ForceMode.Force);
+            m_leftHand_rg.AddRelativeForce(worldLeftHandVelocity, ForceMode.Force);
 
+            // m_shoulder_R.transform.Rotate(10.0f, 0, 0);
+            // m_rightHand_rg.AddRelativeForce(-m_rightHand.cntForce * value, ForceMode.Force);
+            // m_rightFoot_rg.AddRelativeForce(m_rightFoot.cntForce * value, ForceMode.Force);
 
-            }
-            //if (m_rightHandSpeed <= 170.0f)
-            {
-              //  m_aroundSpeed = m_initspeed;
-                //transform.RotateAround(m_shoulder_R.transform.position, Vector3.forward, m_aroundSpeed);
-                //GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 1.0f);
-                //m_rightHand_rg.angularVelocity = new Vector3(0, 0, 1.0f);
-
-            }
-            //m_rightHand_rg.angularVelocity = new Vector3(0, 0, m_aroundSpeed);
-            //m_rightFoot_rg.angularVelocity = new Vector3(0, 0, m_aroundSpeed);
-            //m_leftHand_rg.angularVelocity = new Vector3(0, 0, m_aroundSpeed);
-            //m_leftFoot_rg.angularVelocity = new Vector3(0, 0, m_aroundSpeed);
-            //GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, m_aroundSpeed);
-            
-            m_rightHand_rg.AddRelativeForce(m_rightHandForce, ForceMode.Force);
-            //m_rightFoot_rg.AddRelativeForce(m_rightFootForce, ForceMode.Force);
-            //m_leftHand_rg.AddRelativeForce(m_leftHandForce, ForceMode.Force);
-            //m_leftFoot_rg.AddRelativeForce(m_leftFootForce, ForceMode.Force);
-            if (!jj)
-            {
-               // m_rightHand_rg.AddRelativeTorque(1f, 0, 0.0f, ForceMode.Impulse);
-                jj = true;
-            }
-            GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, m_aroundSpeed);
-
-
-            m_state = State.RightMove;
+            m_rightFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            m_leftFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            if (value > 0)
+                Debug.Log("右移動：キャラクターの向き（前）");
+            else
+                Debug.Log("左移動：キャラクターの向き（前）");
         }
-        // 左
-        else if (value > 0)
+        // 後ろ
+        else if (dir == RayTest.RayDirection.Back)
         {
-           
+            m_leftHand_rg.AddRelativeForce(-worldLeftHandVelocity, ForceMode.Force);
+            m_rightHand_rg.AddRelativeForce(-worldRightHandVelocity, ForceMode.Force);
+            // m_leftFoot_rg.AddRelativeForce(m_leftFoot.cntForce * value, ForceMode.Force);
+            // m_rightHand_rg.AddRelativeForce(m_rightHand.cntForce * value, ForceMode.Force);
+
+
+            // m_rightFoot_rg.AddRelativeForce(m_rightFoot.cntForce * value, ForceMode.Force);
+
+            m_rightFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            m_leftFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            if (value > 0)
+                Debug.Log("右移動：キャラクターの向き（後）");
+            else
+                Debug.Log("左移動：キャラクターの向き（後）");
         }
+    }
+
+    void Extend(Rigidbody rigidbody,SpringJoint joint,Vector3 vec)
+    {
+        joint.spring = 0;
+        Vector3 worldRightHandVelocity = transform.TransformDirection(vec);
+        Debug.Log(worldRightHandVelocity);
+        rigidbody.AddForce(worldRightHandVelocity, ForceMode.Force);
     }
 }
         
