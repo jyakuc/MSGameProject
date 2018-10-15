@@ -48,24 +48,21 @@ public class PlayerController : MonoBehaviour {
 
     public string[] InputName = new string[(int)EInput.MAX];
 
-    // 力（パラメータ）
+    // 回転する力（パラメータ）
     [SerializeField]
     private Force m_bodyForce;
     [SerializeField]
-    private Force m_rightHand;
+    private Force m_HandForce;
     [SerializeField]
-    private Force m_leftHand;
-    [SerializeField]
-    private Force m_rightFoot;
-    [SerializeField]
-    private Force m_leftFoot;
+    private Force m_FootForce;
 
-    // ベクトルの軸
-   // [SerializeField]
-   // private Transform m_shoulderR;
-
-   // [SerializeField]
-   // private GameObject m_shoulder_R;
+    // 伸ばす力（パラメータ）
+    [SerializeField]
+    private Vector3 m_HandExtend;
+    [SerializeField]
+    private Vector3 m_FootExtendR;
+    [SerializeField]
+    private Vector3 m_FootExtendL;
 
     private State m_state;
     
@@ -83,13 +80,11 @@ public class PlayerController : MonoBehaviour {
         m_rightHand_rg = m_rightHandObj.GetComponent<Rigidbody>();
         m_leftHand_rg = m_leftHandObj.GetComponent<Rigidbody>();
         m_rightFoot_rg = m_rightFootObj.GetComponent<Rigidbody>();
-        m_leftFoot_rg = m_leftHandObj.GetComponent<Rigidbody>();
+        m_leftFoot_rg = m_leftFootObj.GetComponent<Rigidbody>();
 
         m_bodyForce.Init();
-        m_rightHand.Init();
-        m_rightFoot.Init();
-        m_leftHand.Init();
-        m_leftFoot.Init();
+        m_HandForce.Init();
+        m_FootForce.Init();
 
         m_state = State.Idle;
         
@@ -112,50 +107,27 @@ public class PlayerController : MonoBehaviour {
             Move(-1);
             m_state = State.LeftMove;
         }
+        else
+        {
+            m_state = State.Idle;
+        }
 
-        else if(!Input.GetKey(KeyCode.D) )
-        {
-            //m_state = State.Idle;
-            m_bodyForce.Init();
-            m_rightHand.Init();
-            m_rightFoot.Init();
-            m_leftHand.Init();
-            m_leftFoot.Init();
-        }
-        else if(!Input.GetKey(KeyCode.A))
-        {
-            m_bodyForce.Init();
-            m_rightHand.Init();
-            m_rightFoot.Init();
-            m_leftHand.Init();
-            m_leftFoot.Init();
-        }
 
         if (Input.GetKey(KeyCode.K))
         {
-            Extend(m_rightHand_rg,m_rightHandObj.GetComponent<SpringJoint>(),new Vector3(20,0,0));
+            Extend(m_rightHand_rg,m_HandExtend);
         }
-        else
-        {
-           // m_rightHandObj.GetComponent<SpringJoint>().spring = 20;
-        }
-
-
         if (Input.GetKey(KeyCode.L))
         {
-            Extend(m_leftHand_rg, m_leftHandObj.GetComponent<SpringJoint>(),new Vector3(-20,0,0));
+            Extend(m_leftHand_rg, -m_HandExtend);
         }
-        else
+        if (Input.GetKey(KeyCode.I))
         {
-           // m_leftHandObj.GetComponent<SpringJoint>().spring = 20;
+            Extend(m_rightFoot_rg, m_FootExtendR);
         }
         if (Input.GetKey(KeyCode.O))
         {
-
-        }
-        if (Input.GetKey(KeyCode.P))
-        {
-
+            Extend(m_leftFoot_rg, m_FootExtendL);
         }
        // if(Input)
          
@@ -165,8 +137,6 @@ public class PlayerController : MonoBehaviour {
             m_bodyForce.cntForce.x *= m_bodyForce.decayForce.x;
             m_bodyForce.cntForce.y *= m_bodyForce.decayForce.y;
             m_bodyForce.cntForce.z *= m_bodyForce.decayForce.z;
-
-
         }
         else
         {
@@ -180,10 +150,8 @@ public class PlayerController : MonoBehaviour {
             dir = rayTest.Dir;
             m_state = State.Idle;
             m_bodyForce.Init();
-            m_rightHand.Init();
-            m_rightFoot.Init();
-            m_leftHand.Init();
-            m_leftFoot.Init();
+            m_HandForce.Init();
+            m_FootForce.Init();
         }
         Debug.Log(m_state);
     }
@@ -196,22 +164,17 @@ public class PlayerController : MonoBehaviour {
         //m_rightHand.cntForce.x *= value;
         //m_leftHand.cntForce.x *= value;
         Vector3 worldAngulerVelocity = transform.TransformDirection(m_bodyForce.cntForce * value);
-        Vector3 worldRightHandVelocity = transform.TransformDirection(m_rightHand.cntForce );
-        Vector3 worldLeftHandVelocity = transform.TransformDirection(m_leftHand.cntForce );
-        Vector3 worldFootVelocity = transform.TransformDirection(m_rightFoot.cntForce);
+        Vector3 worldHandVelocity = transform.TransformDirection(m_HandForce.cntForce );
+        Vector3 worldFootVelocity = transform.TransformDirection(m_FootForce.cntForce);
 
 
         m_body_rg.angularVelocity = worldAngulerVelocity;
+        m_body_rg.AddRelativeForce(worldAngulerVelocity.x * value, 0, worldAngulerVelocity.z);
         // 前
         if (dir == RayTest.RayDirection.Forward)
         {
-            m_rightHand_rg.AddRelativeForce(worldRightHandVelocity, ForceMode.Force);
-            m_leftHand_rg.AddRelativeForce(worldLeftHandVelocity, ForceMode.Force);
-
-            // m_shoulder_R.transform.Rotate(10.0f, 0, 0);
-            // m_rightHand_rg.AddRelativeForce(-m_rightHand.cntForce * value, ForceMode.Force);
-            // m_rightFoot_rg.AddRelativeForce(m_rightFoot.cntForce * value, ForceMode.Force);
-
+            m_rightHand_rg.AddRelativeForce(worldHandVelocity, ForceMode.Force);
+            m_leftHand_rg.AddRelativeForce(worldHandVelocity, ForceMode.Force);
             m_rightFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
             m_leftFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
             if (value > 0)
@@ -222,14 +185,8 @@ public class PlayerController : MonoBehaviour {
         // 後ろ
         else if (dir == RayTest.RayDirection.Back)
         {
-            m_leftHand_rg.AddRelativeForce(-worldLeftHandVelocity, ForceMode.Force);
-            m_rightHand_rg.AddRelativeForce(-worldRightHandVelocity, ForceMode.Force);
-            // m_leftFoot_rg.AddRelativeForce(m_leftFoot.cntForce * value, ForceMode.Force);
-            // m_rightHand_rg.AddRelativeForce(m_rightHand.cntForce * value, ForceMode.Force);
-
-
-            // m_rightFoot_rg.AddRelativeForce(m_rightFoot.cntForce * value, ForceMode.Force);
-
+            m_leftHand_rg.AddRelativeForce(-worldHandVelocity, ForceMode.Force);
+            m_rightHand_rg.AddRelativeForce(-worldHandVelocity, ForceMode.Force);
             m_rightFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
             m_leftFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
             if (value > 0)
@@ -239,9 +196,9 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Extend(Rigidbody rigidbody,SpringJoint joint,Vector3 vec)
+    void Extend(Rigidbody rigidbody,Vector3 vec)
     {
-        joint.spring = 0;
+        //joint.spring = 0;
         Vector3 worldRightHandVelocity = transform.TransformDirection(vec);
         Debug.Log(worldRightHandVelocity);
         rigidbody.AddForce(worldRightHandVelocity, ForceMode.Force);
