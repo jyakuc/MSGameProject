@@ -40,10 +40,6 @@ public class RayTest : MonoBehaviour {
             Debug.Log("後ろ");
             rayDirection = RayDirection.Back;
         }
-        else
-        {
-           //rayDirection = RayDirection.NoHit;
-        }
         
 	}
 }
