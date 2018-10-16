@@ -204,6 +204,36 @@ Prefab:
       propertyPath: m_playerID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114387306285487334, guid: 95537e0fd822b8f4ebdc507d5bc89986,
+        type: 2}
+      propertyPath: InputName.Array.data[0]
+      value: GameController_Hori
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387306285487334, guid: 95537e0fd822b8f4ebdc507d5bc89986,
+        type: 2}
+      propertyPath: InputName.Array.data[1]
+      value: GameController_Vert
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387306285487334, guid: 95537e0fd822b8f4ebdc507d5bc89986,
+        type: 2}
+      propertyPath: InputName.Array.data[2]
+      value: GameController_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387306285487334, guid: 95537e0fd822b8f4ebdc507d5bc89986,
+        type: 2}
+      propertyPath: InputName.Array.data[3]
+      value: GameController_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387306285487334, guid: 95537e0fd822b8f4ebdc507d5bc89986,
+        type: 2}
+      propertyPath: InputName.Array.data[4]
+      value: GameController_X
+      objectReference: {fileID: 0}
+    - target: {fileID: 114387306285487334, guid: 95537e0fd822b8f4ebdc507d5bc89986,
+        type: 2}
+      propertyPath: InputName.Array.data[5]
+      value: GameController_Y
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95537e0fd822b8f4ebdc507d5bc89986, type: 2}
   m_IsPrefabParent: 0
@@ -523,41 +553,6 @@ Prefab:
     - target: {fileID: 4309942965725276, guid: 27856c8625bae1e47ba1e4c5a9315383, type: 2}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114144124142180806, guid: 27856c8625bae1e47ba1e4c5a9315383,
-        type: 2}
-      propertyPath: m_playerID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114144124142180806, guid: 27856c8625bae1e47ba1e4c5a9315383,
-        type: 2}
-      propertyPath: InputName.Array.data[0]
-      value: GameController_Hori
-      objectReference: {fileID: 0}
-    - target: {fileID: 114144124142180806, guid: 27856c8625bae1e47ba1e4c5a9315383,
-        type: 2}
-      propertyPath: InputName.Array.data[1]
-      value: GameController_Vert
-      objectReference: {fileID: 0}
-    - target: {fileID: 114144124142180806, guid: 27856c8625bae1e47ba1e4c5a9315383,
-        type: 2}
-      propertyPath: InputName.Array.data[2]
-      value: GameController_A
-      objectReference: {fileID: 0}
-    - target: {fileID: 114144124142180806, guid: 27856c8625bae1e47ba1e4c5a9315383,
-        type: 2}
-      propertyPath: InputName.Array.data[3]
-      value: GameController_B
-      objectReference: {fileID: 0}
-    - target: {fileID: 114144124142180806, guid: 27856c8625bae1e47ba1e4c5a9315383,
-        type: 2}
-      propertyPath: InputName.Array.data[4]
-      value: GameController_X
-      objectReference: {fileID: 0}
-    - target: {fileID: 114144124142180806, guid: 27856c8625bae1e47ba1e4c5a9315383,
-        type: 2}
-      propertyPath: InputName.Array.data[5]
-      value: GameController_Y
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27856c8625bae1e47ba1e4c5a9315383, type: 2}

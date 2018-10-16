@@ -2073,18 +2073,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e08ad07190e2a04598a891d13d9546a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerID: 2
   m_bodyObj: {fileID: 1313503552564812}
   m_rightHandObj: {fileID: 1278942666615170}
   m_leftHandObj: {fileID: 1996879063588266}
   m_rightFootObj: {fileID: 1642450112827790}
   m_leftFootObj: {fileID: 1443327839413980}
   InputName:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - GameController_Hori
+  - GameController_Vert
+  - GameController_A
+  - GameController_B
+  - GameController_X
+  - GameController_Y
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: -0.9, y: -3.8, z: 0}
