@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    // プレイヤー番号
+    [SerializeField]
     private int m_playerID;
 
     // 手足制御用オブジェクト
@@ -89,6 +91,11 @@ public class PlayerController : MonoBehaviour {
         m_state = State.Idle;
         
         dir = rayTest.Dir;
+
+        for(EInput i = 0; i < EInput.MAX; ++i)
+        {
+            InputName[(int)i] += m_playerID.ToString();
+        }
 
     }
 	
