@@ -103,11 +103,11 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate () {
 
         // 右スティック
-        if (Input.GetKey(KeyCode.D))
+      /*  if (Input.GetAxis(""))
         {
             Move(1);
             m_state = State.RightMove;
-        }
+        }*/
         // 左スティック
         else if (Input.GetKey(KeyCode.A))
         {
