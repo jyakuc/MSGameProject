@@ -50,5 +50,40 @@ public class ControllerTest : MonoBehaviour {
         if(( lsh != 0) || (lsv != 0 )){
             Debug.Log ("GameController_Hori1:"+lsh+","+lsv );
         }
+
+        if (Input.GetKey(KeyCode.I) || lsh < 0)
+        {
+            Debug.Log("push I");
+        }
+        if (Input.GetKey(KeyCode.O) || lsh > 0)
+        {
+            Debug.Log("push O");
+        }
+        if (Input.GetKey(KeyCode.K) || lsv > 0)
+        {
+            Debug.Log("push K");
+        }
+        if (Input.GetKey(KeyCode.L) || lsv < 0)
+        {
+            Debug.Log("push L");
+        }
+
+
+        if (Input.GetKey(KeyCode.LeftArrow) || lsh < 0)
+        {
+            Debug.Log("left move");
+        }
+        if (Input.GetKey(KeyCode.RightArrow) || lsh > 0)
+        {
+            Debug.Log("right move");
+        }
+        if (Input.GetKey(KeyCode.UpArrow) || lsv > 0)
+        {
+            Debug.Log("advance move");
+        }
+        if (Input.GetKey(KeyCode.DownArrow) || lsv < 0)
+        {
+            Debug.Log("back move");
+        }
     }
 }
