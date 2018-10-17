@@ -66,6 +66,14 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private Vector3 m_FootExtendL;
 
+    // 移動する力（パラメータ）
+    [SerializeField]
+    private Force m_bodyMoveForce;
+
+    // 向きを変える力（パラメータ）
+    [SerializeField]
+    private float m_directionAngle;
+
     private State m_state;
     
     private RayTest.RayDirection dir;
@@ -73,11 +81,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        //for(int i=0;i<(int)EInput.MAX;++i)
-        //{
-        //    KeyName[i] += m_playerID.ToString();
-        //}
-
+       
         m_body_rg = m_bodyObj.GetComponent<Rigidbody>();
         m_rightHand_rg = m_rightHandObj.GetComponent<Rigidbody>();
         m_leftHand_rg = m_leftHandObj.GetComponent<Rigidbody>();
@@ -87,6 +91,7 @@ public class PlayerController : MonoBehaviour {
         m_bodyForce.Init();
         m_HandForce.Init();
         m_FootForce.Init();
+        m_bodyMoveForce.Init();
 
         m_state = State.Idle;
         
@@ -100,54 +105,71 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
 
-        // 右スティック
-      /*  if (Input.GetAxis(""))
+        // 右方向
+        float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal]);
+        Debug.Log("横" + lsh);
+        float lsv = Input.GetAxis(InputName[(int)EInput.Vertical]);
+        Debug.Log("縦" + lsv);
+
+        if (lsh == 0.0f)
+        {
+            m_state = State.Idle;
+        }
+        else if (lsh > 0.0f)
         {
             Move(1);
             m_state = State.RightMove;
-        }*/
-        // 左スティック
-        else if (Input.GetKey(KeyCode.A))
+        }
+        // 左方向
+        else if (lsh < 0.0f)
         {
             Move(-1);
             m_state = State.LeftMove;
         }
-        else
+
+        if(lsv > 0.0f)
         {
-            m_state = State.Idle;
+            Direction(1);
         }
+        else if(lsv < 0.0f)
+        {
+            Direction(-1);
+        }
+        
 
 
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetButton(InputName[(int)EInput.A]))
         {
             Extend(m_rightHand_rg,m_HandExtend);
         }
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetButton(InputName[(int)EInput.B]))
         {
             Extend(m_leftHand_rg, -m_HandExtend);
         }
-        if (Input.GetKey(KeyCode.I))
+        if (Input.GetButton(InputName[(int)EInput.X]))
         {
             Extend(m_rightFoot_rg, m_FootExtendR);
         }
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetButton(InputName[(int)EInput.Y]))
         {
             Extend(m_leftFoot_rg, m_FootExtendL);
         }
-       // if(Input)
-         
-         // 回転減衰
-        if(m_state == State.LeftMove || m_state == State.RightMove)
+
+        // 回転減衰
+        if (m_state == State.LeftMove || m_state == State.RightMove)
         {
             m_bodyForce.cntForce.x *= m_bodyForce.decayForce.x;
             m_bodyForce.cntForce.y *= m_bodyForce.decayForce.y;
             m_bodyForce.cntForce.z *= m_bodyForce.decayForce.z;
+            m_bodyMoveForce.cntForce.x *= m_bodyMoveForce.decayForce.x;
         }
         else
         {
             m_bodyForce.Init();
+            m_bodyMoveForce.Init();
         }
 
         // キャラクターの向き
@@ -171,12 +193,13 @@ public class PlayerController : MonoBehaviour {
         //m_rightHand.cntForce.x *= value;
         //m_leftHand.cntForce.x *= value;
         Vector3 worldAngulerVelocity = transform.TransformDirection(m_bodyForce.cntForce * value);
+        Vector3 worldMoveVelocity = transform.TransformDirection(m_bodyMoveForce.cntForce * value);
         Vector3 worldHandVelocity = transform.TransformDirection(m_HandForce.cntForce );
         Vector3 worldFootVelocity = transform.TransformDirection(m_FootForce.cntForce);
 
 
         m_body_rg.angularVelocity = worldAngulerVelocity;
-        m_body_rg.AddRelativeForce(worldAngulerVelocity.x * value, 0, worldAngulerVelocity.z);
+        m_body_rg.AddRelativeForce(worldMoveVelocity);
         // 前
         if (dir == RayTest.RayDirection.Forward)
         {
@@ -201,6 +224,12 @@ public class PlayerController : MonoBehaviour {
             else
                 Debug.Log("左移動：キャラクターの向き（後）");
         }
+    }
+
+    void Direction(float value)
+    {
+        
+        m_body_rg.AddTorque(0.0f, m_directionAngle * value ,0.0f);
     }
 
     void Extend(Rigidbody rigidbody,Vector3 vec)
