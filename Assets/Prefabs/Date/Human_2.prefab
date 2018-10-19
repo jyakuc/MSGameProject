@@ -679,7 +679,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313503552564812}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -14.16, y: -12.07, z: -4.53}
+  m_LocalPosition: {x: 10.52, y: -12.07, z: -4.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4408710598164054}
@@ -2088,8 +2088,8 @@ MonoBehaviour:
   - GameController_Y
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
-    maxForce: {x: -0.9, y: -3.8, z: 0}
-    decayForce: {x: 0.99, y: 0.995, z: 0.99}
+    maxForce: {x: 0, y: -3.8, z: 0}
+    decayForce: {x: 0, y: 0.995, z: 0}
   m_HandForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: -5, y: 20, z: 0}
@@ -2101,6 +2101,11 @@ MonoBehaviour:
   m_HandExtend: {x: 100, y: 0, z: 0}
   m_FootExtendR: {x: 100, y: -100, z: 0}
   m_FootExtendL: {x: -100, y: -100, z: 0}
+  m_bodyMoveForce:
+    cntForce: {x: 0, y: 0, z: 0}
+    maxForce: {x: -1.5, y: 0, z: 0}
+    decayForce: {x: 0.99, y: 0, z: 0}
+  m_directionAngle: 250
   rayTest: {fileID: 114184571854150478}
 --- !u!137 &137943412658688840
 SkinnedMeshRenderer:
