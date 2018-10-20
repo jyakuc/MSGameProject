@@ -9,7 +9,7 @@ public class Filter : MonoBehaviour {
     [Range(0, 20)]
     public float Speed = 0;
     //サイズ限界値変数
-    [Range(0, 500)]
+    [Range(0, 5000)]
     public float LimitSize = 0;
     // Use this for initialization
     void Start () {
