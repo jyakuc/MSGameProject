@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody m_rightFoot_rg;
     private Rigidbody m_leftFoot_rg;
 
-    public string[] InputName = new string[(int)EInput.MAX];
+    private string[] InputName = new string[(int)EInput.MAX];
 
     // 回転する力（パラメータ）
     [SerializeField]
@@ -96,11 +96,13 @@ public class PlayerController : MonoBehaviour {
         m_state = State.Idle;
         
         dir = rayTest.Dir;
-
-        for(EInput i = 0; i < EInput.MAX; ++i)
-        {
-            InputName[(int)i] += m_playerID.ToString();
-        }
+        m_playerID++;
+        InputName[0] = "GameController_Hori" + m_playerID.ToString();
+        InputName[1] = "GameController_Vert" + m_playerID.ToString();
+        InputName[2] = "GameController_A" + m_playerID.ToString();
+        InputName[3] = "GameController_B" + m_playerID.ToString();
+        InputName[4] = "GameController_X" + m_playerID.ToString();
+        InputName[5] = "GameController_Y" + m_playerID.ToString();
 
     }
 	
@@ -110,9 +112,9 @@ public class PlayerController : MonoBehaviour {
 
         // 右方向
         float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal]);
-        Debug.Log("横" + lsh);
+ //       Debug.Log("横" + lsh);
         float lsv = Input.GetAxis(InputName[(int)EInput.Vertical]);
-        Debug.Log("縦" + lsv);
+ //       Debug.Log("縦" + lsv);
 
         if (lsh == 0.0f)
         {
@@ -143,6 +145,7 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButton(InputName[(int)EInput.A]))
         {
+            Debug.Log(InputName[(int)EInput.A] + m_playerID);
             Extend(m_rightHand_rg,m_HandExtend);
         }
         if (Input.GetButton(InputName[(int)EInput.B]))
@@ -236,7 +239,7 @@ public class PlayerController : MonoBehaviour {
     {
         //joint.spring = 0;
         Vector3 worldRightHandVelocity = transform.TransformDirection(vec);
-        Debug.Log(worldRightHandVelocity);
+       // Debug.Log(worldRightHandVelocity);
         rigidbody.AddForce(worldRightHandVelocity, ForceMode.Force);
     }
 }
