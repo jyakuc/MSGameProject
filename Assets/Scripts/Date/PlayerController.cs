@@ -158,13 +158,44 @@ public class PlayerController : MonoBehaviour {
         {
             Direction(-1);
         }
-        
 
+        // 手足の処理
+        Limbs();
+
+        // 回転減衰
+        if (m_state == State.LeftMove || m_state == State.RightMove)
+        {
+            m_bodyForce.cntForce.x *= m_bodyForce.decayForce.x;
+            m_bodyForce.cntForce.y *= m_bodyForce.decayForce.y;
+            m_bodyForce.cntForce.z *= m_bodyForce.decayForce.z;
+            m_bodyMoveForce.cntForce.x *= m_bodyMoveForce.decayForce.x;
+        }
+        else
+        {
+            m_bodyForce.Init();
+            m_bodyMoveForce.Init();
+        }
+
+        // キャラクターの向き
+        if(dir != rayTest.Dir)
+        {
+            // パラメータ初期化
+            dir = rayTest.Dir;
+            m_state = State.Idle;
+            m_bodyForce.Init();
+            m_HandForce.Init();
+            m_FootForce.Init();
+        }
+        Debug.Log(m_state);
+    }
+
+    void Limbs()
+    {
         // 右手
         if (Input.GetButtonDown(InputName[(int)EInput.A]))
         {
             Debug.Log(InputName[(int)EInput.A] + m_playerID);
-            Extend(m_rightHand_rg,m_HandExtend);
+            Extend(m_rightHand_rg, m_HandExtend);
             m_partsScale.PartsVariationSetting(PartsScale.Parts.RightHand, PartsScale.SubTraction.AddChange, m_partsScale.Speed);
         }
         else if (Input.GetButtonUp(InputName[(int)EInput.A]))
@@ -199,37 +230,9 @@ public class PlayerController : MonoBehaviour {
         }
         else if (Input.GetButtonUp(InputName[(int)EInput.Y]))
         {
-            m_partsScale.PartsVariationSetting(PartsScale.Parts.LeftCalf,PartsScale.SubTraction.SubChange,m_partsScale.Speed);
+            m_partsScale.PartsVariationSetting(PartsScale.Parts.LeftCalf, PartsScale.SubTraction.SubChange, m_partsScale.Speed);
         }
-
-        // 回転減衰
-        if (m_state == State.LeftMove || m_state == State.RightMove)
-        {
-            m_bodyForce.cntForce.x *= m_bodyForce.decayForce.x;
-            m_bodyForce.cntForce.y *= m_bodyForce.decayForce.y;
-            m_bodyForce.cntForce.z *= m_bodyForce.decayForce.z;
-            m_bodyMoveForce.cntForce.x *= m_bodyMoveForce.decayForce.x;
-        }
-        else
-        {
-            m_bodyForce.Init();
-            m_bodyMoveForce.Init();
-        }
-
-        // キャラクターの向き
-        if(dir != rayTest.Dir)
-        {
-            // パラメータ初期化
-            dir = rayTest.Dir;
-            m_state = State.Idle;
-            m_bodyForce.Init();
-            m_HandForce.Init();
-            m_FootForce.Init();
-        }
-        Debug.Log(m_state);
     }
-
-    
 
     void Move(float value)
     {
