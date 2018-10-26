@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 114348906947774610}
   - component: {fileID: 114143052832651144}
   - component: {fileID: 54652942678723580}
+  - component: {fileID: 114027036249367356}
   m_Layer: 17
   m_Name: Human_5
   m_TagString: Untagged
@@ -822,7 +823,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358513346199156}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -12.07, z: -6.95}
+  m_LocalPosition: {x: -6.6, y: -12.1, z: 19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4104639188819984}
@@ -2032,6 +2033,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114027036249367356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358513346199156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15316b07b0b9bd9449ce3f3e6c92712e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hand_L: {fileID: 4123373631635968}
+  Hand_R: {fileID: 4653892488374724}
+  Calf_L: {fileID: 4911479012771530}
+  Calf_R: {fileID: 4625173527544692}
+  PartsSizeMin: {x: 0.5, y: 0.5, z: 0.5}
+  PartsSizeMax: {x: 2, y: 2, z: 2}
+  Speed: 0.05
+  SelectParts: 0
+  Pattern: 0
+  DefaultMode: 0
+  DebugMode: 1
 --- !u!114 &114143052832651144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2043,18 +2066,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e08ad07190e2a04598a891d13d9546a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerID: 5
   m_bodyObj: {fileID: 1358513346199156}
   m_rightHandObj: {fileID: 1710649902959348}
   m_leftHandObj: {fileID: 1899395220044010}
   m_rightFootObj: {fileID: 1945108740893328}
   m_leftFootObj: {fileID: 1851386250820694}
-  InputName:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: -0.9, y: -3.8, z: 0}
@@ -2070,6 +2087,11 @@ MonoBehaviour:
   m_HandExtend: {x: 100, y: 0, z: 0}
   m_FootExtendR: {x: 100, y: -100, z: 0}
   m_FootExtendL: {x: -100, y: -100, z: 0}
+  m_bodyMoveForce:
+    cntForce: {x: 0, y: 0, z: 0}
+    maxForce: {x: 0, y: 0, z: 0}
+    decayForce: {x: 0, y: 0, z: 0}
+  m_directionAngle: 0
   rayTest: {fileID: 114978070204711190}
 --- !u!114 &114348906947774610
 MonoBehaviour:
@@ -2088,6 +2110,10 @@ MonoBehaviour:
   rightFootObj: {fileID: 4658487540521126}
   leftFootObj: {fileID: 4779474596608112}
   lookObj: {fileID: 0}
+  lookTotalWeight: 0
+  bodyWeight: 0
+  headWeight: 0
+  eyeWeight: 0
 --- !u!114 &114978070204711190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2119,6 +2145,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100002, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100004, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100006, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  - {fileID: 2100008, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2142,7 +2169,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_Bones:
   - {fileID: 4351424694018022}
   - {fileID: 4081094994667120}

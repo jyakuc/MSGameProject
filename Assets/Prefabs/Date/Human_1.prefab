@@ -477,6 +477,7 @@ GameObject:
   - component: {fileID: 114737147816298602}
   - component: {fileID: 114144124142180806}
   - component: {fileID: 54750565994776612}
+  - component: {fileID: 114454334888639076}
   m_Layer: 8
   m_Name: Human_1
   m_TagString: Untagged
@@ -2083,6 +2084,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayDistance: 2
   layerMaskName: Ground
+--- !u!114 &114454334888639076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763243969287568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15316b07b0b9bd9449ce3f3e6c92712e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hand_L: {fileID: 4654129179798778}
+  Hand_R: {fileID: 4959641348136670}
+  Calf_L: {fileID: 4398266854616452}
+  Calf_R: {fileID: 4901337476263662}
+  PartsSizeMin: {x: 0.5, y: 0.5, z: 0.5}
+  PartsSizeMax: {x: 2, y: 2, z: 2}
+  Speed: 0.05
+  SelectParts: 0
+  Pattern: 0
+  DefaultMode: 0
+  DebugMode: 1
 --- !u!114 &114737147816298602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2100,6 +2123,10 @@ MonoBehaviour:
   rightFootObj: {fileID: 4384658656559732}
   leftFootObj: {fileID: 4508618174878954}
   lookObj: {fileID: 0}
+  lookTotalWeight: 0
+  bodyWeight: 0
+  headWeight: 0
+  eyeWeight: 0
 --- !u!137 &137583162914089480
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2118,6 +2145,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100002, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100004, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100006, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  - {fileID: 2100008, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2141,7 +2169,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_Bones:
   - {fileID: 4864233538184630}
   - {fileID: 4979405915864210}

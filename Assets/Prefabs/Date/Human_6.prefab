@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 114468569754795686}
   - component: {fileID: 114745635048470910}
   - component: {fileID: 54518384087909096}
+  - component: {fileID: 114631291147298992}
   m_Layer: 18
   m_Name: Human_6
   m_TagString: Untagged
@@ -2062,6 +2063,32 @@ MonoBehaviour:
   rightFootObj: {fileID: 4291324223366930}
   leftFootObj: {fileID: 4568094799883092}
   lookObj: {fileID: 0}
+  lookTotalWeight: 0
+  bodyWeight: 0
+  headWeight: 0
+  eyeWeight: 0
+--- !u!114 &114631291147298992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449480356525946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15316b07b0b9bd9449ce3f3e6c92712e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hand_L: {fileID: 4303651927142220}
+  Hand_R: {fileID: 4039624504810080}
+  Calf_L: {fileID: 4334354080161590}
+  Calf_R: {fileID: 4123180373710786}
+  PartsSizeMin: {x: 0.5, y: 0.5, z: 0.5}
+  PartsSizeMax: {x: 2, y: 2, z: 2}
+  Speed: 0.05
+  SelectParts: 0
+  Pattern: 0
+  DefaultMode: 0
+  DebugMode: 1
 --- !u!114 &114745635048470910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2073,18 +2100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e08ad07190e2a04598a891d13d9546a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerID: 6
   m_bodyObj: {fileID: 1449480356525946}
   m_rightHandObj: {fileID: 1194157642573444}
   m_leftHandObj: {fileID: 1814654181169048}
   m_rightFootObj: {fileID: 1273645417618626}
   m_leftFootObj: {fileID: 1160299987118958}
-  InputName:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: -0.9, y: -3.8, z: 0}
@@ -2100,6 +2121,11 @@ MonoBehaviour:
   m_HandExtend: {x: 100, y: 0, z: 0}
   m_FootExtendR: {x: 100, y: -100, z: 0}
   m_FootExtendL: {x: -100, y: -100, z: 0}
+  m_bodyMoveForce:
+    cntForce: {x: 0, y: 0, z: 0}
+    maxForce: {x: 0, y: 0, z: 0}
+    decayForce: {x: 0, y: 0, z: 0}
+  m_directionAngle: 0
   rayTest: {fileID: 114302950340732178}
 --- !u!137 &137895979734281560
 SkinnedMeshRenderer:
@@ -2119,6 +2145,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100002, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100004, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100006, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  - {fileID: 2100008, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2142,7 +2169,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_Bones:
   - {fileID: 4830864763769882}
   - {fileID: 4852761154169230}
