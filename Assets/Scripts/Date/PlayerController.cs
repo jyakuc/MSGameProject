@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour {
         m_state = State.Idle;
         
         dir = rayTest.Dir;
-        m_playerID++;
+
         InputName[0] = "GameController_Hori" + m_playerID.ToString();
         InputName[1] = "GameController_Vert" + m_playerID.ToString();
         InputName[2] = "GameController_A" + m_playerID.ToString();

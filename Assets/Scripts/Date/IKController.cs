@@ -8,14 +8,25 @@ public class IKController : MonoBehaviour {
     protected Animator animator;
 
     public bool ikActive = false;
+    [Header("ControllerObject")]
     public Transform rightHandObj = null;
     public Transform leftHandObj = null;
     public Transform rightFootObj = null;
     public Transform leftFootObj = null;
     public Transform lookObj = null;
-    
-	// Use this for initialization
-	void Start () {
+
+    [Header("LookWeight")]
+    [SerializeField, Range(0.0f,1.0f)]
+    private float lookTotalWeight = 0.0f;
+    [SerializeField, Range(0.0f, 1.0f)]
+    private float bodyWeight = 0.0f;
+    [SerializeField, Range(0.0f, 1.0f)]
+    private float headWeight = 0.0f;
+    [SerializeField, Range(0.0f, 1.0f)]
+    private float eyeWeight = 0.0f;
+
+    // Use this for initialization
+    void Start () {
         animator = GetComponent<Animator>();
 	}
 	
@@ -72,6 +83,13 @@ public class IKController : MonoBehaviour {
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
             animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);
             animator.SetLookAtWeight(0);
+        }
+
+
+        if(lookObj != null)
+        {
+            animator.SetLookAtWeight(lookTotalWeight, bodyWeight, headWeight, eyeWeight);
+            animator.SetLookAtPosition(lookObj.transform.position);
         }
     }
 }
