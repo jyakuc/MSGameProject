@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FallCollision : MonoBehaviour {
 
+    private const int MaxArray = 6;
+    public int[] Rank = new int[MaxArray];
+
 	// Use this for initialization
 	void Start () {
 		
@@ -18,6 +21,9 @@ public class FallCollision : MonoBehaviour {
     {
         if (other.gameObject.tag != "Player")
             return;
-        other.gameObject.GetComponent<PlayerController>();
+        Debug.Log(other.gameObject.name);
+        Rank[Rank.Length] = other.gameObject.GetComponent<PlayerController>().PlayerID;
+        Destroy(other.gameObject);
+
     }
 }
