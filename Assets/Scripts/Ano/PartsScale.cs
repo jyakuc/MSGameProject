@@ -29,6 +29,8 @@ public class PartsScale : MonoBehaviour {
     public SubTraction Pattern;
     //デフォルトに戻すか(デバッグ用にpublicにしてるのでそのうちprivateに変えます)
     public bool DefaultMode = false;
+    //デバッグ用flag(キー入力で選択させる)
+    public bool DebugMode = false;
     //デフォから動けばfalse
     private bool DefHand_L = true;
     private bool DefHand_R = true;
@@ -55,6 +57,22 @@ public class PartsScale : MonoBehaviour {
 	void Update () {
         PartsVariation();
         DefaultSize();
+        if(DebugMode)
+        {
+            DebugModeSystem();
+        }
+    }
+    public void DebugModeSystem()
+    {
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            SelectParts = Parts.AllParts;
+            Pattern = SubTraction.AddChange;
+        }
+        if(Input.GetKeyDown(KeyCode.F2))
+        {
+            DefaultMode = true;
+        }
     }
     //これを呼び出して設定すれば拡縮全てできる
     public void PartsVariationSetting(Parts PartsSelect, SubTraction Subtraction,float speed)
