@@ -31,18 +31,23 @@ public class Score : MonoBehaviour {
         {
             ScoreText = "999";
         }
-        else if(ScoreNum>=10)
+        else if(ScoreNum>=100)
         {
             ScoreText = ScoreNum.ToString();
-            ScoreText = ScoreText.Insert(ScoreText.Length, " ");
+        }
+        else if (ScoreNum>=10)
+        {
+            ScoreText = ScoreNum.ToString();
+            ScoreText = ScoreText.Insert(0, " ");
         }
         else if (ScoreNum>= 0)
         {
             ScoreText = ScoreNum.ToString();
-            ScoreText = ScoreText.Insert(ScoreText.Length, "  ");
+            ScoreText = ScoreText.Insert(0, "  ");
 
 
         }
+
 
     }
     public char GetTextPos(int Pos)
