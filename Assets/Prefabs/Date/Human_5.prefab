@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 54652942678723580}
   m_Layer: 17
   m_Name: Human_5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -822,7 +822,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358513346199156}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -12.07, z: -6.95}
+  m_LocalPosition: {x: -6.6, y: -12.1, z: 19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4104639188819984}
@@ -2043,18 +2043,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e08ad07190e2a04598a891d13d9546a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerID: 5
   m_bodyObj: {fileID: 1358513346199156}
   m_rightHandObj: {fileID: 1710649902959348}
   m_leftHandObj: {fileID: 1899395220044010}
   m_rightFootObj: {fileID: 1945108740893328}
   m_leftFootObj: {fileID: 1851386250820694}
-  InputName:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: -0.9, y: -3.8, z: 0}
@@ -2070,6 +2064,11 @@ MonoBehaviour:
   m_HandExtend: {x: 100, y: 0, z: 0}
   m_FootExtendR: {x: 100, y: -100, z: 0}
   m_FootExtendL: {x: -100, y: -100, z: 0}
+  m_bodyMoveForce:
+    cntForce: {x: 0, y: 0, z: 0}
+    maxForce: {x: 0, y: 0, z: 0}
+    decayForce: {x: 0, y: 0, z: 0}
+  m_directionAngle: 0
   rayTest: {fileID: 114978070204711190}
 --- !u!114 &114348906947774610
 MonoBehaviour:
@@ -2088,6 +2087,10 @@ MonoBehaviour:
   rightFootObj: {fileID: 4658487540521126}
   leftFootObj: {fileID: 4779474596608112}
   lookObj: {fileID: 0}
+  lookTotalWeight: 0
+  bodyWeight: 0
+  headWeight: 0
+  eyeWeight: 0
 --- !u!114 &114978070204711190
 MonoBehaviour:
   m_ObjectHideFlags: 1

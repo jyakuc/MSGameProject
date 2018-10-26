@@ -33,6 +33,17 @@ public class PlayerController : MonoBehaviour {
     // プレイヤー番号
     [SerializeField]
     private int m_playerID;
+    public int PlayerID
+    {
+        get { return m_playerID; }
+    }
+
+    // 生存フラグ
+    private bool m_lifeFlg;
+    public bool LifeFlag
+    {
+        get { return m_lifeFlg; }
+    }
 
     // 手足制御用オブジェクト
     public GameObject m_bodyObj;
@@ -94,6 +105,7 @@ public class PlayerController : MonoBehaviour {
         m_bodyMoveForce.Init();
 
         m_state = State.Idle;
+        m_lifeFlg = true;
         
         dir = rayTest.Dir;
 
@@ -109,7 +121,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-
+        if (!m_lifeFlg) return;
         // 右方向
         float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal]);
  //       Debug.Log("横" + lsh);
@@ -241,6 +253,11 @@ public class PlayerController : MonoBehaviour {
         Vector3 worldRightHandVelocity = transform.TransformDirection(vec);
        // Debug.Log(worldRightHandVelocity);
         rigidbody.AddForce(worldRightHandVelocity, ForceMode.Force);
+    }
+
+    public void Dead()
+    {
+        m_lifeFlg = false;
     }
 }
         

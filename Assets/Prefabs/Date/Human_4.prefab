@@ -59,9 +59,10 @@ GameObject:
   - component: {fileID: 114360007746449226}
   - component: {fileID: 114376492249141510}
   - component: {fileID: 54578374629925640}
+  - component: {fileID: 114368729028583340}
   m_Layer: 16
   m_Name: Human_4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2062,6 +2063,32 @@ MonoBehaviour:
   rightFootObj: {fileID: 4582413260116824}
   leftFootObj: {fileID: 4981436737983640}
   lookObj: {fileID: 0}
+  lookTotalWeight: 0
+  bodyWeight: 0
+  headWeight: 0
+  eyeWeight: 0
+--- !u!114 &114368729028583340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127312982964314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15316b07b0b9bd9449ce3f3e6c92712e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hand_L: {fileID: 4263341850175706}
+  Hand_R: {fileID: 4740649517069212}
+  Calf_L: {fileID: 4385995921415962}
+  Calf_R: {fileID: 4215072219005606}
+  PartsSizeMin: {x: 0.5, y: 0.5, z: 0.5}
+  PartsSizeMax: {x: 2, y: 2, z: 2}
+  Speed: 0
+  SelectParts: 0
+  Pattern: 0
+  DefaultMode: 0
+  DebugMode: 1
 --- !u!114 &114376492249141510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2073,18 +2100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e08ad07190e2a04598a891d13d9546a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerID: 4
   m_bodyObj: {fileID: 1127312982964314}
   m_rightHandObj: {fileID: 1462539098495450}
   m_leftHandObj: {fileID: 1652172357805778}
   m_rightFootObj: {fileID: 1414602707996590}
   m_leftFootObj: {fileID: 1348671221161080}
-  InputName:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: -0.9, y: -3.8, z: 0}
@@ -2100,6 +2121,11 @@ MonoBehaviour:
   m_HandExtend: {x: 100, y: 0, z: 0}
   m_FootExtendR: {x: 100, y: -100, z: 0}
   m_FootExtendL: {x: -100, y: -100, z: 0}
+  m_bodyMoveForce:
+    cntForce: {x: 0, y: 0, z: 0}
+    maxForce: {x: 0, y: 0, z: 0}
+    decayForce: {x: 0, y: 0, z: 0}
+  m_directionAngle: 0
   rayTest: {fileID: 114152905965822594}
 --- !u!137 &137197677056036714
 SkinnedMeshRenderer:
@@ -2119,6 +2145,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100002, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100004, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100006, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  - {fileID: 2100008, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2142,7 +2169,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_Bones:
   - {fileID: 4596617561812236}
   - {fileID: 4664130590772384}

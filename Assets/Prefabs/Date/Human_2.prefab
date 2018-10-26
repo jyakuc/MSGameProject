@@ -275,9 +275,10 @@ GameObject:
   - component: {fileID: 114378733908616502}
   - component: {fileID: 114387306285487334}
   - component: {fileID: 54564422032482134}
+  - component: {fileID: 114216656553787622}
   m_Layer: 14
   m_Name: Human_2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -679,7 +680,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313503552564812}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 10.52, y: -12.07, z: -4.53}
+  m_LocalPosition: {x: 21.28, y: -12.1, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4408710598164054}
@@ -2045,6 +2046,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayDistance: 2
   layerMaskName: Ground
+--- !u!114 &114216656553787622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313503552564812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15316b07b0b9bd9449ce3f3e6c92712e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hand_L: {fileID: 4715499247052102}
+  Hand_R: {fileID: 4976461170444446}
+  Calf_L: {fileID: 4474289233534838}
+  Calf_R: {fileID: 4312811192716938}
+  PartsSizeMin: {x: 0.5, y: 0.5, z: 0.5}
+  PartsSizeMax: {x: 2, y: 2, z: 2}
+  Speed: 0.05
+  SelectParts: 0
+  Pattern: 0
+  DefaultMode: 0
+  DebugMode: 1
 --- !u!114 &114378733908616502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2062,6 +2085,10 @@ MonoBehaviour:
   rightFootObj: {fileID: 4613312450071904}
   leftFootObj: {fileID: 4919364793235238}
   lookObj: {fileID: 0}
+  lookTotalWeight: 0
+  bodyWeight: 0
+  headWeight: 0
+  eyeWeight: 0
 --- !u!114 &114387306285487334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2079,13 +2106,6 @@ MonoBehaviour:
   m_leftHandObj: {fileID: 1996879063588266}
   m_rightFootObj: {fileID: 1642450112827790}
   m_leftFootObj: {fileID: 1443327839413980}
-  InputName:
-  - GameController_Hori
-  - GameController_Vert
-  - GameController_A
-  - GameController_B
-  - GameController_X
-  - GameController_Y
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: 0, y: -3.8, z: 0}
@@ -2125,6 +2145,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100002, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100004, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100006, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  - {fileID: 2100008, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2148,7 +2169,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
   m_Bones:
   - {fileID: 4997844648219642}
   - {fileID: 4985676645215206}
