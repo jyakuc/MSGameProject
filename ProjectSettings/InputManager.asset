@@ -324,7 +324,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: GameController_Hori1
     descriptiveName: 
@@ -356,7 +356,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 3
+    joyNum: 2
   - serializedVersion: 3
     m_Name: GameController_Hori2
     descriptiveName: 
@@ -388,7 +388,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 4
+    joyNum: 3
   - serializedVersion: 3
     m_Name: GameController_Hori4
     descriptiveName: 
@@ -404,7 +404,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 5
+    joyNum: 4
   - serializedVersion: 3
     m_Name: GameController_Hori5
     descriptiveName: 
@@ -420,7 +420,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 6
+    joyNum: 5
   - serializedVersion: 3
     m_Name: GameController_Hori6
     descriptiveName: 
@@ -436,7 +436,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 7
+    joyNum: 6
   - serializedVersion: 3
     m_Name: GameController_Vert1
     descriptiveName: 
@@ -452,7 +452,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 1
-    joyNum: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: GameController_Vert1
     descriptiveName: 
@@ -484,7 +484,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 1
-    joyNum: 3
+    joyNum: 2
   - serializedVersion: 3
     m_Name: GameController_Vert2
     descriptiveName: 
@@ -516,7 +516,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 1
-    joyNum: 4
+    joyNum: 3
   - serializedVersion: 3
     m_Name: GameController_Vert4
     descriptiveName: 
@@ -532,7 +532,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 1
-    joyNum: 5
+    joyNum: 4
   - serializedVersion: 3
     m_Name: GameController_Vert5
     descriptiveName: 
@@ -548,7 +548,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 1
-    joyNum: 6
+    joyNum: 5
   - serializedVersion: 3
     m_Name: GameController_Vert6
     descriptiveName: 
@@ -564,13 +564,13 @@ InputManager:
     invert: 0
     type: 2
     axis: 1
-    joyNum: 7
+    joyNum: 6
   - serializedVersion: 3
     m_Name: GameController_A1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 0
+    positiveButton: joystick 1 button 0
     altNegativeButton: 
     altPositiveButton: r
     gravity: 0
@@ -580,13 +580,13 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: GameController_A2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 3 button 0
+    positiveButton: joystick 2 button 0
     altNegativeButton: 
     altPositiveButton: i
     gravity: 0
@@ -596,9 +596,25 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 3
+    joyNum: 2
   - serializedVersion: 3
     m_Name: GameController_A3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 3 button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: GameController_A4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -614,7 +630,7 @@ InputManager:
     axis: 0
     joyNum: 4
   - serializedVersion: 3
-    m_Name: GameController_A4
+    m_Name: GameController_A5
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -630,7 +646,7 @@ InputManager:
     axis: 0
     joyNum: 5
   - serializedVersion: 3
-    m_Name: GameController_A5
+    m_Name: GameController_A6
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -646,27 +662,11 @@ InputManager:
     axis: 0
     joyNum: 6
   - serializedVersion: 3
-    m_Name: GameController_A6
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 7 button 0
-    altNegativeButton: 
-    altPositiveButton: 
-    gravity: 0
-    dead: 0.2
-    sensitivity: 1
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 7
-  - serializedVersion: 3
     m_Name: GameController_B1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 1
+    positiveButton: joystick 1 button 1
     altNegativeButton: 
     altPositiveButton: t
     gravity: 0
@@ -676,13 +676,13 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: GameController_B2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 3 button 1
+    positiveButton: joystick 2 button 1
     altNegativeButton: 
     altPositiveButton: o
     gravity: 0
@@ -692,9 +692,25 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 3
+    joyNum: 2
   - serializedVersion: 3
     m_Name: GameController_B3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 3 button 1
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: GameController_B4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -710,7 +726,7 @@ InputManager:
     axis: 0
     joyNum: 4
   - serializedVersion: 3
-    m_Name: GameController_B4
+    m_Name: GameController_B5
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -726,7 +742,7 @@ InputManager:
     axis: 0
     joyNum: 5
   - serializedVersion: 3
-    m_Name: GameController_B5
+    m_Name: GameController_B6
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -742,27 +758,11 @@ InputManager:
     axis: 0
     joyNum: 6
   - serializedVersion: 3
-    m_Name: GameController_B6
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: joystick 7 button 1
-    gravity: 0
-    dead: 0.2
-    sensitivity: 1
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 7
-  - serializedVersion: 3
     m_Name: GameController_X1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 2
+    positiveButton: joystick 1 button 2
     altNegativeButton: 
     altPositiveButton: f
     gravity: 0
@@ -772,7 +772,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: GameController_X2
     descriptiveName: 
@@ -858,7 +858,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 3
+    positiveButton: joystick 1 button 3
     altNegativeButton: 
     altPositiveButton: g
     gravity: 0
@@ -868,13 +868,13 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: GameController_Y2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 3 button 3
+    positiveButton: joystick 2 button 3
     altNegativeButton: 
     altPositiveButton: l
     gravity: 0
@@ -884,9 +884,25 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 3
+    joyNum: 2
   - serializedVersion: 3
     m_Name: GameController_Y3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 3 button 3
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: GameController_Y4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -902,7 +918,7 @@ InputManager:
     axis: 0
     joyNum: 4
   - serializedVersion: 3
-    m_Name: GameController_Y4
+    m_Name: GameController_Y5
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -918,7 +934,7 @@ InputManager:
     axis: 0
     joyNum: 5
   - serializedVersion: 3
-    m_Name: GameController_Y5
+    m_Name: GameController_Y6
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -933,19 +949,3 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 6
-  - serializedVersion: 3
-    m_Name: GameController_Y6
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: joystick 7 button 3
-    gravity: 0
-    dead: 0.2
-    sensitivity: 1
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 7

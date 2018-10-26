@@ -87,8 +87,12 @@ public class PlayerController : MonoBehaviour {
 
     private State m_state;
     
+    // 向き
     private RayTest.RayDirection dir;
     public RayTest rayTest;
+
+    // パーツスケール
+    private PartsScale m_partsScale;
     // Use this for initialization
     void Start ()
     {
@@ -105,7 +109,7 @@ public class PlayerController : MonoBehaviour {
         m_bodyMoveForce.Init();
 
         m_state = State.Idle;
-        m_lifeFlg = true;
+        m_lifeFlg = true ;
         
         dir = rayTest.Dir;
 
@@ -115,6 +119,8 @@ public class PlayerController : MonoBehaviour {
         InputName[3] = "GameController_B" + m_playerID.ToString();
         InputName[4] = "GameController_X" + m_playerID.ToString();
         InputName[5] = "GameController_Y" + m_playerID.ToString();
+
+        m_partsScale = GetComponent<PartsScale>();
 
     }
 	
@@ -154,23 +160,46 @@ public class PlayerController : MonoBehaviour {
         }
         
 
-
-        if (Input.GetButton(InputName[(int)EInput.A]))
+        // 右手
+        if (Input.GetButtonDown(InputName[(int)EInput.A]))
         {
             Debug.Log(InputName[(int)EInput.A] + m_playerID);
             Extend(m_rightHand_rg,m_HandExtend);
+            m_partsScale.PartsVariationSetting(PartsScale.Parts.RightHand, PartsScale.SubTraction.AddChange, m_partsScale.Speed);
         }
-        if (Input.GetButton(InputName[(int)EInput.B]))
+        else if (Input.GetButtonUp(InputName[(int)EInput.A]))
+        {
+            m_partsScale.PartsVariationSetting(PartsScale.Parts.RightHand, PartsScale.SubTraction.SubChange, m_partsScale.Speed);
+        }
+        // 左手
+        if (Input.GetButtonDown(InputName[(int)EInput.B]))
         {
             Extend(m_leftHand_rg, -m_HandExtend);
+            m_partsScale.PartsVariationSetting(PartsScale.Parts.LeftHand, PartsScale.SubTraction.AddChange, m_partsScale.Speed);
         }
-        if (Input.GetButton(InputName[(int)EInput.X]))
+        else if (Input.GetButtonUp(InputName[(int)EInput.B]))
+        {
+            m_partsScale.PartsVariationSetting(PartsScale.Parts.LeftHand, PartsScale.SubTraction.SubChange, m_partsScale.Speed);
+        }
+        // 右足
+        if (Input.GetButtonDown(InputName[(int)EInput.X]))
         {
             Extend(m_rightFoot_rg, m_FootExtendR);
+            m_partsScale.PartsVariationSetting(PartsScale.Parts.RightCalf, PartsScale.SubTraction.AddChange, m_partsScale.Speed);
         }
-        if (Input.GetButton(InputName[(int)EInput.Y]))
+        else if (Input.GetButtonUp(InputName[(int)EInput.X]))
+        {
+            m_partsScale.PartsVariationSetting(PartsScale.Parts.RightCalf, PartsScale.SubTraction.SubChange, m_partsScale.Speed);
+        }
+        // 左足
+        if (Input.GetButtonDown(InputName[(int)EInput.Y]))
         {
             Extend(m_leftFoot_rg, m_FootExtendL);
+            m_partsScale.PartsVariationSetting(PartsScale.Parts.LeftCalf, PartsScale.SubTraction.AddChange, m_partsScale.Speed);
+        }
+        else if (Input.GetButtonUp(InputName[(int)EInput.Y]))
+        {
+            m_partsScale.PartsVariationSetting(PartsScale.Parts.LeftCalf,PartsScale.SubTraction.SubChange,m_partsScale.Speed);
         }
 
         // 回転減衰
@@ -255,6 +284,11 @@ public class PlayerController : MonoBehaviour {
         rigidbody.AddForce(worldRightHandVelocity, ForceMode.Force);
     }
 
+
+    public void PlayStart()
+    {
+        m_lifeFlg = true;
+    }
     public void Dead()
     {
         m_lifeFlg = false;
