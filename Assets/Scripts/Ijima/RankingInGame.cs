@@ -33,12 +33,10 @@ public class RankingInGame : MonoBehaviour
     {
         ///////////////////////////////////////
         //仮の表示
-        if (rank < 4)
-        {
+        if (rank < 4){
             time++;
         }
-        if (time == 100)
-        {
+        if (time == 100){
             SetRank();
             player++;
             rank++;
