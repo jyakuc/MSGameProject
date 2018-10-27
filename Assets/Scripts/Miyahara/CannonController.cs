@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CannonController : MonoBehaviour 
+public class CannonController : MonoBehaviour
 {
 
     private const int MaxPlayers = 6;
@@ -60,13 +60,13 @@ public class CannonController : MonoBehaviour
         Vector3 direction = point - firePoint.position;
         float yOffset = direction.y;
         direction = Math3d.ProjectVectorOnPlane(Vector3.up, direction);
-        float distance = direction.magnitude;     
+        float distance = direction.magnitude;
 
         float angle0, angle1;
         bool targetInRange = ProjectileMath.LaunchAngle(speed, distance, yOffset, Physics.gravity.magnitude, out angle0, out angle1);
 
         if (targetInRange)
-            currentAngle = useLowAngle ? angle1 : angle0;                     
+            currentAngle = useLowAngle ? angle1 : angle0;
 
         projectileArc.UpdateArc(speed, distance, Physics.gravity.magnitude, currentAngle, direction, targetInRange);
         SetTurret(direction, currentAngle * Mathf.Rad2Deg);
@@ -92,9 +92,16 @@ public class CannonController : MonoBehaviour
         }
     }
 
+    public GameObject FireHuman(int PlayerID)
+    {
+        GameObject obj = Instantiate(projectilePrefab[PlayerID], firePoint.position, Quaternion.identity);
+        obj.GetComponent<Rigidbody>().velocity = turret.up * currentSpeed;
+        return obj;
+    }
+
     private void SetTurret(Vector3 planarDirection, float turretAngle)
     {
-        cannonBase.rotation =  Quaternion.LookRotation(planarDirection) * Quaternion.Euler(-90, -90, 0);
-        turret.localRotation = Quaternion.Euler(90, 90, 0) * Quaternion.AngleAxis(turretAngle, Vector3.forward);        
+        cannonBase.rotation = Quaternion.LookRotation(planarDirection) * Quaternion.Euler(-90, -90, 0);
+        turret.localRotation = Quaternion.Euler(90, 90, 0) * Quaternion.AngleAxis(turretAngle, Vector3.forward);
     }
 }

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     public enum EInput
     {
         Horizontal,
         Vertical,
-        A,B,X,Y,
+        A, B, X, Y,
         MAX
     }
 
@@ -86,13 +87,17 @@ public class PlayerController : MonoBehaviour {
     private float m_directionAngle;
 
     private State m_state;
-    
+
     private RayTest.RayDirection dir;
     public RayTest rayTest;
-    // Use this for initialization
-    void Start ()
+    void Awake()
     {
-       
+        m_lifeFlg = false;
+    }
+    // Use this for initialization
+    void Start()
+    {
+
         m_body_rg = m_bodyObj.GetComponent<Rigidbody>();
         m_rightHand_rg = m_rightHandObj.GetComponent<Rigidbody>();
         m_leftHand_rg = m_leftHandObj.GetComponent<Rigidbody>();
@@ -105,8 +110,8 @@ public class PlayerController : MonoBehaviour {
         m_bodyMoveForce.Init();
 
         m_state = State.Idle;
-        m_lifeFlg = true;
-        
+        m_lifeFlg = false;
+
         dir = rayTest.Dir;
 
         InputName[0] = "GameController_Hori" + m_playerID.ToString();
@@ -117,16 +122,25 @@ public class PlayerController : MonoBehaviour {
         InputName[5] = "GameController_Y" + m_playerID.ToString();
 
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+    void Update()
+    {
+        Debug.Log(m_lifeFlg);
+        if (m_lifeFlg) return;
+        if (rayTest.Hit)
+        {
+            m_lifeFlg = true;
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
     {
         if (!m_lifeFlg) return;
         // 右方向
         float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal]);
- //       Debug.Log("横" + lsh);
+        //       Debug.Log("横" + lsh);
         float lsv = Input.GetAxis(InputName[(int)EInput.Vertical]);
- //       Debug.Log("縦" + lsv);
+        //       Debug.Log("縦" + lsv);
 
         if (lsh == 0.0f)
         {
@@ -144,21 +158,21 @@ public class PlayerController : MonoBehaviour {
             m_state = State.LeftMove;
         }
 
-        if(lsv > 0.0f)
+        if (lsv > 0.0f)
         {
             Direction(1);
         }
-        else if(lsv < 0.0f)
+        else if (lsv < 0.0f)
         {
             Direction(-1);
         }
-        
+
 
 
         if (Input.GetButton(InputName[(int)EInput.A]))
         {
             Debug.Log(InputName[(int)EInput.A] + m_playerID);
-            Extend(m_rightHand_rg,m_HandExtend);
+            Extend(m_rightHand_rg, m_HandExtend);
         }
         if (Input.GetButton(InputName[(int)EInput.B]))
         {
@@ -188,7 +202,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         // キャラクターの向き
-        if(dir != rayTest.Dir)
+        if (dir != rayTest.Dir)
         {
             // パラメータ初期化
             dir = rayTest.Dir;
@@ -200,7 +214,7 @@ public class PlayerController : MonoBehaviour {
         Debug.Log(m_state);
     }
 
-    
+
 
     void Move(float value)
     {
@@ -209,7 +223,7 @@ public class PlayerController : MonoBehaviour {
         //m_leftHand.cntForce.x *= value;
         Vector3 worldAngulerVelocity = transform.TransformDirection(m_bodyForce.cntForce * value);
         Vector3 worldMoveVelocity = transform.TransformDirection(m_bodyMoveForce.cntForce * value);
-        Vector3 worldHandVelocity = transform.TransformDirection(m_HandForce.cntForce );
+        Vector3 worldHandVelocity = transform.TransformDirection(m_HandForce.cntForce);
         Vector3 worldFootVelocity = transform.TransformDirection(m_FootForce.cntForce);
 
 
@@ -243,15 +257,15 @@ public class PlayerController : MonoBehaviour {
 
     void Direction(float value)
     {
-        
-        m_body_rg.AddTorque(0.0f, m_directionAngle * value ,0.0f);
+
+        m_body_rg.AddTorque(0.0f, m_directionAngle * value, 0.0f);
     }
 
-    void Extend(Rigidbody rigidbody,Vector3 vec)
+    void Extend(Rigidbody rigidbody, Vector3 vec)
     {
         //joint.spring = 0;
         Vector3 worldRightHandVelocity = transform.TransformDirection(vec);
-       // Debug.Log(worldRightHandVelocity);
+        // Debug.Log(worldRightHandVelocity);
         rigidbody.AddForce(worldRightHandVelocity, ForceMode.Force);
     }
 
@@ -260,4 +274,4 @@ public class PlayerController : MonoBehaviour {
         m_lifeFlg = false;
     }
 }
-        
+
