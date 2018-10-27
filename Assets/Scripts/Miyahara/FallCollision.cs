@@ -22,8 +22,9 @@ public class FallCollision : MonoBehaviour {
         if (other.gameObject.tag != "Player")
             return;
         Debug.Log(other.gameObject.name);
-        Rank[Rank.Length] = other.gameObject.GetComponent<PlayerController>().PlayerID;
-        Destroy(other.gameObject);
+        Debug.Log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+        Destroy(other.gameObject.transform.root.gameObject);
+        Rank[Rank.Length] = other.gameObject.transform.root.GetComponent<PlayerController>().PlayerID;
 
     }
 }

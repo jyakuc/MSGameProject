@@ -14,7 +14,7 @@ public class Cursor : MonoBehaviour
 
 	void Update () 
 	{
-        Debug.Log(pos);
+        
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 OldInputPos = pos;
         if (Input.GetAxis("GameController_Hori" + PlayerID.ToString()) < 0)
