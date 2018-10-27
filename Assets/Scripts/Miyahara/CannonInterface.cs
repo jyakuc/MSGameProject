@@ -5,8 +5,11 @@ using UnityEngine.EventSystems;
 
 public class CannonInterface : MonoBehaviour 
 {
+
+    private const int MaxPlayers = 6;
+
     [SerializeField]
-    Cursor targetCursor;
+    Cursor[] targetCursor = new Cursor[MaxPlayers];
 
     [SerializeField]
     CannonController cannon;
@@ -26,6 +29,9 @@ public class CannonInterface : MonoBehaviour
 
     private bool useInitialAngle;
 
+    [SerializeField]
+    private GameController gameController;
+
     void Awake()
     {
         useLowAngle = true;
@@ -34,20 +40,31 @@ public class CannonInterface : MonoBehaviour
         initialFireSpeed = defaultFireSpeed;
 
         useInitialAngle = true;
+
+        
     }
 
     void Update()
     {
-        if (useInitialAngle)
-            cannon.SetTargetWithAngle(targetCursor.transform.position, initialFireAngle);
-        else
-            cannon.SetTargetWithSpeed(targetCursor.transform.position, initialFireSpeed, useLowAngle);
-
-        if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
+        for (int i = 0; i < MaxPlayers; i++)
         {
-            cannon.Fire();
-        }
+            if (targetCursor[i] == null) continue;
+            if (useInitialAngle)
+                cannon.SetTargetWithAngle(targetCursor[i].transform.position, initialFireAngle);
+            else
+                cannon.SetTargetWithSpeed(targetCursor[i].transform.position, initialFireSpeed, useLowAngle);
 
+            if (targetCursor[i].FireFlg)
+            {
+                if (Input.GetButtonDown("GameController_X" + (i + 1).ToString()))
+                {
+                    cannon.Fire(i + 1);
+                    targetCursor[i].FireFlg = false;
+                    gameController.DeleteCursorsIndex(i);
+                }
+            }
+
+        }
         //timeOfFlightText.text = Mathf.Clamp(cannon.lastShotTimeOfFlight - (Time.time - cannon.lastShotTime), 0, float.MaxValue).ToString("F3");
     }
 

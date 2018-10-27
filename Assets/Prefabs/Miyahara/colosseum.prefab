@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 33148686089193580}
   - component: {fileID: 64962683872648984}
   - component: {fileID: 23127644847166248}
+  - component: {fileID: 114363641702264128}
   m_Layer: 0
   m_Name: FallCollision
   m_TagString: Untagged
@@ -256,3 +257,15 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114363641702264128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1965691654934366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rank: 

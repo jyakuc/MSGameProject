@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class CannonController : MonoBehaviour 
 {
+
+    private const int MaxPlayers = 6;
+
     [SerializeField]
     Transform cannonBase;
 
@@ -15,7 +18,7 @@ public class CannonController : MonoBehaviour
     //Animation anim;
 
     [SerializeField]
-    GameObject projectilePrefab;
+    GameObject[] projectilePrefab = new GameObject[MaxPlayers];
 
     //[SerializeField]
     //GameObject cannonFirePrefab;
@@ -71,11 +74,11 @@ public class CannonController : MonoBehaviour
         currentTimeOfFlight = ProjectileMath.TimeOfFlight(currentSpeed, currentAngle, -yOffset, Physics.gravity.magnitude);
     }
 
-    public void Fire()
+    public void Fire(int PlayerID)
     {
         if (Time.time > lastShotTime + cooldown)
         {
-            GameObject p = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            GameObject p = Instantiate(projectilePrefab[PlayerID], firePoint.position, Quaternion.identity);
             p.GetComponent<Rigidbody>().velocity = turret.up * currentSpeed;
 
             //Instantiate(cannonFirePrefab, smokePuffPoint.position, Quaternion.LookRotation(turret.up));
