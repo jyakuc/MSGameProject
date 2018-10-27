@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CannonInterface : MonoBehaviour 
+public class CannonInterface : MonoBehaviour
 {
 
     private const int MaxPlayers = 6;
@@ -41,7 +41,7 @@ public class CannonInterface : MonoBehaviour
 
         useInitialAngle = true;
 
-        
+
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class CannonInterface : MonoBehaviour
             {
                 if (Input.GetButtonDown("GameController_X" + (i + 1).ToString()))
                 {
-                    cannon.Fire(i + 1);
+                    gameController.AddPlayer(cannon.FireHuman(i));
                     targetCursor[i].FireFlg = false;
                     gameController.DeleteCursorsIndex(i);
                 }

@@ -4,45 +4,54 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private int m_players;
-    public int Players
+    private const int m_playerNum = 6;
+    public int PlayerNum
     {
-        get { return m_players; }
+        get { return m_playerNum; }
     }
 
-    public PlayerController[] m_playerCtrllers;
+    public PlayerController[] m_playerContrllers;
     public StageCreate m_stageCreate;
     public GameObject m_playerModel;
 
+    private List<PlayerController> m_playerObj = new List<PlayerController>();
     [SerializeField]
     public List<GameObject> m_deleteObjects = new List<GameObject>();
     [SerializeField]
     private List<GameObject> m_deleteCursors = new List<GameObject>();
-    
+
+    private bool m_gameStartFlg;
+    public bool StartFlg
+    {
+        get { return m_gameStartFlg; }
+    }
     private void Awake()
     {
-
+        m_gameStartFlg = false;
     }
 
     // Use this for initialization
     void Start()
     {
-       // m_stageCreate.Create(EStageIndex.Stage_1);
+        // m_stageCreate.Create(EStageIndex.Stage_1);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    public void PlayerCreate(EStageIndex _stage)
-    {
-
-        for (int i = 0; i < m_players; ++i) {
-            m_playerCtrllers[i] = Instantiate<GameObject>(m_playerModel).GetComponent<PlayerController>();
+        Debug.Log(m_gameStartFlg);
+        if (m_gameStartFlg) return;
+        if (m_playerObj.Count != m_playerNum) return;
+        for (int i = 0; i < m_playerNum; ++i)
+        {
+            if (!m_playerObj[i].LifeFlag) return;
         }
+
+        m_gameStartFlg = true;
+
     }
+
+
     public void AllDeleteObjects()
     {
         for (int i = 0; i < m_deleteObjects.Capacity; i++)
@@ -58,5 +67,10 @@ public class GameController : MonoBehaviour
         }
         Destroy(m_deleteCursors[idx]);
         return true;
+    }
+
+    public void AddPlayer(GameObject human)
+    {
+        m_playerObj.Add(human.GetComponent<PlayerController>());
     }
 }
