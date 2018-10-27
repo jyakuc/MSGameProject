@@ -36,6 +36,11 @@ public class PartsScale : MonoBehaviour {
     private bool DefHand_R = true;
     private bool DefCalf_L = true;
     private bool DefCalf_R = true;
+    //デフォから動けばfalse
+    private bool OnlyDefHand_L = false;
+    private bool OnlyDefHand_R = false;
+    private bool OnlyDefCalf_L = false;
+    private bool OnlyDefCalf_R = false;
     private void Awake()
     {
         //基準値に合わせる
@@ -57,7 +62,8 @@ public class PartsScale : MonoBehaviour {
 	void Update () {
         PartsVariation();
         DefaultSize();
-        if(DebugMode)
+        OnlyPartsDefult();
+        if (DebugMode)
         {
             DebugModeSystem();
         }
@@ -82,12 +88,114 @@ public class PartsScale : MonoBehaviour {
         Speed = speed;
     }
     //これを呼べば元に戻す処理が走る
-    public void DefultSizeSetting()
+    public void ALLDefultSizeSetting()
     {
         DefaultMode = true;
     }
-    //Defaultサイズに戻す処理
-    void DefaultSize()
+    //各パーツごとにデフォルトに戻すflagを入れる
+    public void PartsDefultSizeSetting(Parts PartsSelect)
+    {
+        switch (PartsSelect)
+        {
+            case Parts.NotParts:
+                break;
+            case Parts.LeftHand:
+                OnlyDefHand_L = true;
+                break;
+            case Parts.RightHand:
+                OnlyDefHand_R = true;
+                break;
+            case Parts.LeftCalf:
+                OnlyDefCalf_L = true;
+                break;
+            case Parts.RightCalf:
+                OnlyDefCalf_R = true;
+                break;
+            case Parts.AllParts:
+                break;
+
+        }
+
+    }
+    //各パーツごとのデフォルト処理
+    private void OnlyPartsDefult()
+    {
+        if(OnlyDefHand_L)
+        {
+            if ((Hand_L.localScale.x > PartsSizeDef.x) &&
+                (Hand_L.localScale.y > PartsSizeDef.y) &&
+                (Hand_L.localScale.z > PartsSizeDef.z))
+            {
+                Hand_L.localScale = new Vector3(Hand_L.localScale.x - Speed, Hand_L.localScale.y - Speed, Hand_L.localScale.z - Speed);
+                if ((Hand_L.localScale.x < PartsSizeDef.x) &&
+                    (Hand_L.localScale.y < PartsSizeDef.y) &&
+                    (Hand_L.localScale.z < PartsSizeDef.z))
+                {
+                    Hand_L.localScale = PartsSizeDef;
+                    OnlyDefHand_L = false;
+                    DefHand_L = true;
+                }
+
+            }
+        }
+        if(OnlyDefHand_R)
+        {
+            if ((Hand_R.localScale.x > PartsSizeDef.x) &&
+                (Hand_R.localScale.y > PartsSizeDef.y) &&
+                (Hand_R.localScale.z > PartsSizeDef.z))
+            {
+                Hand_R.localScale = new Vector3(Hand_L.localScale.x - Speed, Hand_L.localScale.y - Speed, Hand_L.localScale.z - Speed);
+                if ((Hand_R.localScale.x < PartsSizeDef.x) &&
+                    (Hand_R.localScale.y < PartsSizeDef.y) &&
+                    (Hand_R.localScale.z < PartsSizeDef.z))
+                {
+                    Hand_R.localScale = PartsSizeDef;
+                    OnlyDefHand_R = false;
+                    DefHand_R = true;
+                }
+
+            }
+        }
+        if(OnlyDefCalf_L)
+        {
+            if ((Calf_L.localScale.x > PartsSizeDef.x) &&
+                (Calf_L.localScale.y > PartsSizeDef.y) &&
+                (Calf_L.localScale.z > PartsSizeDef.z))
+            {
+                Calf_L.localScale = new Vector3(Hand_L.localScale.x - Speed, Hand_L.localScale.y - Speed, Hand_L.localScale.z - Speed);
+                if ((Calf_L.localScale.x < PartsSizeDef.x) &&
+                    (Calf_L.localScale.y < PartsSizeDef.y) &&
+                    (Calf_L.localScale.z < PartsSizeDef.z))
+                {
+                    Calf_L.localScale = PartsSizeDef;
+                    OnlyDefCalf_L = false;
+                    DefCalf_L = true;
+                }
+            }
+        }
+        if(OnlyDefCalf_R)
+        {
+            if ((Calf_R.localScale.x > PartsSizeDef.x) &&
+                (Calf_R.localScale.y > PartsSizeDef.y) &&
+                (Calf_R.localScale.z > PartsSizeDef.z))
+            {
+                Calf_R.localScale = new Vector3(Hand_L.localScale.x - Speed, Hand_L.localScale.y - Speed, Hand_L.localScale.z - Speed);
+                if ((Calf_R.localScale.x < PartsSizeDef.x) &&
+                    (Calf_R.localScale.y < PartsSizeDef.y) &&
+                    (Calf_R.localScale.z < PartsSizeDef.z))
+                {
+                    Calf_R.localScale = PartsSizeDef;
+                    OnlyDefCalf_R = false;
+                    DefCalf_R = true;
+                }
+
+            }
+        }
+
+
+    }
+    //Defaultサイズに一括で処理
+    private void DefaultSize()
     {
 
 
@@ -226,6 +334,7 @@ public class PartsScale : MonoBehaviour {
                 break;
             case Parts.LeftHand:
                 DefHand_L = false;
+                OnlyDefHand_L = false;
                 if (Pattern==SubTraction.AddChange)
                 {
                     Hand_L.localScale = new Vector3(Hand_L.localScale.x + Speed, Hand_L.localScale.y + Speed, Hand_L.localScale.z + Speed);
@@ -249,6 +358,7 @@ public class PartsScale : MonoBehaviour {
                 break;
             case Parts.RightHand:
                 DefHand_R =  false;
+                OnlyDefHand_R = false;
                 if (Pattern == SubTraction.AddChange)
                 {
                     Hand_R.localScale = new Vector3(Hand_R.localScale.x + Speed, Hand_R.localScale.y + Speed, Hand_R.localScale.z + Speed);
@@ -273,6 +383,7 @@ public class PartsScale : MonoBehaviour {
                 break;
             case Parts.LeftCalf:
                 DefCalf_L = false;
+                OnlyDefCalf_L = false;
                 if (Pattern == SubTraction.AddChange)
                 {
                     Calf_L.localScale = new Vector3(Calf_L.localScale.x + Speed, Calf_L.localScale.y + Speed, Calf_L.localScale.z + Speed);
@@ -297,6 +408,7 @@ public class PartsScale : MonoBehaviour {
                 break;
             case Parts.RightCalf:
                 DefCalf_R = false;
+                OnlyDefCalf_R = false;
                 if (Pattern == SubTraction.AddChange)
                 {
                     Calf_R.localScale = new Vector3(Calf_R.localScale.x + Speed, Calf_R.localScale.y + Speed, Calf_R.localScale.z + Speed);
@@ -324,6 +436,10 @@ public class PartsScale : MonoBehaviour {
                 DefHand_R = false;
                 DefCalf_L = false;
                 DefCalf_R = false;
+                OnlyDefHand_L = false;
+                OnlyDefHand_R = false;
+                OnlyDefCalf_L = false;
+                OnlyDefCalf_R = false;
                 if (Pattern == SubTraction.AddChange)
                 {
                     Hand_L.localScale = new Vector3(Hand_L.localScale.x + Speed, Hand_L.localScale.y + Speed, Hand_L.localScale.z + Speed);

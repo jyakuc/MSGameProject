@@ -28,5 +28,6 @@ public class Filter : MonoBehaviour {
             Trans.localScale = new Vector3(Trans.localScale.x-Speed, Trans.localScale.y - Speed, Trans.localScale.z);
 
         }
+        Trans.eulerAngles = new Vector3(-90, 0, 0);
     }
 }

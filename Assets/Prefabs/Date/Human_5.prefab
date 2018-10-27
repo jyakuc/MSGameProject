@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 114348906947774610}
   - component: {fileID: 114143052832651144}
   - component: {fileID: 54652942678723580}
+  - component: {fileID: 114177063355492992}
   m_Layer: 17
   m_Name: Human_5
   m_TagString: Player
@@ -2070,6 +2071,28 @@ MonoBehaviour:
     decayForce: {x: 0, y: 0, z: 0}
   m_directionAngle: 0
   rayTest: {fileID: 114978070204711190}
+--- !u!114 &114177063355492992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358513346199156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15316b07b0b9bd9449ce3f3e6c92712e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hand_L: {fileID: 4123373631635968}
+  Hand_R: {fileID: 4653892488374724}
+  Calf_L: {fileID: 4911479012771530}
+  Calf_R: {fileID: 4625173527544692}
+  PartsSizeMin: {x: 0.5, y: 0.5, z: 0.5}
+  PartsSizeMax: {x: 2, y: 2, z: 2}
+  Speed: 0.05
+  SelectParts: 0
+  Pattern: 0
+  DefaultMode: 0
+  DebugMode: 1
 --- !u!114 &114348906947774610
 MonoBehaviour:
   m_ObjectHideFlags: 1
