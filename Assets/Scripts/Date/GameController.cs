@@ -14,6 +14,11 @@ public class GameController : MonoBehaviour
     public StageCreate m_stageCreate;
     public GameObject m_playerModel;
 
+    [SerializeField]
+    public List<GameObject> m_deleteObjects = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> m_deleteCursors = new List<GameObject>();
+    
     private void Awake()
     {
 
@@ -37,5 +42,21 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < m_players; ++i) {
             m_playerCtrllers[i] = Instantiate<GameObject>(m_playerModel).GetComponent<PlayerController>();
         }
+    }
+    public void AllDeleteObjects()
+    {
+        for (int i = 0; i < m_deleteObjects.Capacity; i++)
+        {
+            Destroy(m_deleteObjects[i]);
+        }
+    }
+    public bool DeleteCursorsIndex(int idx)
+    {
+        if (m_deleteCursors[idx] == null)
+        {
+            return false;
+        }
+        Destroy(m_deleteCursors[idx]);
+        return true;
     }
 }

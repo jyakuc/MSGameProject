@@ -6,15 +6,23 @@ public class Cursor : MonoBehaviour
     public float Speed;
     private Vector3 pos;
     private Vector3 Oldpos;
+    private bool fireflg;
+    public bool FireFlg
+    {
+        get { return fireflg; }
+        set { fireflg = value; }
+    }
     void Start()
     {
-        PlayerID++;
         pos = transform.position;
+        fireflg = true;
     }
 
 	void Update () 
 	{
-        
+        if (!fireflg)
+            return;
+
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 OldInputPos = pos;
         if (Input.GetAxis("GameController_Hori" + PlayerID.ToString()) < 0)
@@ -28,11 +36,11 @@ public class Cursor : MonoBehaviour
         }
         if (Input.GetAxis("GameController_Vert" + PlayerID.ToString()) < 0)
         {
-            pos.z -= Speed;
+            pos.z += Speed;
         }
         else if (Input.GetAxis("GameController_Vert" + PlayerID.ToString()) > 0)
         {
-            pos.z += Speed;
+            pos.z -= Speed;
         }
 
         Ray ray = new Ray();
