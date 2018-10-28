@@ -1540,6 +1540,11 @@ Prefab:
       propertyPath: m_deleteCursors.Array.data[5]
       value: 
       objectReference: {fileID: 231068584}
+    - target: {fileID: 114116800811218258, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_debugPlayerNum
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc1de046339e85049a4a76553bc9f8c9, type: 2}
   m_IsPrefabParent: 0
@@ -2033,7 +2038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &925403516
 MonoBehaviour:
   m_ObjectHideFlags: 0

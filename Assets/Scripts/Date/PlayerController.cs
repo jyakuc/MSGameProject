@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour
         MAX
     }
 
-    public enum State
+    public enum EState
     {
+        Init,
+        Wait,
+        Idle,
         RightMove,
         LeftMove,
-        Idle
+        Dead
     }
 
     [System.Serializable]
@@ -39,13 +42,20 @@ public class PlayerController : MonoBehaviour
         get { return m_playerID; }
     }
 
-    // 生存フラグ
-    private bool m_lifeFlg;
-    public bool LifeFlag
-    {
-        get { return m_lifeFlg; }
-    }
-
+    /*   // 生存フラグ
+       private bool m_lifeFlg;
+       public bool LifeFlag
+       {
+           get { return m_lifeFlg; }
+       }
+       // 入力フラグ
+       private bool m_inputFlg;
+       public bool InputFlag
+       {
+           get { return m_inputFlg; }
+           set { m_inputFlg = value; }
+       }
+   */
     // 手足制御用オブジェクト
     public GameObject m_bodyObj;
     public GameObject m_rightHandObj;
@@ -86,13 +96,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float m_directionAngle;
 
-    private State m_state;
+    private EState m_state;
 
     private RayTest.RayDirection dir;
     public RayTest rayTest;
     void Awake()
     {
-        m_lifeFlg = false;
+        //       m_lifeFlg = false;
+        //       m_inputFlg = false;
+        m_state = EState.Init;
     }
     // Use this for initialization
     void Start()
@@ -109,8 +121,7 @@ public class PlayerController : MonoBehaviour
         m_FootForce.Init();
         m_bodyMoveForce.Init();
 
-        m_state = State.Idle;
-        m_lifeFlg = false;
+        //       m_state = EState.Idle;
 
         dir = rayTest.Dir;
 
@@ -124,18 +135,18 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(m_lifeFlg);
-        if (m_lifeFlg) return;
+        Debug.Log(m_state);
+        if (m_state != EState.Init) return;
         if (rayTest.Hit)
         {
-            m_lifeFlg = true;
+            m_state = EState.Wait;
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!m_lifeFlg) return;
+        if (m_state == EState.Init || m_state == EState.Dead || m_state == EState.Wait) return;
         // 右方向
         float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal]);
         //       Debug.Log("横" + lsh);
@@ -144,18 +155,18 @@ public class PlayerController : MonoBehaviour
 
         if (lsh == 0.0f)
         {
-            m_state = State.Idle;
+            m_state = EState.Idle;
         }
         else if (lsh > 0.0f)
         {
             Move(1);
-            m_state = State.RightMove;
+            m_state = EState.RightMove;
         }
         // 左方向
         else if (lsh < 0.0f)
         {
             Move(-1);
-            m_state = State.LeftMove;
+            m_state = EState.LeftMove;
         }
 
         if (lsv > 0.0f)
@@ -171,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton(InputName[(int)EInput.A]))
         {
-            Debug.Log(InputName[(int)EInput.A] + m_playerID);
+  //          Debug.Log(InputName[(int)EInput.A] + m_playerID);
             Extend(m_rightHand_rg, m_HandExtend);
         }
         if (Input.GetButton(InputName[(int)EInput.B]))
@@ -188,7 +199,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 回転減衰
-        if (m_state == State.LeftMove || m_state == State.RightMove)
+        if (m_state == EState.LeftMove || m_state == EState.RightMove)
         {
             m_bodyForce.cntForce.x *= m_bodyForce.decayForce.x;
             m_bodyForce.cntForce.y *= m_bodyForce.decayForce.y;
@@ -206,12 +217,12 @@ public class PlayerController : MonoBehaviour
         {
             // パラメータ初期化
             dir = rayTest.Dir;
-            m_state = State.Idle;
+            m_state = EState.Idle;
             m_bodyForce.Init();
             m_HandForce.Init();
             m_FootForce.Init();
         }
-        Debug.Log(m_state);
+    //    Debug.Log(m_state);
     }
 
 
@@ -236,10 +247,12 @@ public class PlayerController : MonoBehaviour
             m_leftHand_rg.AddRelativeForce(worldHandVelocity, ForceMode.Force);
             m_rightFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
             m_leftFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            /*
             if (value > 0)
                 Debug.Log("右移動：キャラクターの向き（前）");
             else
                 Debug.Log("左移動：キャラクターの向き（前）");
+            */    
         }
         // 後ろ
         else if (dir == RayTest.RayDirection.Back)
@@ -248,10 +261,11 @@ public class PlayerController : MonoBehaviour
             m_rightHand_rg.AddRelativeForce(-worldHandVelocity, ForceMode.Force);
             m_rightFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
             m_leftFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
-            if (value > 0)
+            /*if (value > 0)
                 Debug.Log("右移動：キャラクターの向き（後）");
             else
                 Debug.Log("左移動：キャラクターの向き（後）");
+                */
         }
     }
 
@@ -271,7 +285,32 @@ public class PlayerController : MonoBehaviour
 
     public void Dead()
     {
-        m_lifeFlg = false;
+        // m_lifeFlg = false;
+        m_state = EState.Dead;
+    }
+
+    public void PlayStart()
+    {
+        m_state = EState.Idle;
+    }
+
+    // フラグ取得関数
+    public bool IsDead()
+    {
+        if (m_state == EState.Dead) return true;
+        return false;
+    }
+
+    public bool IsInit()
+    {
+        if (m_state == EState.Init) return true;
+        return false;
+    }
+
+    public bool IsWait()
+    {
+        if (m_state == EState.Wait) return true;
+        return false;
     }
 }
 

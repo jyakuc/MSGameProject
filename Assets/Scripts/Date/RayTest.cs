@@ -44,13 +44,13 @@ public class RayTest : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, rayDistance, mask))
         {
-            Debug.Log("前");
+//            Debug.Log("前");
             rayDirection = RayDirection.Forward;
             hitFlg = true;
         }
         else if (Physics.Raycast(transform.position, -transform.forward, rayDistance, mask))
         {
-            Debug.Log("後ろ");
+//            Debug.Log("後ろ");
             rayDirection = RayDirection.Back;
             hitFlg = true;
         }
