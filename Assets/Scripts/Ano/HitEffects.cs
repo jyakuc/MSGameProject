@@ -168,7 +168,7 @@ public class HitEffects : MonoBehaviour {
     private void PlaysSe()
     {
         //仮に使っているので新しいSEが届き次第変更
-        AudioManager.GetInstance.PlaySE0(AUDIO.SE_Decision);
+        AudioManager.GetInstance.PlaySE0(AUDIO.SE_Hit01);
     }
     //エフェクト生成処理
     private void CreateEffect(Transform trans)
