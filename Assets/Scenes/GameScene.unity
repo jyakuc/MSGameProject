@@ -195,9 +195,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4461479650201344, guid: debd67d74c55f1149a323ec9974590ea, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: debd67d74c55f1149a323ec9974590ea, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &97199694 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114338652128950090, guid: debd67d74c55f1149a323ec9974590ea,
+    type: 2}
+  m_PrefabInternal: {fileID: 97199693}
+  m_Script: {fileID: 11500000, guid: ab5f49d67dd453c489c5cf7fc46e2c52, type: 3}
 --- !u!1 &309861513 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1863196710230744, guid: 4db3405ed3ac9214b80a7c0e964c2ba8,
@@ -296,17 +306,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1840663589}
   m_Script: {fileID: 11500000, guid: c448549d1dc8a4a4890d6002dc79e703, type: 3}
---- !u!1 &709661182 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1857662359325696, guid: debd67d74c55f1149a323ec9974590ea,
-    type: 2}
-  m_PrefabInternal: {fileID: 97199693}
---- !u!114 &709661183 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114463368134388450, guid: debd67d74c55f1149a323ec9974590ea,
-    type: 2}
-  m_PrefabInternal: {fileID: 97199693}
-  m_Script: {fileID: 11500000, guid: ab5f49d67dd453c489c5cf7fc46e2c52, type: 3}
 --- !u!114 &766892347 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114116800811218258, guid: dc1de046339e85049a4a76553bc9f8c9,
@@ -439,7 +438,7 @@ Prefab:
         type: 2}
       propertyPath: m_deleteObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 709661182}
+      objectReference: {fileID: 0}
     - target: {fileID: 114116800811218258, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
       propertyPath: m_deleteObjects.Array.data[1]
@@ -852,7 +851,7 @@ Prefab:
         type: 2}
       propertyPath: cannon
       value: 
-      objectReference: {fileID: 709661183}
+      objectReference: {fileID: 97199694}
     - target: {fileID: 114794857347852848, guid: d42795954a2ebda40aeb250c7e278d04,
         type: 2}
       propertyPath: gameController

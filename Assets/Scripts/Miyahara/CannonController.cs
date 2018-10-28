@@ -23,8 +23,7 @@ public class CannonController : MonoBehaviour
     //[SerializeField]
     //GameObject cannonFirePrefab;
 
-    [SerializeField]
-    ProjectileArc[] projectileArc = new ProjectileArc[MaxPlayers];
+    public ProjectileArc[] projectileArc = new ProjectileArc[MaxPlayers];
 
     [SerializeField]
     float cooldown = 1;
