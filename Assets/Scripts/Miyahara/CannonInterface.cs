@@ -25,6 +25,7 @@ public class CannonInterface : MonoBehaviour
 
     private float initialFireAngle;
     private float initialFireSpeed;
+    
     private bool useLowAngle;
 
     private bool useInitialAngle;
@@ -50,9 +51,9 @@ public class CannonInterface : MonoBehaviour
         {
             if (targetCursor[i] == null) continue;
             if (useInitialAngle)
-                cannon.SetTargetWithAngle(targetCursor[i].transform.position, initialFireAngle);
+                cannon.SetTargetWithAngle(targetCursor[i].transform.position, initialFireAngle, i);
             else
-                cannon.SetTargetWithSpeed(targetCursor[i].transform.position, initialFireSpeed, useLowAngle);
+                cannon.SetTargetWithSpeed(targetCursor[i].transform.position, initialFireSpeed, useLowAngle, i);
 
             if (targetCursor[i].FireFlg)
             {
