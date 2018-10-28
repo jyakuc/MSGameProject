@@ -49,8 +49,10 @@ public class RankingInGame : MonoBehaviour
 
     public void SetRank(int playerID)
     {
+        Debug.Log(playerID + "P : 脱落");
         Pannel[playerID-1].GetComponent<Image>().sprite = Image[rank];
         Pannel[playerID-1].GetComponent<Image>().color = new Color(255, 255, 255, 1f);
         rank++;
+        
     }
 }
