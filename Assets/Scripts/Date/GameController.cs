@@ -109,6 +109,8 @@ public class GameController : MonoBehaviour
             m_playerObj[i].PlayStart();
         }
         AllDeleteObjects();
+
+        Debug.Log("ゲームスタート");
     }
 
     void MainUpdate()
