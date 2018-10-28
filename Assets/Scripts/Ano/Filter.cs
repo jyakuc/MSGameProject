@@ -37,7 +37,7 @@ public class Filter : MonoBehaviour {
 
             }
         }
-
+        //Trans.rotation = new Quaternion(0, 0, 0,0);
 
     }
 }
