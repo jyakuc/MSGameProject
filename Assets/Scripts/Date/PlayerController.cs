@@ -136,11 +136,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Debug.Log(m_state);
-        if (m_state != EState.Init) return;
-        if (rayTest.Hit)
-        {
-            m_state = EState.Wait;
-        }
+    
     }
 
     // Update is called once per frame
@@ -311,6 +307,13 @@ public class PlayerController : MonoBehaviour
     {
         if (m_state == EState.Wait) return true;
         return false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (LayerMask.LayerToName(other.gameObject.layer) != "Ground") return;
+        m_state = EState.Wait;
+        Destroy(GetComponent<BoxCollider>());
     }
 }
 

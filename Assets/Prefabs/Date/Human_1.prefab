@@ -484,6 +484,7 @@ GameObject:
   - component: {fileID: 114144124142180806}
   - component: {fileID: 54750565994776612}
   - component: {fileID: 114454334888639076}
+  - component: {fileID: 65685421088483186}
   m_Layer: 8
   m_Name: Human_1
   m_TagString: Player
@@ -2012,18 +2013,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.003, y: 0.005, z: 0.005}
   m_Center: {x: -0.0005, y: 0.004, z: 0.0005}
---- !u!65 &65670963021486574
+
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1463074639488696}
+
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.005, y: 0.007, z: 0.005}
-  m_Center: {x: 0, y: -0.002, z: 0}
+
 --- !u!65 &65749127434846878
 BoxCollider:
   m_ObjectHideFlags: 1

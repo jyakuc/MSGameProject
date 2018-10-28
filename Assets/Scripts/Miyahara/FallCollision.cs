@@ -5,10 +5,16 @@ using UnityEngine;
 public class FallCollision : MonoBehaviour {
 
     public List <int> Rank = new List<int>();
+    public RankingInGame rankingInGame;
 
 	// Use this for initialization
 	void Start () {
-		
+		if(rankingInGame == null)
+        {
+            rankingInGame = FindObjectOfType<RankingInGame>();
+            if (rankingInGame == null)
+                Debug.LogError("RankingInGameがシーン存在しません");
+        }
 	}
 	
 	// Update is called once per frame
@@ -24,6 +30,6 @@ public class FallCollision : MonoBehaviour {
         Rank.Add(other.gameObject.transform.root.GetComponent<PlayerController>().PlayerID);
         other.gameObject.transform.root.GetComponent<PlayerController>().Dead();
         Destroy(other.gameObject.transform.root.gameObject);
-
+        rankingInGame.SetRank(other.gameObject.transform.root.GetComponent<PlayerController>().PlayerID);
     }
 }
