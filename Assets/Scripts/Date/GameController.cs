@@ -24,8 +24,6 @@ public class GameController : MonoBehaviour
     [SerializeField]
     public List<GameObject> m_deleteObjects = new List<GameObject>();
     [SerializeField]
-    private List<GameObject> m_deleteCursors = new List<GameObject>();
-    [SerializeField]
     private GameSceneController m_gameSceneController;
 
     private bool m_gameStartFlg;
@@ -75,15 +73,6 @@ public class GameController : MonoBehaviour
         {
             Destroy(m_deleteObjects[i]);
         }
-    }
-    public bool DeleteCursorsIndex(int idx)
-    {
-        if (m_deleteCursors[idx] == null)
-        {
-            return false;
-        }
-        Destroy(m_deleteCursors[idx]);
-        return true;
     }
 
     public void AddPlayer(GameObject human)

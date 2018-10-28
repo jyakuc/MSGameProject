@@ -61,7 +61,7 @@ public class CannonInterface : MonoBehaviour
                 {
                     gameController.AddPlayer(cannon.FireHuman(i));
                     targetCursor[i].FireFlg = false;
-                    gameController.DeleteCursorsIndex(i);
+                    DeleteCursor(i);
                 }
             }
 
@@ -87,5 +87,11 @@ public class CannonInterface : MonoBehaviour
     public void UseInitialAngle(bool value)
     {
         useInitialAngle = value;
+    }
+
+    public void DeleteCursor(int playerID)
+    {
+        Destroy(targetCursor[playerID].gameObject);
+        Destroy(cannon.projectileArc[playerID].gameObject);
     }
 }
