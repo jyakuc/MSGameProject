@@ -19,10 +19,10 @@ public class Filter : MonoBehaviour {
     private ContractionCollision StartGetr;
     private void Awake()
     {
-        StartGetr = GetComponent<ContractionCollision>();
     }
     // Use this for initialization
     void Start () {
+        StartGetr = GetComponent<ContractionCollision>();
         Trans = GetComponent<Transform>();
 	}
 	
