@@ -24,7 +24,7 @@ public class CannonController : MonoBehaviour
     //GameObject cannonFirePrefab;
 
     [SerializeField]
-    ProjectileArc projectileArc;
+    ProjectileArc[] projectileArc = new ProjectileArc[MaxPlayers];
 
     [SerializeField]
     float cooldown = 1;
@@ -36,42 +36,43 @@ public class CannonController : MonoBehaviour
     public float lastShotTime { get; private set; }
     public float lastShotTimeOfFlight { get; private set; }
 
-    public void SetTargetWithAngle(Vector3 point, float angle)
+    public void SetTargetWithAngle(Vector3 point, float angle , int PlayerID)
     {
-        currentAngle = angle;
+            currentAngle = angle;
 
-        Vector3 direction = point - firePoint.position;
-        float yOffset = -direction.y;
-        direction = Math3d.ProjectVectorOnPlane(Vector3.up, direction);
-        float distance = direction.magnitude;
+            Vector3 direction = point - firePoint.position;
+            float yOffset = -direction.y;
+            direction = Math3d.ProjectVectorOnPlane(Vector3.up, direction);
+            float distance = direction.magnitude;
 
-        currentSpeed = ProjectileMath.LaunchSpeed(distance, yOffset, Physics.gravity.magnitude, angle * Mathf.Deg2Rad);
+            currentSpeed = ProjectileMath.LaunchSpeed(distance, yOffset, Physics.gravity.magnitude, angle * Mathf.Deg2Rad);
 
-        projectileArc.UpdateArc(currentSpeed, distance, Physics.gravity.magnitude, currentAngle * Mathf.Deg2Rad, direction, true);
-        SetTurret(direction, currentAngle);
+            projectileArc[PlayerID].UpdateArc(currentSpeed, distance, Physics.gravity.magnitude, currentAngle * Mathf.Deg2Rad, direction, true);
+            SetTurret(direction, currentAngle);
 
-        currentTimeOfFlight = ProjectileMath.TimeOfFlight(currentSpeed, currentAngle * Mathf.Deg2Rad, yOffset, Physics.gravity.magnitude);
+            currentTimeOfFlight = ProjectileMath.TimeOfFlight(currentSpeed, currentAngle * Mathf.Deg2Rad, yOffset, Physics.gravity.magnitude);
     }
 
-    public void SetTargetWithSpeed(Vector3 point, float speed, bool useLowAngle)
+    public void SetTargetWithSpeed(Vector3 point, float speed, bool useLowAngle, int PlayerID)
     {
-        currentSpeed = speed;
+            currentSpeed = speed;
 
-        Vector3 direction = point - firePoint.position;
-        float yOffset = direction.y;
-        direction = Math3d.ProjectVectorOnPlane(Vector3.up, direction);
-        float distance = direction.magnitude;
+            Vector3 direction = point - firePoint.position;
+            float yOffset = direction.y;
+            direction = Math3d.ProjectVectorOnPlane(Vector3.up, direction);
+            float distance = direction.magnitude;
 
-        float angle0, angle1;
-        bool targetInRange = ProjectileMath.LaunchAngle(speed, distance, yOffset, Physics.gravity.magnitude, out angle0, out angle1);
+            float angle0, angle1;
+            bool targetInRange = ProjectileMath.LaunchAngle(speed, distance, yOffset, Physics.gravity.magnitude, out angle0, out angle1);
 
-        if (targetInRange)
-            currentAngle = useLowAngle ? angle1 : angle0;
+            if (targetInRange)
+                currentAngle = useLowAngle ? angle1 : angle0;
 
-        projectileArc.UpdateArc(speed, distance, Physics.gravity.magnitude, currentAngle, direction, targetInRange);
-        SetTurret(direction, currentAngle * Mathf.Rad2Deg);
+            projectileArc[PlayerID].UpdateArc(speed, distance, Physics.gravity.magnitude, currentAngle, direction, targetInRange);
+            SetTurret(direction, currentAngle * Mathf.Rad2Deg);
 
-        currentTimeOfFlight = ProjectileMath.TimeOfFlight(currentSpeed, currentAngle, -yOffset, Physics.gravity.magnitude);
+            currentTimeOfFlight = ProjectileMath.TimeOfFlight(currentSpeed, currentAngle, -yOffset, Physics.gravity.magnitude);
+        
     }
 
     public void Fire(int PlayerID)
