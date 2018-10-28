@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TestTitle : MonoBehaviour {
 
-    public int SceneChangeTime;
+    public int SceneChangeTime;     //遅延フレーム数
     private bool SceneChangeFlg;
     private int flame;
 
