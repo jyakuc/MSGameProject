@@ -8,7 +8,7 @@ public class TestTitle : MonoBehaviour {
     public int SceneChangeTime;     //遅延フレーム数
     private bool SceneChangeFlg;
     private int flame;
-
+    private bool OneKeyFlag = false;
 
     private void Start(){
         SceneChangeFlg = false;
@@ -17,8 +17,9 @@ public class TestTitle : MonoBehaviour {
     }
 
     void Update(){
-        if (Input.anyKeyDown == true){
+        if ((Input.anyKeyDown == true)&&(!OneKeyFlag)){
             SceneChangeFlg = true;
+            OneKeyFlag = true;
             AudioManager.GetInstance.PlaySE0(AUDIO.SE_Decision);
         }
         if (SceneChangeFlg == true){
