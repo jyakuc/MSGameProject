@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour
     {
         Start,
         Main,
-        Finish
+        Finish,
+        End
     }
     private EState m_state;
     private const int m_playerNum = 6;
@@ -24,12 +25,19 @@ public class GameController : MonoBehaviour
     public List<GameObject> m_deleteObjects = new List<GameObject>();
     [SerializeField]
     private List<GameObject> m_deleteCursors = new List<GameObject>();
+    [SerializeField]
+    private GameSceneController m_gameSceneController;
 
     private bool m_gameStartFlg;
     public bool StartFlg
     {
         get { return m_gameStartFlg; }
     }
+
+    /// <summary>
+    /// 関数群
+    /// </summary>
+
     private void Awake()
     {
         m_gameStartFlg = false;
@@ -116,6 +124,7 @@ public class GameController : MonoBehaviour
 
     void FinishUpdate()
     {
-        SceneController.GetInstance.ChangeScene("TitleScene");
+        m_state = EState.End;
+        m_gameSceneController.ChangeScene();
     }
 }
