@@ -37,4 +37,8 @@ public class ContractionCollision : MonoBehaviour {
             }
         }
 	}
+    public bool GetStartFlag()
+    {
+        return Gb.StartFlg;
+    }
 }
