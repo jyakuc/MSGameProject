@@ -18,9 +18,6 @@ public class GameController : MonoBehaviour
     }
     [SerializeField]
     private int m_debugPlayerNum;
-    public PlayerController[] m_playerContrllers;
-    public StageCreate m_stageCreate;
-    public GameObject m_playerModel;
 
     private List<PlayerController> m_playerObj = new List<PlayerController>();
     [SerializeField]
@@ -48,6 +45,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(m_state);
         switch (m_state)
         {
             case EState.Start:
@@ -82,13 +80,13 @@ public class GameController : MonoBehaviour
 
     public void AddPlayer(GameObject human)
     {
+        Debug.Log(human + "追加");
         m_playerObj.Add(human.GetComponent<PlayerController>());
     }
     
     // 状態別Update関数
     void StartUpdate()
     {
-        Debug.Log(m_gameStartFlg);
         if (m_gameStartFlg) return;
         if (m_playerObj.Count != m_debugPlayerNum) return;
         for (int i = 0; i < m_debugPlayerNum; ++i)
@@ -100,15 +98,17 @@ public class GameController : MonoBehaviour
         m_state = EState.Main;
         for (int i = 0; i < m_debugPlayerNum; ++i)
         {
-            m_playerContrllers[i].PlayStart();
+            m_playerObj[i].PlayStart();
         }
+        AllDeleteObjects();
     }
 
     void MainUpdate()
     {
         for(int i = 0; i < m_debugPlayerNum; ++i)
         {
-            if (!m_playerContrllers[i].IsDead()) return; 
+            if(m_playerObj[i] != null)
+                if (!m_playerObj[i].IsDead()) return; 
         }
 
         m_state = EState.Finish;

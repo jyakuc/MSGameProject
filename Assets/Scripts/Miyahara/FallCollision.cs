@@ -22,6 +22,7 @@ public class FallCollision : MonoBehaviour {
             return;
         Debug.Log(other.gameObject.name);
         Rank.Add(other.gameObject.transform.root.GetComponent<PlayerController>().PlayerID);
+        other.gameObject.transform.root.GetComponent<PlayerController>().Dead();
         Destroy(other.gameObject.transform.root.gameObject);
 
     }
