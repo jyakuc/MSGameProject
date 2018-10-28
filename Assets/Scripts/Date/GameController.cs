@@ -106,11 +106,16 @@ public class GameController : MonoBehaviour
 
     void MainUpdate()
     {
+        for(int i = 0; i < m_debugPlayerNum; ++i)
+        {
+            if (!m_playerContrllers[i].IsDead()) return; 
+        }
 
+        m_state = EState.Finish;
     }
 
     void FinishUpdate()
     {
-
+        SceneController.GetInstance.ChangeScene("TitleScene");
     }
 }
