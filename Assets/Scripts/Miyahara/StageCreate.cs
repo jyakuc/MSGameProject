@@ -38,13 +38,13 @@ public class StageCreate : MonoBehaviour {
                 Instantiate(NormalStage, new Vector3(x, y, z), Quaternion.identity);
                 Instantiate(Colosseum, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                 // プレハブからコリジョンを生成
-                Instantiate(Collision, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                Instantiate(Collision, new Vector3(0.0f, 0.0f, 0.0f), Collision.GetComponent<Transform>().rotation);
                 break;
             case SelectingStage.HoruhoruMountain:
                 //プレハブからインスタンスを生成
                 Instantiate(HoruHoruMountain, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
                 //プレハブからコリジョンを生成
-                Instantiate(Collision, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                Instantiate(Collision, new Vector3(0.0f, 0.0f, 0.0f), Collision.GetComponent<Transform>().rotation);
                 break;
         }
         
