@@ -33,6 +33,7 @@ public class RankingInGame : MonoBehaviour
     {
         ///////////////////////////////////////
         //仮の表示
+        /*
         if (rank < 4){
             time++;
         }
@@ -42,12 +43,14 @@ public class RankingInGame : MonoBehaviour
             rank++;
             time = 0;
         }
+        */
         ///////////////////////////////////////
     }
 
-    void SetRank()
+    public void SetRank(int playerID)
     {
-        Pannel[player].GetComponent<Image>().sprite = Image[rank];
-        Pannel[player].GetComponent<Image>().color = new Color(255, 255, 255, 1f);
+        Pannel[playerID-1].GetComponent<Image>().sprite = Image[rank];
+        Pannel[playerID-1].GetComponent<Image>().color = new Color(255, 255, 255, 1f);
+        rank++;
     }
 }
