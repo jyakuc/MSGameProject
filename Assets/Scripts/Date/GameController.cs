@@ -104,13 +104,24 @@ public class GameController : MonoBehaviour
 
     void MainUpdate()
     {
+        int deadNum = 0;
         for(int i = 0; i < m_debugPlayerNum; ++i)
         {
-            if(m_playerObj[i] != null)
-                if (!m_playerObj[i].IsDead()) return; 
+            if(m_playerObj[i] == null)
+            {
+                deadNum++;
+                continue;
+            }
+            if (m_playerObj[i].IsDead())
+            {
+                deadNum++;
+            }
         }
 
-        m_state = EState.Finish;
+        if(deadNum == m_debugPlayerNum - 1)
+        {
+            m_state = EState.Finish;
+        }
     }
 
     void FinishUpdate()
