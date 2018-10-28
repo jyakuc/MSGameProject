@@ -84,6 +84,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     private void Start()
     {
         AttachBGMSource.volume = PlayerPrefs.GetFloat(BGM_VOLUME_KEY, BGM_VOLUME_DEFULT);
+        AttachBGMSource.loop = true;
         AttachSESource0.volume = PlayerPrefs.GetFloat(SE_VOLUME_KEY, SE_VOLUME_DEFULT);
         AttachSESource1.volume = PlayerPrefs.GetFloat(SE_VOLUME_KEY, SE_VOLUME_DEFULT);
         AttachSESource2.volume = PlayerPrefs.GetFloat(SE_VOLUME_KEY, SE_VOLUME_DEFULT);

@@ -16,6 +16,11 @@ public class Filter : MonoBehaviour {
 
     //debug用の秒数確認用
     public float NowTime = 0;
+    private ContractionCollision StartGetr;
+    private void Awake()
+    {
+        StartGetr = GetComponent<ContractionCollision>();
+    }
     // Use this for initialization
     void Start () {
         Trans = GetComponent<Transform>();
@@ -23,21 +28,24 @@ public class Filter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        NowTime = Time.time;
-
-        if (Time.time>StartTime)
+        if(StartGetr.GetStartFlag())
         {
-            if (Trans.localScale.x <= LimitSize)
-            {
-                Trans.localScale = new Vector3(LimitSize, LimitSize, Trans.localScale.z);
-            }
-            else
-            {
-                Trans.localScale = new Vector3(Trans.localScale.x - (Speed/10000), Trans.localScale.y - (Speed / 10000), Trans.localScale.z);
+            NowTime = Time.time;
 
+            if (Time.time > StartTime)
+            {
+                if (Trans.localScale.x <= LimitSize)
+                {
+                    Trans.localScale = new Vector3(LimitSize, LimitSize, Trans.localScale.z);
+                }
+                else
+                {
+                    Trans.localScale = new Vector3(Trans.localScale.x - (Speed / 10000), Trans.localScale.y - (Speed / 10000), Trans.localScale.z);
+
+                }
             }
+
         }
-        //Trans.rotation = new Quaternion(0, 0, 0,0);
 
     }
 }
