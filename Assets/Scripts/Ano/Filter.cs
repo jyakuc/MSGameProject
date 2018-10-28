@@ -16,19 +16,23 @@ public class Filter : MonoBehaviour {
 
     //debug用の秒数確認用
     public float NowTime = 0;
-    private ContractionCollision StartGetr;
+    [SerializeField]
+    private GameController Gb;
     private void Awake()
     {
     }
     // Use this for initialization
     void Start () {
-        StartGetr = GetComponent<ContractionCollision>();
+        if (Gb == null)
+        {
+            Gb = FindObjectOfType<GameController>();
+        }
         Trans = GetComponent<Transform>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(StartGetr.GetStartFlag())
+        if(Gb.StartFlg)
         {
             NowTime = Time.time;
 
