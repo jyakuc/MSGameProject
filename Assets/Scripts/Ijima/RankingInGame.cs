@@ -22,6 +22,7 @@ public class RankingInGame : MonoBehaviour
     private short player = 0;
     private int time = 0;
 
+
     // Use this for initialization
     void Start()
     {
@@ -31,28 +32,18 @@ public class RankingInGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ///////////////////////////////////////
-        //仮の表示
-        /*
-        if (rank < 4){
-            time++;
-        }
-        if (time == 100){
-            SetRank();
-            player++;
-            rank++;
-            time = 0;
-        }
-        */
-        ///////////////////////////////////////
+       
     }
 
     public void SetRank(int playerID)
     {
         Debug.Log(playerID + "P : 脱落");
-        Pannel[playerID-1].GetComponent<Image>().sprite = Image[rank];
-        Pannel[playerID-1].GetComponent<Image>().color = new Color(255, 255, 255, 1f);
-        rank++;
+        if (rank < 4)
+        {
+            Pannel[playerID - 1].GetComponent<Image>().sprite = Image[rank];
+            Pannel[playerID - 1].GetComponent<Image>().color = new Color(255, 255, 255, 1f);
+            rank++;
+        }
         
     }
 }
