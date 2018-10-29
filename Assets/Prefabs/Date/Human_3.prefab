@@ -678,7 +678,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1404075687510486}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.78, y: 7.0699997, z: -13.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4261854796651238}
@@ -1742,7 +1742,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410187428924224}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1766,7 +1766,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1828146164736502}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1970,7 +1970,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1044344381311368}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2209,8 +2209,8 @@ MonoBehaviour:
   m_leftFootObj: {fileID: 1595141478269548}
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
-    maxForce: {x: -0.9, y: -3.8, z: 0}
-    decayForce: {x: 0.99, y: 0.995, z: 0.99}
+    maxForce: {x: 0, y: -3.8, z: 0}
+    decayForce: {x: 0, y: 0.995, z: 0}
   m_HandForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: -5, y: 20, z: 0}
@@ -2224,9 +2224,9 @@ MonoBehaviour:
   m_FootExtendL: {x: -100, y: -100, z: 0}
   m_bodyMoveForce:
     cntForce: {x: 0, y: 0, z: 0}
-    maxForce: {x: 0, y: 0, z: 0}
-    decayForce: {x: 0, y: 0, z: 0}
-  m_directionAngle: 0
+    maxForce: {x: -1.5, y: 0, z: 0}
+    decayForce: {x: 0.99, y: 0, z: 0}
+  m_directionAngle: 250
   rayTest: {fileID: 114656022787043098}
 --- !u!114 &114968532080738316
 MonoBehaviour:

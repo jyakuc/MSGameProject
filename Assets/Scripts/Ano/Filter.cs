@@ -34,7 +34,7 @@ public class Filter : MonoBehaviour {
 	void Update () {
         if(Gb.StartFlg)
         {
-            NowTime = Time.time;
+            NowTime += Time.deltaTime;
 
             if (Time.time > StartTime)
             {
