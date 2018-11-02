@@ -9,8 +9,6 @@ public class StageCreate : MonoBehaviour {
     public GameObject HoruHoruMountain;  //ホルホル山
     public GameObject Colosseum;         //コロシアム生成
     public GameObject Collision;     //生成するコリジョン
-    private int RandomX;
-    private int RandomZ;
     private int min = -2;
     private int max = 2;
 
@@ -27,8 +25,6 @@ public class StageCreate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        RandomX = UnityEngine.Random.Range(min,max);
-        RandomZ = UnityEngine.Random.Range(min, max);
 
 
         switch (Stages)
@@ -43,8 +39,6 @@ public class StageCreate : MonoBehaviour {
             case SelectingStage.HoruhoruMountain:
                 //プレハブからインスタンスを生成
                 Instantiate(HoruHoruMountain, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-                //プレハブからコリジョンを生成
-                Instantiate(Collision, new Vector3(0.0f, 0.0f, 0.0f), Collision.GetComponent<Transform>().rotation);
                 break;
         }
         
