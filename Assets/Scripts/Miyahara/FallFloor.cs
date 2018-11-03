@@ -7,6 +7,7 @@ public class FallFloor : MonoBehaviour {
     private float gravitySpeed = -0.1f;
     private bool Fallflg;
 
+    
 
 	// Use this for initialization
 	void Start () {

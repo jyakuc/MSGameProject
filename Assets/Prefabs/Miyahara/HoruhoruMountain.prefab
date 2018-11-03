@@ -1103,6 +1103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadFloorFlg: 0
 --- !u!114 &114247361644613296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1114,6 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadFloorFlg: 0
 --- !u!114 &114723087339469372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1125,15 +1127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b21404ed4ed16245ab395afad3b44b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChildFloor:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  StartTime: 10
+  NowFloor: 7
+  SetTime: 60
   Gb: {fileID: 0}
 --- !u!114 &114850969635079246
 MonoBehaviour:
@@ -1159,6 +1154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadFloorFlg: 0
 --- !u!114 &114911727401366450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1170,6 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadFloorFlg: 0
 --- !u!114 &114927467818492514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1181,6 +1178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadFloorFlg: 0
 --- !u!114 &114939396924633714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1192,6 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadFloorFlg: 0
 --- !u!114 &114993413536522392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1203,6 +1202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadFloorFlg: 0
 --- !u!114 &114999300421368250
 MonoBehaviour:
   m_ObjectHideFlags: 1

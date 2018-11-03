@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class HoruhoruGimic : MonoBehaviour {
 
-    private const int MaxFloor = 7;
+    private FallFloor[] ChildFloor;
 
     private GameObject Floor;
-    public Transform[] ChildFloor = new Transform[MaxFloor];
 
-    private float SetStartTime;
-    [Range(0,30)]
+    private float NowTime = 0;
+    [Range(0,60)]
     [SerializeField]
-    private float StartTime = 0;
+    private float SetTime = 0;
     [SerializeField]
     private GameController Gb;
 
-    private bool FallFlg;
-
-    private int Random;
+    private int RandomFloor;
     private int min = 0;
-    private int max = 8;
 	// Use this for initialization
 	void Start () {
         if (Gb == null)
@@ -28,34 +24,26 @@ public class HoruhoruGimic : MonoBehaviour {
             Gb = FindObjectOfType<GameController>();
         }
         Floor = GameObject.Find("MountainStage");
-        Floor.GetComponentInChildren<Transform>();
-        for (int i = 0; i < MaxFloor; i++)
-        {
-            ChildFloor[i] = Floor.transform.GetChild(i);
-        }
-        SetStartTime = StartTime;
-        Random = UnityEngine.Random.Range(min, max);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Debug.Log(Floor);
+        
         if (Gb.StartFlg)
         {
-            if (Time.time > StartTime)
+            
+            if (SetTime < NowTime)
             {
-                if (ChildFloor[Random])
-                {
-                    for (int i = 0; i < MaxFloor; i++)
-                    {
-                        if (ChildFloor[i] == null)
-                            continue;
-                        ChildFloor[i].GetComponent<FallFloor>().FallFlgOn();
-                        StartTime = SetStartTime;
-                    }
-                }
-                
+               ChildFloor = Floor.GetComponentsInChildren<FallFloor>();
+                   if (ChildFloor.Length == 0)
+                       return;
+                       RandomFloor = UnityEngine.Random.Range(min,ChildFloor.Length);
+                       ChildFloor[RandomFloor].FallFlgOn();
+                       Debug.Log(RandomFloor);
+                       NowTime = 0;
             }
+            NowTime += 1;
         }
         
 	}
