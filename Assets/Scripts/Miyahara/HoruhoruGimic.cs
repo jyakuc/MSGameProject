@@ -9,7 +9,7 @@ public class HoruhoruGimic : MonoBehaviour {
     private GameObject Floor;
 
     private float NowTime = 0;
-    [Range(0,60)]
+    [Range(0,120)]
     [SerializeField]
     private float SetTime = 0;
     [SerializeField]
