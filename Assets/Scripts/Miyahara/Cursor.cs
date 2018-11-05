@@ -12,10 +12,18 @@ public class Cursor : MonoBehaviour
         get { return fireflg; }
         set { fireflg = value; }
     }
+
+    [SerializeField]
+    private MyInputManager myInputManager;
+
     void Start()
     {
         pos = transform.position;
         fireflg = true;
+
+        myInputManager = GameObject.FindObjectOfType<MyInputManager>();
+        if (myInputManager == null)
+            Debug.LogError("MyInputManagerÇ™ÉVÅ[ÉìÇ…Ç†ÇËÇ‹ÇπÇÒ");
     }
 
 	void Update () 
@@ -25,23 +33,27 @@ public class Cursor : MonoBehaviour
 
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 OldInputPos = pos;
-        if (Input.GetAxis("GameController_Hori" + PlayerID.ToString()) < 0)
+        if (Input.GetAxis("Horizontal_Player" + myInputManager.joysticks[PlayerID-1].ToString()) < 0)
         {
             pos.x -= Speed;
+            Debug.Log(PlayerID + "yoko");
             
         }
-        else if (Input.GetAxis("GameController_Hori" + PlayerID.ToString()) > 0)
+        else if (Input.GetAxis("Horizontal_Player" + myInputManager.joysticks[PlayerID - 1].ToString()) > 0)
         {
             pos.x += Speed;
         }
-        if (Input.GetAxis("GameController_Vert" + PlayerID.ToString()) < 0)
+        if (Input.GetAxis("Vertical_Player" + myInputManager.joysticks[PlayerID - 1].ToString()) < 0)
+        {
+            pos.z -= Speed;
+            Debug.Log(PlayerID + "tate");
+        }
+        else if (Input.GetAxis("Vertical_Player" + myInputManager.joysticks[PlayerID - 1].ToString()) > 0)
         {
             pos.z += Speed;
         }
-        else if (Input.GetAxis("GameController_Vert" + PlayerID.ToString()) > 0)
-        {
-            pos.z -= Speed;
-        }
+        if(PlayerID == 1)
+            Debug.Log(pos);
 
         Ray ray = new Ray();
         ray.direction = Vector3.down;
