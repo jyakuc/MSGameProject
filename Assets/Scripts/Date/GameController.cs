@@ -17,8 +17,6 @@ public class GameController : MonoBehaviour
     {
         get { return m_playerNum; }
     }
-    [SerializeField]
-    private int m_debugPlayerNum;
 
     private List<PlayerController> m_playerObj = new List<PlayerController>();
     [SerializeField]
@@ -46,11 +44,19 @@ public class GameController : MonoBehaviour
     void Start()
     {
         // m_stageCreate.Create(EStageIndex.Stage_1);
+
+        if (DebugModeGame.GetProperty().m_debugPlayerEnable)
+        {
+            m_state = EState.Main;
+            m_gameStartFlg = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (DebugModeGame.GetProperty().m_debugPlayerEnable) return;
+
         Debug.Log(m_state);
         switch (m_state)
         {
@@ -84,16 +90,18 @@ public class GameController : MonoBehaviour
     // 状態別Update関数
     void StartUpdate()
     {
+        int playerNum = DebugModeGame.GetProperty().m_debugMode ? DebugModeGame.GetProperty().m_debugPlayerNum : m_playerNum;
+
         if (m_gameStartFlg) return;
-        if (m_playerObj.Count != m_debugPlayerNum) return;
-        for (int i = 0; i < m_debugPlayerNum; ++i)
+        if (m_playerObj.Count != playerNum) return;
+        for (int i = 0; i < playerNum; ++i)
         {
             if (!m_playerObj[i].IsWait()) return;
         }
 
         m_gameStartFlg = true;
         m_state = EState.Main;
-        for (int i = 0; i < m_debugPlayerNum; ++i)
+        for (int i = 0; i < playerNum; ++i)
         {
             m_playerObj[i].PlayStart();
         }
@@ -105,7 +113,8 @@ public class GameController : MonoBehaviour
     void MainUpdate()
     {
         int deadNum = 0;
-        for(int i = 0; i < m_debugPlayerNum; ++i)
+        int playerNum = DebugModeGame.GetProperty().m_debugMode ? DebugModeGame.GetProperty().m_debugPlayerNum : m_playerNum;
+        for (int i = 0; i < playerNum; ++i)
         {
             if(m_playerObj[i] == null)
             {
@@ -118,7 +127,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if(deadNum == m_debugPlayerNum - 1)
+        if(deadNum == playerNum - 1)
         {
             m_state = EState.Finish;
         }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 public class MyInputManager:MonoBehaviour {
+
     public string[] name;
     public PlayerController[] input = new PlayerController[6];
     public int[] joysticks = new int[6];
@@ -24,6 +25,7 @@ public class MyInputManager:MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!DebugModeGame.GetProperty().m_controllerEnable) return;
         var stick = Input.GetJoystickNames();
         //Debug.Log("コントローラー接続台数:" + stick.Length);
 
@@ -43,7 +45,6 @@ public class MyInputManager:MonoBehaviour {
                 }
 
             }
-
         }
         Debug.Log("動的接続:" + directNum);
         if (directNum == 6)

@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         set { m_joystickNum = value; }
         get { return m_joystickNum; }
     }
+
     */
     /*   // 生存フラグ
        private bool m_lifeFlg;
@@ -139,6 +140,7 @@ public class PlayerController : MonoBehaviour
 
         InputName[0] = "Horizontal_Player" ;
         InputName[1] = "Vertical_Player" ;
+
         InputName[2] = "A_Player";
         InputName[3] = "B_Player";
         InputName[4] = "X_Player";
@@ -147,6 +149,12 @@ public class PlayerController : MonoBehaviour
         myInputManager = GameObject.FindObjectOfType<MyInputManager>();
         if(myInputManager == null)
             Debug.LogError("MyInputManagerがシーンに存在しません");
+            
+        if (DebugModeGame.GetProperty().m_debugPlayerEnable)
+        {
+            m_state = EState.Idle;
+            m_joystickNum = m_playerID;
+        }
     }
     void Update()
     {
