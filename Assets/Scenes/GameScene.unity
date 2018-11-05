@@ -534,6 +534,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneChangeTime: 30
+--- !u!114 &1185137599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1185137597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e75e54c2ef1f464c8b7646c3cb2b62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: []
+  input:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  controllerName: JC-U3613M - DirectXInput Mode
 --- !u!1 &1343035584 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1112400173122778, guid: d42795954a2ebda40aeb250c7e278d04,
