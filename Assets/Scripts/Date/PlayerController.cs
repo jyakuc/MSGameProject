@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         set { m_joystickNum = value; }
         get { return m_joystickNum; }
     }
-
+   
     /*   // 生存フラグ
        private bool m_lifeFlg;
        public bool LifeFlag
@@ -141,6 +141,11 @@ public class PlayerController : MonoBehaviour
         InputName[4] = "GameController_X" ;
         InputName[5] = "GameController_Y" ;
 
+        if (DebugModeGame.GetProperty().m_debugPlayerEnable)
+        {
+            m_state = EState.Idle;
+            m_joystickNum = m_playerID;
+        }
     }
     void Update()
     {
