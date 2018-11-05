@@ -73,8 +73,8 @@ public class InputInfo
     {
         var info = new InputInfo();
         info.name = _name;
-        info.gravity = 3;
-        info.dead = 0.001f;
+        info.gravity = 0;
+        info.dead = 0.2f;
         info.sensitivity = 1;
         info.type = AxisType.JoystickAxis;
         info.axis = _axisNum;

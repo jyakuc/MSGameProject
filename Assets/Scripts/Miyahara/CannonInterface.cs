@@ -32,6 +32,8 @@ public class CannonInterface : MonoBehaviour
 
     [SerializeField]
     private GameController gameController;
+    [SerializeField]
+    private MyInputManager myInputManager;
 
     void Awake()
     {
@@ -43,6 +45,13 @@ public class CannonInterface : MonoBehaviour
         useInitialAngle = true;
 
 
+    }
+
+    private void Start()
+    {
+        myInputManager = GameObject.FindObjectOfType<MyInputManager>();
+        if (myInputManager == null)
+            Debug.LogError("MyInputManagerÇ™ÉVÅ[ÉìÇ…Ç†ÇËÇ‹ÇπÇÒ");
     }
 
     void Update()
@@ -57,7 +66,7 @@ public class CannonInterface : MonoBehaviour
 
             if (targetCursor[i].FireFlg)
             {
-                if (Input.GetButtonDown("GameController_X" + (i + 1).ToString()))
+                if (Input.GetButtonDown("X_Player" + myInputManager.joysticks[i].ToString()))
                 {
                     gameController.AddPlayer(cannon.FireHuman(i));
                     targetCursor[i].FireFlg = false;
