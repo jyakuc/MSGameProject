@@ -13,7 +13,10 @@ public class Filter : MonoBehaviour {
     public float LimitSize = 0;
     [Range(0,120)]
     public float StartTime = 0;
-
+    [Range(-150,170)]
+    public float RandmPosX = 0;
+    [Range(-170, 150)]
+    public float RandmPosY = 0;
     //debug用の秒数確認用
     public float NowTime = 0;
     [SerializeField]
@@ -36,7 +39,7 @@ public class Filter : MonoBehaviour {
         {
             NowTime += Time.deltaTime;
 
-            if (Time.time > StartTime)
+            if (NowTime > StartTime)
             {
                 if (Trans.localScale.x <= LimitSize)
                 {
