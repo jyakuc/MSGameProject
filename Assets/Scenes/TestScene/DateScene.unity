@@ -401,6 +401,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d814c011c0c60418f3a4e133bdef53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_debugMode:
+    m_debugMode: 1
+    m_debugPlayerEnable: 1
+    m_debugPlayerNum: 0
+    m_controllerEnable: 0
 --- !u!4 &641574117
 Transform:
   m_ObjectHideFlags: 0
@@ -880,4 +885,5 @@ MonoBehaviour:
   - {fileID: 417677956}
   - {fileID: 430226150}
   - {fileID: 776548053}
+  joysticks: 010000000200000003000000040000000500000006000000
   controllerName: JC-U3613M - DirectXInput Mode
