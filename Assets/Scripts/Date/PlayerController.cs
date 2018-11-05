@@ -42,6 +42,15 @@ public class PlayerController : MonoBehaviour
         get { return m_playerID; }
     }
 
+    // ジョイスティック番号
+    [SerializeField]
+    private int m_joystickNum;
+    public int JoystickNum
+    {
+        set { m_joystickNum = value; }
+        get { return m_joystickNum; }
+    }
+
     /*   // 生存フラグ
        private bool m_lifeFlg;
        public bool LifeFlag
@@ -125,12 +134,12 @@ public class PlayerController : MonoBehaviour
 
         dir = rayTest.Dir;
 
-        InputName[0] = "GameController_Hori" + m_playerID.ToString();
-        InputName[1] = "GameController_Vert" + m_playerID.ToString();
-        InputName[2] = "GameController_A" + m_playerID.ToString();
-        InputName[3] = "GameController_B" + m_playerID.ToString();
-        InputName[4] = "GameController_X" + m_playerID.ToString();
-        InputName[5] = "GameController_Y" + m_playerID.ToString();
+        InputName[0] = "Horizontal_Player" ;
+        InputName[1] = "Vertical_Player" ;
+        InputName[2] = "GameController_A" ;
+        InputName[3] = "GameController_B" ;
+        InputName[4] = "GameController_X" ;
+        InputName[5] = "GameController_Y" ;
 
     }
     void Update()
@@ -144,9 +153,9 @@ public class PlayerController : MonoBehaviour
     {
         if (m_state == EState.Init || m_state == EState.Dead || m_state == EState.Wait) return;
         // 右方向
-        float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal]);
+        float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal] + JoystickNum);
         //       Debug.Log("横" + lsh);
-        float lsv = Input.GetAxis(InputName[(int)EInput.Vertical]);
+        float lsv = Input.GetAxis(InputName[(int)EInput.Vertical] + JoystickNum);
         //       Debug.Log("縦" + lsv);
 
         if (lsh == 0.0f)
@@ -176,20 +185,20 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (Input.GetButton(InputName[(int)EInput.A]))
+        if (Input.GetButton(InputName[(int)EInput.A] + JoystickNum))
         {
   //          Debug.Log(InputName[(int)EInput.A] + m_playerID);
             Extend(m_rightHand_rg, m_HandExtend);
         }
-        if (Input.GetButton(InputName[(int)EInput.B]))
+        if (Input.GetButton(InputName[(int)EInput.B] + JoystickNum))
         {
             Extend(m_leftHand_rg, -m_HandExtend);
         }
-        if (Input.GetButton(InputName[(int)EInput.X]))
+        if (Input.GetButton(InputName[(int)EInput.X] + JoystickNum))
         {
             Extend(m_rightFoot_rg, m_FootExtendR);
         }
-        if (Input.GetButton(InputName[(int)EInput.Y]))
+        if (Input.GetButton(InputName[(int)EInput.Y] + JoystickNum))
         {
             Extend(m_leftFoot_rg, m_FootExtendL);
         }
