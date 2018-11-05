@@ -42,6 +42,9 @@ public class PlayerController : MonoBehaviour
         get { return m_playerID; }
     }
 
+    [SerializeField]
+    private MyInputManager myInputManager;
+    /*
     // ジョイスティック番号
     [SerializeField]
     private int m_joystickNum;
@@ -50,7 +53,8 @@ public class PlayerController : MonoBehaviour
         set { m_joystickNum = value; }
         get { return m_joystickNum; }
     }
-   
+
+    */
     /*   // 生存フラグ
        private bool m_lifeFlg;
        public bool LifeFlag
@@ -136,11 +140,16 @@ public class PlayerController : MonoBehaviour
 
         InputName[0] = "Horizontal_Player" ;
         InputName[1] = "Vertical_Player" ;
-        InputName[2] = "GameController_A" ;
-        InputName[3] = "GameController_B" ;
-        InputName[4] = "GameController_X" ;
-        InputName[5] = "GameController_Y" ;
 
+        InputName[2] = "A_Player";
+        InputName[3] = "B_Player";
+        InputName[4] = "X_Player";
+        InputName[5] = "Y_Player";
+
+        myInputManager = GameObject.FindObjectOfType<MyInputManager>();
+        if(myInputManager == null)
+            Debug.LogError("MyInputManagerがシーンに存在しません");
+            
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
         {
             m_state = EState.Idle;
@@ -158,9 +167,9 @@ public class PlayerController : MonoBehaviour
     {
         if (m_state == EState.Init || m_state == EState.Dead || m_state == EState.Wait) return;
         // 右方向
-        float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal] + JoystickNum);
+        float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal] + myInputManager.joysticks[m_playerID-1].ToString());
         //       Debug.Log("横" + lsh);
-        float lsv = Input.GetAxis(InputName[(int)EInput.Vertical] + JoystickNum);
+        float lsv = Input.GetAxis(InputName[(int)EInput.Vertical] + myInputManager.joysticks[m_playerID-1].ToString());
         //       Debug.Log("縦" + lsv);
 
         if (lsh == 0.0f)
@@ -190,20 +199,20 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (Input.GetButton(InputName[(int)EInput.A] + JoystickNum))
+        if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID-1]))
         {
   //          Debug.Log(InputName[(int)EInput.A] + m_playerID);
             Extend(m_rightHand_rg, m_HandExtend);
         }
-        if (Input.GetButton(InputName[(int)EInput.B] + JoystickNum))
+        if (Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID-1]))
         {
             Extend(m_leftHand_rg, -m_HandExtend);
         }
-        if (Input.GetButton(InputName[(int)EInput.X] + JoystickNum))
+        if (Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID-1]))
         {
             Extend(m_rightFoot_rg, m_FootExtendR);
         }
-        if (Input.GetButton(InputName[(int)EInput.Y] + JoystickNum))
+        if (Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID-1]))
         {
             Extend(m_leftFoot_rg, m_FootExtendL);
         }

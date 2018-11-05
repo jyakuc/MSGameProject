@@ -2164,6 +2164,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114143052832651144}
   PlayNum: 5
+  CriticalFlag: 0
 --- !u!114 &114247234530136084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2179,6 +2180,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114143052832651144}
   PlayNum: 5
+  CriticalFlag: 0
 --- !u!114 &114348906947774610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2215,6 +2217,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114143052832651144}
   PlayNum: 5
+  CriticalFlag: 0
 --- !u!114 &114857677323406964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2230,6 +2233,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114143052832651144}
   PlayNum: 5
+  CriticalFlag: 0
 --- !u!114 &114978070204711190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2285,7 +2289,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 37fd4d69e1401bf41be6ed1837605f31, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 9e8a606426b941d4a9cd9ecac91399be, type: 3}
   m_Bones:
   - {fileID: 4351424694018022}
   - {fileID: 4081094994667120}

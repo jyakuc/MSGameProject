@@ -21,11 +21,12 @@ public class HitEffects : MonoBehaviour {
     private float DelayTime=2.0f;
     private float countTime = 0;
     private bool TimeFlag = false;
+    public bool CriticalFlag = false;
     void OnTriggerStay(Collider other)
     {
         //レイヤーの名前取得
         string LayerName = LayerMask.LayerToName(other.gameObject.layer);
-        if(!HitEffectFlag)
+        if((!HitEffectFlag)&&(!CriticalFlag))
         {
             //プレイヤーの体判定の部位
             if (LayerName == "Player_Chest")
