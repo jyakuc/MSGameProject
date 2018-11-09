@@ -14,17 +14,23 @@ public class FireBall : MonoBehaviour {
     private CapsuleCollider MyCollider;
     void OnTriggerEnter(Collider other)
     {
-        MyParticle.Stop();
-        //Effect生成
-        Rock.SetActive(false);
-        Myrigidbody.useGravity = false;
-        MyCollider.isTrigger = false;
-        NewHitEffect = (GameObject)Instantiate(NextEffect, transform.position, Quaternion.identity);
-        NewHitEffect.GetComponent<Transform>().LookAt(MyParticle.transform);
-        AtomicEffect = NewHitEffect.GetComponent<ParticleSystem>();
-        NewHitEffect.GetComponent<Transform>().localScale = MyParticle.transform.localScale;
+        string LayerName = LayerMask.LayerToName(other.gameObject.layer);
 
-        AtomicEffect.Play();
+        if (LayerName=="Ground")
+        {
+            MyParticle.Stop();
+            //Effect生成
+            Rock.SetActive(false);
+            Myrigidbody.useGravity = false;
+            MyCollider.isTrigger = false;
+            NewHitEffect = (GameObject)Instantiate(NextEffect, transform.position, Quaternion.identity);
+            NewHitEffect.GetComponent<Transform>().LookAt(MyParticle.transform);
+            AtomicEffect = NewHitEffect.GetComponent<ParticleSystem>();
+            NewHitEffect.GetComponent<Transform>().localScale = MyParticle.transform.localScale;
+
+            AtomicEffect.Play();
+        }
+
 
 
     }
