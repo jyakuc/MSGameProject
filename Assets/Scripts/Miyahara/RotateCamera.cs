@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class RotateCamera : MonoBehaviour {
@@ -14,32 +15,45 @@ public class RotateCamera : MonoBehaviour {
     private GameObject Cannons;
 
     private float Rate;
+    FadeController FadeObj;
+    SceneController SceneObj;
+    private bool FadeFlg;
 	// Use this for initialization
 	void Start () {
         num = 2;
-        Rate = 0;
+        Rate = 1;
         Count = 0;
+        SceneObj = GameObject.FindObjectOfType<SceneController>();
+        FadeObj = SceneObj.transform.Find("FadeCanvas").GetComponent<FadeController>();
+        FadeFlg = false;
+        Debug.Log(FadeObj);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Count < 360)
+        if (Count < 270)
         {
             this.transform.Rotate(0, num, 0);
             Count += num;
         }
-        else
+        else if(!FadeObj.IsFade && FadeFlg == false) //フェードイン
         {
-            transform.position = Vector3.Lerp(this.transform.position, MainCamera.transform.position, Rate);
-            transform.rotation = Quaternion.Lerp(this.transform.rotation, MainCamera.transform.rotation, Rate);
-            Rate += 0.05f;
-        }
-        if (Rate > 1 && !MainCamera.activeSelf)
-        {
-            MainCamera.SetActive(!MainCamera.activeSelf);
-            SubCamera.SetActive(!SubCamera.activeSelf);
-            Cannons.transform.Find("Cannon6Arc").gameObject.SetActive(true);
-            Cannons.transform.Find("CannonMng").gameObject.SetActive(true);
+            FadeObj.gameObject.SetActive(true);
+            FadeController.Begin(FadeObj.gameObject, false, Rate);
+            FadeFlg = true;
+            FadeObj.m_onFinished += ChangeCamera;
         }
 	}
+
+    public void ChangeCamera()
+    {
+        MainCamera.SetActive(!MainCamera.activeSelf);
+        SubCamera.SetActive(!SubCamera.activeSelf);
+        Cannons.transform.Find("Cannon6Arc").gameObject.SetActive(true);
+        Cannons.transform.Find("CannonMng").gameObject.SetActive(true);
+        FadeController.Begin(FadeObj.gameObject, true, Rate);
+        FadeObj.m_onFinished -= ChangeCamera;
+    }
+
 }
+
