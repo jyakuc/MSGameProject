@@ -153,7 +153,6 @@ public class PlayerController : MonoBehaviour
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
         {
             m_state = EState.Idle;
-            m_joystickNum = m_playerID;
         }
     }
     void Update()
