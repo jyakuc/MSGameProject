@@ -5,7 +5,7 @@ using UnityEngine;
 public class HoruhoruGimic : MonoBehaviour {
 
     private FallFloor[] ChildFloor;
-
+    
     private GameObject Floor;
 
     private float NowTime = 0;

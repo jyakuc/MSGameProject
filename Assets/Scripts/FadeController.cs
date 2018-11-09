@@ -62,13 +62,12 @@ public class FadeController : MonoBehaviour {
     private bool m_ignoreTimeScale = true;
 
     // フェード終了後のコールバック
-    private event Action m_onFinished = null;
+    public event Action m_onFinished = null;
 
     
 	// Update is called once per frame
 	void Update () {
         if (!IsFade) return;
-
         float fadeSpeed = 1.0f / m_duration;
         if (m_ignoreTimeScale)
         {
