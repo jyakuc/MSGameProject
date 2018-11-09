@@ -42,5 +42,6 @@ public class FireBall : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+        
 	}
 }
