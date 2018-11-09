@@ -19,7 +19,7 @@ public class MyInputManager:MonoBehaviour {
         // ダミー
         for(int i = 0; i < 6; ++i)
         {
-            joysticks[i] = 16;
+            joysticks[i] = i+1;
         }
 	}
 	

@@ -401,6 +401,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d814c011c0c60418f3a4e133bdef53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_debugMode:
+    m_debugMode: 1
+    m_debugPlayerEnable: 1
+    m_debugPlayerNum: 0
+    m_controllerEnable: 0
 --- !u!4 &641574117
 Transform:
   m_ObjectHideFlags: 0
@@ -608,6 +613,98 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27856c8625bae1e47ba1e4c5a9315383, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1149341708 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1763243969287568, guid: 27856c8625bae1e47ba1e4c5a9315383,
+    type: 2}
+  m_PrefabInternal: {fileID: 1149341707}
+--- !u!114 &1149341709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1149341708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6969ffb1e73fcde429e21004e511846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bellyParts:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_chestParts:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_neckParts:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_headParts:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_shoulderLParts:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_upperArmL:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_armsL:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_handL:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_shoulderRParts:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_upperArmR:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_armsR:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_handR:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_lowerParts:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_assR:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_thighsR:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_calfR:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_assL:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_thighsL:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
+  m_calfL:
+    fff: {fileID: 0}
+    initTransform: {fileID: 0}
+    endTransform: {fileID: 0}
 --- !u!1 &1588716687
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,4 +977,5 @@ MonoBehaviour:
   - {fileID: 417677956}
   - {fileID: 430226150}
   - {fileID: 776548053}
+  joysticks: 010000000200000003000000040000000500000006000000
   controllerName: JC-U3613M - DirectXInput Mode
