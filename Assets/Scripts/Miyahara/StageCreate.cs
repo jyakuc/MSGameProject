@@ -9,6 +9,11 @@ public class StageCreate : MonoBehaviour {
     public GameObject HoruHoruMountain;  //ホルホル山
     public GameObject Colosseum;         //コロシアム生成
     public GameObject Collision;     //生成するコリジョン
+    public GameObject ColosseumCamera;   //生成するカメラ(コロシアム)
+    public GameObject HoruhoruCamera;    //生成するカメラ(ホルホルマウンテン)
+    public GameObject ColloseumCannons;  //生成するキャノン(コロシアム)
+    public GameObject HoruHoruCannons;   //生成するキャノン(ホルホルマウンテン)
+    public GameObject Cursol;            //生成するカーソル
     private int min = -2;
     private int max = 2;
 
@@ -31,14 +36,20 @@ public class StageCreate : MonoBehaviour {
         {
             case SelectingStage.NormalStage:
                 // プレハブからインスタンスを生成
-                Instantiate(NormalStage, new Vector3(x, y, z), Quaternion.identity);
-                Instantiate(Colosseum, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                Instantiate(ColosseumCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                    //カメラ生成
+                Instantiate(NormalStage, new Vector3(x, y, z), Quaternion.identity);                                 //ステージ生成
+                Instantiate(Colosseum, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                          //外枠生成
                 // プレハブからコリジョンを生成
-                Instantiate(Collision, new Vector3(0.0f, 0.0f, 0.0f), Collision.GetComponent<Transform>().rotation);
+                Instantiate(Collision, new Vector3(0.0f, 0.0f, 0.0f), Collision.GetComponent<Transform>().rotation); //迫ってくるコリジョン生成
+                Instantiate(ColloseumCannons, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                   //キャノン生成
+                Instantiate(Cursol, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                             //カーソル生成
                 break;
             case SelectingStage.HoruhoruMountain:
                 //プレハブからインスタンスを生成
-                Instantiate(HoruHoruMountain, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+                Instantiate(HoruhoruCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                     //カメラ生成
+                Instantiate(HoruHoruMountain, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                   //ステージ生成
+                Instantiate(HoruHoruCannons, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                    //キャノン生成
+                Instantiate(Cursol, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                             //カーソル生成
                 break;
         }
         
