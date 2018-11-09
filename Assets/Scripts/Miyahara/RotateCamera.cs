@@ -11,7 +11,6 @@ public class RotateCamera : MonoBehaviour {
     private GameObject MainCamera;
     [SerializeField]
     private GameObject SubCamera;
-    [SerializeField]
     private GameObject Cannons;
 
     private float Rate;
@@ -25,8 +24,8 @@ public class RotateCamera : MonoBehaviour {
         Count = 0;
         SceneObj = GameObject.FindObjectOfType<SceneController>();
         FadeObj = SceneObj.transform.Find("FadeCanvas").GetComponent<FadeController>();
+        Cannons = GameObject.Find("ColosseumCannons(Clone)");
         FadeFlg = false;
-        Debug.Log(FadeObj);
 	}
 	
 	// Update is called once per frame
