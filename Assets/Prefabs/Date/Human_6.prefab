@@ -127,8 +127,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4183461815620254}
-  - component: {fileID: 114916053750859648}
   - component: {fileID: 65894104778992830}
+  - component: {fileID: 114719450221145474}
   m_Layer: 0
   m_Name: Hand_L_end
   m_TagString: Untagged
@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4910297441591376}
   - component: {fileID: 65485888792391984}
-  - component: {fileID: 114489039102626328}
+  - component: {fileID: 114268152802299160}
   m_Layer: 0
   m_Name: Hand_R_end
   m_TagString: Untagged
@@ -415,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4533207964020430}
   - component: {fileID: 65236660984976322}
-  - component: {fileID: 114381497896364794}
+  - component: {fileID: 114595034991501098}
   m_Layer: 0
   m_Name: Calf_R_end
   m_TagString: Untagged
@@ -478,8 +478,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4474457139217008}
-  - component: {fileID: 114065144658771328}
   - component: {fileID: 65453411488215730}
+  - component: {fileID: 114856401641176756}
   m_Layer: 0
   m_Name: Calf_L_end
   m_TagString: Untagged
@@ -2102,22 +2102,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114065144658771328
+--- !u!114 &114268152802299160
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1774429048092878}
+  m_GameObject: {fileID: 1355684406830848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e886921cec040f4d9b4f65772e30cd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
+  CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
+    type: 2}
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
-  CriticalFlag: 0
+  CriticalProbability: 20
+  HitPower: 20
+  CriticalPower: 40
 --- !u!114 &114302950340732178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2131,22 +2135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayDistance: 2
   layerMaskName: Ground
---- !u!114 &114381497896364794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1625008542486786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e886921cec040f4d9b4f65772e30cd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
-  audio: {fileID: 0}
-  P_Controller: {fileID: 114745635048470910}
-  PlayNum: 6
-  CriticalFlag: 0
 --- !u!114 &114468569754795686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2168,22 +2156,26 @@ MonoBehaviour:
   bodyWeight: 0
   headWeight: 0
   eyeWeight: 0
---- !u!114 &114489039102626328
+--- !u!114 &114595034991501098
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1355684406830848}
+  m_GameObject: {fileID: 1625008542486786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e886921cec040f4d9b4f65772e30cd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
+  CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
+    type: 2}
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
-  CriticalFlag: 0
+  CriticalProbability: 20
+  HitPower: 20
+  CriticalPower: 40
 --- !u!114 &114680210371607022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2206,6 +2198,26 @@ MonoBehaviour:
   Pattern: 0
   DefaultMode: 0
   DebugMode: 1
+--- !u!114 &114719450221145474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1252781861182302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
+  CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
+    type: 2}
+  audio: {fileID: 0}
+  P_Controller: {fileID: 114745635048470910}
+  PlayNum: 6
+  CriticalProbability: 20
+  HitPower: 20
+  CriticalPower: 40
 --- !u!114 &114745635048470910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2218,6 +2230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerID: 6
+  myInputManager: {fileID: 0}
   m_bodyObj: {fileID: 1449480356525946}
   m_rightHandObj: {fileID: 1194157642573444}
   m_leftHandObj: {fileID: 1814654181169048}
@@ -2244,22 +2257,26 @@ MonoBehaviour:
     decayForce: {x: 0.99, y: 0, z: 0}
   m_directionAngle: 250
   rayTest: {fileID: 114302950340732178}
---- !u!114 &114916053750859648
+--- !u!114 &114856401641176756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1252781861182302}
+  m_GameObject: {fileID: 1774429048092878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e886921cec040f4d9b4f65772e30cd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
+  CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
+    type: 2}
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
-  CriticalFlag: 0
+  CriticalProbability: 20
+  HitPower: 20
+  CriticalPower: 40
 --- !u!137 &137895979734281560
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -76,8 +76,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4434193199004674}
-  - component: {fileID: 114663132879891354}
   - component: {fileID: 65615613383889904}
+  - component: {fileID: 114423651523320952}
   m_Layer: 0
   m_Name: Hand_L_end
   m_TagString: Untagged
@@ -109,7 +109,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4256070663585024}
-  - component: {fileID: 114502798934687794}
+  - component: {fileID: 65342735226325190}
+  - component: {fileID: 114167720144600634}
   m_Layer: 0
   m_Name: Calf_L_end
   m_TagString: Untagged
@@ -226,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4453311690325214}
   - component: {fileID: 65870716020999948}
-  - component: {fileID: 114199894451599436}
+  - component: {fileID: 114156436049858422}
   m_Layer: 0
   m_Name: Calf_R_end
   m_TagString: Untagged
@@ -243,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4794979347149234}
   - component: {fileID: 65280656262569320}
-  - component: {fileID: 114759326018657644}
+  - component: {fileID: 114058108325184460}
   m_Layer: 0
   m_Name: Hand_R_end
   m_TagString: Untagged
@@ -1844,6 +1845,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.013, y: 0.007, z: 0.006}
   m_Center: {x: 0, y: 0.0035, z: 0}
+--- !u!65 &65342735226325190
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147490955140966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.005, y: 0.007, z: 0.005}
+  m_Center: {x: 0, y: -0.002, z: 0}
 --- !u!65 &65413936040755146
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2089,6 +2102,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114058108325184460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339757140163394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
+  CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
+    type: 2}
+  audio: {fileID: 0}
+  P_Controller: {fileID: 114376492249141510}
+  PlayNum: 4
+  CriticalProbability: 20
+  HitPower: 20
+  CriticalPower: 40
 --- !u!114 &114152905965822594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2102,7 +2135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayDistance: 2
   layerMaskName: Ground
---- !u!114 &114199894451599436
+--- !u!114 &114156436049858422
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2110,14 +2143,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 1305270388735748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e886921cec040f4d9b4f65772e30cd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
+  CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
+    type: 2}
   audio: {fileID: 0}
   P_Controller: {fileID: 114376492249141510}
   PlayNum: 4
-  CriticalFlag: 0
+  CriticalProbability: 20
+  HitPower: 20
+  CriticalPower: 40
+--- !u!114 &114167720144600634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147490955140966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
+  CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
+    type: 2}
+  audio: {fileID: 0}
+  P_Controller: {fileID: 114376492249141510}
+  PlayNum: 4
+  CriticalProbability: 20
+  HitPower: 20
+  CriticalPower: 40
 --- !u!114 &114360007746449226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2173,6 +2230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerID: 4
+  myInputManager: {fileID: 0}
   m_bodyObj: {fileID: 1127312982964314}
   m_rightHandObj: {fileID: 1462539098495450}
   m_leftHandObj: {fileID: 1652172357805778}
@@ -2199,23 +2257,7 @@ MonoBehaviour:
     decayForce: {x: 0.99, y: 0, z: 0}
   m_directionAngle: 250
   rayTest: {fileID: 114152905965822594}
---- !u!114 &114502798934687794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147490955140966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e886921cec040f4d9b4f65772e30cd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
-  audio: {fileID: 0}
-  P_Controller: {fileID: 114376492249141510}
-  PlayNum: 4
-  CriticalFlag: 0
---- !u!114 &114663132879891354
+--- !u!114 &114423651523320952
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2223,30 +2265,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1130013290703226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e886921cec040f4d9b4f65772e30cd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
+  CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
+    type: 2}
   audio: {fileID: 0}
   P_Controller: {fileID: 114376492249141510}
   PlayNum: 4
-  CriticalFlag: 0
---- !u!114 &114759326018657644
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1339757140163394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e886921cec040f4d9b4f65772e30cd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
-  audio: {fileID: 0}
-  P_Controller: {fileID: 114376492249141510}
-  PlayNum: 4
-  CriticalFlag: 0
+  CriticalProbability: 20
+  HitPower: 20
+  CriticalPower: 40
 --- !u!137 &137197677056036714
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
