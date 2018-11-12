@@ -30,7 +30,7 @@ public class Cursor : MonoBehaviour
 	{
         if (!fireflg)
             return;
-
+        
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 OldInputPos = pos;
         if (Input.GetAxis("Horizontal_Player" + myInputManager.joysticks[PlayerID-1].ToString()) < 0)

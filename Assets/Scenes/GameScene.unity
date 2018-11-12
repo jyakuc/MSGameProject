@@ -416,64 +416,20 @@ Prefab:
         type: 2}
       propertyPath: m_gameSceneController
       value: 
-      objectReference: {fileID: 1185137598}
+      objectReference: {fileID: 0}
+    - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_debugMode.m_debugPlayerNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_debugMode.m_debugMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc1de046339e85049a4a76553bc9f8c9, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1185137597 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1632609069876650, guid: dc1de046339e85049a4a76553bc9f8c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1017582763}
---- !u!114 &1185137598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1185137597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f0b37c4fb24184eae990fc4f4dc3e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneChangeTime: 30
---- !u!114 &1185137599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1185137597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e75e54c2ef1f464c8b7646c3cb2b62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: []
-  input:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  joysticks: 000000000000000000000000000000000000000000000000
-  controllerName: JC-U3613M - DirectXInput Mode
---- !u!114 &1185137600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1185137597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d814c011c0c60418f3a4e133bdef53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_debugMode:
-    m_debugMode: 0
-    m_debugPlayerEnable: 0
-    m_debugPlayerNum: 6
-    m_controllerEnable: 0
 --- !u!1 &1402251261
 GameObject:
   m_ObjectHideFlags: 0

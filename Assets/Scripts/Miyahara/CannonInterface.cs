@@ -8,7 +8,7 @@ public class CannonInterface : MonoBehaviour
 
     private const int MaxPlayers = 6;
 
-    [SerializeField]
+    
     Cursor[] targetCursor = new Cursor[MaxPlayers];
 
     [SerializeField]
@@ -49,6 +49,16 @@ public class CannonInterface : MonoBehaviour
 
     private void Start()
     {
+        GameObject ParentCursor = GameObject.Find("Cursors(Clone)");
+        for (int i = 0; i < MaxPlayers; i++)
+        {
+            targetCursor[i] = ParentCursor.transform.GetChild(i).GetComponent<Cursor>();
+        }
+        gameController = GameObject.FindObjectOfType<GameController>();
+
+        if (gameController == null)
+            Debug.LogError("Gamecontrollerがシーンにありません");
+
         myInputManager = GameObject.FindObjectOfType<MyInputManager>();
         if (myInputManager == null)
             Debug.LogError("MyInputManagerがシーンにありません");
@@ -58,14 +68,16 @@ public class CannonInterface : MonoBehaviour
     {
         for (int i = 0; i < MaxPlayers; i++)
         {
+            
             if (targetCursor[i] == null) continue;
             if (useInitialAngle)
                 cannon.SetTargetWithAngle(targetCursor[i].transform.position, initialFireAngle, i);
             else
                 cannon.SetTargetWithSpeed(targetCursor[i].transform.position, initialFireSpeed, useLowAngle, i);
-
+            
             if (targetCursor[i].FireFlg)
             {
+                
                 if (Input.GetButtonDown("X_Player" + myInputManager.joysticks[i].ToString()))
                 {
                     gameController.AddPlayer(cannon.FireHuman(i));
