@@ -7,6 +7,8 @@ public class HoruhoruGimic : MonoBehaviour {
     private FallFloor[] ChildFloor;
     //private List<int> FallList = new List<int>;
     private GameObject Floor;
+    [SerializeField]
+    private GameObject FireBall;
 
     private float NowTime = 0;
     [Range(0,120)]
@@ -39,9 +41,13 @@ public class HoruhoruGimic : MonoBehaviour {
                    if (ChildFloor.Length == 0)
                        return;
                        RandomFloor = UnityEngine.Random.Range(min,ChildFloor.Length);
-                       ChildFloor[RandomFloor].FallFlgOn();
-                       Debug.Log(RandomFloor);
-                       NowTime = 0;
+                       Instantiate(FireBall, ChildFloor[RandomFloor].transform);
+                       if (FireBall == null)
+                       {
+                           ChildFloor[RandomFloor].FallFlgOn();
+                           Debug.Log(RandomFloor);
+                           NowTime = 0;
+                       }
             }
             NowTime += 1;
         }
