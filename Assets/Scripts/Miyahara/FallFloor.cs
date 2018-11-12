@@ -26,8 +26,11 @@ public class FallFloor : MonoBehaviour {
             Destroy(this.gameObject);
         }
 	}
-    public void FallFlgOn()
+    public void OnTriggerEnter(Collider other)
     {
-        Fallflg = true;
+        if(other.transform.tag == "OutsideColl")
+        {
+            Fallflg = true;
+        }
     }
 }
