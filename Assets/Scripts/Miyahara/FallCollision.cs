@@ -6,7 +6,7 @@ public class FallCollision : MonoBehaviour {
 
     public List <int> Rank = new List<int>();
     public RankingInGame rankingInGame;
-
+    public GameObject FallEffect;
 	// Use this for initialization
 	void Start () {
 		if(rankingInGame == null)
@@ -27,9 +27,18 @@ public class FallCollision : MonoBehaviour {
         if (other.gameObject.tag != "Player")
             return;
         Debug.Log(other.gameObject.name);
+        CreateEffect(other.gameObject.transform);
         Rank.Add(other.gameObject.transform.root.GetComponent<PlayerController>().PlayerID);
         other.gameObject.transform.root.GetComponent<PlayerController>().Dead();
         Destroy(other.gameObject.transform.root.gameObject);
         rankingInGame.SetRank(other.gameObject.transform.root.GetComponent<PlayerController>().PlayerID);
+    }
+    //Effect生成
+    private void CreateEffect(Transform Trans)
+    {
+        GameObject Effect = (GameObject)Instantiate(FallEffect, Trans.position, Quaternion.identity);
+        ParticleSystem Particle = Effect.GetComponent<ParticleSystem>();
+        Particle.Play();
+
     }
 }
