@@ -20,6 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4793478936772070}
   - component: {fileID: 114116800811218258}
+  - component: {fileID: 114126219785484694}
+  - component: {fileID: 114006595273043540}
+  - component: {fileID: 114167655264110406}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -40,6 +43,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114006595273043540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632609069876650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e75e54c2ef1f464c8b7646c3cb2b62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: []
+  input:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  joysticks: 000000000000000000000000000000000000000000000000
+  controllerName: JC-U3613M - DirectXInput Mode
 --- !u!114 &114116800811218258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,13 +75,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a96265953f0ad46b77548b32df086a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerCtrllers:
+  m_deleteObjects:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_stageCreate: {fileID: 0}
-  m_playerModel: {fileID: 1254997127051898, guid: 0592f9623d8fdfb41bf135c43edab37d,
-    type: 2}
+  m_gameSceneController: {fileID: 114126219785484694}
+--- !u!114 &114126219785484694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632609069876650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f0b37c4fb24184eae990fc4f4dc3e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneChangeTime: 30
+--- !u!114 &114167655264110406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632609069876650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d814c011c0c60418f3a4e133bdef53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_debugMode:
+    m_debugMode: 0
+    m_debugPlayerEnable: 0
+    m_debugPlayerNum: 6
+    m_controllerEnable: 0
