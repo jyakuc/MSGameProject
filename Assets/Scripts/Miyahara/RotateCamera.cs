@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RotateCamera : MonoBehaviour {
 
+
     private float num;
     private float Count;
     [SerializeField]
@@ -19,6 +20,7 @@ public class RotateCamera : MonoBehaviour {
     private bool FadeFlg;
 	// Use this for initialization
 	void Start () {
+
         num = 2;
         Rate = 1;
         Count = 0;
@@ -32,7 +34,7 @@ public class RotateCamera : MonoBehaviour {
 	void Update () {
         if (Count < 270)
         {
-            this.transform.Rotate(0, num, 0);
+            this.transform.Rotate(0, num*Time.deltaTime, 0);
             Count += num;
         }
         else if(!FadeObj.IsFade && FadeFlg == false) //フェードイン
