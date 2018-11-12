@@ -268,22 +268,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 91.777985, y: -30, z: 0}
---- !u!1 &368452654 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1356869732737850, guid: 3cc4472c06333d24483c7517afe430ad,
-    type: 2}
-  m_PrefabInternal: {fileID: 2110298955}
---- !u!114 &368452655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 368452654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &938531667
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,86 +616,6 @@ Prefab:
     - target: {fileID: 4849214234450884, guid: 3cc4472c06333d24483c7517afe430ad, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 64438211258747926, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64438211258747926, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64940815065304786, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64936616497244720, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64318785608020752, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64534526695038902, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64075264233775786, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64402341243931312, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64647276085234668, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64940815065304786, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64936616497244720, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64318785608020752, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64534526695038902, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64075264233775786, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64402341243931312, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64647276085234668, guid: 3cc4472c06333d24483c7517afe430ad,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cc4472c06333d24483c7517afe430ad, type: 2}
