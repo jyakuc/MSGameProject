@@ -629,82 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6969ffb1e73fcde429e21004e511846d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bellyParts:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_chestParts:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_neckParts:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_headParts:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_shoulderLParts:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_upperArmL:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_armsL:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_handL:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_shoulderRParts:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_upperArmR:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_armsR:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_handR:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_lowerParts:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_assR:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_thighsR:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_calfR:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_assL:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_thighsL:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
-  m_calfL:
-    fff: {fileID: 0}
-    initTransform: {fileID: 0}
-    endTransform: {fileID: 0}
+  m_partsList: []
 --- !u!1 &1588716687
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +861,16 @@ Prefab:
     - target: {fileID: 114116800811218258, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
       propertyPath: m_debugPlayerNum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_debugMode.m_debugMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_debugMode.m_debugPlayerEnable
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -9,6 +9,10 @@ public struct ArtParts
     public Vector3 initPos;
     public Quaternion initRota;
     public Vector3 initScale;
+
+    public Vector3 savePos;
+    public Quaternion saveRota;
+    public Vector3 saveScale;
     public void Init()
     {
         if(obj != null)
@@ -16,6 +20,15 @@ public struct ArtParts
             initPos = obj.position;
             initRota = obj.rotation;
             initScale = obj.localScale;
+        }
+    }
+    public void Save()
+    {
+        if(obj != null)
+        {
+            savePos = obj.position;
+            saveRota = obj.rotation;
+            saveScale = obj.localScale;
         }
     }
 }
@@ -123,10 +136,23 @@ public class ArtGrading : MonoBehaviour {
         m_partsList.Add(m_assR);
         m_partsList.Add(m_thighsR);
         m_partsList.Add(m_calfR);
+
+        for(int i = 0; i < m_partsList.Capacity; ++i)
+        {
+            m_partsList[i].Init();
+        }
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void Save()
+    {
+        for(int i = 0; i < m_partsList.Capacity; ++i)
+        {
+            m_partsList[i].Save();
+        }
+    }
 }

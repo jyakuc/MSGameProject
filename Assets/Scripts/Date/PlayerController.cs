@@ -113,11 +113,14 @@ public class PlayerController : MonoBehaviour
 
     private RayTest.RayDirection dir;
     public RayTest rayTest;
+
+    private bool[] m_isInputFlg = new bool[(int)EInput.MAX];
     void Awake()
     {
         //       m_lifeFlg = false;
         //       m_inputFlg = false;
         m_state = EState.Init;
+
     }
     // Use this for initialization
     void Start()
@@ -180,47 +183,66 @@ public class PlayerController : MonoBehaviour
         if (lsh == 0.0f)
         {
             m_state = EState.Idle;
+            m_isInputFlg[(int)EInput.Vertical] = m_isInputFlg[(int)EInput.Horizontal] = false;
         }
         else if (lsh > 0.0f)
         {
             Move(1);
             m_state = EState.RightMove;
+            m_isInputFlg[(int)EInput.Horizontal] = true;
         }
         // 左方向
         else if (lsh < 0.0f)
         {
             Move(-1);
             m_state = EState.LeftMove;
+            m_isInputFlg[(int)EInput.Horizontal] = true;
         }
 
         if (lsv > 0.0f)
         {
             Direction(1);
+            m_isInputFlg[(int)EInput.Vertical] = true;
         }
         else if (lsv < 0.0f)
         {
             Direction(-1);
+            m_isInputFlg[(int)EInput.Vertical] = true;
         }
 
 
 
-        if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID-1]))
+        if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]))
         {
-  //          Debug.Log(InputName[(int)EInput.A] + m_playerID);
             Extend(m_rightHand_rg, m_HandExtend);
+            m_isInputFlg[(int)EInput.A] = true;
         }
-        if (Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID-1]))
+        else
+            m_isInputFlg[(int)EInput.A] = false;
+
+        if (Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_leftHand_rg, -m_HandExtend);
+            m_isInputFlg[(int)EInput.B] = true;
         }
-        if (Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID-1]))
+        else
+            m_isInputFlg[(int)EInput.B] = false;
+
+        if (Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_rightFoot_rg, m_FootExtendR);
+            m_isInputFlg[(int)EInput.X] = true;
         }
-        if (Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID-1]))
+        else
+            m_isInputFlg[(int)EInput.X] = false;
+
+        if (Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_leftFoot_rg, m_FootExtendL);
+            m_isInputFlg[(int)EInput.Y] = true;
         }
+        else
+            m_isInputFlg[(int)EInput.Y] = false;
 
         // 回転減衰
         if (m_state == EState.LeftMove || m_state == EState.RightMove)
@@ -337,6 +359,20 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    // 入力フラグ（クリティカルヒット用）
+    public bool IsInputFlagParts(EInput eInput)
+    {
+        return m_isInputFlg[(int)eInput];
+    }
+    // 入力フラグ（クリティカルヒット用）
+    public bool IsInputAllFlags()
+    {
+        for(int i = 0; i < m_isInputFlg.Length; ++i)
+        {
+            if (m_isInputFlg[i]) return true;
+        }
+        return false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (m_state != EState.Init) return;
