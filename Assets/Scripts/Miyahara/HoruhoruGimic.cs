@@ -5,11 +5,26 @@ using UnityEngine;
 public class HoruhoruGimic : MonoBehaviour {
 
     private const int Maxpos = 8;
-    
+
+    private const int MaxPattern = 10;
 
     private FallFloor[] ChildFloor;
     private GameObject[] MeteoPos = new GameObject[Maxpos];
-    //private List<int> FallList = new List<int>;
+    private int[,] FallList =
+    {
+        {0,1,2,3,4,5,6 },  //順になくなる
+        {7,6,5,4,3,2,1 },
+        {1,4,7,6,3,0,2 },  //縦に消える
+        {5,2,0,3,6,7,4 },
+        {0,5,1,7,2,4,6 },  //真ん中が残る
+        {5,2,0,1,4,7,6 },
+        {0,5,7,1,6,4,3 },  //端が残る
+        {1,5,0,7,6,2,3 },
+        {3,4,7,1,0,2,5 },  //真ん中が即消える
+        {3,0,1,4,7,6,5 }
+    };
+    private int Count;
+
     private GameObject Floor;
     [SerializeField]
     public GameObject FireBall;
@@ -26,10 +41,12 @@ public class HoruhoruGimic : MonoBehaviour {
     
     private GameController Gb;
 
-    private int RandomFloor;
+    private int RandomList;
     private int min = 0;
-	// Use this for initialization
-	void Start () {
+    private int max = 9;
+    // Use this for initialization
+    
+    void Start () {
         GameObject ParentMeteopos = GameObject.Find("MeteoPositions");
         if (Gb == null)
         {
@@ -42,6 +59,8 @@ public class HoruhoruGimic : MonoBehaviour {
             MeteoPos[i] = ParentMeteopos.transform.GetChild(i).gameObject;
         }
         ChildFloor = Floor.GetComponentsInChildren<FallFloor>();
+        Count = 0;
+        RandomList = UnityEngine.Random.Range(min, max);
     }
 	
 	// Update is called once per frame
@@ -51,19 +70,15 @@ public class HoruhoruGimic : MonoBehaviour {
         if (Gb.StartFlg)
         {
 
-            if (ChildFloor.Length == 1)
+            if (Count >= 7)
                 return;
             if (SetTime < NowTime)
             {
 
-
-                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                RandomFloor = UnityEngine.Random.Range(min, ChildFloor.Length);
-                //RandomFloor = 3;
-                    Effect = Instantiate(FireBall, MeteoPos[RandomFloor].transform.position,Quaternion.identity);
-                    Effect.GetComponent<FireBall>().GroundNumber = RandomFloor;
-                    NowTime = 0;
-                
+                Effect = Instantiate(FireBall, MeteoPos[FallList[RandomList,Count]].transform.position,Quaternion.identity);
+                Effect.GetComponent<FireBall>().GroundNumber = FallList[RandomList, Count];
+                NowTime = 0;
+                Count += 1;
             }
             //Debug.Log(NowTime);
             NowTime += Interval * Time.deltaTime;
