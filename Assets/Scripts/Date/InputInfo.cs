@@ -100,9 +100,9 @@ public class InputInfo
         info.positiveButton = _positiveButton;
         info.altNegativeButton = _altNegativeButton;
         info.altPositiveButton = _altPositiveButton;
-        info.gravity = 0;
+        info.gravity = 3;
         info.sensitivity = 1;
-        info.dead = 0.2f;
+        info.dead = 0.001f;
         info.type = AxisType.KeyOrMouseButton;
 
         return info;
