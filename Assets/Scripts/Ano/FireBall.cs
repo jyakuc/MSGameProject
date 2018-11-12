@@ -12,6 +12,12 @@ public class FireBall : MonoBehaviour {
     private ParticleSystem AtomicEffect;
     private Rigidbody Myrigidbody;
     private CapsuleCollider MyCollider;
+    private int GroundNum;
+    public int GroundNumber
+    {
+        get { return GroundNum; }
+        set { GroundNum = value; }
+    }
     void OnTriggerEnter(Collider other)
     {
         string LayerName = LayerMask.LayerToName(other.gameObject.layer);

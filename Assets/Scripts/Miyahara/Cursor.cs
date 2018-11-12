@@ -52,8 +52,7 @@ public class Cursor : MonoBehaviour
         {
             pos.z += Speed;
         }
-        if(PlayerID == 1)
-            Debug.Log(pos);
+        
 
         Ray ray = new Ray();
         ray.direction = Vector3.down;
