@@ -113,6 +113,12 @@ public class PlayerController : MonoBehaviour
 
     private RayTest.RayDirection dir;
     public RayTest rayTest;
+    [Range(0, 100)]
+    public int CriticalProbability = 20;
+    [Range(0, 100)]
+    public int HitPower = 20;
+    [Range(0, 100)]
+    public int CriticalPower = 40;
 
     private bool[] m_isInputFlg = new bool[(int)EInput.MAX];
     void Awake()
@@ -169,7 +175,10 @@ public class PlayerController : MonoBehaviour
         Debug.Log(m_state);
     
     }
-
+    public EState GetMyState()
+    {
+        return m_state;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {

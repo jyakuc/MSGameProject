@@ -22,19 +22,14 @@ public class HitSystem : MonoBehaviour {
     //ちょっと多段ヒットしているので一時的に時間で制御
     private float DelayTime = 2.0f;
     private float countTime = 0;
-    [Range(0, 100)]
-    public int CriticalProbability = 20;
-    [Range(0, 100)]
-    public int HitPower = 20;
-    [Range(0, 100)]
-    public int CriticalPower = 40;
+
     private bool TimeFlag = false;
 
     void OnTriggerStay(Collider other)
     {
         //レイヤーの名前取得
         string LayerName = LayerMask.LayerToName(other.gameObject.layer);
-        if (!HitEffectFlag)
+        if ((!HitEffectFlag)&&(PlayerController.EState.Init!= P_Controller.GetMyState()))
         {
             //プレイヤーの体判定の部位
             if (LayerName == "Player_Chest")
@@ -218,7 +213,7 @@ public class HitSystem : MonoBehaviour {
         {
             int Probability = Random.Range(0, 100);
             Debug.Log(Probability);
-            if (Probability <= CriticalProbability)
+            if (Probability <= P_Controller.CriticalProbability)
             {
                 BlowAway(HitObject,HitSelect.Critical);
                 return HitSelect.Critical;
@@ -236,11 +231,11 @@ public class HitSystem : MonoBehaviour {
         {
             case HitSelect.Hit:
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                HitRigid.AddForce(this.transform.position* HitPower, ForceMode.Impulse);
+                HitRigid.AddForce(this.transform.position* P_Controller.HitPower, ForceMode.Impulse);
                 break;
             case HitSelect.Critical:
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                HitRigid.AddForce(this.transform.position * CriticalPower, ForceMode.Impulse);
+                HitRigid.AddForce(this.transform.position * P_Controller.CriticalPower, ForceMode.Impulse);
                 break;
         }
     }
