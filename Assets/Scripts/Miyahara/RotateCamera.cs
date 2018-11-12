@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class RotateCamera : MonoBehaviour {
 
-
-    private float num;
+    [SerializeField]
+    private float Speed;
     private float Count;
     [SerializeField]
     private GameObject MainCamera;
@@ -21,7 +21,6 @@ public class RotateCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        num = 2;
         Rate = 1;
         Count = 0;
         SceneObj = GameObject.FindObjectOfType<SceneController>();
@@ -34,8 +33,8 @@ public class RotateCamera : MonoBehaviour {
 	void Update () {
         if (Count < 270)
         {
-            this.transform.Rotate(0, num*Time.deltaTime, 0);
-            Count += num;
+            this.transform.Rotate(0, Speed*Time.deltaTime, 0);
+            Count += Speed * Time.deltaTime;
         }
         else if(!FadeObj.IsFade && FadeFlg == false) //フェードイン
         {
