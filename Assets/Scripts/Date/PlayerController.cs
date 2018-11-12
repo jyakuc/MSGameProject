@@ -342,6 +342,7 @@ public class PlayerController : MonoBehaviour
     {
         // m_lifeFlg = false;
         m_state = EState.Dead;
+        GetComponent<Rigidbody>().isKinematic = true;
     }
 
     public void PlayStart()
