@@ -100,6 +100,10 @@ public class ArtGrading : MonoBehaviour {
         m_chestParts.obj = m_bellyParts.obj.GetChild(0);
         m_neckParts.obj = m_chestParts.obj.GetChild(0);
         m_headParts.obj = m_neckParts.obj.GetChild(0);
+        m_partsList.Add(m_bellyParts);
+        m_partsList.Add(m_chestParts);
+        m_partsList.Add(m_neckParts);
+        m_partsList.Add(m_headParts);
 
         m_shoulderLParts.obj = m_chestParts.obj.GetChild(1);
         m_upperArmL.obj = m_shoulderLParts.obj.GetChild(0);
@@ -120,7 +124,7 @@ public class ArtGrading : MonoBehaviour {
         m_thighsR.obj = m_assR.obj.GetChild(0);
         m_calfR.obj = m_thighsR.obj.GetChild(0);
 
-//        m_partsList.Add();
+ 
 
     }
 	
