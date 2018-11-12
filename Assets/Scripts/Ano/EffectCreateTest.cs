@@ -13,9 +13,9 @@ public class EffectCreateTest : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         GameObject CreateObject;
-        this.transform.position=new Vector3(Random.Range(-30,30),20, Random.Range(-30, 30));
+        this.transform.position=new Vector3(Random.Range(-20,20),20, Random.Range(-20, 20));
         NowTime += Time.deltaTime;
-        if (NowTime>=2)
+        if (NowTime>=1)
         {
             CreateObject = (GameObject)Instantiate(Prefab, transform.position, Quaternion.identity);
             CreateObject.GetComponent<Transform>().LookAt(this.transform.position);
