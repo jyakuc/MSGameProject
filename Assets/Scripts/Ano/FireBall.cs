@@ -35,6 +35,9 @@ public class FireBall : MonoBehaviour {
             NewHitEffect.GetComponent<Transform>().localScale = MyParticle.transform.localScale;
 
             AtomicEffect.Play();
+
+            Debug.Log(other.transform.name);
+            other.GetComponent<FallFloor>().OnFall();
         }
 
 

@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 33534339949073040}
   - component: {fileID: 23865393196401302}
   - component: {fileID: 64075264233775786}
+  - component: {fileID: 114352568006783974}
   m_Layer: 11
   m_Name: MtBG05
   m_TagString: Untagged
@@ -1463,6 +1464,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114352568006783974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356869732737850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114723087339469372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1477,7 +1489,6 @@ MonoBehaviour:
   FireBall: {fileID: 1822514340354904, guid: 81a6e33e6e8fb814481529a15ea1a562, type: 2}
   Interval: 60
   SetTime: 120
-  Gb: {fileID: 0}
 --- !u!114 &114850969635079246
 MonoBehaviour:
   m_ObjectHideFlags: 1

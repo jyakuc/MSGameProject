@@ -58,9 +58,9 @@ public class HoruhoruGimic : MonoBehaviour {
 
 
                 Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                //RandomFloor = UnityEngine.Random.Range(min, ChildFloor.Length);
-                RandomFloor = 3;
-                    Effect = Instantiate(FireBall, MeteoPos[RandomFloor].transform);
+                RandomFloor = UnityEngine.Random.Range(min, ChildFloor.Length);
+                //RandomFloor = 3;
+                    Effect = Instantiate(FireBall, MeteoPos[RandomFloor].transform.position,Quaternion.identity);
                     Effect.GetComponent<FireBall>().GroundNumber = RandomFloor;
                     NowTime = 0;
                 
