@@ -149,10 +149,16 @@ public class PlayerController : MonoBehaviour
         myInputManager = GameObject.FindObjectOfType<MyInputManager>();
         if(myInputManager == null)
             Debug.LogError("MyInputManagerがシーンに存在しません");
-            
+
+        if (!DebugModeGame.GetProperty().m_debugMode) return;
+        // デバッグモードONの時の設定
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
         {
             m_state = EState.Idle;
+        }
+        if (!DebugModeGame.GetProperty().m_controllerEnable)
+        {
+            myInputManager.joysticks[m_playerID - 1] = m_playerID;
         }
     }
     void Update()
