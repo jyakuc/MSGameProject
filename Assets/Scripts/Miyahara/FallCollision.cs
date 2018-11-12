@@ -30,6 +30,7 @@ public class FallCollision : MonoBehaviour {
         CreateEffect(other.gameObject.transform);
         Rank.Add(other.gameObject.transform.root.GetComponent<PlayerController>().PlayerID);
         other.gameObject.transform.root.GetComponent<PlayerController>().Dead();
+        other.gameObject.transform.root.GetComponent<ArtGrading>().Save();
         Destroy(other.gameObject.transform.root.gameObject);
         rankingInGame.SetRank(other.gameObject.transform.root.GetComponent<PlayerController>().PlayerID);
     }

@@ -90,6 +90,12 @@ public class ArtGrading : MonoBehaviour {
 
     [SerializeField]
     private List<ArtParts> m_partsList = new List<ArtParts>();
+
+    private float m_cost;
+    public float Cost
+    {
+        get { return m_cost; }
+    }
 	// Use this for initialization
 	void Start () {
         m_armature = transform.GetChild(0).gameObject;
@@ -154,5 +160,26 @@ public class ArtGrading : MonoBehaviour {
         {
             m_partsList[i].Save();
         }
+    }
+
+    void ArtistGrading()
+    {
+        float cost = 0;
+        for(int i = 0; i < m_partsList.Capacity; ++i)
+        {
+            // 座標の差異
+            cost += m_partsList[i].initPos.x - m_partsList[i].savePos.x;
+            cost += m_partsList[i].initPos.y - m_partsList[i].savePos.y;
+            cost += m_partsList[i].initPos.z - m_partsList[i].savePos.z;
+            // 回転の差異
+            cost += m_partsList[i].initRota.eulerAngles.x - m_partsList[i].saveRota.eulerAngles.x;
+            cost += m_partsList[i].initRota.eulerAngles.y - m_partsList[i].saveRota.eulerAngles.y;
+            cost += m_partsList[i].initRota.eulerAngles.z - m_partsList[i].saveRota.eulerAngles.z;
+            // スケールの差異
+            cost += m_partsList[i].initScale.x - m_partsList[i].saveScale.x;
+            cost += m_partsList[i].initScale.y - m_partsList[i].saveScale.y;
+            cost += m_partsList[i].initScale.z - m_partsList[i].saveScale.z;
+        }
+        m_cost = cost;
     }
 }
