@@ -17,10 +17,11 @@ public class FallCollision : MonoBehaviour {
                 Debug.LogError("RankingInGameがシーン存在しません");
         }
 
-        costManager = GameObject.FindObjectOfType<CostManager>();
-        if (costManager == null)
-            Debug.LogError("CostManagerがシーンに存在しません。");
-	}
+        /*   costManager = GameObject.FindObjectOfType<CostManager>();
+           if (costManager == null)
+               Debug.LogError("CostManagerがシーンに存在しません。");
+       */
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,12 +41,14 @@ public class FallCollision : MonoBehaviour {
         Rank.Add(playerID);
 
         parent.GetComponent<PlayerController>().Dead();
-        if (parent.GetComponent<ArtGrading>() != null)
+      /*  if (parent.GetComponent<ArtGrading>() != null)
         {
             parent.GetComponent<ArtGrading>().Save();
             parent.GetComponent<ArtGrading>().ArtistGrading();
             costManager.AddCostData(playerID, parent.GetComponent<ArtGrading>().Cost);
+            Debug.Log(parent.GetComponent<ArtGrading>().Cost);
         }
+        */
         rankingInGame.SetRank(playerID);
         Destroy(parent.gameObject);
     }
