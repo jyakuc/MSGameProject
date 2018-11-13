@@ -88,9 +88,9 @@ public class ArtGrading : MonoBehaviour {
     private ArtParts m_thighsL;
     private ArtParts m_calfL;
 
-    [SerializeField]
     private List<ArtParts> m_partsList = new List<ArtParts>();
 
+    [SerializeField]
     private float m_cost;
     public float Cost
     {
@@ -162,7 +162,8 @@ public class ArtGrading : MonoBehaviour {
         }
     }
 
-    void ArtistGrading()
+    // 採点
+    public void ArtistGrading()
     {
         float cost = 0;
         for(int i = 0; i < m_partsList.Capacity; ++i)
@@ -181,5 +182,6 @@ public class ArtGrading : MonoBehaviour {
             cost += m_partsList[i].initScale.z - m_partsList[i].saveScale.z;
         }
         m_cost = cost;
+        
     }
 }
