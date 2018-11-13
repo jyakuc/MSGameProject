@@ -53,7 +53,8 @@ public class FireBall : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(!MyParticle.isPlaying)
+        this.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
+        if (!MyParticle.isPlaying)
         {
             Destroy(this.gameObject);
         }
