@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct ArtParts
+public class ArtParts
 {
     public Transform obj;
     public Vector3 initPos;
@@ -13,6 +12,11 @@ public struct ArtParts
     public Vector3 savePos;
     public Quaternion saveRota;
     public Vector3 saveScale;
+
+    public ArtParts(Transform _obj)
+    {
+        obj = _obj;
+    }
     public void Init()
     {
         if(obj != null)
@@ -37,6 +41,7 @@ public enum Parts
 {
     Belly,
     Chest,
+
     Neck,
     Head,
 
@@ -60,39 +65,26 @@ public enum Parts
     CalfR,
 }
 
+public struct CostParts
+{
+    public float allCost;
+    public float chestCost;
+    public float headCost;
+    public float rightArmCost;
+    public float leftArmCost;
+    public float rightFootCost;
+    public float leftFootCost;
+}
+
 public class ArtGrading : MonoBehaviour {
     private GameObject m_armature;
 
     // それぞれのパーツのTransform
-    private ArtParts m_bellyParts;
-    private ArtParts m_chestParts;
-    private ArtParts m_neckParts;
-    private ArtParts m_headParts;
-    
-    private ArtParts m_shoulderLParts;
-    private ArtParts m_upperArmL;
-    private ArtParts m_armsL;
-    private ArtParts m_handL;
-    
-    private ArtParts m_shoulderRParts;
-    private ArtParts m_upperArmR;
-    private ArtParts m_armsR;
-    private ArtParts m_handR;
-    
-    private ArtParts m_lowerParts;
-    private ArtParts m_assR;
-    private ArtParts m_thighsR;
-    private ArtParts m_calfR;
-    
-    private ArtParts m_assL;
-    private ArtParts m_thighsL;
-    private ArtParts m_calfL;
-
     private List<ArtParts> m_partsList = new List<ArtParts>();
 
     [SerializeField]
-    private float m_cost;
-    public float Cost
+    private CostParts m_cost;
+    public CostParts Cost
     {
         get { return m_cost; }
     }
@@ -100,50 +92,32 @@ public class ArtGrading : MonoBehaviour {
 	void Start () {
         m_armature = transform.GetChild(0).gameObject;
 
-        m_bellyParts.obj = m_armature.transform.GetChild(0);
-        m_chestParts.obj = m_bellyParts.obj.GetChild(0);
-        m_neckParts.obj = m_chestParts.obj.GetChild(0);
-        m_headParts.obj = m_neckParts.obj.GetChild(0);
-        m_partsList.Add(m_bellyParts);
-        m_partsList.Add(m_chestParts);
-        m_partsList.Add(m_neckParts);
-        m_partsList.Add(m_headParts);
+   
+        m_partsList.Add(new ArtParts(m_armature.transform.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.Belly].obj.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.Chest].obj.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.Neck].obj.GetChild(0)));
 
-        m_shoulderLParts.obj = m_chestParts.obj.GetChild(1);
-        m_upperArmL.obj = m_shoulderLParts.obj.GetChild(0);
-        m_armsL.obj = m_upperArmL.obj.GetChild(0);
-        m_handL.obj = m_armsL.obj.GetChild(0);
-        m_partsList.Add(m_shoulderLParts);
-        m_partsList.Add(m_upperArmL);
-        m_partsList.Add(m_armsL);
-        m_partsList.Add(m_handL);
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.Chest].obj.GetChild(1)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.ShoulderL].obj.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.UpperL].obj.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.ArmL].obj.GetChild(0)));
 
-        m_shoulderRParts.obj = m_chestParts.obj.transform.GetChild(2);
-        m_upperArmR.obj = m_shoulderRParts.obj.GetChild(0);
-        m_armsR.obj = m_upperArmR.obj.GetChild(0);
-        m_handR.obj = m_armsR.obj.GetChild(0);
-        m_partsList.Add(m_shoulderRParts);
-        m_partsList.Add(m_upperArmR);
-        m_partsList.Add(m_armsR);
-        m_partsList.Add(m_handR);
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.Chest].obj.GetChild(2)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.ShoulderR].obj.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.UpperR].obj.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.ArmR].obj.GetChild(0)));
 
-        m_lowerParts.obj = m_armature.transform.GetChild(1);
-        m_assL.obj = m_lowerParts.obj.GetChild(0);
-        m_thighsL.obj = m_assL.obj.GetChild(0);
-        m_calfL.obj = m_thighsL.obj.GetChild(0);
-        m_partsList.Add(m_lowerParts);
-        m_partsList.Add(m_assL);
-        m_partsList.Add(m_thighsL);
-        m_partsList.Add(m_calfL);
+        m_partsList.Add(new ArtParts(m_armature.transform.GetChild(1)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.Lower].obj.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.AssL].obj.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.ThighsL].obj.GetChild(0)));
 
-        m_assR.obj = m_lowerParts.obj.GetChild(1);
-        m_thighsR.obj = m_assR.obj.GetChild(0);
-        m_calfR.obj = m_thighsR.obj.GetChild(0);
-        m_partsList.Add(m_assR);
-        m_partsList.Add(m_thighsR);
-        m_partsList.Add(m_calfR);
-
-        for(int i = 0; i < m_partsList.Capacity; ++i)
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.Lower].obj.GetChild(1)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.AssR].obj.GetChild(0)));
+        m_partsList.Add(new ArtParts(m_partsList[(int)Parts.ThighsR].obj.GetChild(0)));
+        
+        for(int i = 0; i < m_partsList.Count; ++i)
         {
             m_partsList[i].Init();
         }
@@ -156,7 +130,7 @@ public class ArtGrading : MonoBehaviour {
 
     public void Save()
     {
-        for(int i = 0; i < m_partsList.Capacity; ++i)
+        for(int i = 0; i < m_partsList.Count; ++i)
         {
             m_partsList[i].Save();
         }
@@ -166,22 +140,35 @@ public class ArtGrading : MonoBehaviour {
     public void ArtistGrading()
     {
         float cost = 0;
-        for(int i = 0; i < m_partsList.Capacity; ++i)
+        for(int i = 0; i < m_partsList.Count; ++i)
         {
             // 座標の差異
-            cost += m_partsList[i].initPos.x - m_partsList[i].savePos.x;
-            cost += m_partsList[i].initPos.y - m_partsList[i].savePos.y;
-            cost += m_partsList[i].initPos.z - m_partsList[i].savePos.z;
+            cost += Mathf.Abs(m_partsList[i].initPos.x - m_partsList[i].savePos.x);
+            cost += Mathf.Abs(m_partsList[i].initPos.y - m_partsList[i].savePos.y);
+            cost += Mathf.Abs(m_partsList[i].initPos.z - m_partsList[i].savePos.z);
             // 回転の差異
-            cost += m_partsList[i].initRota.eulerAngles.x - m_partsList[i].saveRota.eulerAngles.x;
-            cost += m_partsList[i].initRota.eulerAngles.y - m_partsList[i].saveRota.eulerAngles.y;
-            cost += m_partsList[i].initRota.eulerAngles.z - m_partsList[i].saveRota.eulerAngles.z;
+            cost += Mathf.Abs(m_partsList[i].initRota.eulerAngles.x - m_partsList[i].saveRota.eulerAngles.x);
+            cost += Mathf.Abs(m_partsList[i].initRota.eulerAngles.y - m_partsList[i].saveRota.eulerAngles.y);
+            cost += Mathf.Abs(m_partsList[i].initRota.eulerAngles.z - m_partsList[i].saveRota.eulerAngles.z);
             // スケールの差異
-            cost += m_partsList[i].initScale.x - m_partsList[i].saveScale.x;
-            cost += m_partsList[i].initScale.y - m_partsList[i].saveScale.y;
-            cost += m_partsList[i].initScale.z - m_partsList[i].saveScale.z;
+            cost += Mathf.Abs(m_partsList[i].initScale.x - m_partsList[i].saveScale.x);
+            cost += Mathf.Abs(m_partsList[i].initScale.y - m_partsList[i].saveScale.y);
+            cost += Mathf.Abs(m_partsList[i].initScale.z - m_partsList[i].saveScale.z);
+
+            if (i <= (int)Parts.Chest)
+                m_cost.chestCost += cost;
+            else if (i <= (int)Parts.Head)
+                m_cost.headCost += cost;
+            else if (i <= (int)Parts.HandL)
+                m_cost.leftArmCost += cost;
+            else if (i <= (int)Parts.HandR)
+                m_cost.rightArmCost += cost;
+            else if (i <= (int)Parts.CalfL)
+                m_cost.leftFootCost += cost;
+            else if (i <= (int)Parts.CalfR)
+                m_cost.rightFootCost += cost;
+            m_cost.allCost += cost;
+            cost = 0;
         }
-        m_cost = cost;
-        
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CostManager : MonoBehaviour {
-    private Dictionary<int, float> m_playerCostData;
+    private Dictionary<int, float> m_playerCostData = new Dictionary<int, float>();
     [SerializeField]
     private float m_magnification;      // 倍率
     private void Awake()
