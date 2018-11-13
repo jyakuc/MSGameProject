@@ -136,6 +136,17 @@ public class GameController : MonoBehaviour
     void FinishUpdate()
     {
         m_state = EState.End;
+        for(int i = 0; i < m_playerObj.Count; ++i)
+        {
+            if (m_playerObj[i] == null) continue;
+            if (m_playerObj[i].GetMyState() == PlayerController.EState.Dead) continue;
+            // 芸術点採点
+            ArtGrading art =  m_playerObj[i].gameObject.GetComponent<ArtGrading>();
+            art.ArtistGrading();
+            FindObjectOfType<CostManager>().AddCostData(m_playerObj[i].PlayerID, art.Cost);
+        }
+
+
         m_gameSceneController.ChangeScene();
     }
 }
