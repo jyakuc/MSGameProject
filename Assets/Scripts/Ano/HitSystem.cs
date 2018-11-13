@@ -22,19 +22,26 @@ public class HitSystem : MonoBehaviour {
     //ちょっと多段ヒットしているので一時的に時間で制御
     private float DelayTime = 2.0f;
     private float countTime = 0;
-    [Range(0, 100)]
-    public int CriticalProbability = 20;
-    [Range(0, 100)]
-    public int HitPower = 20;
-    [Range(0, 100)]
-    public int CriticalPower = 40;
+
     private bool TimeFlag = false;
 
     void OnTriggerStay(Collider other)
     {
         //レイヤーの名前取得
         string LayerName = LayerMask.LayerToName(other.gameObject.layer);
-        if (!HitEffectFlag)
+        //プレイヤーオブジェクトに当たったかどうか
+        if (PlayerCheck(other))
+        {
+            //当たったオブジェクトが吹っ飛び状態なのか
+            if(other.gameObject.transform.root.gameObject.GetComponent<PlayerController>().GetMyState()== PlayerController.EState.BlowAway)
+            {
+                return;
+            }
+
+        }
+        if ((!HitEffectFlag)&&
+            ((PlayerController.EState.RightMove== P_Controller.GetMyState())||
+            (PlayerController.EState.LeftMove == P_Controller.GetMyState())))
         {
             //プレイヤーの体判定の部位
             if (LayerName == "Player_Chest")
@@ -168,6 +175,21 @@ public class HitSystem : MonoBehaviour {
         }
 
     }
+    private bool PlayerCheck(Collider col)
+    {
+        string LayerName = LayerMask.LayerToName(col.gameObject.layer);
+        if ((LayerName == "Player_Chest") ||
+            (LayerName == "Player_1") ||
+            (LayerName == "Player_2") ||
+            (LayerName == "Player_3") ||
+            (LayerName == "Player_4") ||
+            (LayerName == "Player_5") ||
+            (LayerName == "Player_6"))
+        {
+            return true;
+        }
+        return false;
+    }
     // Use this for initialization
     void Start () {
 		
@@ -218,7 +240,7 @@ public class HitSystem : MonoBehaviour {
         {
             int Probability = Random.Range(0, 100);
             Debug.Log(Probability);
-            if (Probability <= CriticalProbability)
+            if (Probability <= P_Controller.CriticalProbability)
             {
                 BlowAway(HitObject,HitSelect.Critical);
                 return HitSelect.Critical;
@@ -232,15 +254,16 @@ public class HitSystem : MonoBehaviour {
     {
         //親のRigidbodyを探す
         Rigidbody HitRigid = HitObject.transform.root.gameObject.GetComponent<Rigidbody>();
+        HitObject.transform.root.gameObject.GetComponent<PlayerController>().BlowAwayNow();
         switch (EffectType)
         {
             case HitSelect.Hit:
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                HitRigid.AddForce(this.transform.position* HitPower, ForceMode.Impulse);
+                HitRigid.AddForce(this.transform.position* P_Controller.HitPower, ForceMode.Impulse);
                 break;
             case HitSelect.Critical:
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                HitRigid.AddForce(this.transform.position * CriticalPower, ForceMode.Impulse);
+                HitRigid.AddForce(this.transform.position * P_Controller.CriticalPower, ForceMode.Impulse);
                 break;
         }
     }

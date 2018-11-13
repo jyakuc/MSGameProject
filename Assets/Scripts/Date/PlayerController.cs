@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
         Init,
         Wait,
         Idle,
+        BlowAway,
+        Atack,
         RightMove,
         LeftMove,
         Dead
@@ -82,7 +84,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody m_leftHand_rg;
     private Rigidbody m_rightFoot_rg;
     private Rigidbody m_leftFoot_rg;
-
+    // 自分自身の制御オブジェクト (Rigidbody)阿野追加
+    private Rigidbody m_Player_rg;
     private string[] InputName = new string[(int)EInput.MAX];
 
     // 回転する力（パラメータ）
@@ -113,7 +116,19 @@ public class PlayerController : MonoBehaviour
 
     private RayTest.RayDirection dir;
     public RayTest rayTest;
-
+    //確率
+    [Range(0, 100)]
+    public int CriticalProbability = 20;
+    //ヒット時の力
+    [Range(0, 10)]
+    public float HitPower = 8;
+    //クリティカル時の力
+    [Range(0, 20)]
+    public float CriticalPower = 20;
+    //飛んで動けなくなる制御時間(バグ防止)
+    private float FlayTime_Max = 3;
+    //飛んでる経過時間
+    private float FlayNowTime = 0;
     private bool[] m_isInputFlg = new bool[(int)EInput.MAX];
     void Awake()
     {
@@ -131,7 +146,7 @@ public class PlayerController : MonoBehaviour
         m_leftHand_rg = m_leftHandObj.GetComponent<Rigidbody>();
         m_rightFoot_rg = m_rightFootObj.GetComponent<Rigidbody>();
         m_leftFoot_rg = m_leftFootObj.GetComponent<Rigidbody>();
-
+        m_Player_rg = GetComponent<Rigidbody>();
         m_bodyForce.Init();
         m_HandForce.Init();
         m_FootForce.Init();
@@ -169,11 +184,15 @@ public class PlayerController : MonoBehaviour
         Debug.Log(m_state);
     
     }
-
+    public EState GetMyState()
+    {
+        return m_state;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (m_state == EState.Init || m_state == EState.Dead || m_state == EState.Wait) return;
+        if (m_state == EState.Init || m_state == EState.Dead || m_state == EState.Wait|| m_state == EState.BlowAway) return;
+
         // 右方向
         float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal] + myInputManager.joysticks[m_playerID-1].ToString());
         //       Debug.Log("横" + lsh);
@@ -268,7 +287,7 @@ public class PlayerController : MonoBehaviour
             m_HandForce.Init();
             m_FootForce.Init();
         }
-    //    Debug.Log(m_state);
+        //Debug.Log(m_state);
     }
 
 
@@ -359,7 +378,11 @@ public class PlayerController : MonoBehaviour
         if (m_state == EState.Wait) return true;
         return false;
     }
-
+    //吹っ飛び状態にする
+    public void BlowAwayNow()
+    {
+        m_state = EState.BlowAway;
+    }
     // 入力フラグ（クリティカルヒット用）
     public bool IsInputFlagParts(EInput eInput)
     {
@@ -376,6 +399,19 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //吹っ飛び中に地面に当たると吹っ飛び状態解除
+        if(m_state==EState.BlowAway)
+        {
+            Debug.Log("Player" + PlayerID + "飛んでます");
+            FlayNowTime += Time.deltaTime;
+            if ((LayerMask.LayerToName(other.gameObject.layer) == "Ground")||(FlayNowTime>=FlayTime_Max))
+            {
+                Debug.Log("Player" + PlayerID + "飛び終わりました");
+                FlayNowTime = 0;
+                m_state = EState.Idle;
+            }
+
+        }
         if (DebugModeGame.GetProperty().m_debugMode && DebugModeGame.GetProperty().m_debugPlayerEnable) return;
         if (m_state != EState.Init) return;
         if (LayerMask.LayerToName(other.gameObject.layer) != "Ground") return;

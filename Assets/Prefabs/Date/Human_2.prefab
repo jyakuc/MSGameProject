@@ -2154,9 +2154,6 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114387306285487334}
   PlayNum: 2
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
 --- !u!114 &114378733908616502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2217,6 +2214,9 @@ MonoBehaviour:
     decayForce: {x: 0.99, y: 0, z: 0}
   m_directionAngle: 250
   rayTest: {fileID: 114184571854150478}
+  CriticalProbability: 20
+  HitPower: 9
+  CriticalPower: 40
 --- !u!114 &114701586676745998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2234,9 +2234,6 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114387306285487334}
   PlayNum: 2
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
 --- !u!114 &114761058017675996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2254,9 +2251,6 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114387306285487334}
   PlayNum: 2
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
 --- !u!114 &114912355907915232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2274,9 +2268,6 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114387306285487334}
   PlayNum: 2
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
 --- !u!137 &137943412658688840
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
