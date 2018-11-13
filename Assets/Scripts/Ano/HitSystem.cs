@@ -29,7 +29,19 @@ public class HitSystem : MonoBehaviour {
     {
         //レイヤーの名前取得
         string LayerName = LayerMask.LayerToName(other.gameObject.layer);
-        if ((!HitEffectFlag)&&(PlayerController.EState.Init!= P_Controller.GetMyState()))
+        //プレイヤーオブジェクトに当たったかどうか
+        if (PlayerCheck(other))
+        {
+            //当たったオブジェクトが吹っ飛び状態なのか
+            if(other.gameObject.transform.root.gameObject.GetComponent<PlayerController>().GetMyState()== PlayerController.EState.BlowAway)
+            {
+                return;
+            }
+
+        }
+        if ((!HitEffectFlag)&&
+            ((PlayerController.EState.RightMove== P_Controller.GetMyState())||
+            (PlayerController.EState.LeftMove == P_Controller.GetMyState())))
         {
             //プレイヤーの体判定の部位
             if (LayerName == "Player_Chest")
@@ -163,6 +175,21 @@ public class HitSystem : MonoBehaviour {
         }
 
     }
+    private bool PlayerCheck(Collider col)
+    {
+        string LayerName = LayerMask.LayerToName(col.gameObject.layer);
+        if ((LayerName == "Player_Chest") ||
+            (LayerName == "Player_1") ||
+            (LayerName == "Player_2") ||
+            (LayerName == "Player_3") ||
+            (LayerName == "Player_4") ||
+            (LayerName == "Player_5") ||
+            (LayerName == "Player_6"))
+        {
+            return true;
+        }
+        return false;
+    }
     // Use this for initialization
     void Start () {
 		
@@ -227,6 +254,7 @@ public class HitSystem : MonoBehaviour {
     {
         //親のRigidbodyを探す
         Rigidbody HitRigid = HitObject.transform.root.gameObject.GetComponent<Rigidbody>();
+        HitObject.transform.root.gameObject.GetComponent<PlayerController>().BlowAwayNow();
         switch (EffectType)
         {
             case HitSelect.Hit:
