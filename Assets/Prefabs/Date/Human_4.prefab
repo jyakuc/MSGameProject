@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 54578374629925640}
   - component: {fileID: 114368729028583340}
   - component: {fileID: 65850244993908954}
+  - component: {fileID: 114523233835965272}
   m_Layer: 16
   m_Name: Human_4
   m_TagString: Player
@@ -2268,6 +2269,17 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114376492249141510}
   PlayNum: 4
+--- !u!114 &114523233835965272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127312982964314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6969ffb1e73fcde429e21004e511846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137197677056036714
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

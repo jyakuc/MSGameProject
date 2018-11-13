@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 54564422032482134}
   - component: {fileID: 114216656553787622}
   - component: {fileID: 65135043176070948}
+  - component: {fileID: 114890200716053434}
   m_Layer: 14
   m_Name: Human_2
   m_TagString: Player
@@ -2251,6 +2252,17 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114387306285487334}
   PlayNum: 2
+--- !u!114 &114890200716053434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313503552564812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6969ffb1e73fcde429e21004e511846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114912355907915232
 MonoBehaviour:
   m_ObjectHideFlags: 1

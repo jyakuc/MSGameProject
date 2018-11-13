@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 54750565994776612}
   - component: {fileID: 114454334888639076}
   - component: {fileID: 65736451843845886}
+  - component: {fileID: 114774265194296534}
   m_Layer: 8
   m_Name: Human_1
   m_TagString: Player
@@ -2251,6 +2252,17 @@ MonoBehaviour:
   bodyWeight: 0
   headWeight: 0
   eyeWeight: 0
+--- !u!114 &114774265194296534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763243969287568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6969ffb1e73fcde429e21004e511846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114849906645061510
 MonoBehaviour:
   m_ObjectHideFlags: 1
