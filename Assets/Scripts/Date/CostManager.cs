@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CostManager : MonoBehaviour {
-    private Dictionary<int, float> m_playerCostData = new Dictionary<int, float>();
+    private Dictionary<int, CostParts> m_playerCostData = new Dictionary<int, CostParts>();
     [SerializeField]
     private float m_magnification;      // 倍率
     private void Awake()
@@ -20,7 +20,7 @@ public class CostManager : MonoBehaviour {
 		
 	}
 
-    public void AddCostData(int playerID,float cost)
+    public void AddCostData(int playerID,CostParts cost)
     {
         m_playerCostData.Add(playerID, cost);
     }
