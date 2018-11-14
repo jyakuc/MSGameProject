@@ -140,6 +140,8 @@ public class GameController : MonoBehaviour
         {
             if (m_playerObj[i] == null) continue;
             if (m_playerObj[i].GetMyState() == PlayerController.EState.Dead) continue;
+            m_playerObj[i].Win();
+
             // 芸術点採点
             ArtGrading art =  m_playerObj[i].gameObject.GetComponent<ArtGrading>();
             BattlePointGrading battlePoint = m_playerObj[i].gameObject.GetComponent<BattlePointGrading>();
