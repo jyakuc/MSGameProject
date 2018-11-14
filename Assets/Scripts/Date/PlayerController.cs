@@ -130,6 +130,8 @@ public class PlayerController : MonoBehaviour
     //飛んでる経過時間
     private float FlayNowTime = 0;
     private bool[] m_isInputFlg = new bool[(int)EInput.MAX];
+
+    private int m_hitReceivePlayerID;
     void Awake()
     {
         //       m_lifeFlg = false;
@@ -168,6 +170,7 @@ public class PlayerController : MonoBehaviour
         if(myInputManager == null)
             Debug.LogError("MyInputManagerがシーンに存在しません");
 
+        m_hitReceivePlayerID = PlayerID;
         if (!DebugModeGame.GetProperty().m_debugMode) return;
         // デバッグモードONの時の設定
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
@@ -396,8 +399,9 @@ public class PlayerController : MonoBehaviour
         return false;
     }
     //吹っ飛び状態にする
-    public void BlowAwayNow()
+    public void BlowAwayNow(int hitReceiveID)
     {
+        m_hitReceivePlayerID = hitReceiveID;
         m_state = EState.BlowAway;
     }
     // 入力フラグ（クリティカルヒット用）
