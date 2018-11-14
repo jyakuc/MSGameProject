@@ -287,7 +287,8 @@ public class HitSystem : MonoBehaviour {
         Rigidbody HitRigid = HitObject.transform.root.gameObject.GetComponent<Rigidbody>();
         PlayerController hitPlayer = HitObject.transform.root.gameObject.GetComponent<PlayerController>();
 
-        hitPlayer.BlowAwayNow();
+        // 誰に吹き飛ばされたかを保持
+        hitPlayer.BlowAwayNow(P_Controller.PlayerID);
 
         switch (EffectType)
         {
