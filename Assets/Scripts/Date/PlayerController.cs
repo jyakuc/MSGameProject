@@ -351,8 +351,15 @@ public class PlayerController : MonoBehaviour
     public void Dead()
     {
         // m_lifeFlg = false;
+        // 自分が獲得したポイントをCostManager登録
+        BattlePointGrading battlePoint = gameObject.GetComponent<BattlePointGrading>();
+        FindObjectOfType<CostManager>().SaveBattleCostData(m_playerID, battlePoint.GetAllPoint());
+        Debug.Log("脱落：" + name + " バトルポイント：" + battlePoint.GetAllPoint());
+
         m_state = EState.Dead;
         GetComponent<Rigidbody>().isKinematic = true;
+
+        Destroy(gameObject);
     }
 
     public void PlayStart()
@@ -412,6 +419,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        if (DebugModeGame.GetProperty().m_debugMode && DebugModeGame.GetProperty().m_debugPlayerEnable) return;
         if (m_state != EState.Init) return;
         if (LayerMask.LayerToName(other.gameObject.layer) != "Ground") return;
         m_state = EState.Wait;

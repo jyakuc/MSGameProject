@@ -18,8 +18,13 @@ public class DebugModeGame : MonoBehaviour {
 
     private static DebugMode g_debugMode;
 
-	// Use this for initialization
-	void Start () {
+
+    private void Awake()
+    {
+        SetProperty();
+    }
+    // Use this for initialization
+    void Start () {
         SetProperty();
     }
 	

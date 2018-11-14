@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FilterRandamPos : MonoBehaviour {
     private Transform Trans;
-    [Range(-20,0)]
+    [Range(-5,0)]
     public float MinPos_X = 0;
-    [Range(-20, 0)]
+    [Range(-5, 0)]
     public float MinPos_Y = 0;
-    [Range(0, 20)]
+    [Range(0, 5)]
     public float MaxPos_X = 0;
-    [Range(0, 20)]
+    [Range(0, 5)]
     public float MaxPos_Y = 0;
     private Vector2 RandamPos;
     public bool RandamMode = false;

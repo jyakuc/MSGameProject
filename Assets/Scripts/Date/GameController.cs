@@ -19,8 +19,8 @@ public class GameController : MonoBehaviour
     }
 
     private List<PlayerController> m_playerObj = new List<PlayerController>();
-    [SerializeField]
-    public List<GameObject> m_deleteObjects = new List<GameObject>();
+//    [SerializeField]
+//    public List<GameObject> m_deleteObjects = new List<GameObject>();
     [SerializeField]
     private GameSceneController m_gameSceneController;
 
@@ -73,14 +73,14 @@ public class GameController : MonoBehaviour
     }
 
 
-    public void AllDeleteObjects()
+/*    public void AllDeleteObjects()
     {
         for (int i = 0; i < m_deleteObjects.Capacity; i++)
         {
             Destroy(m_deleteObjects[i]);
         }
     }
-
+*/
     public void AddPlayer(GameObject human)
     {
         Debug.Log(human + "追加");
@@ -105,7 +105,7 @@ public class GameController : MonoBehaviour
         {
             m_playerObj[i].PlayStart();
         }
-        AllDeleteObjects();
+ //       AllDeleteObjects();
 
         Debug.Log("ゲームスタート");
     }
@@ -136,6 +136,22 @@ public class GameController : MonoBehaviour
     void FinishUpdate()
     {
         m_state = EState.End;
+        for(int i = 0; i < m_playerObj.Count; ++i)
+        {
+            if (m_playerObj[i] == null) continue;
+            if (m_playerObj[i].GetMyState() == PlayerController.EState.Dead) continue;
+            // 芸術点採点
+            ArtGrading art =  m_playerObj[i].gameObject.GetComponent<ArtGrading>();
+            BattlePointGrading battlePoint = m_playerObj[i].gameObject.GetComponent<BattlePointGrading>();
+            art.ArtistGrading();
+            // コストマネージャーに登録
+            FindObjectOfType<CostManager>().SaveArtCostData(m_playerObj[i].PlayerID, art.Cost);
+            // プレイヤーが消える前に処理する
+            //FindObjectOfType<CostManager>().SaveBattleCostData(m_playerObj[i].PlayerID, battlePoint.GetAllPoint());
+            Debug.Log("勝者：" + m_playerObj[i].name + " 芸術ポイント：" + art.Cost.allCost);
+        }
+
+
         m_gameSceneController.ChangeScene();
     }
 }

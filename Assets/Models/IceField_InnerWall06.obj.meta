@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 8cba229024d388a458d3c2d570bb8360
-timeCreated: 1541473510
+guid: 78a07c40121fe02449f6bdbfa289b164
+timeCreated: 1542083495
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: default
+    100000: IceField_InnerWall06
     100002: //RootNode
-    400000: default
+    400000: IceField_InnerWall06
     400002: //RootNode
-    2100000: defaultMat
-    2300000: default
-    3300000: default
-    4300000: default
-  externalObjects: {}
+    2100000: IceField_InnerWall06Mat
+    2100002: palette
+    2300000: IceField_InnerWall06
+    3300000: IceField_InnerWall06
+    4300000: IceField_InnerWall06
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: IceField_InnerWall06Mat
+    second: {fileID: 2100000, guid: 78a07c40121fe02449f6bdbfa289b164, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
