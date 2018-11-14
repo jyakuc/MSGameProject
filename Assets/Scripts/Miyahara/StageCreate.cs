@@ -15,7 +15,9 @@ public class StageCreate : MonoBehaviour {
     public GameObject HoruhoruCamera;    //生成するカメラ(ホルホルマウンテン)
     public GameObject HoruHoruCannons;   //生成するキャノン(ホルホルマウンテン)
 
+    public GameObject ColdSleepCamera;   //雪山カメラ
     public GameObject ColdSleepMountain; //雪山
+    public GameObject ColdSleepCannons;  //生成するキャノン(雪山)
 
     public GameObject Cursol;            //生成するカーソル
 
@@ -59,7 +61,10 @@ public class StageCreate : MonoBehaviour {
                 break;
             case SelectingStage.ColdSleepMountain:
                 //プレハブからインスタンスを生成
+                Instantiate(ColdSleepCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                    //カメラ生成
                 Instantiate(ColdSleepMountain, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                  //ステージ生成
+                Instantiate(ColdSleepCannons, new Vector3(0.0f,0.0f,0.0f),Quaternion.identity);                      //キャノン生成
+                Instantiate(Cursol, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                             //カーソル生成
                 break;
         }
         
