@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
         Atack,
         RightMove,
         LeftMove,
-        Dead
+        Dead,
+        Win
     }
 
     [System.Serializable]
@@ -194,7 +195,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (m_state == EState.Init || m_state == EState.Dead || m_state == EState.Wait) return;
+        if (m_state == EState.Init ||
+            m_state == EState.Dead ||
+            m_state == EState.Wait ||
+            m_state == EState.Win) return;
+
         if(m_state==EState.BlowAway)
         {
             FlayNowTime += Time.deltaTime;
@@ -424,6 +429,14 @@ public class PlayerController : MonoBehaviour
     {
         return m_hitReceivePlayerID;
     }
+
+    // 勝利
+    public void Win()
+    {
+        m_state = EState.Win;
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //吹っ飛び中に地面に当たると吹っ飛び状態解除
@@ -432,7 +445,7 @@ public class PlayerController : MonoBehaviour
         if (m_state != EState.Init) return;
         if (LayerMask.LayerToName(other.gameObject.layer) != "Ground") return;
         m_state = EState.Wait;
-        Destroy(GetComponent<BoxCollider>());
+//        Destroy(GetComponent<BoxCollider>());
     }
 }
 
