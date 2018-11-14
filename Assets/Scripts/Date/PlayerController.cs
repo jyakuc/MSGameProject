@@ -352,7 +352,7 @@ public class PlayerController : MonoBehaviour
     {
         // m_lifeFlg = false;
         // 自分が獲得したポイントをCostManager登録
-        BattlePointGrading battlePoint = FindObjectOfType<BattlePointGrading>();
+        BattlePointGrading battlePoint = gameObject.GetComponent<BattlePointGrading>();
         FindObjectOfType<CostManager>().SaveBattleCostData(m_playerID, battlePoint.GetAllPoint());
         Debug.Log("脱落：" + name + " バトルポイント：" + battlePoint.GetAllPoint());
 
