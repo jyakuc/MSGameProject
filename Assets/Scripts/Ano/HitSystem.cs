@@ -24,7 +24,7 @@ public class HitSystem : MonoBehaviour {
     private float countTime = 0;
 
     private bool TimeFlag = false;
-
+    private GameTime gametime;
     void OnTriggerStay(Collider other)
     {
         //レイヤーの名前取得
@@ -192,8 +192,16 @@ public class HitSystem : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-		
-	}
+        try
+        {
+            gametime = GameObject.Find("GameTime").GetComponent<GameTime>();
+        }
+        catch
+        {
+            gametime = null;
+        }
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -224,6 +232,11 @@ public class HitSystem : MonoBehaviour {
             }
         }
     }
+    private void HitStop()
+    {
+        if (gametime == null) return;
+        gametime.SlowDown();
+    }
     //SE再生処理
     private void PlaysSe()
     {
@@ -252,6 +265,7 @@ public class HitSystem : MonoBehaviour {
     //吹き飛ばし処理
     private void BlowAway(GameObject HitObject, HitSelect EffectType)
     {
+        HitStop();
         //親のRigidbodyを探す
         Rigidbody HitRigid = HitObject.transform.root.gameObject.GetComponent<Rigidbody>();
         HitObject.transform.root.gameObject.GetComponent<PlayerController>().BlowAwayNow();
