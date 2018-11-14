@@ -39,7 +39,6 @@ public class FallCollision : MonoBehaviour {
         int playerID = parent.GetComponent<PlayerController>().PlayerID;
         
         Rank.Add(playerID);
-
         parent.GetComponent<PlayerController>().Dead();
       /*  if (parent.GetComponent<ArtGrading>() != null)
         {
