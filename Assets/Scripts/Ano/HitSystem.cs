@@ -29,6 +29,7 @@ public class HitSystem : MonoBehaviour {
     public BattlePointGrading BattlePoint;
     private GameTime gametime;
 
+    private PlayerCamera p_camera;
     void OnTriggerStay(Collider other)
     {
         //レイヤーの名前取得
@@ -197,18 +198,21 @@ public class HitSystem : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+
   	if(BattlePoint == null)
         {
             BattlePoint = transform.root.GetComponent<BattlePointGrading>();
         }
-	
         try
         {
             gametime = GameObject.Find("GameTime").GetComponent<GameTime>();
+            p_camera = this.transform.root.gameObject.GetComponent<PlayerCamera>();
+
         }
         catch
         {
             gametime = null;
+            p_camera = null;
         }
 
     }
@@ -244,8 +248,9 @@ public class HitSystem : MonoBehaviour {
     }
     private void HitStop()
     {
-        if (gametime == null) return;
+        if (gametime == null||p_camera==null) return;
         gametime.SlowDown();
+        p_camera.ZoomStart();
     }
     //SE再生処理
     private void PlaysSe()
@@ -256,10 +261,12 @@ public class HitSystem : MonoBehaviour {
     //Hitの種類選択
     private HitSelect HitType(GameObject HitObject)
     {
-        Debug.Log("Hitしました");
+        Debug.Log(HitObject.name);
         if ((HitObject.name=="Haad")||
-            (HitObject.name == "Chest") ||
-            (HitObject.name == "Lower"))
+            (HitObject.name == "Shoulder_L") ||
+            (HitObject.name == "Shoulder_R")||
+            (HitObject.name == "Ass_L") ||
+            (HitObject.name == "Ass_R"))
         {
             int Probability = Random.Range(0, 100);
             Debug.Log(Probability);
@@ -275,7 +282,7 @@ public class HitSystem : MonoBehaviour {
     //吹き飛ばし処理
     private void BlowAway(GameObject HitObject, HitSelect EffectType)
     {
-        HitStop();
+
         //親のRigidbodyを探す
         Rigidbody HitRigid = HitObject.transform.root.gameObject.GetComponent<Rigidbody>();
         PlayerController hitPlayer = HitObject.transform.root.gameObject.GetComponent<PlayerController>();
@@ -289,6 +296,7 @@ public class HitSystem : MonoBehaviour {
                 HitRigid.AddForce(this.transform.position* P_Controller.HitPower, ForceMode.Impulse);
                 break;
             case HitSelect.Critical:
+                HitStop();
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
                 HitRigid.AddForce(this.transform.position * P_Controller.CriticalPower, ForceMode.Impulse);
                 // Add:弓達　クリティカルヒット時得点付与
