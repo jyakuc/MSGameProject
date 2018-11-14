@@ -142,9 +142,12 @@ public class GameController : MonoBehaviour
             if (m_playerObj[i].GetMyState() == PlayerController.EState.Dead) continue;
             // 芸術点採点
             ArtGrading art =  m_playerObj[i].gameObject.GetComponent<ArtGrading>();
+            BattlePointGrading battlePoint = m_playerObj[i].gameObject.GetComponent<BattlePointGrading>();
             art.ArtistGrading();
             // コストマネージャーに登録
-            FindObjectOfType<CostManager>().AddCostData(m_playerObj[i].PlayerID, art.Cost);
+            FindObjectOfType<CostManager>().SaveArtCostData(m_playerObj[i].PlayerID, art.Cost);
+            // プレイヤーが消える前に処理する
+            //FindObjectOfType<CostManager>().SaveBattleCostData(m_playerObj[i].PlayerID, battlePoint.GetAllPoint());
             Debug.Log("勝者：" + m_playerObj[i].name + " 芸術ポイント：" + art.Cost.allCost);
         }
 

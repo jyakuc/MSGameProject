@@ -351,8 +351,15 @@ public class PlayerController : MonoBehaviour
     public void Dead()
     {
         // m_lifeFlg = false;
+        // 自分が獲得したポイントをCostManager登録
+        BattlePointGrading battlePoint = FindObjectOfType<BattlePointGrading>();
+        FindObjectOfType<CostManager>().SaveBattleCostData(m_playerID, battlePoint.GetAllPoint());
+        Debug.Log("脱落：" + name + " バトルポイント：" + battlePoint.GetAllPoint());
+
         m_state = EState.Dead;
         GetComponent<Rigidbody>().isKinematic = true;
+
+        Destroy(gameObject);
     }
 
     public void PlayStart()
