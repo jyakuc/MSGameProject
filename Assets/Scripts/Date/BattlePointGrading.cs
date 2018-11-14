@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class BattlePointGrading : MonoBehaviour {
 
-    private Dictionary<int, int> m_attackPointData = new Dictionary<int, int>();
-    
+    private List<int> m_attackPointData = new List<int>();
+    private const int MaxPlayer = 6; 
     // Use this for initialization
     void Start()
     {
-
+        for(int i = 0; i < MaxPlayer; ++i)
+        {
+            m_attackPointData.Add(0);
+        }
     }
 
     // Update is called once per frame
@@ -21,21 +24,19 @@ public class BattlePointGrading : MonoBehaviour {
     // クリティカルヒットの攻撃相手保存(ID)
     public void AddCriticalPoint(int playerID)
     {
-        if (m_attackPointData.ContainsKey(playerID))
-        {
-            m_attackPointData[playerID] ++;
-        }
-        m_attackPointData.Add(playerID, 1);
+        m_attackPointData[playerID-1] ++;
     }
 
     // バトル得点の合計を取得
     public int GetAllPoint()
     {
         int cost = 0;
+
         for (int i = 0; i < m_attackPointData.Count; ++i)
         {
-            cost += m_attackPointData[i];
+             cost += m_attackPointData[i];
         }
+        Debug.Log("ばとP"+cost);
         return cost;
     }
 }

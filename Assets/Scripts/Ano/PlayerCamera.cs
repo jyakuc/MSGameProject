@@ -23,7 +23,7 @@ public class PlayerCamera : MonoBehaviour {
     //Zoomにかけている現在の時間
     public float ZoomNowTime = 0;
     //Zoomするかのフラグ
-    private bool ZoomFlag = false;
+    public bool ZoomFlag = false;
     //Zoomしてから待機する現在の時間
     public float WaitNowTime = 0;
     //Zoomしてから待機する最大時間
