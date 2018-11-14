@@ -262,7 +262,7 @@ public class HitSystem : MonoBehaviour {
     private HitSelect HitType(GameObject HitObject)
     {
         Debug.Log(HitObject.name);
-        if ((HitObject.name=="Haad")||
+        if ((HitObject.name=="Haed")||
             (HitObject.name == "Shoulder_L") ||
             (HitObject.name == "Shoulder_R")||
             (HitObject.name == "Ass_L") ||

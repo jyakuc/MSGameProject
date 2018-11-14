@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
     [Range(0, 20)]
     public float CriticalPower = 20;
     //飛んで動けなくなる制御時間(バグ防止)
-    private float FlayTime_Max = 3;
+    private float FlayTime_Max = 1;
     //飛んでる経過時間
     private float FlayNowTime = 0;
     private bool[] m_isInputFlg = new bool[(int)EInput.MAX];
@@ -191,8 +191,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (m_state == EState.Init || m_state == EState.Dead || m_state == EState.Wait|| m_state == EState.BlowAway) return;
-
+        if (m_state == EState.Init || m_state == EState.Dead || m_state == EState.Wait) return;
+        if(m_state==EState.BlowAway)
+        {
+            FlayNowTime += Time.deltaTime;
+            if(FlayNowTime>=FlayTime_Max)
+            {
+                FlayNowTime = 0;
+                m_state = EState.Idle;
+            }
+            return;
+        }
         // 右方向
         float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal] + myInputManager.joysticks[m_playerID-1].ToString());
         //       Debug.Log("横" + lsh);
@@ -408,18 +417,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //吹っ飛び中に地面に当たると吹っ飛び状態解除
-        if(m_state==EState.BlowAway)
-        {
-            Debug.Log("Player" + PlayerID + "飛んでます");
-            FlayNowTime += Time.deltaTime;
-            if ((LayerMask.LayerToName(other.gameObject.layer) == "Ground")||(FlayNowTime>=FlayTime_Max))
-            {
-                Debug.Log("Player" + PlayerID + "飛び終わりました");
-                FlayNowTime = 0;
-                m_state = EState.Idle;
-            }
 
-        }
         if (DebugModeGame.GetProperty().m_debugMode && DebugModeGame.GetProperty().m_debugPlayerEnable) return;
         if (m_state != EState.Init) return;
         if (LayerMask.LayerToName(other.gameObject.layer) != "Ground") return;
