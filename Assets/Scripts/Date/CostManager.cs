@@ -37,11 +37,11 @@ public class CostManager : MonoBehaviour {
         Debug.Log("バトルポイント保存" + playerID);
         if (m_playerBattleCostData.ContainsKey(playerID))
         {
-            m_playerBattleCostData[playerID] += battleCost * m_criticalPoint;
+            m_playerBattleCostData[playerID] += battleCost * m_criticalPoint * m_battleMagnification;
         }
         else
         {
-            m_playerBattleCostData.Add(playerID, battleCost * m_criticalPoint);
+            m_playerBattleCostData.Add(playerID, battleCost * m_criticalPoint * m_battleMagnification);
         }
     }
 
