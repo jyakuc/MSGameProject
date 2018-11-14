@@ -34,7 +34,15 @@ public class CostManager : MonoBehaviour {
     
     public void SaveBattleCostData(int playerID,int battleCost)
     {
-        m_playerBattleCostData.Add(playerID, battleCost * m_criticalPoint);
+        Debug.Log("バトルポイント保存" + playerID);
+        if (m_playerBattleCostData.ContainsKey(playerID))
+        {
+            m_playerBattleCostData[playerID] += battleCost * m_criticalPoint;
+        }
+        else
+        {
+            m_playerBattleCostData.Add(playerID, battleCost * m_criticalPoint);
+        }
     }
 
     // コストから得点に変換し取得
