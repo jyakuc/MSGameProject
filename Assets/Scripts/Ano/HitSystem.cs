@@ -24,7 +24,11 @@ public class HitSystem : MonoBehaviour {
     private float countTime = 0;
 
     private bool TimeFlag = false;
+
+      // Add：弓達　バトル採点クラス保持
+    public BattlePointGrading BattlePoint;
     private GameTime gametime;
+
     void OnTriggerStay(Collider other)
     {
         //レイヤーの名前取得
@@ -192,6 +196,12 @@ public class HitSystem : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
+
+  	if(BattlePoint == null)
+        {
+            BattlePoint = transform.root.GetComponent<BattlePointGrading>();
+        }
+	
         try
         {
             gametime = GameObject.Find("GameTime").GetComponent<GameTime>();
@@ -268,7 +278,10 @@ public class HitSystem : MonoBehaviour {
         HitStop();
         //親のRigidbodyを探す
         Rigidbody HitRigid = HitObject.transform.root.gameObject.GetComponent<Rigidbody>();
-        HitObject.transform.root.gameObject.GetComponent<PlayerController>().BlowAwayNow();
+        PlayerController hitPlayer = HitObject.transform.root.gameObject.GetComponent<PlayerController>();
+
+        hitPlayer.BlowAwayNow();
+
         switch (EffectType)
         {
             case HitSelect.Hit:
@@ -278,6 +291,9 @@ public class HitSystem : MonoBehaviour {
             case HitSelect.Critical:
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
                 HitRigid.AddForce(this.transform.position * P_Controller.CriticalPower, ForceMode.Impulse);
+                // Add:弓達　クリティカルヒット時得点付与
+                BattlePoint.AddCriticalPoint(hitPlayer.PlayerID);
+                Debug.Log("クリティカルヒット my:" + transform.root + "your:" + HitObject);
                 break;
         }
     }

@@ -50,7 +50,6 @@ public class FallCollision : MonoBehaviour {
         }
         */
         rankingInGame.SetRank(playerID);
-        Destroy(parent.gameObject);
     }
     //Effect生成
     private void CreateEffect(Transform Trans)

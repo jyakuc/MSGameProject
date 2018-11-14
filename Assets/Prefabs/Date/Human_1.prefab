@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 114454334888639076}
   - component: {fileID: 65736451843845886}
   - component: {fileID: 114774265194296534}
+  - component: {fileID: 114731386403768118}
   m_Layer: 8
   m_Name: Human_1
   m_TagString: Player
@@ -2162,6 +2163,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114144124142180806}
   PlayNum: 1
+  BattlePoint: {fileID: 114731386403768118}
 --- !u!114 &114323927281537114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2214,6 +2216,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114144124142180806}
   PlayNum: 1
+  BattlePoint: {fileID: 114731386403768118}
 --- !u!114 &114679946566181858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2231,6 +2234,18 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114144124142180806}
   PlayNum: 1
+  BattlePoint: {fileID: 114731386403768118}
+--- !u!114 &114731386403768118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763243969287568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc88d01a7723394ca5c0ea50264d668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114737147816298602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2280,6 +2295,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114144124142180806}
   PlayNum: 1
+  BattlePoint: {fileID: 114731386403768118}
 --- !u!137 &137583162914089480
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

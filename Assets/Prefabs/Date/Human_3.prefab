@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 114506581498648074}
   - component: {fileID: 65813510494622796}
   - component: {fileID: 114923603869641990}
+  - component: {fileID: 114834836906249468}
   m_Layer: 15
   m_Name: Human_3
   m_TagString: Player
@@ -2120,6 +2121,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114790839890748216}
   PlayNum: 3
+  BattlePoint: {fileID: 114834836906249468}
 --- !u!114 &114345981751508848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2137,6 +2139,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114790839890748216}
   PlayNum: 3
+  BattlePoint: {fileID: 114834836906249468}
 --- !u!114 &114415427302768312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2175,6 +2178,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114790839890748216}
   PlayNum: 3
+  BattlePoint: {fileID: 114834836906249468}
 --- !u!114 &114506581498648074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2252,6 +2256,17 @@ MonoBehaviour:
   CriticalProbability: 20
   HitPower: 9
   CriticalPower: 40
+--- !u!114 &114834836906249468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1404075687510486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc88d01a7723394ca5c0ea50264d668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114871821236064592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2269,6 +2284,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114790839890748216}
   PlayNum: 3
+  BattlePoint: {fileID: 114834836906249468}
 --- !u!114 &114923603869641990
 MonoBehaviour:
   m_ObjectHideFlags: 1

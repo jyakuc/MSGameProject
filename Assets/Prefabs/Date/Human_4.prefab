@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 114368729028583340}
   - component: {fileID: 65850244993908954}
   - component: {fileID: 114523233835965272}
+  - component: {fileID: 114182371101255910}
   m_Layer: 16
   m_Name: Human_4
   m_TagString: Player
@@ -2120,6 +2121,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114376492249141510}
   PlayNum: 4
+  BattlePoint: {fileID: 114182371101255910}
 --- !u!114 &114152905965822594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2150,6 +2152,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114376492249141510}
   PlayNum: 4
+  BattlePoint: {fileID: 114182371101255910}
 --- !u!114 &114167720144600634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2167,6 +2170,18 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114376492249141510}
   PlayNum: 4
+  BattlePoint: {fileID: 114182371101255910}
+--- !u!114 &114182371101255910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127312982964314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc88d01a7723394ca5c0ea50264d668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114360007746449226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2269,6 +2284,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114376492249141510}
   PlayNum: 4
+  BattlePoint: {fileID: 114182371101255910}
 --- !u!114 &114523233835965272
 MonoBehaviour:
   m_ObjectHideFlags: 1
