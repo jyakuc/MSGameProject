@@ -599,23 +599,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalStage: {fileID: 1653693090902988, guid: 1bbfefa77e864934fb87c890467abd12,
     type: 2}
-  HoruHoruMountain: {fileID: 1880290515970024, guid: 3cc4472c06333d24483c7517afe430ad,
-    type: 2}
   Colosseum: {fileID: 1269140535764312, guid: bc86899d6c4a1404d81eb691cc469ece, type: 2}
   Collision: {fileID: 1717278555935470, guid: 2fa486eaa837f294a9067f62cc2fc04d, type: 2}
   ColosseumCamera: {fileID: 1385041070470612, guid: f71e2ebf19d2f264bb85a961a7741944,
     type: 2}
-  HoruhoruCamera: {fileID: 1210345521275416, guid: f2b06cbe2991264469655dd62c24a79b,
-    type: 2}
   ColloseumCannons: {fileID: 1160344835980368, guid: 3fd207c7a6028f54c955fb9459a69ae5,
     type: 2}
+  HoruHoruMountain: {fileID: 1880290515970024, guid: 3cc4472c06333d24483c7517afe430ad,
+    type: 2}
+  HoruhoruCamera: {fileID: 1210345521275416, guid: f2b06cbe2991264469655dd62c24a79b,
+    type: 2}
   HoruHoruCannons: {fileID: 1409345702567712, guid: 5bbd24dd8d4ee8243a23e5d0a2999a5a,
+    type: 2}
+  ColdSleepCamera: {fileID: 1942261767591666, guid: e0d3d368a4d7ef446848c1c640d82913,
+    type: 2}
+  ColdSleepMountain: {fileID: 1052075794143638, guid: a56fefe9e16e9ee47bd75a92598ce814,
+    type: 2}
+  ColdSleepCannons: {fileID: 1394266679721804, guid: 275590e47ce92e249842500292331412,
     type: 2}
   Cursol: {fileID: 1114303729523270, guid: 4db3405ed3ac9214b80a7c0e964c2ba8, type: 2}
   x: -9
   y: 1
   z: -9
-  Stages: 0
+  Stages: 2
 --- !u!4 &1800838732
 Transform:
   m_ObjectHideFlags: 0
@@ -629,6 +635,104 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2054502534
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4181070654708058, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181070654708058, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181070654708058, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181070654708058, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181070654708058, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181070654708058, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181070654708058, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181070654708058, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650710460688538, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650710460688538, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650710460688538, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284482984038774, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284482984038774, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284482984038774, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042926004126104, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042926004126104, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042926004126104, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042926004126104, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042926004126104, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484420211164658, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484420211164658, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484420211164658, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &2080479102 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114439577510134876, guid: dc1de046339e85049a4a76553bc9f8c9,
