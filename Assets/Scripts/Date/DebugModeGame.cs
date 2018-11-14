@@ -10,6 +10,7 @@ public class DebugModeGame : MonoBehaviour {
         public bool m_debugPlayerEnable;  // デバッグ機能：プレイヤー操作可能状態
         public int m_debugPlayerNum;      // デバッグ機能：プレイヤー人数（遊べる）
         public bool m_controllerEnable;   // デバッグ機能：コントローラー接続有無
+        public int m_Injection;           // デバッグ機能：ボタン用射出数
     }
 
     // デバッグモード機能
@@ -39,6 +40,7 @@ public class DebugModeGame : MonoBehaviour {
         g_debugMode.m_debugPlayerEnable = m_debugMode.m_debugPlayerEnable;
         g_debugMode.m_debugPlayerNum = m_debugMode.m_debugPlayerNum;
         g_debugMode.m_controllerEnable = m_debugMode.m_controllerEnable;
+        g_debugMode.m_Injection = m_debugMode.m_Injection; 
     }
 
     public static DebugMode GetProperty()

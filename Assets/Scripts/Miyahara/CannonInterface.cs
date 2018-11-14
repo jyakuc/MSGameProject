@@ -85,7 +85,16 @@ public class CannonInterface : MonoBehaviour
                     DeleteCursor(i);
                 }
             }
-
+            // デバッグ用射出
+            if(DebugModeGame.GetProperty().m_debugMode && DebugModeGame.GetProperty().m_Injection > i)
+            {
+                if (Input.GetButtonDown("Injection_" + (i + 1).ToString()))
+                {
+                    gameController.AddPlayer(cannon.FireHuman(i));
+                    targetCursor[i].FireFlg = false;
+                    DeleteCursor(i);
+                }
+            }
         }
         //timeOfFlightText.text = Mathf.Clamp(cannon.lastShotTimeOfFlight - (Time.time - cannon.lastShotTime), 0, float.MaxValue).ToString("F3");
     }

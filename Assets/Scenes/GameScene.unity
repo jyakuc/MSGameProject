@@ -263,7 +263,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4804795428971916, guid: 8efa55d4fdd191f4495d90a0daa37f85, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114588094603983726, guid: 8efa55d4fdd191f4495d90a0daa37f85,
         type: 2}
@@ -484,6 +484,11 @@ Prefab:
       propertyPath: m_debugMode.m_debugMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_debugMode.m_Injection
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc1de046339e85049a4a76553bc9f8c9, type: 2}
   m_IsPrefabParent: 0
@@ -500,7 +505,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4309942965725276, guid: 27856c8625bae1e47ba1e4c5a9315383, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 8.23
       objectReference: {fileID: 0}
     - target: {fileID: 4309942965725276, guid: 27856c8625bae1e47ba1e4c5a9315383, type: 2}
       propertyPath: m_LocalPosition.z
@@ -524,7 +529,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4309942965725276, guid: 27856c8625bae1e47ba1e4c5a9315383, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1763243969287568, guid: 27856c8625bae1e47ba1e4c5a9315383, type: 2}
       propertyPath: m_IsActive
@@ -625,7 +630,7 @@ MonoBehaviour:
   x: -9
   y: 1
   z: -9
-  Stages: 2
+  Stages: 0
 --- !u!4 &1800838732
 Transform:
   m_ObjectHideFlags: 0
@@ -639,6 +644,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1943853108 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1763243969287568, guid: 27856c8625bae1e47ba1e4c5a9315383,
+    type: 2}
+  m_PrefabInternal: {fileID: 1143959485}
+--- !u!114 &1943853109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943853108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bbcb701514ea04698ecc54a0ced3e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabCamera: {fileID: 1406161383581644, guid: 4b7a56cc06a7baf4aabfc4a4ea411505,
+    type: 2}
+  SaveCameraPos: {fileID: 0}
+  Speed: 0.1
+  ZoomMaxTime: 0.8
+  ZoomNowTime: 0
+  ZoomFlag: 1
+  WaitNowTime: 0
+  WaitMaxTime: 60
 --- !u!1001 &2054502534
 Prefab:
   m_ObjectHideFlags: 0
