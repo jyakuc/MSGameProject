@@ -15,6 +15,12 @@ public class MyInputManagerSetter {
         {
             AddPlayerInputSettings(myInputManagerGenerator, i);
         }
+
+        // デバッグ射出ボタン用
+        for(int i = 0; i < 6; ++i)
+        {
+            AddDebugInjectionButton(myInputManagerGenerator, i);
+        }
     }
 
     //プレイヤーごとの入力設定を追加する
@@ -55,6 +61,37 @@ public class MyInputManagerSetter {
             var button = string.Format("joystick {0} button 3", joystickNum);
             myInputManagerGenerator.AddAxis(InputInfo.CreateButton(name, button, YKey));
         }
+
+    }
+    // デバッグ射出ボタン追加
+    private static void AddDebugInjectionButton(MyInputManagerGenerator myInputManagerGenerator,int num)
+    {
+        var name = string.Format("Injection_" + (num + 1));
+        string key = "";
+        switch (num)
+        {
+            case 0:
+                key = "z";
+                break;
+            case 1:
+                key = "x";
+                break;
+            case 2:
+                key = "c";
+                break;
+            case 3:
+                key = "v";
+                break;
+            case 4:
+                key = "b";
+                break;
+            case 5:
+                key = "n";
+                break;
+        }
+        string button = "";
+
+        myInputManagerGenerator.AddAxis(InputInfo.CreateButton(name, button, key));
     }
 
     // キーボード用割り当て

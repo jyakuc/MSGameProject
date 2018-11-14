@@ -418,6 +418,12 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    // 最後のアタックしたPlayerID
+    public int LastAttackPlayerID()
+    {
+        return m_hitReceivePlayerID;
+    }
     private void OnTriggerEnter(Collider other)
     {
         //吹っ飛び中に地面に当たると吹っ飛び状態解除
