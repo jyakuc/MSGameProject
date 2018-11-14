@@ -145,7 +145,7 @@ public class GameController : MonoBehaviour
             art.ArtistGrading();
             // コストマネージャーに登録
             FindObjectOfType<CostManager>().AddCostData(m_playerObj[i].PlayerID, art.Cost);
-            Debug.Log("勝者：" + m_playerObj[i].name + " 芸術ポイント：" + art.Cost);
+            Debug.Log("勝者：" + m_playerObj[i].name + " 芸術ポイント：" + art.Cost.allCost);
         }
 
 
