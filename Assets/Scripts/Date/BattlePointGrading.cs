@@ -5,7 +5,9 @@ using UnityEngine;
 public class BattlePointGrading : MonoBehaviour {
 
     private List<int> m_attackPointData = new List<int>();
-    private const int MaxPlayer = 6; 
+    private const int MaxPlayer = 6;
+
+    private CostManager m_costManager;
     // Use this for initialization
     void Start()
     {
@@ -13,6 +15,7 @@ public class BattlePointGrading : MonoBehaviour {
         {
             m_attackPointData.Add(0);
         }
+        m_costManager = FindObjectOfType<CostManager>();
     }
 
     // Update is called once per frame
@@ -24,7 +27,8 @@ public class BattlePointGrading : MonoBehaviour {
     // クリティカルヒットの攻撃相手保存(ID)
     public void AddCriticalPoint(int playerID)
     {
-        m_attackPointData[playerID-1] ++;
+
+        m_attackPointData[playerID-1] +=m_costManager.CriticalPoint;
     }
 
     // バトル得点の合計を取得

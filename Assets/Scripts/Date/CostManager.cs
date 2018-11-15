@@ -12,7 +12,11 @@ public class CostManager : MonoBehaviour {
     [SerializeField]
     private float m_battleMagnification;   // バトルポイント倍率
     [SerializeField]
-    private float m_criticalPoint;         // クリティカルポイント
+    private int m_criticalPoint;         // クリティカルポイント
+    public int CriticalPoint
+    {
+        get { return m_criticalPoint; }
+    }
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -37,11 +41,11 @@ public class CostManager : MonoBehaviour {
         Debug.Log("バトルポイント保存" + playerID);
         if (m_playerBattleCostData.ContainsKey(playerID))
         {
-            m_playerBattleCostData[playerID] += battleCost * m_criticalPoint * m_battleMagnification;
+            m_playerBattleCostData[playerID] += battleCost  * m_battleMagnification;
         }
         else
         {
-            m_playerBattleCostData.Add(playerID, battleCost * m_criticalPoint * m_battleMagnification);
+            m_playerBattleCostData.Add(playerID, battleCost  * m_battleMagnification);
         }
     }
 
