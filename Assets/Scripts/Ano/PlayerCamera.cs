@@ -12,14 +12,16 @@ public class PlayerCamera : MonoBehaviour {
     private Camera P_Camera;
     //ClonecameraのTransform保持
     private Transform CameraTrans;
+    //注視するポイントのTransformを保持
+    public Transform TargetTrans;
     //戻る用のカメラのtransformを保持
-    public Transform SaveCameraPos;
+    private Transform SaveCameraPos;
     //Zoomするスピード
-    public float Speed = 0.1f;
+    public float Speed = 0.25f;
     //一定時間たつと0にするために現在のスピードを確保
     private float NowSpeed = 0;
     //Zoomにかかる最大時間
-    public float ZoomMaxTime = 0.8f;
+    public float ZoomMaxTime = 0.4f;
     //Zoomにかけている現在の時間
     public float ZoomNowTime = 0;
     //Zoomするかのフラグ
@@ -28,6 +30,8 @@ public class PlayerCamera : MonoBehaviour {
     public float WaitNowTime = 0;
     //Zoomしてから待機する最大時間
     public float WaitMaxTime = 1.0f;
+    public bool FocusMode = false;
+    public float test = 0;
     //一旦置いておく
     //private ZoomMode Zoommode=ZoomMode.NotZoom;
     private void Awake()
@@ -38,7 +42,7 @@ public class PlayerCamera : MonoBehaviour {
         CameraTrans = CameraClone.GetComponent<Transform>();
         SaveCameraPos = CameraTrans;
         NowSpeed = Speed;
-        P_Camera.depth = 0;
+        P_Camera.depth = 2;
         WaitNowTime = 0;
         ZoomNowTime = 0;
     }
@@ -48,14 +52,33 @@ public class PlayerCamera : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        PickupCamera();
+	void FixedUpdate() {
+        if (!FocusMode)
+        {
+            PickupCamera();
+        }
+        else
+        {
+            FocusCamera();
+        }
+        //StalkingCamera();
     }
     public void ZoomStart()
     {
         ZoomFlag = true;
     }
-    public void PickupCamera()
+    public void FocusStart()
+    {
+        ZoomFlag = false;
+        P_Camera.depth = 0;
+        CameraTrans.position = new Vector3(0, 90, -60);
+        NowSpeed = Speed;
+        ZoomNowTime = 0;
+        WaitNowTime = 0;
+        FocusMode = true;
+    }
+    //ヒットストップ用にズームするカメラ設定
+    private void PickupCamera()
     {
         if(ZoomFlag)
         {
@@ -71,11 +94,11 @@ public class PlayerCamera : MonoBehaviour {
                     ZoomFlag = false;
                 }
             }
-            CameraTrans.LookAt(this.transform);
+            CameraTrans.LookAt(TargetTrans);
             CameraTrans.Rotate(new Vector3(-10.0f, 0.0f, 0.0f));
             CameraTrans.transform.position = Vector3.Lerp(
                 SaveCameraPos.transform.position,
-                this.transform.position,
+                TargetTrans.position,
                 ZoomNowTime * NowSpeed
             );
         }
@@ -88,6 +111,34 @@ public class PlayerCamera : MonoBehaviour {
             WaitNowTime = 0;
         }
 
-    } 
-
+    }
+    //フォーカスを当てる時用のカメラ設定
+    private void FocusCamera()
+    {
+        P_Camera.depth = 2;
+        ZoomNowTime += Time.deltaTime;
+        if (ZoomNowTime >= ZoomMaxTime)
+        {
+            //ZoomNowTime = ZoomMaxTime;
+            NowSpeed = 0;
+        }
+        CameraTrans.LookAt(TargetTrans);
+        CameraTrans.Rotate(new Vector3(-10.0f, 0.0f, 0.0f));
+        CameraTrans.transform.position = Vector3.Lerp(
+            SaveCameraPos.transform.position,
+            TargetTrans.position,
+            ZoomNowTime * NowSpeed
+        );
+    }
+    private void StalkingCamera()
+    {
+        //CameraTrans.LookAt(TargetTrans);
+        CameraTrans.transform.rotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
+        var desiredPos = TargetTrans.position - TargetTrans.forward * -10 + Vector3.up* 2;
+        CameraTrans.transform.position = Vector3.Lerp(
+            SaveCameraPos.transform.position ,
+            desiredPos,
+           1
+        );
+    }
 }
