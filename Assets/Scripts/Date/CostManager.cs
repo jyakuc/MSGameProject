@@ -41,7 +41,7 @@ public class CostManager : MonoBehaviour {
         Debug.Log("バトルポイント保存" + playerID);
         if (m_playerBattleCostData.ContainsKey(playerID))
         {
-            m_playerBattleCostData[playerID] += battleCost  * m_battleMagnification;
+            m_playerBattleCostData[playerID] = battleCost  * m_battleMagnification;
         }
         else
         {
@@ -75,7 +75,7 @@ public class CostManager : MonoBehaviour {
         // 芸術ポイントがコンテナにある場合
         if (m_playerArtCostData.ContainsKey(playerID))
         {
-            cost += ConversionCost(m_playerArtCostData[playerID].allCost, true);
+            cost = ConversionCost(m_playerArtCostData[playerID].allCost, true);
         }
         return cost;
     }
@@ -86,7 +86,7 @@ public class CostManager : MonoBehaviour {
         // バトルポイントがコンテナにある場合
         if (m_playerBattleCostData.ContainsKey(playerID))
         {
-            cost += ConversionCost(m_playerBattleCostData[playerID], false);
+            cost = ConversionCost(m_playerBattleCostData[playerID], false);
         }
         return cost;
     }

@@ -25,16 +25,21 @@ public class GameUIScripts : MonoBehaviour {
         //RankingUIの生成
         GameObject pRankUI = (GameObject)Instantiate(uiRank);
         pRankUI.transform.SetParent(Canvas.transform, false);
+
+        // CostManager取得
+        CManager = FindObjectOfType<CostManager>();
     }
 
     // Update is called once per frame
     void Update () {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 6; i++)
         {
-            //BattlePoints[i] = CManager.GetPlayerBattlePoint(i)
-            int HundredPlace = BattlePoints[i] / 100;   //100の位
-            int TenPlace = BattlePoints[i] / 10;        //10の位
+            BattlePoints[i] = CManager.GetPlayerBattlePoint(i+1);
+            int HundredPlace = (BattlePoints[i] / 100)%10;   //100の位
+            int TenPlace = (BattlePoints[i] / 10)%10;        //10の位
             int Digit = BattlePoints[i] % 10;           //1の位
+            Debug.Log("位確認"+HundredPlace.ToString() + TenPlace.ToString() + Digit.ToString());
+
             for (int j = 0; j < 10; j++)
             {
                 if (Digit == j)
@@ -43,29 +48,21 @@ public class GameUIScripts : MonoBehaviour {
                     else PannelDigit[i].texture = Images[j + 10];
                     PannelDigit[i].color = new Color(255, 255, 255, 1f);
                 }
-                //100の位がない時は表示しない
-                if (HundredPlace == 0)
+                //10の位
+                if (TenPlace != 0 && TenPlace == j)
                 {
-                    //10の暗いがない時は表示しない
-                    if (TenPlace != 0)
-                    {
-                        if (i < 3) PannelTenPlace[i].texture = Images[j];   //左右判定
-                        else PannelTenPlace[i].texture = Images[j + 10];
-                        PannelTenPlace[i].color = new Color(255, 255, 255, 1f);
-                    }
+                    if (i < 3) PannelTenPlace[i].texture = Images[j];   //左右判定
+                    else PannelTenPlace[i].texture = Images[j + 10];
+                    PannelTenPlace[i].color = new Color(255, 255, 255, 1f);
                 }
-                else
+                //100の位
+                if (HundredPlace != 0 && HundredPlace == j)
                 {
-                    if (TenPlace == j)
-                    {
-                        if (i < 3) PannelTenPlace[i].texture = Images[j];   //左右判定
-                        else PannelTenPlace[i].texture = Images[j + 10];
-                        PannelTenPlace[i].color = new Color(255, 255, 255, 1f);
-                    }
                     if (i < 3) PannelHundredPlace[i].texture = Images[j];   //左右判定
                     else PannelHundredPlace[i].texture = Images[j + 10];
                     PannelHundredPlace[i].color = new Color(255, 255, 255, 1f);
                 }
+               
             }
         }
     }

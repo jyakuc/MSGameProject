@@ -301,7 +301,7 @@ public class HitSystem : MonoBehaviour {
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
                 HitRigid.AddForce(this.transform.position * P_Controller.CriticalPower, ForceMode.Impulse);
                 // Add:弓達　クリティカルヒット時得点付与
-                BattlePoint.AddCriticalPoint(hitPlayer.PlayerID);
+                BattlePoint.AddCriticalPoint(hitPlayer.PlayerID , P_Controller.PlayerID);
                 Debug.Log("クリティカルヒット my:" + transform.root + "your:" + HitObject);
                 break;
         }

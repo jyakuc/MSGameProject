@@ -158,6 +158,16 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114402365842373260, guid: 166ffd972dbfb544784729884c50c4f3,
+        type: 2}
+      propertyPath: CManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114379635135674542, guid: 166ffd972dbfb544784729884c50c4f3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 166ffd972dbfb544784729884c50c4f3, type: 2}
   m_IsPrefabParent: 0
@@ -224,7 +234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 91.777985, y: -30, z: 0}
 --- !u!1001 &570275545
 Prefab:
@@ -265,20 +275,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114588094603983726, guid: 8efa55d4fdd191f4495d90a0daa37f85,
-        type: 2}
-      propertyPath: m_criticalPoint
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114588094603983726, guid: 8efa55d4fdd191f4495d90a0daa37f85,
-        type: 2}
-      propertyPath: m_battleMagnification
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114588094603983726, guid: 8efa55d4fdd191f4495d90a0daa37f85,
-        type: 2}
-      propertyPath: m_ArtMagnification
-      value: 1
+    - target: {fileID: 1993107906072068, guid: 8efa55d4fdd191f4495d90a0daa37f85, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8efa55d4fdd191f4495d90a0daa37f85, type: 2}
@@ -343,7 +342,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1017582763
 Prefab:
@@ -662,13 +661,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabCamera: {fileID: 1406161383581644, guid: 4b7a56cc06a7baf4aabfc4a4ea411505,
     type: 2}
-  SaveCameraPos: {fileID: 0}
+  TargetTrans: {fileID: 0}
   Speed: 0.1
   ZoomMaxTime: 0.8
   ZoomNowTime: 0
   ZoomFlag: 1
   WaitNowTime: 0
   WaitMaxTime: 60
+  FocusMode: 0
+  test: 0
 --- !u!1001 &2054502534
 Prefab:
   m_ObjectHideFlags: 0
