@@ -11,6 +11,7 @@ public class DebugModeGame : MonoBehaviour {
         public int m_debugPlayerNum;      // デバッグ機能：プレイヤー人数（遊べる）
         public bool m_controllerEnable;   // デバッグ機能：コントローラー接続有無
         public int m_Injection;           // デバッグ機能：ボタン用射出数
+        public bool m_debugstageCreate;   // デバッグ機能：ステージ生成選び
     }
 
     // デバッグモード機能

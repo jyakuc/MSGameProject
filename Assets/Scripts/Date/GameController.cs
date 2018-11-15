@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
         get { return m_gameStartFlg; }
     }
 
+    public StageCreate.SelectingStage m_selectingStage;
+
     /// <summary>
     /// 関数群
     /// </summary>
@@ -154,6 +156,12 @@ public class GameController : MonoBehaviour
         }
 
 
-        m_gameSceneController.ChangeScene();
+        m_gameSceneController.ChangeScene(m_selectingStage);
+    }
+
+    // ステージの読み込みと破棄　
+    public void Reset(StageCreate.SelectingStage unloadStage,StageCreate.SelectingStage loadStage)
+    {
+        
     }
 }

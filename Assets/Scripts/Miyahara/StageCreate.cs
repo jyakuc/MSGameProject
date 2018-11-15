@@ -21,6 +21,8 @@ public class StageCreate : MonoBehaviour {
 
     public GameObject Cursol;            //生成するカーソル
 
+    public GameObject gameControllerObj;
+
     private int min = -2;
     private int max = 2;
 
@@ -39,7 +41,17 @@ public class StageCreate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        //gameController =
 
+        DebugModeGame debugModeGame = gameControllerObj.GetComponent<DebugModeGame>();
+        GameController gameController = gameControllerObj.GetComponent<GameController>();
+
+        if (!(debugModeGame.m_debugMode.m_debugMode && debugModeGame.m_debugMode.m_debugstageCreate))
+        {
+            Stages = SelectingStage.Colloseum;
+        }
+
+        gameController.m_selectingStage = Stages;
         switch (Stages)
         {
             case SelectingStage.Colloseum:
