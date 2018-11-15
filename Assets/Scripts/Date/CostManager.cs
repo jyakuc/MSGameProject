@@ -12,7 +12,11 @@ public class CostManager : MonoBehaviour {
     [SerializeField]
     private float m_battleMagnification;   // バトルポイント倍率
     [SerializeField]
-    private float m_criticalPoint;         // クリティカルポイント
+    private int m_criticalPoint;         // クリティカルポイント
+    public int CriticalPoint
+    {
+        get { return m_criticalPoint; }
+    }
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -37,11 +41,11 @@ public class CostManager : MonoBehaviour {
         Debug.Log("バトルポイント保存" + playerID);
         if (m_playerBattleCostData.ContainsKey(playerID))
         {
-            m_playerBattleCostData[playerID] += battleCost * m_criticalPoint * m_battleMagnification;
+            m_playerBattleCostData[playerID] += battleCost  * m_battleMagnification;
         }
         else
         {
-            m_playerBattleCostData.Add(playerID, battleCost * m_criticalPoint * m_battleMagnification);
+            m_playerBattleCostData.Add(playerID, battleCost  * m_battleMagnification);
         }
     }
 
@@ -57,18 +61,33 @@ public class CostManager : MonoBehaviour {
     public int GetPlayerAllCost(int playerID)
     {
         int cost = 0;
+
+        cost += GetPlayerArtPoint(playerID);
+        cost += GetPlayerBattlePoint(playerID);
+
+        return cost;
+    }
+
+    // プレイヤーの1ステージに獲得した芸術ポイントを取得
+    public int GetPlayerArtPoint(int playerID)
+    {
+        int cost = 0;
         // 芸術ポイントがコンテナにある場合
         if (m_playerArtCostData.ContainsKey(playerID))
         {
-            cost += ConversionCost(m_playerArtCostData[playerID].allCost,true);
+            cost += ConversionCost(m_playerArtCostData[playerID].allCost, true);
         }
-
+        return cost;
+    }
+    // プレイヤーの1ステージに獲得したバトルポイントを取得
+    public int GetPlayerBattlePoint(int playerID)
+    {
+        int cost = 0;
         // バトルポイントがコンテナにある場合
         if (m_playerBattleCostData.ContainsKey(playerID))
         {
             cost += ConversionCost(m_playerBattleCostData[playerID], false);
         }
-
         return cost;
     }
 
