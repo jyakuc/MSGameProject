@@ -293,6 +293,9 @@ GameObject:
   - component: {fileID: 54382291564846638}
   - component: {fileID: 114506581498648074}
   - component: {fileID: 65813510494622796}
+  - component: {fileID: 114923603869641990}
+  - component: {fileID: 114834836906249468}
+  - component: {fileID: 114386887191104520}
   m_Layer: 15
   m_Name: Human_3
   m_TagString: Player
@@ -2119,9 +2122,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114790839890748216}
   PlayNum: 3
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
+  BattlePoint: {fileID: 114834836906249468}
 --- !u!114 &114345981751508848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2139,9 +2140,29 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114790839890748216}
   PlayNum: 3
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
+  BattlePoint: {fileID: 114834836906249468}
+--- !u!114 &114386887191104520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1404075687510486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bbcb701514ea04698ecc54a0ced3e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabCamera: {fileID: 1406161383581644, guid: 4b7a56cc06a7baf4aabfc4a4ea411505,
+    type: 2}
+  TargetTrans: {fileID: 4716938441287960}
+  Speed: 0.25
+  ZoomMaxTime: 0.4
+  ZoomNowTime: 0
+  ZoomFlag: 0
+  WaitNowTime: 0
+  WaitMaxTime: 1
+  FocusMode: 0
+  test: 0
 --- !u!114 &114415427302768312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2180,9 +2201,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114790839890748216}
   PlayNum: 3
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
+  BattlePoint: {fileID: 114834836906249468}
 --- !u!114 &114506581498648074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2236,6 +2255,12 @@ MonoBehaviour:
   m_leftHandObj: {fileID: 1926058626592222}
   m_rightFootObj: {fileID: 1205367467461904}
   m_leftFootObj: {fileID: 1595141478269548}
+  Hand_R: {fileID: 4788097166626484}
+  Hand_L: {fileID: 4516836950120042}
+  Calf_R: {fileID: 4464047433424358}
+  Calf_L: {fileID: 4196551668096762}
+  PickupPrefab: {fileID: 1803646784035136, guid: 62e60ce412fbdb944bbde34e6ab13bdd,
+    type: 2}
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: 0, y: -3.8, z: 0}
@@ -2257,6 +2282,20 @@ MonoBehaviour:
     decayForce: {x: 0.99, y: 0, z: 0}
   m_directionAngle: 250
   rayTest: {fileID: 114656022787043098}
+  CriticalProbability: 80
+  HitPower: 9
+  CriticalPower: 40
+--- !u!114 &114834836906249468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1404075687510486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc88d01a7723394ca5c0ea50264d668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114871821236064592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2274,9 +2313,18 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114790839890748216}
   PlayNum: 3
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
+  BattlePoint: {fileID: 114834836906249468}
+--- !u!114 &114923603869641990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1404075687510486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6969ffb1e73fcde429e21004e511846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137243538249828078
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

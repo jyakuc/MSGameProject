@@ -17,9 +17,12 @@ public class PlayerController : MonoBehaviour
         Init,
         Wait,
         Idle,
+        BlowAway,
+        Atack,
         RightMove,
         LeftMove,
-        Dead
+        Dead,
+        Win
     }
 
     [System.Serializable]
@@ -76,13 +79,23 @@ public class PlayerController : MonoBehaviour
     public GameObject m_rightFootObj;
     public GameObject m_leftFootObj;
 
+    //プレイヤーの手足の先のTransform
+    public Transform Hand_R;
+    public Transform Hand_L;
+    public Transform Calf_R;
+    public Transform Calf_L;
+
+    // PickUpEffectPrefab取得
+    public GameObject PickupPrefab;
+
     // 手足制御オブジェクト（Rigidbody）
     private Rigidbody m_body_rg;
     private Rigidbody m_rightHand_rg;
     private Rigidbody m_leftHand_rg;
     private Rigidbody m_rightFoot_rg;
     private Rigidbody m_leftFoot_rg;
-
+    // 自分自身の制御オブジェクト (Rigidbody)阿野追加
+    private Rigidbody m_Player_rg;
     private string[] InputName = new string[(int)EInput.MAX];
 
     // 回転する力（パラメータ）
@@ -113,14 +126,25 @@ public class PlayerController : MonoBehaviour
 
     private RayTest.RayDirection dir;
     public RayTest rayTest;
+    //確率
     [Range(0, 100)]
     public int CriticalProbability = 20;
-    [Range(0, 100)]
-    public int HitPower = 20;
-    [Range(0, 100)]
-    public int CriticalPower = 40;
-
+    //ヒット時の力
+    [Range(0, 10)]
+    public float HitPower = 8;
+    //クリティカル時の力
+    [Range(0, 20)]
+    public float CriticalPower = 20;
+    //飛んで動けなくなる制御時間(バグ防止)
+    private float FlayTime_Max = 1;
+    //飛んでる経過時間
+    private float FlayNowTime = 0;
     private bool[] m_isInputFlg = new bool[(int)EInput.MAX];
+
+    private int m_hitReceivePlayerID;
+
+    private GameObject CreateEffect;
+    private PickUpEffect PickupEffect;
     void Awake()
     {
         //       m_lifeFlg = false;
@@ -137,12 +161,12 @@ public class PlayerController : MonoBehaviour
         m_leftHand_rg = m_leftHandObj.GetComponent<Rigidbody>();
         m_rightFoot_rg = m_rightFootObj.GetComponent<Rigidbody>();
         m_leftFoot_rg = m_leftFootObj.GetComponent<Rigidbody>();
-
+        m_Player_rg = GetComponent<Rigidbody>();
         m_bodyForce.Init();
         m_HandForce.Init();
         m_FootForce.Init();
         m_bodyMoveForce.Init();
-
+        CreateEffect = null;
         //       m_state = EState.Idle;
 
         dir = rayTest.Dir;
@@ -159,6 +183,7 @@ public class PlayerController : MonoBehaviour
         if(myInputManager == null)
             Debug.LogError("MyInputManagerがシーンに存在しません");
 
+        m_hitReceivePlayerID = PlayerID;
         if (!DebugModeGame.GetProperty().m_debugMode) return;
         // デバッグモードONの時の設定
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
@@ -182,7 +207,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (m_state == EState.Init || m_state == EState.Dead || m_state == EState.Wait) return;
+        if (m_state == EState.Init ||
+            m_state == EState.Dead ||
+            m_state == EState.Wait ||
+            m_state == EState.Win) return;
+
+        if(m_state==EState.BlowAway)
+        {
+            FlayNowTime += Time.deltaTime;
+            if(FlayNowTime>=FlayTime_Max)
+            {
+                FlayNowTime = 0;
+                m_state = EState.Idle;
+            }
+            return;
+        }
         // 右方向
         float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal] + myInputManager.joysticks[m_playerID-1].ToString());
         //       Debug.Log("横" + lsh);
@@ -224,6 +263,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_rightHand_rg, m_HandExtend);
+            //エフェクト発生
+            if (CreateEffect==null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Hand_R.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
             m_isInputFlg[(int)EInput.A] = true;
         }
         else
@@ -232,6 +278,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_leftHand_rg, -m_HandExtend);
+            //エフェクト発生
+            if (CreateEffect == null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Hand_L.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
             m_isInputFlg[(int)EInput.B] = true;
         }
         else
@@ -240,6 +293,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_rightFoot_rg, m_FootExtendR);
+            //エフェクト発生
+            if (CreateEffect == null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Calf_R.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
             m_isInputFlg[(int)EInput.X] = true;
         }
         else
@@ -248,6 +308,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_leftFoot_rg, m_FootExtendL);
+            //エフェクト発生
+            if (CreateEffect==null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Calf_L.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
             m_isInputFlg[(int)EInput.Y] = true;
         }
         else
@@ -277,7 +344,7 @@ public class PlayerController : MonoBehaviour
             m_HandForce.Init();
             m_FootForce.Init();
         }
-    //    Debug.Log(m_state);
+        //Debug.Log(m_state);
     }
 
 
@@ -341,8 +408,16 @@ public class PlayerController : MonoBehaviour
     public void Dead()
     {
         // m_lifeFlg = false;
+        // 自分が獲得したポイントをCostManager登録
+        if (m_state == EState.Dead) return;
+       // BattlePointGrading battlePoint = gameObject.GetComponent<BattlePointGrading>();
+       // FindObjectOfType<CostManager>().SaveBattleCostData(m_playerID, battlePoint.GetAllPoint());
+       // Debug.Log("脱落：" + name + " バトルポイント：" + battlePoint.GetAllPoint());
+
         m_state = EState.Dead;
         GetComponent<Rigidbody>().isKinematic = true;
+
+        Destroy(gameObject);
     }
 
     public void PlayStart()
@@ -368,7 +443,12 @@ public class PlayerController : MonoBehaviour
         if (m_state == EState.Wait) return true;
         return false;
     }
-
+    //吹っ飛び状態にする
+    public void BlowAwayNow(int hitReceiveID)
+    {
+        m_hitReceivePlayerID = hitReceiveID;
+        m_state = EState.BlowAway;
+    }
     // 入力フラグ（クリティカルヒット用）
     public bool IsInputFlagParts(EInput eInput)
     {
@@ -383,12 +463,29 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    // 最後のアタックしたPlayerID
+    public int LastAttackPlayerID()
+    {
+        return m_hitReceivePlayerID;
+    }
+
+    // 勝利
+    public void Win()
+    {
+        m_state = EState.Win;
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        //吹っ飛び中に地面に当たると吹っ飛び状態解除
+
+        if (DebugModeGame.GetProperty().m_debugMode && DebugModeGame.GetProperty().m_debugPlayerEnable) return;
         if (m_state != EState.Init) return;
         if (LayerMask.LayerToName(other.gameObject.layer) != "Ground") return;
         m_state = EState.Wait;
-        Destroy(GetComponent<BoxCollider>());
+//        Destroy(GetComponent<BoxCollider>());
     }
 }
 

@@ -59,7 +59,7 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
         // 破棄されないようにする
         DontDestroyOnLoad(gameObject);
 
-        m_fader.gameObject.SetActive(false);
+       // m_fader.gameObject.SetActive(false);
     }
 
     // コンポーネント追加時に実行
@@ -70,7 +70,7 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
         // フェード用のキャンバス作成
         GameObject fadeCavas = new GameObject("FadeCanvas");
         fadeCavas.transform.SetParent(transform);
-        fadeCavas.SetActive(false);
+       // fadeCavas.SetActive(false);
 
         Canvas canvas = fadeCavas.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;

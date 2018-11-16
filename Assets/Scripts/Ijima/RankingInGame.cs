@@ -37,7 +37,7 @@ public class RankingInGame : MonoBehaviour
 
     public void SetRank(int playerID)
     {
-        Debug.Log(playerID + "P : 脱落");
+
         if (rank < 4)
         {
             Pannel[playerID - 1].GetComponent<Image>().sprite = Image[rank];

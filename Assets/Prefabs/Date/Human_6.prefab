@@ -252,6 +252,9 @@ GameObject:
   - component: {fileID: 54518384087909096}
   - component: {fileID: 114680210371607022}
   - component: {fileID: 65808073547637554}
+  - component: {fileID: 114187187845065672}
+  - component: {fileID: 114554100226171920}
+  - component: {fileID: 114832662076064840}
   m_Layer: 18
   m_Name: Human_6
   m_TagString: Player
@@ -2102,6 +2105,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114187187845065672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449480356525946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6969ffb1e73fcde429e21004e511846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114268152802299160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2119,9 +2133,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
+  BattlePoint: {fileID: 114554100226171920}
 --- !u!114 &114302950340732178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2156,6 +2168,17 @@ MonoBehaviour:
   bodyWeight: 0
   headWeight: 0
   eyeWeight: 0
+--- !u!114 &114554100226171920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449480356525946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc88d01a7723394ca5c0ea50264d668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114595034991501098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2173,9 +2196,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
+  BattlePoint: {fileID: 114554100226171920}
 --- !u!114 &114680210371607022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2215,9 +2236,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
+  BattlePoint: {fileID: 114554100226171920}
 --- !u!114 &114745635048470910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2236,6 +2255,12 @@ MonoBehaviour:
   m_leftHandObj: {fileID: 1814654181169048}
   m_rightFootObj: {fileID: 1273645417618626}
   m_leftFootObj: {fileID: 1160299987118958}
+  Hand_R: {fileID: 4910297441591376}
+  Hand_L: {fileID: 4183461815620254}
+  Calf_R: {fileID: 4533207964020430}
+  Calf_L: {fileID: 4474457139217008}
+  PickupPrefab: {fileID: 1803646784035136, guid: 62e60ce412fbdb944bbde34e6ab13bdd,
+    type: 2}
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: 0, y: -3.8, z: 0}
@@ -2257,6 +2282,31 @@ MonoBehaviour:
     decayForce: {x: 0.99, y: 0, z: 0}
   m_directionAngle: 250
   rayTest: {fileID: 114302950340732178}
+  CriticalProbability: 80
+  HitPower: 9
+  CriticalPower: 40
+--- !u!114 &114832662076064840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449480356525946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bbcb701514ea04698ecc54a0ced3e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabCamera: {fileID: 1406161383581644, guid: 4b7a56cc06a7baf4aabfc4a4ea411505,
+    type: 2}
+  TargetTrans: {fileID: 4830864763769882}
+  Speed: 0.25
+  ZoomMaxTime: 0.4
+  ZoomNowTime: 0
+  ZoomFlag: 0
+  WaitNowTime: 0
+  WaitMaxTime: 1
+  FocusMode: 0
+  test: 0
 --- !u!114 &114856401641176756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2274,9 +2324,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
-  CriticalProbability: 20
-  HitPower: 20
-  CriticalPower: 40
+  BattlePoint: {fileID: 114554100226171920}
 --- !u!137 &137895979734281560
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
