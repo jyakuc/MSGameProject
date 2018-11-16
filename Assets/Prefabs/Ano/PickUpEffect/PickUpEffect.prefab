@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4863608323197508}
   - component: {fileID: 198971863255854838}
   - component: {fileID: 199900903775815346}
+  - component: {fileID: 114765597927837552}
   m_Layer: 0
   m_Name: PickUpEffect
   m_TagString: Untagged
@@ -41,6 +42,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114765597927837552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1803646784035136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516534e852b2c144b8e1342a5ded7e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198971863255854838
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -101,7 +113,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1140453025
+  randomSeed: -1663630815
   InitialModule:
     serializedVersion: 3
     enabled: 1
