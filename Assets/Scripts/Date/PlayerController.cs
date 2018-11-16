@@ -79,6 +79,15 @@ public class PlayerController : MonoBehaviour
     public GameObject m_rightFootObj;
     public GameObject m_leftFootObj;
 
+    //プレイヤーの手足の先のTransform
+    public Transform Hand_R;
+    public Transform Hand_L;
+    public Transform Calf_R;
+    public Transform Calf_L;
+
+    // PickUpEffectPrefab取得
+    public GameObject PickupPrefab;
+
     // 手足制御オブジェクト（Rigidbody）
     private Rigidbody m_body_rg;
     private Rigidbody m_rightHand_rg;
@@ -133,6 +142,9 @@ public class PlayerController : MonoBehaviour
     private bool[] m_isInputFlg = new bool[(int)EInput.MAX];
 
     private int m_hitReceivePlayerID;
+
+    private GameObject CreateEffect;
+    private PickUpEffect PickupEffect;
     void Awake()
     {
         //       m_lifeFlg = false;
@@ -154,7 +166,7 @@ public class PlayerController : MonoBehaviour
         m_HandForce.Init();
         m_FootForce.Init();
         m_bodyMoveForce.Init();
-
+        CreateEffect = null;
         //       m_state = EState.Idle;
 
         dir = rayTest.Dir;
@@ -251,6 +263,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_rightHand_rg, m_HandExtend);
+            //エフェクト発生
+            if (CreateEffect==null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Hand_R.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
             m_isInputFlg[(int)EInput.A] = true;
         }
         else
@@ -259,6 +278,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_leftHand_rg, -m_HandExtend);
+            //エフェクト発生
+            if (CreateEffect == null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Hand_L.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
             m_isInputFlg[(int)EInput.B] = true;
         }
         else
@@ -267,6 +293,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_rightFoot_rg, m_FootExtendR);
+            //エフェクト発生
+            if (CreateEffect == null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Calf_R.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
             m_isInputFlg[(int)EInput.X] = true;
         }
         else
@@ -275,6 +308,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_leftFoot_rg, m_FootExtendL);
+            //エフェクト発生
+            if (CreateEffect==null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Calf_L.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
             m_isInputFlg[(int)EInput.Y] = true;
         }
         else
