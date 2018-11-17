@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(MeshFilter),typeof(MeshRenderer))]
 public class Snow : MonoBehaviour
 {
-	const int SNOW_NUM = 16000;
+	const int SNOW_NUM = 10000;
 	private Vector3[] vertices_;
 	private int[] triangles_;
 	private Vector2[] uvs_;
@@ -57,7 +57,7 @@ public class Snow : MonoBehaviour
 	
 	void LateUpdate ()
 	{
-		var target_position = Camera.main.transform.TransformPoint(Vector3.forward * range_);
+		var target_position = this.transform.position;
 		var mr = GetComponent<Renderer> ();
 		mr.material.SetFloat("_Range", range_);
 		mr.material.SetFloat("_RangeR", rangeR_);
