@@ -25,7 +25,7 @@ public class ContractionCollision : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Gb.StartFlg)
+        if (Gb.IsGameStart())
         {
             x += DecreaseX;
             //y += -0.01f;
@@ -39,6 +39,6 @@ public class ContractionCollision : MonoBehaviour {
 	}
     public bool GetStartFlag()
     {
-        return Gb.StartFlg;
+        return Gb.IsGameStart();
     }
 }

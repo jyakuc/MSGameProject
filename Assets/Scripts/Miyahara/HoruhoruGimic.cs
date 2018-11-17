@@ -65,7 +65,7 @@ public class HoruhoruGimic : MonoBehaviour {
 	void Update () {
        
         
-        if (Gb.StartFlg)
+        if (Gb.IsGameStart())
         {
 
             if (Count >= 7)

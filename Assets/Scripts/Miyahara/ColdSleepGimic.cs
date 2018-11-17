@@ -38,7 +38,7 @@ public class ColdSleepGimic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Gb.StartFlg)
+        if (Gb.IsGameStart())
         {
             if (Count >= MaxWall)
                 return;

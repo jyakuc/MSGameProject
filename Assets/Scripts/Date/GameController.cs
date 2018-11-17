@@ -12,46 +12,41 @@ public class GameController : MonoBehaviour
         End
     }
     private EState m_state;
+    public EState GameState
+    {
+        get { return m_state; }
+    }
+
     private const int m_playerNum = 6;
     public int PlayerNum
     {
         get { return m_playerNum; }
     }
-
     private List<PlayerController> m_playerObj = new List<PlayerController>();
-//    [SerializeField]
-//    public List<GameObject> m_deleteObjects = new List<GameObject>();
-    [SerializeField]
     private GameSceneController m_gameSceneController;
+    private CostManager m_costManager;
+    [SerializeField]
+    private GameUIScripts m_gameUIScripts;
 
-    private bool m_gameStartFlg;
-    public bool StartFlg
-    {
-        get { return m_gameStartFlg; }
-    }
-
-    public StageCreate.SelectingStage m_selectingStage;
-
+    private PlayerController m_winnerPlayer;
     /// <summary>
     /// 関数群
     /// </summary>
 
     private void Awake()
     {
-        m_gameStartFlg = false;
         m_state = EState.Start;
     }
 
     // Use this for initialization
     void Start()
     {
-        // m_stageCreate.Create(EStageIndex.Stage_1);
-
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
         {
             m_state = EState.Main;
-            m_gameStartFlg = true;
         }
+        m_gameSceneController = gameObject.GetComponent<GameSceneController>();
+        m_costManager = FindObjectOfType<CostManager>();
     }
 
     // Update is called once per frame
@@ -71,18 +66,19 @@ public class GameController : MonoBehaviour
             case EState.Finish:
                 FinishUpdate();
                 break;
+            case EState.End:
+                RestartConfirmation();
+                break;
         }
     }
 
-
-/*    public void AllDeleteObjects()
+    public bool IsGameStart()
     {
-        for (int i = 0; i < m_deleteObjects.Capacity; i++)
-        {
-            Destroy(m_deleteObjects[i]);
-        }
+        if (m_state == EState.Main) return true;
+        return false;
     }
-*/
+
+    // 参加プレイヤー追加
     public void AddPlayer(GameObject human)
     {
         Debug.Log(human + "追加");
@@ -93,21 +89,18 @@ public class GameController : MonoBehaviour
     void StartUpdate()
     {
         int playerNum = DebugModeGame.GetProperty().m_debugMode ? DebugModeGame.GetProperty().m_debugPlayerNum : m_playerNum;
-
-        if (m_gameStartFlg) return;
+        
         if (m_playerObj.Count != playerNum) return;
         for (int i = 0; i < playerNum; ++i)
         {
             if (!m_playerObj[i].IsWait()) return;
         }
-
-        m_gameStartFlg = true;
+        
         m_state = EState.Main;
         for (int i = 0; i < playerNum; ++i)
         {
             m_playerObj[i].PlayStart();
         }
- //       AllDeleteObjects();
 
         Debug.Log("ゲームスタート");
     }
@@ -138,30 +131,45 @@ public class GameController : MonoBehaviour
     void FinishUpdate()
     {
         m_state = EState.End;
+
+        // 勝者の芸術ポイント保存
         for(int i = 0; i < m_playerObj.Count; ++i)
         {
             if (m_playerObj[i] == null) continue;
             if (m_playerObj[i].GetMyState() == PlayerController.EState.Dead) continue;
             m_playerObj[i].Win();
-
+            m_winnerPlayer = m_playerObj[i];
             // 芸術点採点
             ArtGrading art =  m_playerObj[i].gameObject.GetComponent<ArtGrading>();
             BattlePointGrading battlePoint = m_playerObj[i].gameObject.GetComponent<BattlePointGrading>();
             art.ArtistGrading();
             // コストマネージャーに登録
             FindObjectOfType<CostManager>().SaveArtCostData(m_playerObj[i].PlayerID, art.Cost);
-            // プレイヤーが消える前に処理する
-            //FindObjectOfType<CostManager>().SaveBattleCostData(m_playerObj[i].PlayerID, battlePoint.GetAllPoint());
             Debug.Log("勝者：" + m_playerObj[i].name + " 芸術ポイント：" + art.Cost.allCost);
+
+            // 勝者を殺すプログラム
+            //m_playerObj[i].Dead();
         }
 
-
-        m_gameSceneController.ChangeScene(m_selectingStage);
+        m_gameSceneController.ChangeScene();
     }
 
-    // ステージの読み込みと破棄　
-    public void Reset(StageCreate.SelectingStage unloadStage,StageCreate.SelectingStage loadStage)
+
+    // リスタートかどうか確認
+    void RestartConfirmation()
     {
+        if (!m_gameSceneController.IsRestart()) return;
+        if (!m_gameSceneController.IsRestartReady()) return;
+
+        // UIの初期化
+        m_gameUIScripts.Init();
+        // ポイントリスト初期化
+        m_costManager.Init();
+        // プレイヤリスト初期化
+        m_winnerPlayer.Dead();
+        m_playerObj.Clear();
         
+        m_gameSceneController.ReStart();
+        m_state = EState.Start;
     }
 }

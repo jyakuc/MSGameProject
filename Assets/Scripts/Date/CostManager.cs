@@ -5,6 +5,8 @@ using UnityEngine;
 public class CostManager : MonoBehaviour {
     private Dictionary<int, CostParts> m_playerArtCostData = new Dictionary<int, CostParts>();  // 1ステージで獲得した芸術得点
     private Dictionary<int, float> m_playerBattleCostData = new Dictionary<int, float>();       // 1ステージで獲得したバトル得点
+    //private List<CostParts> m_playerArtCostData = new List<CostParts>();  // 1ステージで獲得した芸術得点
+    //private List<float> m_playerBattleCostData = new List<int, float>();       // 1ステージで獲得したバトル得点
     private const int MaxPlayer = 6;
     private int[] m_saveCostData = new int[MaxPlayer];                                          // プレイヤーごとの得点保存
     [SerializeField]
@@ -92,18 +94,22 @@ public class CostManager : MonoBehaviour {
     }
 
     // 次のステージに移るためにコストを保存する
-    public void SaveCost()
+    public void Init()
     {
         for (int i = 0; i < m_saveCostData.Length; ++i)
         {
             if (m_playerArtCostData.ContainsKey(i))
             {
                 m_saveCostData[i] += ConversionCost(m_playerArtCostData[i].allCost, true);
+                m_playerArtCostData.Remove(i);
             }
             if (m_playerBattleCostData.ContainsKey(i))
             {
                 m_saveCostData[i] += ConversionCost(m_playerBattleCostData[i], false);
+                m_playerBattleCostData.Remove(i);
             }
         }
+        m_playerArtCostData.Clear();
+        m_playerBattleCostData.Clear();
     }
 }

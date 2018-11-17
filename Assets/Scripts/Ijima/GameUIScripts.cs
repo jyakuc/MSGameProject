@@ -8,6 +8,7 @@ public class GameUIScripts : MonoBehaviour {
     public GameObject Canvas;
     public GameObject uiPlayer;
     public GameObject uiRank;
+    private RankingInGame uiRankImages;
     public RawImage[] PannelDigit;
     public RawImage[] PannelTenPlace;
     public RawImage[] PannelHundredPlace;
@@ -25,7 +26,7 @@ public class GameUIScripts : MonoBehaviour {
         //RankingUIの生成
         GameObject pRankUI = (GameObject)Instantiate(uiRank);
         pRankUI.transform.SetParent(Canvas.transform, false);
-
+        uiRankImages = pRankUI.GetComponent<RankingInGame>();
         // CostManager取得
         CManager = FindObjectOfType<CostManager>();
     }
@@ -67,4 +68,33 @@ public class GameUIScripts : MonoBehaviour {
         }
     }
 
+
+    public void Init()
+    {
+        // ポイント表示初期化
+        for(int i = 0; i < 6; ++i)
+        {
+            if(i<3)
+            {
+                PannelDigit[i].texture = Images[0];
+                PannelDigit[i].color = new Color(255, 255, 255, 1f);
+                PannelTenPlace[i].texture = null;
+                PannelTenPlace[i].color = new Color(255, 255, 255, 0f);
+                PannelHundredPlace[i].texture = null;
+                PannelHundredPlace[i].color = new Color(255, 255, 255, 0f);
+            }
+            else
+            {
+                PannelDigit[i].texture = Images[10];
+                PannelDigit[i].color = new Color(255, 255, 255, 1f);
+                PannelTenPlace[i].texture = null;
+                PannelTenPlace[i].color = new Color(255, 255, 255, 0f);
+                PannelHundredPlace[i].texture = null;
+                PannelHundredPlace[i].color = new Color(255, 255, 255, 0f);
+            }
+        }
+
+        // 順位表示初期化
+        uiRankImages.Init();
+    }
 }

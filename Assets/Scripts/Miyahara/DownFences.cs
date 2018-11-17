@@ -20,7 +20,7 @@ public class DownFences : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Gb.StartFlg)
+        if (Gb.IsGameStart())
         {
             gravityFlg = true;
         }

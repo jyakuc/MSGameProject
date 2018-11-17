@@ -19,21 +19,6 @@ public class RankingInGame : MonoBehaviour
     public Image[] Pannel;
     public Sprite[] Image;
     private short rank = 0;
-    private short player = 0;
-    private int time = 0;
-
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
 
     public void SetRank(int playerID)
     {
@@ -45,5 +30,15 @@ public class RankingInGame : MonoBehaviour
             rank++;
         }
         
+    }
+
+    // 順位表示初期化
+    public void Init()
+    {
+        for(int i = 0; i < 6; ++i)
+        {
+            Pannel[i].GetComponent<Image>().sprite = null;
+            Pannel[i].GetComponent<Image>().color = new Color(255, 255, 255, 0f);
+        }
     }
 }
