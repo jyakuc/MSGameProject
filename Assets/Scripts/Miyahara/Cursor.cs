@@ -4,8 +4,14 @@ public class Cursor : MonoBehaviour
 {
     public int PlayerID;
     public float Speed;
+    private Vector2 Slope;
     private Vector3 pos;
     private Vector3 Oldpos;
+    //private Vector3 CenterPos;
+
+    private Vector2 Decrease = new Vector2(1.0f, 1.0f);
+
+
     private bool fireflg;
     public bool FireFlg
     {
@@ -16,43 +22,69 @@ public class Cursor : MonoBehaviour
     [SerializeField]
     private MyInputManager myInputManager;
 
+    //private bool SlopeXFlg;
+    //private bool SlopeYFlg;
+
     void Start()
     {
         pos = transform.position;
+        //CenterPos = pos;
         fireflg = true;
-
+        //SlopeXFlg = false;
+        //SlopeYFlg = false;
         myInputManager = GameObject.FindObjectOfType<MyInputManager>();
         if (myInputManager == null)
             Debug.LogError("MyInputManagerがシーンにありません");
     }
 
-	void Update () 
-	{
+    void Update()
+    {
         if (!fireflg)
             return;
-        
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Slope.x = Input.GetAxis("Horizontal_Player" + myInputManager.joysticks[PlayerID - 1].ToString());
+        Slope.y = Input.GetAxis("Vertical_Player" + myInputManager.joysticks[PlayerID - 1].ToString());
+
+        //if (Mathf.FloorToInt(Slope.x) == 0)           //横方向入力されていないときフラグを立てる
+        //{
+        //    SlopeXFlg = true;
+        //}
+        //else
+        //{
+        //    SlopeXFlg = false;
+        //    Decrease.x = 1.0f;
+        //}
+
+        //if (Mathf.FloorToInt(Slope.y) == 0)           //縦方向入力されていないときフラグを立てる
+        //{
+        //    SlopeYFlg = true;
+        //}
+        //else
+        //{
+        //    SlopeYFlg = false;
+        //    Decrease.y = 1.0f;
+        //}
+        //Debug.Log("slope.x"+Slope.x);
+        //Debug.Log("slope.x" + Slope.y);
+        //Debug.Log("x"+SlopeXFlg);
+        //Debug.Log("y"+SlopeYFlg);
+
+        //if (SlopeXFlg && pos.x != CenterPos.x)              //縦方向入力されていないとき徐々に減少
+        //{
+        //    Decrease.x -= 0.1f;
+        //    Slope.x = Decrease.x;
+        //}
+        //if (SlopeYFlg && pos.y != CenterPos.y)              //横方向入力されていないとき徐々に減少
+        //{
+        //    Decrease.y -= 0.1f;
+        //    Slope.y = Decrease.y;
+        //}
+
         Vector3 OldInputPos = pos;
-        if (Input.GetAxis("Horizontal_Player" + myInputManager.joysticks[PlayerID-1].ToString()) < 0)
-        {
-            pos.x -= Speed;
-            Debug.Log(PlayerID + "yoko");
-            
-        }
-        else if (Input.GetAxis("Horizontal_Player" + myInputManager.joysticks[PlayerID - 1].ToString()) > 0)
-        {
-            pos.x += Speed;
-        }
-        if (Input.GetAxis("Vertical_Player" + myInputManager.joysticks[PlayerID - 1].ToString()) < 0)
-        {
-            pos.z -= Speed;
-            Debug.Log(PlayerID + "tate");
-        }
-        else if (Input.GetAxis("Vertical_Player" + myInputManager.joysticks[PlayerID - 1].ToString()) > 0)
-        {
-            pos.z += Speed;
-        }
-        
+        pos.x = Slope.x * Speed;
+        pos.z = Slope.y * Speed;
+
+        transform.position += pos;
 
         Ray ray = new Ray();
         ray.direction = Vector3.down;
@@ -76,7 +108,7 @@ public class Cursor : MonoBehaviour
                 pos.z = OldInputPos.z;
             }
 
-            
+
         }
-	}
+    }
 }
