@@ -86,7 +86,9 @@ public class FadeController : MonoBehaviour {
         {
             Alpha += fadeSpeed * -1.0f;
         }
-
+        Debug.Log(m_fadeState);
+        if (m_fadeState == FadeState.FadeOut)
+            Debug.Log(Alpha);
         // Fade中
         if (Alpha > 0 && Alpha < 1) return;
 
@@ -95,7 +97,7 @@ public class FadeController : MonoBehaviour {
 
         if (m_onFinished != null)
         {
-            Debug.Log("FAdeFade");
+            Debug.Log("FadeFade");
             m_onFinished();
         }
         else
