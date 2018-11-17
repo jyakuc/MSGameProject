@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameUIScripts : MonoBehaviour {
 
     public GameObject Canvas;
-    [SerialzeField]
+    [SerializeField]
     private RankingInGame uiRankImages;
 
     public RawImage[] PannelDigit;
@@ -73,26 +73,24 @@ public class GameUIScripts : MonoBehaviour {
 
     public void Init()
     {
+
+        ColsetDigit();
         // ポイント表示初期化
         for(int i = 0; i < 6; ++i)
         {
-            if(i<3)
+            ColsetTen(i,0);
+            ColsetHundred(i,0);
+            if (i<3)
             {
                 PannelDigit[i].texture = Images[0];
-                PannelDigit[i].color = new Color(255, 255, 255, 1f);
                 PannelTenPlace[i].texture = null;
-                PannelTenPlace[i].color = new Color(255, 255, 255, 0f);
                 PannelHundredPlace[i].texture = null;
-                PannelHundredPlace[i].color = new Color(255, 255, 255, 0f);
             }
             else
             {
                 PannelDigit[i].texture = Images[10];
-                PannelDigit[i].color = new Color(255, 255, 255, 1f);
                 PannelTenPlace[i].texture = null;
-                PannelTenPlace[i].color = new Color(255, 255, 255, 0f);
                 PannelHundredPlace[i].texture = null;
-                PannelHundredPlace[i].color = new Color(255, 255, 255, 0f);
             }
         }
 
@@ -115,22 +113,22 @@ public class GameUIScripts : MonoBehaviour {
         //cian
         PannelDigit[5].color = new Color(0, 255, 255, 1f);
     }
-    void ColsetTen(int i)
+    void ColsetTen(int i,float alpha = 1f)
     {
-        if(i==0) PannelTenPlace[0].color = new Color(255, 0, 0, 1f);
-        if(i==1) PannelTenPlace[1].color = new Color(0, 0, 100, 1f);
-        if(i==2) PannelTenPlace[2].color = new Color(255, 200, 0, 1f);
-        if(i==3) PannelTenPlace[3].color = new Color(0, 255, 0, 1f);
-        if(i==4) PannelTenPlace[4].color = new Color(255, 0, 255, 1f);
-        if(i==5) PannelTenPlace[5].color = new Color(0, 255, 255, 1f);
+        if(i==0) PannelTenPlace[0].color = new Color(255, 0, 0, alpha);
+        if(i==1) PannelTenPlace[1].color = new Color(0, 0, 100, alpha);
+        if(i==2) PannelTenPlace[2].color = new Color(255, 200, 0, alpha);
+        if(i==3) PannelTenPlace[3].color = new Color(0, 255, 0, alpha);
+        if(i==4) PannelTenPlace[4].color = new Color(255, 0, 255, alpha);
+        if(i==5) PannelTenPlace[5].color = new Color(0, 255, 255, alpha);
     }
-    void ColsetHundred(int i)
+    void ColsetHundred(int i,float alpha = 1f)
     {
-        if (i == 0) PannelHundredPlace[0].color = new Color(255, 0, 0, 1f);
-        if (i == 1) PannelHundredPlace[1].color = new Color(0, 0, 100, 1f);
-        if (i == 2) PannelHundredPlace[2].color = new Color(255, 200, 0, 1f);
-        if (i == 3) PannelHundredPlace[3].color = new Color(0, 255, 0, 1f);
-        if (i == 4) PannelHundredPlace[4].color = new Color(255, 0, 255, 1f);
-        if (i == 5) PannelHundredPlace[5].color = new Color(0, 255, 255, 1f);
+        if (i == 0) PannelHundredPlace[0].color = new Color(255, 0, 0, alpha);
+        if (i == 1) PannelHundredPlace[1].color = new Color(0, 0, 100, alpha);
+        if (i == 2) PannelHundredPlace[2].color = new Color(255, 200, 0, alpha);
+        if (i == 3) PannelHundredPlace[3].color = new Color(0, 255, 0, alpha);
+        if (i == 4) PannelHundredPlace[4].color = new Color(255, 0, 255, alpha);
+        if (i == 5) PannelHundredPlace[5].color = new Color(0, 255, 255, alpha);
     }
 }

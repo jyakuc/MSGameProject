@@ -168,6 +168,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114402365842373260, guid: 166ffd972dbfb544784729884c50c4f3,
+        type: 2}
+      propertyPath: uiRankImages
+      value: 
+      objectReference: {fileID: 555015652}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 166ffd972dbfb544784729884c50c4f3, type: 2}
   m_IsPrefabParent: 0
@@ -236,6 +241,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 91.777985, y: -30, z: 0}
+--- !u!114 &555015652 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114222150183325308, guid: 166ffd972dbfb544784729884c50c4f3,
+    type: 2}
+  m_PrefabInternal: {fileID: 91088894}
+  m_Script: {fileID: 11500000, guid: a5d4740c1a57f6b4eb0a468db40e2d9e, type: 3}
 --- !u!1001 &570275545
 Prefab:
   m_ObjectHideFlags: 0
@@ -555,14 +566,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
 --- !u!114 &1915988211 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114402365842373260, guid: 166ffd972dbfb544784729884c50c4f3,
     type: 2}
   m_PrefabInternal: {fileID: 91088894}
   m_Script: {fileID: 11500000, guid: 9233a9bf7bef0f04e8cd695e336b9d5d, type: 3}
-
 --- !u!1 &1943853108 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1763243969287568, guid: 27856c8625bae1e47ba1e4c5a9315383,
@@ -703,4 +712,3 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a56fefe9e16e9ee47bd75a92598ce814, type: 2}
   m_IsPrefabParent: 0
-
