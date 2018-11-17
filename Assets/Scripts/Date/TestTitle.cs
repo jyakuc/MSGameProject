@@ -26,7 +26,7 @@ public class TestTitle : MonoBehaviour {
             flame++;
         }
         if (flame == SceneChangeTime){
-            SceneController.GetInstance.ChangeScene("GameScene");
+            SceneController.GetInstance.ChangeScene("GameScene",2);
         }
     }
 }
