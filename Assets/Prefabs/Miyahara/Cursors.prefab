@@ -591,7 +591,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 3
-  Speed: 1
+  Speed: 15
+  myInputManager: {fileID: 0}
 --- !u!114 &114105130247992382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -604,7 +605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 4
-  Speed: 1
+  Speed: 15
+  myInputManager: {fileID: 0}
 --- !u!114 &114144456486100898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,7 +619,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 5
-  Speed: 1
+  Speed: 15
+  myInputManager: {fileID: 0}
 --- !u!114 &114462762630678354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -630,7 +633,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 2
-  Speed: 1
+  Speed: 15
+  myInputManager: {fileID: 0}
 --- !u!114 &114556458718895172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,7 +647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 1
-  Speed: 1
+  Speed: 15
+  myInputManager: {fileID: 0}
 --- !u!114 &114676368671199072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,7 +661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 6
-  Speed: 1
+  Speed: 15
+  myInputManager: {fileID: 0}
 --- !u!119 &119147537460323544
 Projector:
   m_ObjectHideFlags: 1
