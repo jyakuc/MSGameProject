@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class GameUIScripts : MonoBehaviour {
 
     public GameObject Canvas;
+    [SerialzeField]
+    private RankingInGame uiRankImages;
+
     public RawImage[] PannelDigit;
     public RawImage[] PannelTenPlace;
     public RawImage[] PannelHundredPlace;
@@ -68,7 +71,36 @@ public class GameUIScripts : MonoBehaviour {
         }
     }
 
-    void ColsetDigit()
+    public void Init()
+    {
+        // ポイント表示初期化
+        for(int i = 0; i < 6; ++i)
+        {
+            if(i<3)
+            {
+                PannelDigit[i].texture = Images[0];
+                PannelDigit[i].color = new Color(255, 255, 255, 1f);
+                PannelTenPlace[i].texture = null;
+                PannelTenPlace[i].color = new Color(255, 255, 255, 0f);
+                PannelHundredPlace[i].texture = null;
+                PannelHundredPlace[i].color = new Color(255, 255, 255, 0f);
+            }
+            else
+            {
+                PannelDigit[i].texture = Images[10];
+                PannelDigit[i].color = new Color(255, 255, 255, 1f);
+                PannelTenPlace[i].texture = null;
+                PannelTenPlace[i].color = new Color(255, 255, 255, 0f);
+                PannelHundredPlace[i].texture = null;
+                PannelHundredPlace[i].color = new Color(255, 255, 255, 0f);
+            }
+        }
+
+        // 順位表示初期化
+        uiRankImages.Init();
+    }
+  
+      void ColsetDigit()
     {
         //red
         PannelDigit[0].color = new Color(255, 0, 0, 1f);
@@ -101,5 +133,4 @@ public class GameUIScripts : MonoBehaviour {
         if (i == 4) PannelHundredPlace[4].color = new Color(255, 0, 255, 1f);
         if (i == 5) PannelHundredPlace[5].color = new Color(0, 255, 255, 1f);
     }
-
 }

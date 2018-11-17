@@ -91,12 +91,15 @@ public class FadeController : MonoBehaviour {
         if (Alpha > 0 && Alpha < 1) return;
 
         m_fadeState = FadeState.None;
-        this.enabled = false;
+        //this.enabled = false;
 
-        if(m_onFinished != null)
+        if (m_onFinished != null)
         {
+            Debug.Log("FAdeFade");
             m_onFinished();
         }
+        else
+            Debug.Log("NoFade");
 	}
 
     /// <summary>

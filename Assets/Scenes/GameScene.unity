@@ -393,6 +393,11 @@ Prefab:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 2050418796}
+    - target: {fileID: 114116800811218258, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_gameUIScripts
+      value: 
+      objectReference: {fileID: 1915988211}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc1de046339e85049a4a76553bc9f8c9, type: 2}
   m_IsPrefabParent: 0
@@ -532,6 +537,7 @@ MonoBehaviour:
     type: 2}
   Cursol: {fileID: 1114303729523270, guid: 4db3405ed3ac9214b80a7c0e964c2ba8, type: 2}
   gameControllerObj: {fileID: 2050418792}
+  createStageObjects: []
   x: -9
   y: 1
   z: -9
@@ -549,6 +555,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
+--- !u!114 &1915988211 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114402365842373260, guid: 166ffd972dbfb544784729884c50c4f3,
+    type: 2}
+  m_PrefabInternal: {fileID: 91088894}
+  m_Script: {fileID: 11500000, guid: 9233a9bf7bef0f04e8cd695e336b9d5d, type: 3}
 
 --- !u!1 &1943853108 stripped
 GameObject:
