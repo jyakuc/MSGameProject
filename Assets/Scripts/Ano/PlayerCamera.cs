@@ -42,7 +42,7 @@ public class PlayerCamera : MonoBehaviour {
         CameraTrans = CameraClone.GetComponent<Transform>();
         SaveCameraPos = CameraTrans;
         NowSpeed = Speed;
-        P_Camera.depth = 2;
+        P_Camera.depth = 0;
         WaitNowTime = 0;
         ZoomNowTime = 0;
     }
@@ -82,7 +82,7 @@ public class PlayerCamera : MonoBehaviour {
     {
         if(ZoomFlag)
         {
-            P_Camera.depth = 2;
+            P_Camera.depth = 5;
             ZoomNowTime += Time.deltaTime;
             if (ZoomNowTime >= ZoomMaxTime)
             {
@@ -115,7 +115,7 @@ public class PlayerCamera : MonoBehaviour {
     //フォーカスを当てる時用のカメラ設定
     private void FocusCamera()
     {
-        P_Camera.depth = 2;
+        P_Camera.depth = 5;
         ZoomNowTime += Time.deltaTime;
         if (ZoomNowTime >= ZoomMaxTime)
         {
