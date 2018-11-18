@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CostManager : MonoBehaviour {
+    public struct PointType
+    {
+        public int art;
+        public int critical;
+        public int crush;
+    }
+
     private Dictionary<int, CostParts> m_playerArtCostData = new Dictionary<int, CostParts>();  // 1ステージで獲得した芸術得点
     private Dictionary<int, float> m_playerBattleCostData = new Dictionary<int, float>();       // 1ステージで獲得したバトル得点
-    //private List<CostParts> m_playerArtCostData = new List<CostParts>();  // 1ステージで獲得した芸術得点
-    //private List<float> m_playerBattleCostData = new List<int, float>();       // 1ステージで獲得したバトル得点
     private const int MaxPlayer = 6;
-    private int[] m_saveCostData = new int[MaxPlayer];                                          // プレイヤーごとの得点保存
+
+    // 各プレイヤーの総合得点リスト
+    private PointType[] m_saveCostData = new PointType[MaxPlayer];                                          // プレイヤーごとの得点保存
+
     [SerializeField]
     private float m_ArtMagnification;      // 芸術ポイント倍率
     [SerializeField]
@@ -19,13 +27,15 @@ public class CostManager : MonoBehaviour {
     {
         get { return m_criticalPoint; }
     }
+
+    private CrushPointManager m_crushPointManager;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
     }
     // Use this for initialization
     void Start () {
-
+        m_crushPointManager = gameObject.GetComponent<CrushPointManager>();
 	}
 	
 	// Update is called once per frame
@@ -92,24 +102,33 @@ public class CostManager : MonoBehaviour {
         }
         return cost;
     }
+    // プレイヤーの1ステージに獲得したクラッシュポイントを獲得
+    public int GetPlayerCrushPoint(int playerID)
+    {
+        return m_crushPointManager.GetCrushPoint(playerID);
+    }
 
     // 次のステージに移るためにコストを保存する
     public void Init()
     {
-        for (int i = 0; i < m_saveCostData.Length; ++i)
+        for (int id = 1; id <= m_saveCostData.Length; ++id)
         {
-            if (m_playerArtCostData.ContainsKey(i))
+            if (m_playerArtCostData.ContainsKey(id))
             {
-                m_saveCostData[i] += ConversionCost(m_playerArtCostData[i].allCost, true);
-                m_playerArtCostData.Remove(i);
+                m_saveCostData[id-1].art += ConversionCost(m_playerArtCostData[id].allCost, true);
+                m_playerArtCostData.Remove(id);
             }
-            if (m_playerBattleCostData.ContainsKey(i))
+            if (m_playerBattleCostData.ContainsKey(id))
             {
-                m_saveCostData[i] += ConversionCost(m_playerBattleCostData[i], false);
-                m_playerBattleCostData.Remove(i);
+                m_saveCostData[id-1].critical += ConversionCost(m_playerBattleCostData[id], false);
+                m_playerBattleCostData.Remove(id);
             }
+
+            m_saveCostData[id-1].crush += m_crushPointManager.GetCrushPoint(id);
         }
+        
         m_playerArtCostData.Clear();
         m_playerBattleCostData.Clear();
+        m_crushPointManager.Init();
     }
 }
