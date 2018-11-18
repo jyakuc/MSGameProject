@@ -70,12 +70,18 @@ public class CostManager : MonoBehaviour {
     }
 
     // プレイヤーの1ステージに獲得したポイントを取得
-    public int GetPlayerAllCost(int playerID)
-    {
-        int cost = 0;
+     public int GetPlayerAllCost(int playerID)
+     {
+         int cost = 0;
 
-        cost += GetPlayerArtPoint(playerID);
+        /*cost += GetPlayerArtPoint(playerID);
         cost += GetPlayerBattlePoint(playerID);
+
+        */
+
+        cost += m_saveCostData[playerID - 1].art;
+        cost += m_saveCostData[playerID - 1].critical;
+        cost += m_saveCostData[playerID - 1].crush;
 
         return cost;
     }
@@ -131,4 +137,5 @@ public class CostManager : MonoBehaviour {
         m_playerBattleCostData.Clear();
         m_crushPointManager.Init();
     }
+
 }
