@@ -56,13 +56,18 @@ public class PlayerController : MonoBehaviour
     public GameObject m_leftFootObj;
 
     //プレイヤーの手足の先のTransform
-    public Transform Hand_R;
-    public Transform Hand_L;
-    public Transform Calf_R;
-    public Transform Calf_L;
+    //public Transform Hand_R;
+    //public Transform Hand_L;
+    //public Transform Calf_R;
+    //public Transform Calf_L;
+    // 手足のMaterial取得
+    public Material Hand_R;
+    public Material Hand_L;
+    public Material Calf_R;
+    public Material Calf_L;
+    // デフォルトの肌の色を保存用
+    private Color SaveColor;
 
-    // PickUpEffectPrefab取得
-    public GameObject PickupPrefab;
 
     // 手足制御オブジェクト（Rigidbody）
     private Rigidbody m_body_rg;
@@ -123,15 +128,20 @@ public class PlayerController : MonoBehaviour
         get { return m_hitReceivePlayerID; }
     }
 
-    private GameObject CreateEffect;
-    private PickUpEffect PickupEffect;
+
     private CrushPointManager m_crushPointManager;
     void Awake()
     {
         //       m_lifeFlg = false;
         //       m_inputFlg = false;
         m_state = EState.Init;
-
+        // デフォルトの肌の色の数値を代入する
+        SaveColor = new Color(1.0f, 0.78f, 0.55f, 1.0f);
+        /* 色が変わった状態でHumanが無くなるとMaterialが変更されてままになるので生成時に初期色入れておく*/
+        Hand_R.color = SaveColor;
+        Hand_L.color = SaveColor;
+        Calf_R.color = SaveColor;
+        Calf_L.color = SaveColor;
     }
     // Use this for initialization
     void Start()
@@ -147,8 +157,9 @@ public class PlayerController : MonoBehaviour
         m_HandForce.Init();
         m_FootForce.Init();
         m_bodyMoveForce.Init();
-        CreateEffect = null;
+
         //       m_state = EState.Idle;
+
 
         dir = rayTest.Dir;
 
@@ -246,62 +257,62 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_rightHand_rg, m_HandExtend);
-            //エフェクト発生
-            if (CreateEffect==null)
-            {
-                CreateEffect = Instantiate(PickupPrefab, Hand_R.position, Quaternion.identity);
-                PickupEffect = GetComponent<PickUpEffect>();
-            }
-
+            //カラー変更
+            Hand_R.color = Color.Lerp(Hand_R.color, Color.red, Time.deltaTime * 3.0f);
             m_isInputFlg[(int)EInput.A] = true;
         }
         else
+        {
+            //元の色に戻す
+            Hand_R.color = Color.Lerp(Hand_R.color, SaveColor, Time.deltaTime * 3.0f);
             m_isInputFlg[(int)EInput.A] = false;
+
+
+        }
 
         if (Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_leftHand_rg, -m_HandExtend);
-            //エフェクト発生
-            if (CreateEffect == null)
-            {
-                CreateEffect = Instantiate(PickupPrefab, Hand_L.position, Quaternion.identity);
-                PickupEffect = GetComponent<PickUpEffect>();
-            }
-
+            //カラー変更
+            Hand_L.color = Color.Lerp(Hand_L.color, Color.red, Time.deltaTime * 3.0f);
             m_isInputFlg[(int)EInput.B] = true;
         }
         else
+        {
+            //元の色に戻す
+            Hand_L.color = Color.Lerp(Hand_L.color, SaveColor, Time.deltaTime * 3.0f);
             m_isInputFlg[(int)EInput.B] = false;
+        }
 
         if (Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_rightFoot_rg, m_FootExtendR);
-            //エフェクト発生
-            if (CreateEffect == null)
-            {
-                CreateEffect = Instantiate(PickupPrefab, Calf_R.position, Quaternion.identity);
-                PickupEffect = GetComponent<PickUpEffect>();
-            }
-
+            //カラー変更
+            Calf_R.color = Color.Lerp(Calf_R.color, Color.red, Time.deltaTime * 3.0f);
             m_isInputFlg[(int)EInput.X] = true;
         }
         else
+        {
+            //元の色に戻す
+            Calf_R.color = Color.Lerp(Calf_R.color, SaveColor, Time.deltaTime * 3.0f);
             m_isInputFlg[(int)EInput.X] = false;
+        }
+
 
         if (Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]))
         {
             Extend(m_leftFoot_rg, m_FootExtendL);
-            //エフェクト発生
-            if (CreateEffect==null)
-            {
-                CreateEffect = Instantiate(PickupPrefab, Calf_L.position, Quaternion.identity);
-                PickupEffect = GetComponent<PickUpEffect>();
-            }
-
+            //カラー変更
+            Calf_L.color = Color.Lerp(Calf_L.color, Color.red, Time.deltaTime * 3.0f);
             m_isInputFlg[(int)EInput.Y] = true;
         }
         else
+        {
+            //元の色に戻す
+            Calf_L.color = Color.Lerp(Calf_L.color, SaveColor, Time.deltaTime * 3.0f);
             m_isInputFlg[(int)EInput.Y] = false;
+        }
+
 
         // 回転減衰
         if (m_state == EState.LeftMove || m_state == EState.RightMove)
