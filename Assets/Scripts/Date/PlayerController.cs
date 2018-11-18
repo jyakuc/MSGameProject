@@ -47,31 +47,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private MyInputManager myInputManager;
-    /*
-    // ジョイスティック番号
-    [SerializeField]
-    private int m_joystickNum;
-    public int JoystickNum
-    {
-        set { m_joystickNum = value; }
-        get { return m_joystickNum; }
-    }
-
-    */
-    /*   // 生存フラグ
-       private bool m_lifeFlg;
-       public bool LifeFlag
-       {
-           get { return m_lifeFlg; }
-       }
-       // 入力フラグ
-       private bool m_inputFlg;
-       public bool InputFlag
-       {
-           get { return m_inputFlg; }
-           set { m_inputFlg = value; }
-       }
-   */
+   
     // 手足制御用オブジェクト
     public GameObject m_bodyObj;
     public GameObject m_rightHandObj;
@@ -140,11 +116,16 @@ public class PlayerController : MonoBehaviour
     //飛んでる経過時間
     private float FlayNowTime = 0;
     private bool[] m_isInputFlg = new bool[(int)EInput.MAX];
-
+    // 攻撃された相手のプレイヤーID
     private int m_hitReceivePlayerID;
+    public int HitReceivePlayerID
+    {
+        get { return m_hitReceivePlayerID; }
+    }
 
     private GameObject CreateEffect;
     private PickUpEffect PickupEffect;
+    private CrushPointManager m_crushPointManager;
     void Awake()
     {
         //       m_lifeFlg = false;
@@ -184,6 +165,8 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("MyInputManagerがシーンに存在しません");
 
         m_hitReceivePlayerID = PlayerID;
+        m_crushPointManager = FindObjectOfType<CrushPointManager>();
+
         if (!DebugModeGame.GetProperty().m_debugMode) return;
         // デバッグモードONの時の設定
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
@@ -410,10 +393,8 @@ public class PlayerController : MonoBehaviour
         // m_lifeFlg = false;
         // 自分が獲得したポイントをCostManager登録
         if (m_state == EState.Dead) return;
-       // BattlePointGrading battlePoint = gameObject.GetComponent<BattlePointGrading>();
-       // FindObjectOfType<CostManager>().SaveBattleCostData(m_playerID, battlePoint.GetAllPoint());
-       // Debug.Log("脱落：" + name + " バトルポイント：" + battlePoint.GetAllPoint());
-
+        //if (m_crushPointManager == null) m_crushPointManager = FindObjectOfType<CrushPointManager>();
+        //m_crushPointManager.DamageDead(m_playerID, m_hitReceivePlayerID);
         m_state = EState.Dead;
         GetComponent<Rigidbody>().isKinematic = true;
 

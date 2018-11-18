@@ -199,7 +199,7 @@ public class HitSystem : MonoBehaviour {
     void Start () {
 
 
-  	if(BattlePoint == null)
+  	    if(BattlePoint == null)
         {
             BattlePoint = transform.root.GetComponent<BattlePointGrading>();
         }

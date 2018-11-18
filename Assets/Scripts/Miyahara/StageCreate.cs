@@ -102,7 +102,7 @@ public class StageCreate : MonoBehaviour {
     // ステージ破棄
     public void Unload()
     {
-        for(int i = 0; i < createStageObjects.Capacity; ++i)
+        for(int i = 0; i < createStageObjects.Count; ++i)
         {
             Debug.Log("消去：" + createStageObjects[i]);
             Destroy(createStageObjects[i].gameObject);
@@ -114,7 +114,7 @@ public class StageCreate : MonoBehaviour {
     // ステージがすべて破棄されたか確認
     public bool IsDestroy()
     {
-        for (int i = 0; i < createStageObjects.Capacity; ++i)
+        for (int i = 0; i < createStageObjects.Count; ++i)
         {
             if (createStageObjects[i] != null) return false;
         }

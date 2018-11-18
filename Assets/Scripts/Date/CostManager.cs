@@ -123,7 +123,7 @@ public class CostManager : MonoBehaviour {
                 m_saveCostData[id-1].critical += ConversionCost(m_playerBattleCostData[id], false);
                 m_playerBattleCostData.Remove(id);
             }
-
+            Debug.Log(id.ToString()+"P:撃破ポイント " + m_crushPointManager.GetCrushPoint(id));
             m_saveCostData[id-1].crush += m_crushPointManager.GetCrushPoint(id);
         }
         
