@@ -6,11 +6,13 @@ public class CrushPointManager : MonoBehaviour {
 
     [SerializeField]
     private int m_crushPoint;
-    private Dictionary<int, int> m_crushIDContainer = new Dictionary<int, int>();
+    // 誰に撃破されたかのコンテナ
+    private Dictionary<int, int> m_playerIscrushedContainer = new Dictionary<int, int>();
+    // 撃破ポイントのコンテナ
+    private Dictionary<int, int> m_crushPointIDContainer = new Dictionary<int, int>(); 
 
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -20,24 +22,28 @@ public class CrushPointManager : MonoBehaviour {
 	}
 
     // 死亡時最後に攻撃されたプレイヤーのIDを格納
-    public void DamageDead(int myplayerID,int attackerID)
+    public void DamageDead(int deadplayerID,int attackerID)
     {
-        if(!m_crushIDContainer.ContainsKey(myplayerID))
-            m_crushIDContainer.Add(myplayerID, attackerID);
+        if(!m_playerIscrushedContainer.ContainsKey(deadplayerID))
+            m_playerIscrushedContainer.Add(deadplayerID, attackerID);
+
+        // ポイント加算
+        if (m_crushPointIDContainer.ContainsKey(attackerID))
+            m_crushPointIDContainer[attackerID] += m_crushPoint;
+        else
+            m_crushPointIDContainer.Add(attackerID,m_crushPoint);
     }
 
     public void Init()
     {
-        foreach(KeyValuePair<int, int> pair in m_crushIDContainer)
-        {
-            m_crushIDContainer.Remove(pair.Key);
-        }
+        m_playerIscrushedContainer.Clear();
+        m_crushPointIDContainer.Clear();
     }
 
     public int GetCrushPoint(int id)
     {
-        if (m_crushIDContainer.ContainsKey(id))
-            return m_crushIDContainer[id];
+        if (m_crushPointIDContainer.ContainsKey(id))
+            return m_crushPointIDContainer[id];
         return 0;
     }
 }
