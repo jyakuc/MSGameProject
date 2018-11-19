@@ -422,7 +422,7 @@ Prefab:
     - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
       propertyPath: m_debugMode.m_debugstageCreate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
@@ -568,7 +568,7 @@ MonoBehaviour:
   x: -9
   y: 1
   z: -9
-  Stages: 0
+  Stages: 1
 --- !u!4 &1800838732
 Transform:
   m_ObjectHideFlags: 0

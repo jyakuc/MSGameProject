@@ -37,6 +37,9 @@ public class ColdSleepGimic : MonoBehaviour {
     [SerializeField]
     private float IceFloorSetTime;
 
+    private float SaveTime;
+    private float IceSaveTime;
+
     private int RandomFloor;
     private int min = 0;
     private int max = 3;
@@ -54,6 +57,8 @@ public class ColdSleepGimic : MonoBehaviour {
         ParentIceFallpos = GameObject.Find("IceFieldFallObjs");
         ChildIceFall = ParentIceFallpos.GetComponentsInChildren<FallFloor>();
         RandomFloor = UnityEngine.Random.Range(min, max);
+        SaveTime = SetTime;
+        IceSaveTime = IceFloorSetTime;
 	}
 	
 	// Update is called once per frame
@@ -64,14 +69,15 @@ public class ColdSleepGimic : MonoBehaviour {
             {
                 ChildWall[Count].OnVanish();
                 Count += 1;
-                SetTime *= Count + 1;
+                SetTime = SaveTime * (Count + 1);
             }
             if (IceFloorSetTime < NowTime && FloorCount < MaxFallObj)
             {
                 ChildIceFall[FallList[RandomFloor, FloorCount]].OnFall();
                 FloorCount += 1;
-                IceFloorSetTime *= FloorCount + 1;
+                IceFloorSetTime = IceSaveTime * (FloorCount + 1);
             }
+            
             NowTime += Interval * Time.deltaTime;
         }
 
