@@ -75,7 +75,7 @@ public class GameSceneController : MonoBehaviour {
         AudioManager.GetInstance.PlaySE0(AUDIO.SE_Decision);
 
         // 最後のステージならリザルトシーンに移行
-        if (m_stageCreater.Stages == StageCreate.SelectingStage.ColdSleepMountain)
+        if (m_stageCreater.Stages == StageCreate.SelectingStage.HoruhoruMountain)
             SceneController.GetInstance.ChangeScene("ResultScene");
         else
             m_state = EState.FrameCount;

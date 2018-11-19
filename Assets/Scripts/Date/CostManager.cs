@@ -45,6 +45,7 @@ public class CostManager : MonoBehaviour {
 
     public void SaveArtCostData(int playerID,CostParts cost)
     {
+        Debug.Log("芸術ポイント："+cost.allCost);
         m_playerArtCostData.Add(playerID, cost);
     }
     
@@ -84,6 +85,11 @@ public class CostManager : MonoBehaviour {
         cost += m_saveCostData[playerID - 1].crush;
 
         return cost;
+    }
+
+    public PointType GetPlayerCost(int playerID)
+    {
+        return m_saveCostData[playerID - 1];
     }
 
     // プレイヤーの1ステージに獲得した芸術ポイントを取得

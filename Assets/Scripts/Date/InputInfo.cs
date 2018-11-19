@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 
 // 軸タイプ
 public enum AxisType
