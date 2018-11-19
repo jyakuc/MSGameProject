@@ -137,9 +137,7 @@ public class ResultScripts : MonoBehaviour {
 
         //点数のセット
         Debug.Log(bHundredPlace.ToString() +  " " + aHundredPlace.ToString() + " " + tHundredPlace.ToString() );
-        //PannelHundredPlace[0].color = SetColors[6];
-        //PannelHundredPlace[1].color = SetColors[6];
-        //PannelHundredPlace[2].color = SetColors[6];
+
         bool tFlg = false;
         bool aFlg = false;
         bool bFlg = false;
@@ -167,7 +165,7 @@ public class ResultScripts : MonoBehaviour {
             if (tHundredPlace != 0 && tHundredPlace == j)
             {
                 PannelHundredPlace[0].texture = Images[j];
-                PannelHundredPlace[2].color = SetColors[VictoryNum];
+                PannelHundredPlace[0].color = SetColors[VictoryNum];
                 tFlg = true;
             }
             else
@@ -198,7 +196,7 @@ public class ResultScripts : MonoBehaviour {
             if (bHundredPlace != 0 && bHundredPlace == j)
             {
                 PannelHundredPlace[1].texture = Images[j+10];   //左右判定
-                PannelHundredPlace[2].color = SetColors[VictoryNum];
+                PannelHundredPlace[1].color = SetColors[VictoryNum];
                 bFlg = true;
             }
             else
