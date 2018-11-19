@@ -126,6 +126,13 @@ public class PlayerController : MonoBehaviour
     private GameObject CreateEffect;
     private PickUpEffect PickupEffect;
     private CrushPointManager m_crushPointManager;
+
+    public GameObject m_shrinkRightHandObj;
+    public GameObject m_shrinkLeftHandObj;
+    public GameObject m_shrinkRightFootObj;
+    public GameObject m_shrinkLeftFootObj;
+    public float shrinkTime = 0;
+
     void Awake()
     {
         //       m_lifeFlg = false;
@@ -173,7 +180,7 @@ public class PlayerController : MonoBehaviour
         {
             m_state = EState.Idle;
         }
-        if (!DebugModeGame.GetProperty().m_controllerEnable)
+        if (DebugModeGame.GetProperty().m_controllerDisable)
         {
             myInputManager.joysticks[m_playerID - 1] = m_playerID;
         }
@@ -245,7 +252,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]))
         {
-            Extend(m_rightHand_rg, m_HandExtend);
+            DebugExtend(m_rightHandObj, m_shrinkRightHandObj, m_HandExtend);
+//            Extend(m_rightHand_rg, m_HandExtend);
             //エフェクト発生
             if (CreateEffect==null)
             {
@@ -384,8 +392,16 @@ public class PlayerController : MonoBehaviour
     {
         //joint.spring = 0;
         Vector3 worldRightHandVelocity = transform.TransformDirection(vec);
+        
         // Debug.Log(worldRightHandVelocity);
         rigidbody.AddForce(worldRightHandVelocity, ForceMode.Force);
+    }
+
+    void DebugExtend(GameObject ctlObj,GameObject shrinkObj,Vector3 vec)
+    {
+        ctlObj.transform.position = Vector3.Lerp(ctlObj.transform.position, shrinkObj.transform.position, shrinkTime);
+
+        shrinkTime += Time.deltaTime;
     }
 
     public void Dead()
