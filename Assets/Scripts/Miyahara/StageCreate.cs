@@ -35,8 +35,8 @@ public class StageCreate : MonoBehaviour {
     public enum SelectingStage
     {
         Colloseum,
+        ColdSleepMountain,
         HoruhoruMountain,
-        ColdSleepMountain
     }
 
     public SelectingStage Stages;
