@@ -2266,10 +2266,10 @@ MonoBehaviour:
   m_leftHandObj: {fileID: 1652172357805778}
   m_rightFootObj: {fileID: 1414602707996590}
   m_leftFootObj: {fileID: 1348671221161080}
-  Hand_R: {fileID: 4794979347149234}
-  Hand_L: {fileID: 4434193199004674}
-  Calf_R: {fileID: 4453311690325214}
-  Calf_L: {fileID: 4256070663585024}
+  Hand_R: {fileID: 2100000, guid: 279f0e36f1a8c8149bfb8a85c9117aa1, type: 2}
+  Hand_L: {fileID: 2100000, guid: b4d396f93efc17e49bde39b3d9047d95, type: 2}
+  Calf_R: {fileID: 2100000, guid: 1da93a4c2aab8424ea219d5549049fde, type: 2}
+  Calf_L: {fileID: 2100000, guid: 0f0470e1665f6a34ba8171d39c17c7f3, type: 2}
   PickupPrefab: {fileID: 1803646784035136, guid: 62e60ce412fbdb944bbde34e6ab13bdd,
     type: 2}
   m_bodyForce:
@@ -2342,8 +2342,12 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: d3a53bdc5c6c8f440a86ea785609db93, type: 2}
   - {fileID: 2100000, guid: ee951d50938d08d44b98e184688dfa70, type: 2}
   - {fileID: 2100004, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
-  - {fileID: 2100006, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  - {fileID: 2100000, guid: 279f0e36f1a8c8149bfb8a85c9117aa1, type: 2}
+  - {fileID: 2100008, guid: c49df7f5aed04184c9f9d7af05ff2b96, type: 3}
   - {fileID: 2100000, guid: 630ca8ec935d2e641acc9d0daf5eb33b, type: 2}
+  - {fileID: 2100000, guid: 1da93a4c2aab8424ea219d5549049fde, type: 2}
+  - {fileID: 2100000, guid: b4d396f93efc17e49bde39b3d9047d95, type: 2}
+  - {fileID: 2100000, guid: 0f0470e1665f6a34ba8171d39c17c7f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2367,7 +2371,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 9e8a606426b941d4a9cd9ecac91399be, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c49df7f5aed04184c9f9d7af05ff2b96, type: 3}
   m_Bones:
   - {fileID: 4596617561812236}
   - {fileID: 4664130590772384}

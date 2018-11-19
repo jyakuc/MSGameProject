@@ -31,6 +31,7 @@ public class PlayerCamera : MonoBehaviour {
     //Zoomしてから待機する最大時間
     public float WaitMaxTime = 1.0f;
     public bool FocusMode = false;
+    private GameTime gametime;
     public float test = 0;
     //一旦置いておく
     //private ZoomMode Zoommode=ZoomMode.NotZoom;
@@ -42,14 +43,22 @@ public class PlayerCamera : MonoBehaviour {
         CameraTrans = CameraClone.GetComponent<Transform>();
         SaveCameraPos = CameraTrans;
         NowSpeed = Speed;
-        P_Camera.depth = 2;
+        P_Camera.depth = 0;
         WaitNowTime = 0;
         ZoomNowTime = 0;
     }
     // Use this for initialization
     void Start () {
-		
-	}
+        try
+        {
+            gametime = GameObject.Find("GameTime").GetComponent<GameTime>();
+
+        }
+        catch
+        {
+            gametime = null;
+        }
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate() {
@@ -82,14 +91,15 @@ public class PlayerCamera : MonoBehaviour {
     {
         if(ZoomFlag)
         {
-            P_Camera.depth = 2;
+            P_Camera.depth = 5;
             ZoomNowTime += Time.deltaTime;
             if (ZoomNowTime >= ZoomMaxTime)
             {
                 //ZoomNowTime = ZoomMaxTime;
                 NowSpeed = 0;
                 WaitNowTime += Time.deltaTime;
-                if(WaitNowTime>=WaitMaxTime)
+                gametime.SlowDown();
+                if (WaitNowTime>=WaitMaxTime)
                 {
                     ZoomFlag = false;
                 }
@@ -115,7 +125,7 @@ public class PlayerCamera : MonoBehaviour {
     //フォーカスを当てる時用のカメラ設定
     private void FocusCamera()
     {
-        P_Camera.depth = 2;
+        P_Camera.depth = 5;
         ZoomNowTime += Time.deltaTime;
         if (ZoomNowTime >= ZoomMaxTime)
         {

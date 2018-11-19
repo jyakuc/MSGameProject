@@ -40,5 +40,6 @@ public class RankingInGame : MonoBehaviour
             Pannel[i].GetComponent<Image>().sprite = null;
             Pannel[i].GetComponent<Image>().color = new Color(255, 255, 255, 0f);
         }
+        rank = 0;
     }
 }

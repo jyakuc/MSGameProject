@@ -27,7 +27,6 @@ public class HitSystem : MonoBehaviour {
 
       // Add：弓達　バトル採点クラス保持
     public BattlePointGrading BattlePoint;
-    private GameTime gametime;
 
     private PlayerCamera p_camera;
     void OnTriggerStay(Collider other)
@@ -205,13 +204,11 @@ public class HitSystem : MonoBehaviour {
         }
         try
         {
-            gametime = GameObject.Find("GameTime").GetComponent<GameTime>();
             p_camera = this.transform.root.gameObject.GetComponent<PlayerCamera>();
 
         }
         catch
         {
-            gametime = null;
             p_camera = null;
         }
 
@@ -248,8 +245,7 @@ public class HitSystem : MonoBehaviour {
     }
     private void HitStop()
     {
-        if (gametime == null||p_camera==null) return;
-        gametime.SlowDown();
+        if (p_camera==null) return;
         p_camera.ZoomStart();
     }
     //SE再生処理
