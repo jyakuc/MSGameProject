@@ -22,7 +22,7 @@ public class GameUIScripts : MonoBehaviour {
     void Start () {
         // CostManager取得
         CManager = FindObjectOfType<CostManager>();
-        ColsetDigit();
+        Init();
     }
 
     // Update is called once per frame
