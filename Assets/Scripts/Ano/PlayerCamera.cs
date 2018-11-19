@@ -89,37 +89,41 @@ public class PlayerCamera : MonoBehaviour {
     //ヒットストップ用にズームするカメラ設定
     private void PickupCamera()
     {
-        if(ZoomFlag)
+        if(P_Camera!=null)
         {
-            P_Camera.depth = 5;
-            ZoomNowTime += Time.deltaTime;
-            if (ZoomNowTime >= ZoomMaxTime)
+            if (ZoomFlag)
             {
-                //ZoomNowTime = ZoomMaxTime;
-                NowSpeed = 0;
-                WaitNowTime += Time.deltaTime;
-                gametime.SlowDown();
-                if (WaitNowTime>=WaitMaxTime)
+                P_Camera.depth = 5;
+                ZoomNowTime += Time.deltaTime;
+                if (ZoomNowTime >= ZoomMaxTime)
                 {
-                    ZoomFlag = false;
+                    //ZoomNowTime = ZoomMaxTime;
+                    NowSpeed = 0;
+                    WaitNowTime += Time.deltaTime;
+                    gametime.SlowDown();
+                    if (WaitNowTime >= WaitMaxTime)
+                    {
+                        ZoomFlag = false;
+                    }
                 }
+                CameraTrans.LookAt(TargetTrans);
+                CameraTrans.Rotate(new Vector3(-10.0f, 0.0f, 0.0f));
+                CameraTrans.transform.position = Vector3.Lerp(
+                    SaveCameraPos.transform.position,
+                    TargetTrans.position,
+                    ZoomNowTime * NowSpeed
+                );
             }
-            CameraTrans.LookAt(TargetTrans);
-            CameraTrans.Rotate(new Vector3(-10.0f, 0.0f, 0.0f));
-            CameraTrans.transform.position = Vector3.Lerp(
-                SaveCameraPos.transform.position,
-                TargetTrans.position,
-                ZoomNowTime * NowSpeed
-            );
+            else
+            {
+                P_Camera.depth = 0;
+                CameraTrans.position = new Vector3(0, 90, -60);
+                NowSpeed = Speed;
+                ZoomNowTime = 0;
+                WaitNowTime = 0;
+            }
         }
-        else
-        {
-            P_Camera.depth = 0;
-            CameraTrans.position=new Vector3(0,90,-60);
-            NowSpeed = Speed;
-            ZoomNowTime = 0;
-            WaitNowTime = 0;
-        }
+        
 
     }
     //フォーカスを当てる時用のカメラ設定
@@ -150,5 +154,14 @@ public class PlayerCamera : MonoBehaviour {
             desiredPos,
            1
         );
+    }
+    public void CameraDelete()
+    {
+        if (CameraClone != null)
+        {
+            Destroy(CameraClone);
+            CameraClone = null;
+        }
+
     }
 }

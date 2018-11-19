@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
     public GameObject m_shrinkRightFootObj;
     public GameObject m_shrinkLeftFootObj;
     public float shrinkTime = 0;
-
+    private PlayerCamera P_Camera;
     void Awake()
     {
         //       m_lifeFlg = false;
@@ -160,6 +160,7 @@ public class PlayerController : MonoBehaviour
         m_rightFoot_rg = m_rightFootObj.GetComponent<Rigidbody>();
         m_leftFoot_rg = m_leftFootObj.GetComponent<Rigidbody>();
         m_Player_rg = GetComponent<Rigidbody>();
+        P_Camera = GetComponent<PlayerCamera>();
         m_bodyForce.Init();
         m_HandForce.Init();
         m_FootForce.Init();
@@ -208,6 +209,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if (m_state == EState.Init ||
             m_state == EState.Dead ||
             m_state == EState.Wait ||
@@ -264,7 +266,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]))
         {
 
-            DebugExtend(m_rightHandObj, m_shrinkRightHandObj, m_HandExtend);
+            //DebugExtend(m_rightHandObj, m_shrinkRightHandObj, m_HandExtend);
             Extend(m_rightHand_rg, m_HandExtend);
             //カラー変更
             Hand_R.color = Color.Lerp(Hand_R.color, Color.red, Time.deltaTime * 3.0f);
@@ -426,7 +428,7 @@ public class PlayerController : MonoBehaviour
         //m_crushPointManager.DamageDead(m_playerID, m_hitReceivePlayerID);
         m_state = EState.Dead;
         GetComponent<Rigidbody>().isKinematic = true;
-
+        P_Camera.CameraDelete();
         Destroy(gameObject);
     }
 
@@ -485,6 +487,7 @@ public class PlayerController : MonoBehaviour
     {
         m_state = EState.Win;
         GetComponent<Rigidbody>().isKinematic = true;
+        P_Camera.CameraDelete();
     }
 
     private void OnTriggerEnter(Collider other)

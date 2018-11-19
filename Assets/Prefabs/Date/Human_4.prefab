@@ -2270,8 +2270,6 @@ MonoBehaviour:
   Hand_L: {fileID: 2100000, guid: b4d396f93efc17e49bde39b3d9047d95, type: 2}
   Calf_R: {fileID: 2100000, guid: 1da93a4c2aab8424ea219d5549049fde, type: 2}
   Calf_L: {fileID: 2100000, guid: 0f0470e1665f6a34ba8171d39c17c7f3, type: 2}
-  PickupPrefab: {fileID: 1803646784035136, guid: 62e60ce412fbdb944bbde34e6ab13bdd,
-    type: 2}
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: 0, y: -3.8, z: 0}
@@ -2295,7 +2293,12 @@ MonoBehaviour:
   rayTest: {fileID: 114152905965822594}
   CriticalProbability: 80
   HitPower: 9
-  CriticalPower: 40
+  CriticalPower: 10
+  m_shrinkRightHandObj: {fileID: 0}
+  m_shrinkLeftHandObj: {fileID: 0}
+  m_shrinkRightFootObj: {fileID: 0}
+  m_shrinkLeftFootObj: {fileID: 0}
+  shrinkTime: 0
 --- !u!114 &114423651523320952
 MonoBehaviour:
   m_ObjectHideFlags: 1

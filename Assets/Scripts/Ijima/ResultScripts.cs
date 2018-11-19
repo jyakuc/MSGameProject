@@ -70,12 +70,14 @@ public class ResultScripts : MonoBehaviour {
         int max=0;
         for (int i = 0; i < 6; i++)
         {
-            ArtisticPoint[i] = CManager.GetPlayerArtPoint(i+1);
-            BattlePoint[i] = CManager.GetPlayerBattlePoint(i+1);
+            ArtisticPoint[i] = CManager.GetPlayerCost(i+1).art;
+            BattlePoint[i] = CManager.GetPlayerCost(i+1).critical + CManager.GetPlayerCost(i+1).crush;
             TotalPoint[i] = ArtisticPoint[i] + BattlePoint[i];
 
-
-            TotalPoint[i] = ArtisticPoint[i] + BattlePoint[i];
+            Debug.Log("芸術 " + ArtisticPoint[i]);
+            Debug.Log("Battle " + BattlePoint[i]);
+            Debug.Log("合計 " + TotalPoint[i]);
+            //TotalPoint[i] = ArtisticPoint[i] + BattlePoint[i];
 
             //1位のプレイヤー判定
             if (TotalPoint[i] >= max)
@@ -134,6 +136,13 @@ public class ResultScripts : MonoBehaviour {
         int tDigit = TotalPoint[VictoryNum] % 10;                //1の位
 
         //点数のセット
+        Debug.Log(bHundredPlace.ToString() +  " " + aHundredPlace.ToString() + " " + tHundredPlace.ToString() );
+        //PannelHundredPlace[0].color = SetColors[6];
+        //PannelHundredPlace[1].color = SetColors[6];
+        //PannelHundredPlace[2].color = SetColors[6];
+        bool tFlg = false;
+        bool aFlg = false;
+        bool bFlg = false;
         for (int j = 0; j < 10; j++)
         {
             //total
@@ -158,10 +167,13 @@ public class ResultScripts : MonoBehaviour {
             if (tHundredPlace != 0 && tHundredPlace == j)
             {
                 PannelHundredPlace[0].texture = Images[j];
+                PannelHundredPlace[2].color = SetColors[VictoryNum];
+                tFlg = true;
             }
             else
             {
-                PannelHundredPlace[0].color = SetColors[6];//桁消去
+                if(!tFlg)
+                    PannelHundredPlace[0].color = SetColors[6];//桁消去
             }
 
             //battle
@@ -186,10 +198,13 @@ public class ResultScripts : MonoBehaviour {
             if (bHundredPlace != 0 && bHundredPlace == j)
             {
                 PannelHundredPlace[1].texture = Images[j+10];   //左右判定
+                PannelHundredPlace[2].color = SetColors[VictoryNum];
+                bFlg = true;
             }
             else
             {
-                PannelHundredPlace[1].color = SetColors[6];//桁消去
+                if(!bFlg)
+                    PannelHundredPlace[1].color = SetColors[6];//桁消去
             }
 
             //Art
@@ -211,13 +226,16 @@ public class ResultScripts : MonoBehaviour {
                 }
             }
             //100の位
-            if (aHundredPlace != 0 && bHundredPlace == j)
+            if (aHundredPlace != 0 && aHundredPlace == j)
             {
                 PannelHundredPlace[2].texture = Images[j + 10];   //左右判定
+                PannelHundredPlace[2].color = SetColors[VictoryNum];
+                aFlg = true;
             }
             else
             {
-                PannelHundredPlace[2].color = SetColors[6];//桁消去
+                if(!aFlg)
+                    PannelHundredPlace[2].color = SetColors[6];//桁消去
             }
 
         }
