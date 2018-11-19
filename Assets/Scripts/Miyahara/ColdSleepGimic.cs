@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColdSleepGimic : MonoBehaviour {
 
     private GameController Gb;
-    private const int MaxWall = 6;
+    private const int MaxWall = 7;
     private const int MaxFallObj = 3;
     private GameObject ParentWall;
     private VanishWall[] ChildWall;
