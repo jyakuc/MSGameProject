@@ -25,7 +25,9 @@ public class MyInputManager:MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!DebugModeGame.GetProperty().m_controllerEnable) return;
+        if(DebugModeGame.GetProperty().m_debugMode)
+            if (DebugModeGame.GetProperty().m_controllerDisable) return;
+
         var stick = Input.GetJoystickNames();
         //Debug.Log("コントローラー接続台数:" + stick.Length);
 
