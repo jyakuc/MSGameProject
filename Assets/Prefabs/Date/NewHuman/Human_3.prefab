@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4687035781588450}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4411477525693098}
   - component: {fileID: 65509442107499548}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 4044416498908378}
   - component: {fileID: 65249338643355460}
   - component: {fileID: 114642691646448414}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hand_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 33519776533111190}
   - component: {fileID: 65047228652607356}
   - component: {fileID: 23846760379928870}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: ShrinkRightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4781904020894062}
   - component: {fileID: 65368843926561644}
   - component: {fileID: 114960107415872162}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Belly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 4418458148590436}
   - component: {fileID: 65739657369309044}
   - component: {fileID: 114544488130320474}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Calf_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 33573193715111768}
   - component: {fileID: 23733609675203568}
   - component: {fileID: 54745762271279246}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: HipJointL_OriginPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4785421948677484}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 23955108271926510}
   - component: {fileID: 54775690099013654}
   - component: {fileID: 138640852100616760}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: KneeL_CenterPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 33526994267615570}
   - component: {fileID: 23151037818616478}
   - component: {fileID: 54353125954214288}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: ShoulderL_OriginPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 33880243046592716}
   - component: {fileID: 23859142067329832}
   - component: {fileID: 54119250706938788}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: ShoulderR_OriginPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 23557049814105906}
   - component: {fileID: 54804359547506916}
   - component: {fileID: 138515856822218610}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: KneeR_CenterPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 114923797312277896}
   - component: {fileID: 114029208535594986}
   - component: {fileID: 114369683678624522}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Human_3
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 33122233052442504}
   - component: {fileID: 23112551159307542}
   - component: {fileID: 54956188927363052}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: HipJointR_OriginPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4986804479890668}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Armature
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 33239210651940300}
   - component: {fileID: 65834618704894528}
   - component: {fileID: 23384111371921598}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: 'ShrinkRightFoot '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 33549289688625320}
   - component: {fileID: 65643373710818556}
   - component: {fileID: 23315060100734846}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: ShrinkLeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4912911416026628}
   - component: {fileID: 65435333336502458}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 33559129563240516}
   - component: {fileID: 65193138755171118}
   - component: {fileID: 23661866372479412}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: ShrinkLeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4167162473160334}
   - component: {fileID: 137548237424724488}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Human
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 4904709517392550}
   - component: {fileID: 65465911231922436}
   - component: {fileID: 114666242284867212}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Calf_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4996122681932220}
   - component: {fileID: 65104127686141386}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 4798599624652558}
   - component: {fileID: 65162732638127060}
   - component: {fileID: 114250715188929578}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hand_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2484,10 +2484,9 @@ MonoBehaviour:
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  P_Controller: {fileID: 114757723207423612}
   PlayNum: 1
   BattlePoint: {fileID: 114776529530671324}
-  m_paramTable: {fileID: 0}
+  m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114280304138188884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2541,10 +2540,9 @@ MonoBehaviour:
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  P_Controller: {fileID: 114757723207423612}
   PlayNum: 1
   BattlePoint: {fileID: 114776529530671324}
-  m_paramTable: {fileID: 0}
+  m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114642691646448414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2560,10 +2558,9 @@ MonoBehaviour:
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  P_Controller: {fileID: 114757723207423612}
   PlayNum: 1
   BattlePoint: {fileID: 114776529530671324}
-  m_paramTable: {fileID: 0}
+  m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114666242284867212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2579,10 +2576,9 @@ MonoBehaviour:
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  P_Controller: {fileID: 114757723207423612}
   PlayNum: 1
   BattlePoint: {fileID: 114776529530671324}
-  m_paramTable: {fileID: 0}
+  m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114757723207423612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2691,10 +2687,10 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: f1db7427ca494c14ca0842dace314b6a, type: 2}
-  - {fileID: 2100000, guid: e9cc5638c63c1eb4db72384c996738e7, type: 2}
+  - {fileID: 2100000, guid: c734e8aab405c4644a028585df846028, type: 2}
   - {fileID: 2100004, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
   - {fileID: 2100006, guid: 7ba1aac03673cdb41ad7ac5575fa9291, type: 3}
-  - {fileID: 2100000, guid: 1d1ce166302f31342bc88a7ca6e938c8, type: 2}
+  - {fileID: 2100000, guid: 7e8cdb05875005a42ac179a77f066d7e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

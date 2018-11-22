@@ -584,6 +584,7 @@ public class PlayerController : MonoBehaviour
         if (m_state != EState.Init) return;
         if (LayerMask.LayerToName(other.gameObject.layer) != "Ground") return;
         m_state = EState.Wait;
+        
 //        Destroy(GetComponent<BoxCollider>());
     }
 }

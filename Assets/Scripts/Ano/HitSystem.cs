@@ -14,7 +14,7 @@ public class HitSystem : MonoBehaviour {
     //動的生成用
     private GameObject NewHitEffect;
     //キャラクターのID取得
-    public PlayerController P_Controller;
+    private PlayerController P_Controller;
     //エフェクト発生中か
     private bool HitEffectFlag = false;
     //プレイヤーID一致用
@@ -218,6 +218,8 @@ public class HitSystem : MonoBehaviour {
         {
             p_camera = null;
         }
+
+        P_Controller = transform.root.GetComponent<PlayerController>();
 
     }
 	
