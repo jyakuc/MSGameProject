@@ -129,7 +129,7 @@ public class ColdSleepGimic : MonoBehaviour {
                 FloorCount += 1;
                 IceFloorSetTime = IceSaveTime * (FloorCount + 1);
             }
-            if (GroundSetTime < NowTime && GroundCount < MaxGroundFall)
+            if (GroundSetTime < NowTime && GroundCount < MaxGroundFall - 1)
             {
                 ChildGroundWall[GroundFallList[RandomGroundFloor, GroundCount]].OnVanish();
                 GroundCount += 1;
