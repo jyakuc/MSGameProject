@@ -1111,7 +1111,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: 9e034b19d888aea4aa64ab47be281ce2, type: 3}
+  - {fileID: 2100000, guid: f25e426e876743e4c802a49d8b9c3370, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1145,7 +1145,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: f4ea06fdd928a1645923b3bf69833620, type: 3}
+  - {fileID: 2100000, guid: f25e426e876743e4c802a49d8b9c3370, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1213,7 +1213,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: cb86b74de70884b429e51ba4a2cf01a8, type: 3}
+  - {fileID: 2100000, guid: f25e426e876743e4c802a49d8b9c3370, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1281,7 +1281,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: a2a73967f4a326d45b2e9847b94385d7, type: 3}
+  - {fileID: 2100000, guid: f25e426e876743e4c802a49d8b9c3370, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1315,7 +1315,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: c2a1f905c55fb3c47999ac7ca7dcee10, type: 3}
+  - {fileID: 2100000, guid: f25e426e876743e4c802a49d8b9c3370, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1655,7 +1655,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: b5d2c0db8e876a348bd9601f7881a107, type: 3}
+  - {fileID: 2100000, guid: f25e426e876743e4c802a49d8b9c3370, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1689,7 +1689,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: 56547770fc749fc409ef56d21046f6a6, type: 3}
+  - {fileID: 2100000, guid: f25e426e876743e4c802a49d8b9c3370, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2686,7 +2686,7 @@ MonoBehaviour:
   SetTime: 120
   IceFloorSetTime: 240
   InnerSetTime: 120
-  GroundSetTime: 30
+  GroundSetTime: 360
 --- !u!114 &114886363225055682
 MonoBehaviour:
   m_ObjectHideFlags: 1
