@@ -63,7 +63,7 @@ public class Snow : MonoBehaviour
 		mr.material.SetFloat("_RangeR", rangeR_);
 		mr.material.SetFloat("_Size", 0.1f);
 		mr.material.SetVector("_MoveTotal", move_);
-		mr.material.SetVector("_CamUp", Camera.main.transform.up);
+		mr.material.SetVector("_CamUp", this.transform.up);
 		mr.material.SetVector("_TargetPosition", target_position);
 		float x = (Mathf.PerlinNoise(0f, Time.time*0.1f)-0.5f) * 10f;
 		float y = -2f;
