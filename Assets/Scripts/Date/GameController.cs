@@ -33,9 +33,28 @@ public class GameController : MonoBehaviour
     /// 関数群
     /// </summary>
 
+    // Layer　ID
+    int playerLayer1;
+    int playerLayer2;
+    int playerLayer3;
+    int playerLayer4;
+    int playerLayer5;
+    int playerLayer6;
+
+    int[] PlayerLayers;
+
     private void Awake()
     {
         m_state = EState.Start;
+        // メンバで初期化入れたら怒られたので
+        playerLayer1 = LayerMask.NameToLayer("Player_01");
+        playerLayer2 = LayerMask.NameToLayer("Player_02");
+        playerLayer3 = LayerMask.NameToLayer("Player_03");
+        playerLayer4 = LayerMask.NameToLayer("Player_04");
+        playerLayer5 = LayerMask.NameToLayer("Player_05");
+        playerLayer6 = LayerMask.NameToLayer("Player_06");
+        PlayerLayers = new int[] { playerLayer1, playerLayer2, playerLayer3, playerLayer4, playerLayer5, playerLayer6 };
+
     }
 
     // Use this for initialization
@@ -47,6 +66,8 @@ public class GameController : MonoBehaviour
         }
         m_gameSceneController = gameObject.GetComponent<GameSceneController>();
         m_costManager = FindObjectOfType<CostManager>();
+
+        SetPlayerBothCollider(false); // プレイヤー同士の当たり判定無効化
     }
 
     // Update is called once per frame
@@ -69,6 +90,18 @@ public class GameController : MonoBehaviour
             case EState.End:
                 RestartConfirmation();
                 break;
+        }
+    }
+
+    // プレイヤー同士のコライダーの設定 false 無効　true 有効
+    private void SetPlayerBothCollider(bool enable)
+    {
+        foreach (var id1 in PlayerLayers)
+        {
+            foreach (var id2 in PlayerLayers)
+            {
+                Physics.IgnoreLayerCollision(id1, id2, !enable);
+            }
         }
     }
 
@@ -95,8 +128,10 @@ public class GameController : MonoBehaviour
         {
             if (!m_playerObj[i].IsWait() && !m_playerObj[i].IsDead()) return;
         }
-        
+
         m_state = EState.Main;
+        SetPlayerBothCollider(true);    // プレイヤー同士の当たり判定有効化
+
         for (int i = 0; i < playerNum; ++i)
         {
             m_playerObj[i].PlayStart();
@@ -128,7 +163,8 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if(deadNum >= playerNum - 1)
+
+        if (deadNum >= playerNum - 1)
         {
             m_state = EState.Finish;
         }
@@ -182,5 +218,8 @@ public class GameController : MonoBehaviour
         
         m_gameSceneController.ReStart();
         m_state = EState.Start;
+
+        SetPlayerBothCollider(false); // プレイヤー同士の当たり判定無効化
+
     }
 }
