@@ -47,7 +47,6 @@ public class StageCreate : MonoBehaviour {
         //gameController =
 
         DebugModeGame debugModeGame = gameControllerObj.GetComponent<DebugModeGame>();
-        GameController gameController = gameControllerObj.GetComponent<GameController>();
 
         if (!(debugModeGame.m_debugMode.m_debugMode && debugModeGame.m_debugMode.m_debugstageCreate))
         {
