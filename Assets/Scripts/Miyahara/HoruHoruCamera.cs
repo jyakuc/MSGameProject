@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 
-public class RotateCamera : MonoBehaviour {
+public class HoruHoruCamera : MonoBehaviour {
 
     [SerializeField]
     private float Speed;
@@ -23,37 +22,39 @@ public class RotateCamera : MonoBehaviour {
     private GameObject g_UI;
     private GameObject _slider_Background;
     private GameObject _slider_Fillarea;
-	// Use this for initialization
-	void Start () {
-
+    // Use this for initialization
+    void Start()
+    {
+        
         Rate = 1;
         Count = 0;
         SceneObj = GameObject.FindObjectOfType<SceneController>();
         FadeObj = SceneObj.transform.Find("FadeCanvas").GetComponent<FadeController>();
-        Cannons = GameObject.Find("ColosseumCannons(Clone)");
+        Cannons = GameObject.Find("HoruHoruCannons(Clone)");
         FadeFlg = false;
         g_UI = GameObject.Find("GameUI");
         _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject;
         _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject;
         S_timer = GameObject.FindObjectOfType<StartTimer>();
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Count < 270)
         {
-            this.transform.Rotate(0, Speed*Time.deltaTime, 0);
+            this.transform.Rotate(0, Speed * Time.deltaTime, 0);
             Count += Speed * Time.deltaTime;
         }
-        else if(!FadeObj.IsFade && FadeFlg == false) //フェードイン
+        else if (!FadeObj.IsFade && FadeFlg == false) //フェードイン
         {
             FadeObj.gameObject.SetActive(true);
             FadeController.Begin(FadeObj.gameObject, false, Rate);
             FadeFlg = true;
             FadeObj.m_onFinished += ChangeCamera;
         }
-	}
+    }
 
     public void ChangeCamera()
     {
@@ -77,4 +78,3 @@ public class RotateCamera : MonoBehaviour {
     }
 
 }
-
