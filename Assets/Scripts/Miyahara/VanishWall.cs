@@ -16,7 +16,7 @@ public class VanishWall : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(WallMaterial.color.a);
+        
         if (VanishFlg)
         {
             if (WallMaterial.color.a >= 0)
