@@ -37,16 +37,19 @@ public class LoadCreate : MonoBehaviour {
         switch (Stages)
         {
             case SelectingLoad.Colloseum:
-                Instantiate(LoadColdSleepCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);           //カメラ生成
+                Instantiate(LoadColloseumCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);           //カメラ生成
                 Instantiate(LoadColloseum, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                 //ステージ生成
+                Stages = SelectingLoad.Colloseum;
                 break;
             case SelectingLoad.HoruhoruMountain:
                 Instantiate(LoadHoruHoruCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);           //カメラ生成
                 Instantiate(LoadHoruHoru, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                 //ステージ生成
+                Stages = SelectingLoad.HoruhoruMountain;
                 break;
             case SelectingLoad.ColdSleepMountain:
                 Instantiate(LoadColdSleepCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);           //カメラ生成
                 Instantiate(LoadColdSleep, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                 //ステージ生成
+                Stages = SelectingLoad.ColdSleepMountain;
                 break;
         }
     }

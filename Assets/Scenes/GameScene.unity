@@ -267,7 +267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &600258740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,12 +279,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b260c3e124f187c4fa2a2e25cea06474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadColloseumCamera: {fileID: 0}
-  LoadColloseum: {fileID: 0}
-  LoadHoruHoruCamera: {fileID: 0}
-  LoadHoruHoru: {fileID: 0}
-  LoadColdSleepCamera: {fileID: 0}
-  LoadColdSleep: {fileID: 0}
+  LoadColloseumCamera: {fileID: 1141565333244280, guid: 02e954fa4de71d547a0538bf7794f3b8,
+    type: 2}
+  LoadColloseum: {fileID: 1446761652655378, guid: 5190212f586ba0047a04b35d45373a11,
+    type: 2}
+  LoadHoruHoruCamera: {fileID: 1789309239217532, guid: b80c6ac6768b14a45b3f7d330df09a99,
+    type: 2}
+  LoadHoruHoru: {fileID: 1043162351644302, guid: 702a6fe40b6b4634bbdcdf6216b1911b,
+    type: 2}
+  LoadColdSleepCamera: {fileID: 1091874354913588, guid: 9d8bcf601e760804f97985572c80462b,
+    type: 2}
+  LoadColdSleep: {fileID: 1690634762235782, guid: 1f49bbb004c8517489d5675b94bf2a56,
+    type: 2}
   Stages: 0
 --- !u!4 &600258741
 Transform:
@@ -541,7 +547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1800838731
 MonoBehaviour:
   m_ObjectHideFlags: 0
