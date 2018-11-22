@@ -24,12 +24,12 @@ public class LoadCreate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        Load();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+       
 	}
 
     public void Load()
