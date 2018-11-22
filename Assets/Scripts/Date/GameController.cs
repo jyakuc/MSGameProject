@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour
     /// </summary>
 
     // Layer　ID
+    //　TODO : レイヤーの整理したほうがいいかも～～
     int playerLayer1;
     int playerLayer2;
     int playerLayer3;
@@ -42,6 +43,7 @@ public class GameController : MonoBehaviour
     int playerLayer6;
     int IKOperationLayer;
     int IKRangeLayer;
+    int playerChestLayer;
     int[] PlayerLayers;
 
     private void Awake()
@@ -56,7 +58,9 @@ public class GameController : MonoBehaviour
         playerLayer6 = LayerMask.NameToLayer("Player_06");
         IKOperationLayer = LayerMask.NameToLayer("IKOperationCollider");
         IKRangeLayer = LayerMask.NameToLayer("IKRangeCollider");
-        PlayerLayers = new int[] { playerLayer1, playerLayer2, playerLayer3, playerLayer4, playerLayer5, playerLayer6,IKOperationLayer,IKRangeLayer };
+        playerChestLayer = LayerMask.NameToLayer("Player_Chest");
+
+        PlayerLayers = new int[] { playerLayer1, playerLayer2, playerLayer3, playerLayer4, playerLayer5, playerLayer6,IKOperationLayer,IKRangeLayer , playerChestLayer };
 
     }
 
