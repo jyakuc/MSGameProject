@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 4044416498908378}
   - component: {fileID: 65249338643355460}
   - component: {fileID: 114642691646448414}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Hand_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 4418458148590436}
   - component: {fileID: 65739657369309044}
   - component: {fileID: 114544488130320474}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Calf_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 4904709517392550}
   - component: {fileID: 65465911231922436}
   - component: {fileID: 114666242284867212}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Calf_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 4798599624652558}
   - component: {fileID: 65162732638127060}
   - component: {fileID: 114250715188929578}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Hand_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2477,14 +2477,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1909732567346736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Script: {fileID: 11500000, guid: 205b667b0e1aeac4290711fe765902c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  PlayNum: 1
+  PlayNum: 3
   BattlePoint: {fileID: 114776529530671324}
   m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114280304138188884
@@ -2533,14 +2533,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276196545592620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Script: {fileID: 11500000, guid: 205b667b0e1aeac4290711fe765902c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  PlayNum: 1
+  PlayNum: 3
   BattlePoint: {fileID: 114776529530671324}
   m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114642691646448414
@@ -2551,14 +2551,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1123300079847262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Script: {fileID: 11500000, guid: 205b667b0e1aeac4290711fe765902c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  PlayNum: 1
+  PlayNum: 3
   BattlePoint: {fileID: 114776529530671324}
   m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114666242284867212
@@ -2569,14 +2569,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838668157881174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Script: {fileID: 11500000, guid: 205b667b0e1aeac4290711fe765902c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  PlayNum: 1
+  PlayNum: 3
   BattlePoint: {fileID: 114776529530671324}
   m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114757723207423612
@@ -2591,8 +2591,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerID: 3
-  m_extendAndShrink: {fileID: 114029208535594986}
-  m_moving: {fileID: 114369683678624522}
   m_ray: {fileID: 114960107415872162}
 --- !u!114 &114776529530671324
 MonoBehaviour:
@@ -2626,6 +2624,7 @@ MonoBehaviour:
   WaitNowTime: 0
   WaitMaxTime: 1
   FocusMode: 0
+  StalkingMode: 0
   test: 0
 --- !u!114 &114938953351854502
 MonoBehaviour:
