@@ -226,7 +226,8 @@ public class PlayerController : MonoBehaviour
         m_state = EState.Dead;
         GetComponent<Rigidbody>().isKinematic = true;
         P_Camera.CameraDelete();
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void PlayStart()

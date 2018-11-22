@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
         if (m_playerObj.Count != playerNum) return;
         for (int i = 0; i < playerNum; ++i)
         {
-            if (!m_playerObj[i].IsWait()) return;
+            if (!m_playerObj[i].IsWait() && !m_playerObj[i].IsDead()) return;
         }
         
         m_state = EState.Main;
@@ -111,12 +111,18 @@ public class GameController : MonoBehaviour
         int playerNum = DebugModeGame.GetProperty().m_debugMode ? DebugModeGame.GetProperty().m_debugPlayerNum : m_playerNum;
         for (int i = 0; i < playerNum; ++i)
         {
-            if(m_playerObj[i] == null)
-            {
-                deadNum++;
-                continue;
-            }
-            if (m_playerObj[i].IsDead())
+            #region 旧Dead
+            //if(m_playerObj[i] == null)
+            //{
+            //    deadNum++;
+            //    continue;
+            //}
+            //if (m_playerObj[i].IsDead())
+            //{
+            //    deadNum++;
+            //}
+            #endregion
+            if(!m_playerObj[i].gameObject.activeSelf)
             {
                 deadNum++;
             }
@@ -167,7 +173,11 @@ public class GameController : MonoBehaviour
         // ポイントリスト初期化
         m_costManager.Init();
         // プレイヤリスト初期化
-        m_winnerPlayer.Dead();
+        if (m_winnerPlayer)
+        {
+            m_winnerPlayer.Dead();
+        }
+
         m_playerObj.Clear();
         
         m_gameSceneController.ReStart();
