@@ -70,15 +70,18 @@ public class PlayerController : MonoBehaviour
 
 
     // 手足制御オブジェクト（Rigidbody）
+    /*
     private Rigidbody m_body_rg;
     private Rigidbody m_rightHand_rg;
     private Rigidbody m_leftHand_rg;
     private Rigidbody m_rightFoot_rg;
     private Rigidbody m_leftFoot_rg;
+    */
     // 自分自身の制御オブジェクト (Rigidbody)阿野追加
     private Rigidbody m_Player_rg;
     private string[] InputName = new string[(int)EInput.MAX];
 
+    /*
     // 回転する力（パラメータ）
     [SerializeField]
     private Force m_bodyForce;
@@ -86,7 +89,8 @@ public class PlayerController : MonoBehaviour
     private Force m_HandForce;
     [SerializeField]
     private Force m_FootForce;
-
+    */
+    /*
     // 伸ばす力（パラメータ）
     [SerializeField]
     private Vector3 m_HandExtend;
@@ -94,19 +98,19 @@ public class PlayerController : MonoBehaviour
     private Vector3 m_FootExtendR;
     [SerializeField]
     private Vector3 m_FootExtendL;
-
+    
     // 移動する力（パラメータ）
     [SerializeField]
     private Force m_bodyMoveForce;
-
+    */
     // 向きを変える力（パラメータ）
     [SerializeField]
     private float m_directionAngle;
 
     private EState m_state;
 
-    private RayTest.RayDirection dir;
-    public RayTest rayTest;
+    //private RayTest.RayDirection dir;
+    //public RayTest rayTest;
     //確率
     [Range(0, 100)]
     public int CriticalProbability = 20;
@@ -131,12 +135,20 @@ public class PlayerController : MonoBehaviour
 
     private CrushPointManager m_crushPointManager;
 
+<<<<<<< HEAD:Assets/Scripts/Date/PlayerController.cs
     public GameObject m_shrinkRightHandObj;
     public GameObject m_shrinkLeftHandObj;
     public GameObject m_shrinkRightFootObj;
     public GameObject m_shrinkLeftFootObj;
     public float shrinkTime = 0;
     private PlayerCamera P_Camera;
+=======
+
+    private PlayerExtendAndShrink   m_extendAndShrink;
+    private PlayerMoving            m_moving;
+    private PlayerRay               m_ray;
+
+>>>>>>> 手足伸ばす処理改良:Assets/Scripts/Date/Player/PlayerController.cs
     void Awake()
     {
         //       m_lifeFlg = false;
@@ -153,7 +165,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        /*
         m_body_rg = m_bodyObj.GetComponent<Rigidbody>();
         m_rightHand_rg = m_rightHandObj.GetComponent<Rigidbody>();
         m_leftHand_rg = m_leftHandObj.GetComponent<Rigidbody>();
@@ -164,12 +176,21 @@ public class PlayerController : MonoBehaviour
         m_bodyForce.Init();
         m_HandForce.Init();
         m_FootForce.Init();
+<<<<<<< HEAD:Assets/Scripts/Date/PlayerController.cs
         m_bodyMoveForce.Init();
 
         //       m_state = EState.Idle;
 
 
         dir = rayTest.Dir;
+=======
+        */
+       // m_bodyMoveForce.Init();
+        CreateEffect = null;
+        //       m_state = EState.Idle;
+
+        //dir = rayTest.Dir;
+>>>>>>> 手足伸ばす処理改良:Assets/Scripts/Date/Player/PlayerController.cs
 
         InputName[0] = "Horizontal_Player" ;
         InputName[1] = "Vertical_Player" ;
@@ -185,6 +206,10 @@ public class PlayerController : MonoBehaviour
 
         m_hitReceivePlayerID = PlayerID;
         m_crushPointManager = FindObjectOfType<CrushPointManager>();
+
+        // 手足伸ばすスクリプト
+        m_extendAndShrink = GetComponent<PlayerExtendAndShrink>();
+        if (m_extendAndShrink == null) Debug.LogError("PlayerExtendAndShrinkをアタッチしてください。");
 
         if (!DebugModeGame.GetProperty().m_debugMode) return;
         // デバッグモードONの時の設定
@@ -227,10 +252,8 @@ public class PlayerController : MonoBehaviour
         }
         // 右方向
         float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal] + myInputManager.joysticks[m_playerID-1].ToString());
-        //       Debug.Log("横" + lsh);
         float lsv = Input.GetAxis(InputName[(int)EInput.Vertical] + myInputManager.joysticks[m_playerID-1].ToString());
-        //       Debug.Log("縦" + lsv);
-
+     
         if (lsh == 0.0f)
         {
             m_state = EState.Idle;
@@ -238,26 +261,30 @@ public class PlayerController : MonoBehaviour
         }
         else if (lsh > 0.0f)
         {
-            Move(1);
+            //    Move(1);
+            m_moving.Move(m_ray.Dir, true);
             m_state = EState.RightMove;
             m_isInputFlg[(int)EInput.Horizontal] = true;
         }
         // 左方向
         else if (lsh < 0.0f)
         {
-            Move(-1);
+            //    Move(-1);
+            m_moving.Move(m_ray.Dir, false);
             m_state = EState.LeftMove;
             m_isInputFlg[(int)EInput.Horizontal] = true;
         }
 
         if (lsv > 0.0f)
         {
-            Direction(1);
+            //Direction(1);
+            m_moving.Rotation(true);
             m_isInputFlg[(int)EInput.Vertical] = true;
         }
         else if (lsv < 0.0f)
         {
-            Direction(-1);
+            //Direction(-1);
+            m_moving.Rotation(false);
             m_isInputFlg[(int)EInput.Vertical] = true;
         }
 
@@ -265,11 +292,22 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]))
         {
+<<<<<<< HEAD:Assets/Scripts/Date/PlayerController.cs
 
             //DebugExtend(m_rightHandObj, m_shrinkRightHandObj, m_HandExtend);
             Extend(m_rightHand_rg, m_HandExtend);
             //カラー変更
             Hand_R.color = Color.Lerp(Hand_R.color, Color.red, Time.deltaTime * 3.0f);
+=======
+           // DebugExtend(m_rightHandObj, m_shrinkRightHandObj, m_HandExtend);
+//            Extend(m_rightHand_rg, m_HandExtend);
+            //エフェクト発生
+            if (CreateEffect==null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Hand_R.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+>>>>>>> 手足伸ばす処理改良:Assets/Scripts/Date/Player/PlayerController.cs
 
             m_isInputFlg[(int)EInput.A] = true;
         }
@@ -284,9 +322,20 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]))
         {
+<<<<<<< HEAD:Assets/Scripts/Date/PlayerController.cs
             Extend(m_leftHand_rg, -m_HandExtend);
             //カラー変更
             Hand_L.color = Color.Lerp(Hand_L.color, Color.red, Time.deltaTime * 3.0f);
+=======
+        //    Extend(m_leftHand_rg, -m_HandExtend);
+            //エフェクト発生
+            if (CreateEffect == null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Hand_L.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
+>>>>>>> 手足伸ばす処理改良:Assets/Scripts/Date/Player/PlayerController.cs
             m_isInputFlg[(int)EInput.B] = true;
         }
         else
@@ -298,9 +347,20 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]))
         {
+<<<<<<< HEAD:Assets/Scripts/Date/PlayerController.cs
             Extend(m_rightFoot_rg, m_FootExtendR);
             //カラー変更
             Calf_R.color = Color.Lerp(Calf_R.color, Color.red, Time.deltaTime * 3.0f);
+=======
+        //    Extend(m_rightFoot_rg, m_FootExtendR);
+            //エフェクト発生
+            if (CreateEffect == null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Calf_R.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
+>>>>>>> 手足伸ばす処理改良:Assets/Scripts/Date/Player/PlayerController.cs
             m_isInputFlg[(int)EInput.X] = true;
         }
         else
@@ -313,9 +373,21 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]))
         {
+<<<<<<< HEAD:Assets/Scripts/Date/PlayerController.cs
             Extend(m_leftFoot_rg, m_FootExtendL);
             //カラー変更
             Calf_L.color = Color.Lerp(Calf_L.color, Color.red, Time.deltaTime * 3.0f);
+=======
+        //    Extend(m_leftFoot_rg, m_FootExtendL);
+            
+            //エフェクト発生
+            if (CreateEffect==null)
+            {
+                CreateEffect = Instantiate(PickupPrefab, Calf_L.position, Quaternion.identity);
+                PickupEffect = GetComponent<PickUpEffect>();
+            }
+
+>>>>>>> 手足伸ばす処理改良:Assets/Scripts/Date/Player/PlayerController.cs
             m_isInputFlg[(int)EInput.Y] = true;
         }
         else
@@ -329,32 +401,43 @@ public class PlayerController : MonoBehaviour
         // 回転減衰
         if (m_state == EState.LeftMove || m_state == EState.RightMove)
         {
+            /*
             m_bodyForce.cntForce.x *= m_bodyForce.decayForce.x;
             m_bodyForce.cntForce.y *= m_bodyForce.decayForce.y;
             m_bodyForce.cntForce.z *= m_bodyForce.decayForce.z;
             m_bodyMoveForce.cntForce.x *= m_bodyMoveForce.decayForce.x;
+            */
         }
         else
-        {
+        {/*
             m_bodyForce.Init();
             m_bodyMoveForce.Init();
+            */
         }
 
         // キャラクターの向き
-        if (dir != rayTest.Dir)
+        //if (dir != rayTest.Dir)
+        //{
+        // パラメータ初期化
+        //  dir = rayTest.Dir;
+        if (m_ray.IsDIffDirection())
         {
-            // パラメータ初期化
-            dir = rayTest.Dir;
             m_state = EState.Idle;
+            m_ray.InitDiffDirection();
+
+            m_moving.Init();
+        }
+            /*
             m_bodyForce.Init();
             m_HandForce.Init();
             m_FootForce.Init();
-        }
+            */
+        //}
         //Debug.Log(m_state);
     }
 
 
-
+    /*
     void Move(float value)
     {
 
@@ -375,12 +458,12 @@ public class PlayerController : MonoBehaviour
             m_leftHand_rg.AddRelativeForce(worldHandVelocity, ForceMode.Force);
             m_rightFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
             m_leftFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
-            /*
+            
             if (value > 0)
                 Debug.Log("右移動：キャラクターの向き（前）");
             else
                 Debug.Log("左移動：キャラクターの向き（前）");
-            */    
+                
         }
         // 後ろ
         else if (dir == RayTest.RayDirection.Back)
@@ -389,20 +472,22 @@ public class PlayerController : MonoBehaviour
             m_rightHand_rg.AddRelativeForce(-worldHandVelocity, ForceMode.Force);
             m_rightFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
             m_leftFoot_rg.AddRelativeForce(worldFootVelocity, ForceMode.Force);
-            /*if (value > 0)
+            if (value > 0)
                 Debug.Log("右移動：キャラクターの向き（後）");
             else
                 Debug.Log("左移動：キャラクターの向き（後）");
-                */
+                
         }
     }
+    */
 
+    /*
     void Direction(float value)
     {
-
         m_body_rg.AddTorque(0.0f, m_directionAngle * value, 0.0f);
     }
-
+    */
+    /*
     void Extend(Rigidbody rigidbody, Vector3 vec)
     {
         //joint.spring = 0;
@@ -411,14 +496,15 @@ public class PlayerController : MonoBehaviour
         // Debug.Log(worldRightHandVelocity);
         rigidbody.AddForce(worldRightHandVelocity, ForceMode.Force);
     }
-
-    void DebugExtend(GameObject ctlObj,GameObject shrinkObj,Vector3 vec)
+    */
+    /*// 縮こまる
+    void ShrinkSink(GameObject ctlObj,GameObject shrinkObj,Vector3 vec)
     {
         ctlObj.transform.position = Vector3.Lerp(ctlObj.transform.position, shrinkObj.transform.position, shrinkTime);
 
         shrinkTime += Time.deltaTime;
     }
-
+    */
     public void Dead()
     {
         // m_lifeFlg = false;
@@ -498,6 +584,7 @@ public class PlayerController : MonoBehaviour
         if (m_state != EState.Init) return;
         if (LayerMask.LayerToName(other.gameObject.layer) != "Ground") return;
         m_state = EState.Wait;
+        
 //        Destroy(GetComponent<BoxCollider>());
     }
 }
