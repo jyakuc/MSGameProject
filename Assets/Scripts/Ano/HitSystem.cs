@@ -27,12 +27,10 @@ public class HitSystem : MonoBehaviour {
 
       // Add：弓達　バトル採点クラス保持
     public BattlePointGrading BattlePoint;
-<<<<<<< HEAD
-=======
+
     [SerializeField]
     private PlayerWhole_ParamTable m_paramTable;
     private GameTime gametime;
->>>>>>> PlayerController改良＆Human1Prefab
 
     private PlayerCamera p_camera;
     
