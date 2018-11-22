@@ -58,7 +58,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1331561224469910
 GameObject:
   m_ObjectHideFlags: 1
@@ -219,7 +219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4010535176027952
 Transform:
   m_ObjectHideFlags: 1
@@ -494,8 +494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannon: {fileID: 114016528481146986}
-  defaultFireSpeed: 35
-  defaultFireAngle: 15
+  defaultFireSpeed: 10
+  defaultFireAngle: 25
   gameController: {fileID: 0}
   myInputManager: {fileID: 0}
 --- !u!114 &114725675083549536
