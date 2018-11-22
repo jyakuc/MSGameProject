@@ -17,4 +17,5 @@ public class PlayerShrinkAndExtend_ParamTable : ScriptableObject
     [SerializeField]
     [Tooltip("0 RightHand\n1 LeftHand\n2 RightFoot\n3 LeftFoot")]
     public Vector3[] extendMaxPower = new Vector3[(int)PlayerExtendAndShrink.EShrinkPoint.Max];
+    
 }

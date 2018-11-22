@@ -37,6 +37,12 @@ public class PlayerMoving : MonoBehaviour {
         if (m_rgLeftHand == null)   Debug.LogError("m_rgLeftHandがアタッチされていません。");
         if (m_rgRightFoot == null)  Debug.LogError("m_rgRightFootがアタッチされていません。");
         if (m_rgLeftFoot == null)   Debug.LogError("m_rgLeftFootがアタッチされていません。");
+
+        m_anglePower = m_paramTable.angleForce.initForce;
+        m_movePower = m_paramTable.moveForce.initForce;
+        m_handPower = m_paramTable.handForce.initForce;
+        m_footPower = m_paramTable.footForce.initForce;
+        m_dirctionAnglePower = m_paramTable.dirAngleForce.initForce;
     }
 
     // 移動
@@ -78,7 +84,7 @@ public class PlayerMoving : MonoBehaviour {
     public void Rotation(bool dir_right, float value = 1)
     {
         float dir = dir_right ? 1 : -1;
-        m_rgBody.AddTorque(m_dirctionAnglePower * dir);
+        m_rgBody.AddTorque(m_dirctionAnglePower * dir * value);
     }
 
     // 力の減衰処理

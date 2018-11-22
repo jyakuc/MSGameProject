@@ -27,8 +27,15 @@ public class HitSystem : MonoBehaviour {
 
       // Add：弓達　バトル採点クラス保持
     public BattlePointGrading BattlePoint;
+<<<<<<< HEAD
+=======
+    [SerializeField]
+    private PlayerWhole_ParamTable m_paramTable;
+    private GameTime gametime;
+>>>>>>> PlayerController改良＆Human1Prefab
 
     private PlayerCamera p_camera;
+    
     void OnTriggerStay(Collider other)
     {
         //レイヤーの名前取得
@@ -266,7 +273,7 @@ public class HitSystem : MonoBehaviour {
         {
             int Probability = Random.Range(0, 100);
             Debug.Log(Probability);
-            if (Probability <= P_Controller.CriticalProbability)
+            if (Probability <= m_paramTable.criticalProbability)
             {
                 BlowAway(HitObject,HitSelect.Critical);
                 return HitSelect.Critical;
@@ -290,12 +297,12 @@ public class HitSystem : MonoBehaviour {
         {
             case HitSelect.Hit:
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                HitRigid.AddForce(this.transform.position* P_Controller.HitPower, ForceMode.Impulse);
+                HitRigid.AddForce(this.transform.position* m_paramTable.normalHitPower, ForceMode.Impulse);
                 break;
             case HitSelect.Critical:
                 HitStop();
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                HitRigid.AddForce(this.transform.position * P_Controller.CriticalPower, ForceMode.Impulse);
+                HitRigid.AddForce(this.transform.position * m_paramTable.criticalHitPower, ForceMode.Impulse);
                 // Add:弓達　クリティカルヒット時得点付与
                 BattlePoint.AddCriticalPoint(hitPlayer.PlayerID , P_Controller.PlayerID);
                 Debug.Log("クリティカルヒット my:" + transform.root + "your:" + HitObject);

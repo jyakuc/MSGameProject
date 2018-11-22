@@ -12,5 +12,18 @@ MonoBehaviour:
   m_Name: PlayerShrinkAndExtend_ParamTable
   m_EditorClassIdentifier: 
   AddLerpTime: 1
-  AddPower: 1
-  MaxPower: 5
+  extendPower:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  extendAddPower:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  extendMaxPower:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
