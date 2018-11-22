@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 23794953858358034}
   - component: {fileID: 114483905629445272}
   - component: {fileID: 64071443915290260}
+  - component: {fileID: 114040975081991838}
   m_Layer: 11
   m_Name: IceField_quarter2
   m_TagString: Untagged
@@ -307,6 +308,7 @@ GameObject:
   - component: {fileID: 23116158933005678}
   - component: {fileID: 114533315835267104}
   - component: {fileID: 64031307585016388}
+  - component: {fileID: 114542919686102260}
   m_Layer: 11
   m_Name: IceField_quarter3
   m_TagString: Untagged
@@ -343,6 +345,7 @@ GameObject:
   - component: {fileID: 23226152443824486}
   - component: {fileID: 114273164224018616}
   - component: {fileID: 64927001502375894}
+  - component: {fileID: 114922835907917558}
   m_Layer: 11
   m_Name: IceField_quarter1
   m_TagString: Untagged
@@ -381,6 +384,7 @@ GameObject:
   - component: {fileID: 23168001017386642}
   - component: {fileID: 114376169961583258}
   - component: {fileID: 64308293347396182}
+  - component: {fileID: 114248128780704418}
   m_Layer: 11
   m_Name: IceField_quarter4
   m_TagString: Untagged
@@ -2347,6 +2351,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 5, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114040975081991838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1312393323363044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114054752877709770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2406,6 +2421,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
+--- !u!114 &114248128780704418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478312081490958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114257946322510128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2555,6 +2581,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114542919686102260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1432120888258692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114550470074443958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2656,6 +2693,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518418385511488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114922835907917558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1448901682165272}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
