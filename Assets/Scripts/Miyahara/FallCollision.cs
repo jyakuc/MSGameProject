@@ -33,7 +33,7 @@ public class FallCollision : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Player")
             return;
@@ -48,10 +48,8 @@ public class FallCollision : MonoBehaviour {
         // CrushPointManagerを更新
         CrushPointManager.DamageDead(playerID, fallPlayer.HitReceivePlayerID);
         fallPlayer.Dead();
-     
-
-
     }
+
     //Effect生成
     private void CreateEffect(Transform Trans)
     {

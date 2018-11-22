@@ -122,10 +122,11 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if(deadNum == playerNum - 1)
+        if(deadNum >= playerNum - 1)
         {
             m_state = EState.Finish;
         }
+        
     }
 
     void FinishUpdate()
