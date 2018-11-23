@@ -71,7 +71,8 @@ public class HitSystem : MonoBehaviour {
                 (LayerName == "Player_3") ||
                 (LayerName == "Player_4") ||
                 (LayerName == "Player_5") ||
-                (LayerName == "Player_6"))
+                (LayerName == "Player_6") ||
+                (LayerName == "SandBack"))
             {
                 //自分には判定しない
                 switch (LayerName)
@@ -155,6 +156,19 @@ public class HitSystem : MonoBehaviour {
                             return;
                         }
                         break;
+                    case "SandBack":
+                        if (PlayNum != P_Controller.PlayerID)
+                        {
+                            //SE再生
+                            PlaysSe();
+                            //Effect生成
+                            CreateEffect(HitType(other.gameObject), other.gameObject.transform);
+                            //エフェクト発生
+                            HitEffectFlag = true;
+                            HitParticle.Play();
+                            return;
+                        }
+                        break;
                 }
 
             }
@@ -173,7 +187,8 @@ public class HitSystem : MonoBehaviour {
             (LayerName == "Player_3") ||
             (LayerName == "Player_4") ||
             (LayerName == "Player_5") ||
-            (LayerName == "Player_6"))
+            (LayerName == "Player_6") ||
+            (LayerName == "SandBack"))
         {
             //時間経過でEffect再生
             if (TimeFlag)
@@ -193,7 +208,8 @@ public class HitSystem : MonoBehaviour {
             (LayerName == "Player_3") ||
             (LayerName == "Player_4") ||
             (LayerName == "Player_5") ||
-            (LayerName == "Player_6"))
+            (LayerName == "Player_6") ||
+            (LayerName == "SandBack"))
         {
             return true;
         }

@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4157462648382082}
   - component: {fileID: 65261224071799210}
   - component: {fileID: 114918350652516144}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Calf_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 4478416906595052}
   - component: {fileID: 65313572780843042}
   - component: {fileID: 114540964504548282}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Hand_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 4196561610079380}
   - component: {fileID: 65814531423107362}
   - component: {fileID: 114778376047132602}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Hand_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 4992563620017180}
   - component: {fileID: 65867809197178042}
   - component: {fileID: 114069379234939286}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Calf_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2455,14 +2455,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1734471521518888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Script: {fileID: 11500000, guid: 205b667b0e1aeac4290711fe765902c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  PlayNum: 1
+  PlayNum: 5
   BattlePoint: {fileID: 114399039305908656}
   m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114273086317203100
@@ -2498,8 +2498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerID: 5
-  m_extendAndShrink: {fileID: 114449612126101546}
-  m_moving: {fileID: 114440159132195854}
   m_ray: {fileID: 114603940408697492}
 --- !u!114 &114349697298136122
 MonoBehaviour:
@@ -2570,14 +2568,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1588220132382058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Script: {fileID: 11500000, guid: 205b667b0e1aeac4290711fe765902c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  PlayNum: 1
+  PlayNum: 5
   BattlePoint: {fileID: 114399039305908656}
   m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114603940408697492
@@ -2622,14 +2620,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636010077951264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Script: {fileID: 11500000, guid: 205b667b0e1aeac4290711fe765902c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  PlayNum: 1
+  PlayNum: 5
   BattlePoint: {fileID: 114399039305908656}
   m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!114 &114909077027690450
@@ -2653,6 +2651,7 @@ MonoBehaviour:
   WaitNowTime: 0
   WaitMaxTime: 1
   FocusMode: 0
+  StalkingMode: 0
   test: 0
 --- !u!114 &114918350652516144
 MonoBehaviour:
@@ -2662,14 +2661,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1170654196758202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd77553283479e449c04f52d0560c20, type: 3}
+  m_Script: {fileID: 11500000, guid: 205b667b0e1aeac4290711fe765902c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitPrefab: {fileID: 1980582110774726, guid: 02ffff334dbbaf84cbdd72f66a3c38d8, type: 2}
   CriticalPrefab: {fileID: 1788356027982392, guid: 9bd35d4858264da41a2fe184d925a1d8,
     type: 2}
   audio: {fileID: 0}
-  PlayNum: 1
+  PlayNum: 5
   BattlePoint: {fileID: 114399039305908656}
   m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
 --- !u!137 &137110938278226192
