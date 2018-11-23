@@ -173,38 +173,60 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
+        // 右手の伸縮
         if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]))
         {
-
+            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightHand);
             m_isInputFlg[(int)EInput.A] = true;
         }
-        else
-            m_isInputFlg[(int)EInput.A] = false;
-
+        else 
+        {
+            if(m_isInputFlg[(int)EInput.A])
+            {
+                m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightHand);
+                m_isInputFlg[(int)EInput.A] = false;
+                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            }
+        }
+        // 左手の伸縮
         if (Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]))
         {
-
+            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
             m_isInputFlg[(int)EInput.B] = true;
         }
         else
-            m_isInputFlg[(int)EInput.B] = false;
-
+        {
+            if (m_isInputFlg[(int)EInput.B])
+            {
+                m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
+                m_isInputFlg[(int)EInput.B] = false;
+                Debug.Log("BBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+            }
+        }
+        // 右足の伸縮
         if (Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]))
         {
-
+            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
             m_isInputFlg[(int)EInput.X] = true;
         }
         else
+        {
+            if (m_isInputFlg[(int)EInput.X])  m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
             m_isInputFlg[(int)EInput.X] = false;
-
+            Debug.Log("XXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        }
+        // 左足の伸縮
         if (Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]))
         {
-
+            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
             m_isInputFlg[(int)EInput.Y] = true;
         }
         else
+        {
+            if (m_isInputFlg[(int)EInput.Y]) m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
             m_isInputFlg[(int)EInput.Y] = false;
+            Debug.Log("YYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+        }
 
         // 回転減衰
         if (m_state == EState.LeftMove || m_state == EState.RightMove)

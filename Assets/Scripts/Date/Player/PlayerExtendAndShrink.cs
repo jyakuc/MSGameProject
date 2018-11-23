@@ -94,6 +94,7 @@ public class PlayerExtendAndShrink : MonoBehaviour {
     // 縮こまり開始
     public void StartShrink(EShrinkPoint eShrinkPoint)
     {
+        if (m_state[(int)eShrinkPoint] != EState.Idle) return;
         m_state[(int)eShrinkPoint] = EState.NowShrink;
         m_extendForce[(int)eShrinkPoint] = m_paramTable.extendPower[(int)eShrinkPoint];
     }
@@ -101,6 +102,7 @@ public class PlayerExtendAndShrink : MonoBehaviour {
     // 伸ばし開始
     public void StartExtend(EShrinkPoint eShrinkPoint)
     {
+        if (!(m_state[(int)eShrinkPoint] == EState.NowShrink || m_state[(int)eShrinkPoint] == EState.MaxShrink)) return;
         m_state[(int)eShrinkPoint] = EState.NowExtend;
     }
 
@@ -119,15 +121,23 @@ public class PlayerExtendAndShrink : MonoBehaviour {
             Vector3.Lerp(ikPos, shrinkPos, m_shrinkTime[idx]);
 
         m_shrinkTime[idx] += m_paramTable.AddLerpTime * Time.fixedDeltaTime;
-
+        Debug.Log(m_shrinkTime[idx]);
         // 最大まで縮こまったら遷移
         if (m_shrinkTime[idx] >= 1.0f)
+        {
             m_state[idx] = EState.MaxShrink;
+            m_shrinkTime[idx] = 0.0f;
+        }
     }
 
     // 最大に縮こまって力を溜めてる
     private void StoringTheForce(int idx)
     {
+        Vector3 ikPos = m_IKcontrolObjs[idx].transform.position;
+        Vector3 shrinkPos = m_shrinkPointObjs[idx].transform.position;
+        // 縮こまり位置まで線形補間
+        m_IKcontrolObjs[idx].transform.position =
+            Vector3.Lerp(ikPos, shrinkPos, 1);
         Vector3 add = m_paramTable.extendAddPower[idx];
 
         if (Mathf.Abs(m_extendForce[idx].x) >= Mathf.Abs(m_paramTable.extendMaxPower[idx].x))
@@ -144,7 +154,9 @@ public class PlayerExtendAndShrink : MonoBehaviour {
     private void ExtendForceRelease(int idx)
     {
         Rigidbody rigidbody = m_IKcontrolObjs[idx].GetComponent<Rigidbody>();
-
+        //Vector3 worldVelocity = m_IKcontrolObjs[idx].transform.TransformDirection(transform.right) * m_extendForce[idx].x;
+        //Debug.Log(worldVelocity);
+        //Debug.Log(transform.right);
         rigidbody.AddForce(m_extendForce[idx], ForceMode.Impulse);
 
         m_state[idx] = EState.Idle;
