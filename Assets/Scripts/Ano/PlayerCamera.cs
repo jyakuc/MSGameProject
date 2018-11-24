@@ -202,7 +202,7 @@ public class PlayerCamera : MonoBehaviour
         //    desiredPos,
         //   1
         //);
-        CameraTrans.position = new Vector3(TargetTrans.position.x, TargetTrans.position.y + 10, TargetTrans.position.z);
+        CameraTrans.position = new Vector3(TargetTrans.position.x, TargetTrans.position.y + 15, TargetTrans.position.z-1);
         CameraTrans.rotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
     }
     public void CameraDelete()
