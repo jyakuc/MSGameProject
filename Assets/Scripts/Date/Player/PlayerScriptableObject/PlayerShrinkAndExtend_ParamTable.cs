@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerShrinkAndExtend_ParamTable : ScriptableObject
 {
     [SerializeField]
-    [Range(0,1.0f)]
     public float AddLerpTime;
     [SerializeField]
     [Tooltip("0 RightHand\n1 LeftHand\n2 RightFoot\n3 LeftFoot")]
