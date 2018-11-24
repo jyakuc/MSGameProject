@@ -7,10 +7,11 @@ public class JointAddForce : MonoBehaviour {
     public Vector3 vector;
     public ForceMode forceMode;
     public Transform axis;
+    public GameObject shrinkObj;
     public GameObject extendObj;
+    public float shrinkTime;
+    public float extendTime;
 
-    public float time;
-    private bool flg = false;
     public enum AddForceType
     {
         AddForce,
@@ -25,23 +26,7 @@ public class JointAddForce : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Vector3 vc = axis.TransformDirection(vector);
-        Debug.Log(vc);
-        //rigidbody.
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            switch (forceType)
-            {
-                case AddForceType.AddForce:
-                    rigidbody.AddForce(vc, forceMode);
-                    break;
-                case AddForceType.AddRelativeForce:
-                    rigidbody.AddRelativeForce(vc, forceMode);
-                    break;
-                case AddForceType.AddExplosionForce:
-                    //rigidbody.AddExplosionForce(vector, forceMode);
-                    break;
-            }
-        }
+        Debug.Log(vc); 
 
         if (Input.GetKey(KeyCode.H))
         {
@@ -53,23 +38,20 @@ public class JointAddForce : MonoBehaviour {
                 case AddForceType.AddRelativeForce:
                     rigidbody.AddRelativeForce(vc, forceMode);
                     break;
-                case AddForceType.AddExplosionForce:
-                    //rigidbody.AddExplosionForce(vector, forceMode);
-                    break;
             }
         }
 
         if (Input.GetKey(KeyCode.J))
         {
-            /*
-            if (!flg)
-            {
-                rigidbody.AddForce(vc, ForceMode.Impulse);
-                flg = true;
-            }
-            */
-            transform.position = Vector3.Slerp(transform.position, extendObj.transform.position,Time.deltaTime * time);
-           // time += Time.deltaTime;
+            Vector3 diff = shrinkObj.transform.position - transform.position;
+            rigidbody.velocity = diff * shrinkTime;
+        }
+
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            Vector3 diff = extendObj.transform.position - transform.position;
+            //rigidbody.velocity = diff * extendTime;
+            rigidbody.AddForce(diff * extendTime, ForceMode.Impulse);
         }
     }
 }
