@@ -16,7 +16,7 @@ public class HitSystem : MonoBehaviour {
     //キャラクターのID取得
     private PlayerController P_Controller;
     //エフェクト発生中か
-    private bool HitEffectFlag = false;
+    public bool HitEffectFlag = false;
     //プレイヤーID一致用
     public int PlayNum = 1;
     //ちょっと多段ヒットしているので一時的に時間で制御
@@ -305,7 +305,23 @@ public class HitSystem : MonoBehaviour {
         //親のRigidbodyを探す
         Rigidbody HitRigid = HitObject.transform.root.gameObject.GetComponent<Rigidbody>();
         PlayerController hitPlayer = HitObject.transform.root.gameObject.GetComponent<PlayerController>();
-
+        //サンドバック用点数など加算しないようにする
+        if (HitObject.transform.root.gameObject.name== "SandBack(Clone)")
+        {
+            switch (EffectType)
+            {
+                case HitSelect.Hit:
+                    //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
+                    HitRigid.AddForce(this.transform.position * m_paramTable.normalHitPower, ForceMode.Impulse);
+                    break;
+                case HitSelect.Critical:
+                    HitStop();
+                    //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
+                    HitRigid.AddForce(this.transform.position * m_paramTable.criticalHitPower, ForceMode.Impulse);
+                    break;
+            }
+            return;
+        }
         // 誰に吹き飛ばされたかを保持
         hitPlayer.BlowAwayNow(P_Controller.PlayerID);
 

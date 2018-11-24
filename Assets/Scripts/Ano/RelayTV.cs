@@ -8,7 +8,7 @@ public class RelayTV : MonoBehaviour {
     public Material material;
     public GameObject Warming;
     public GameObject PickUp;
-    private int PlayerNum = 0;
+    public int PlayerNum = 0;
     private bool WarmingFlag = false;
     private void Start()
     {
