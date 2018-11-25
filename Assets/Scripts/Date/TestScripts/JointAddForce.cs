@@ -8,9 +8,9 @@ public class JointAddForce : MonoBehaviour {
     public ForceMode forceMode;
     public Transform axis;
     public GameObject shrinkObj;
-    public GameObject extendObj;
+    //public GameObject extendObj;
     public float shrinkTime;
-    public float extendTime;
+    //public float extendTime;
 
     public enum AddForceType
     {
@@ -26,7 +26,7 @@ public class JointAddForce : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Vector3 vc = axis.TransformDirection(vector);
-        Debug.Log(vc); 
+        //Debug.Log(vc); 
 
         if (Input.GetKey(KeyCode.H))
         {
@@ -46,12 +46,12 @@ public class JointAddForce : MonoBehaviour {
             Vector3 diff = shrinkObj.transform.position - transform.position;
             rigidbody.velocity = diff * shrinkTime;
         }
-
+        /*
         if (Input.GetKeyUp(KeyCode.J))
         {
             Vector3 diff = extendObj.transform.position - transform.position;
             //rigidbody.velocity = diff * extendTime;
             rigidbody.AddForce(diff * extendTime, ForceMode.Impulse);
-        }
+        }*/
     }
 }

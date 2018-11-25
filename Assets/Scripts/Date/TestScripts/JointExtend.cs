@@ -6,8 +6,10 @@ public class JointExtend : MonoBehaviour {
     public Rigidbody rigidbody;
     public GameObject extendObj;
     public float extendTime;
+    public float permissionValue;
 
     private bool flg = false;
+
     // Use this for initialization
     void Start () {
 		
@@ -28,8 +30,23 @@ public class JointExtend : MonoBehaviour {
             rigidbody.velocity = diff * extendTime;
             //rigidbody.AddForce(diff * extendTime, ForceMode.Impulse);
         }
+        float distance = Vector3.Distance(extendObj.transform.position, transform.position);
 
+        //ArrivalExtendObj();
+            
         if (Input.GetKeyDown(KeyCode.K))
             flg = false;
+    }
+
+    public void ArrivalExtendObj()
+    {
+        if (!flg) return;
+
+        flg = false;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+        Debug.Log("伸びきった");
+
+        
     }
 }
