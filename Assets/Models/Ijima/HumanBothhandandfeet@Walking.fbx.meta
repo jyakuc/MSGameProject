@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 311a01a4704e68741bdcfd9f79c0bbfd
-timeCreated: 1543089447
+guid: 92a0a343ac8405f4e8de11072605b3f8
+timeCreated: 1543174682
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -74,52 +74,7 @@ ModelImporter:
     7400004: mixamo.com
     9500000: //RootNode
     13700000: Human
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Clothes
-    second: {fileID: 2100000, guid: f4e855740d7d98d4684dd8cff3e00513, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: LeftFoot
-    second: {fileID: 2100000, guid: bd995404f58038c4cbacbafbf15fec52, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: LeftHand
-    second: {fileID: 2100000, guid: bd995404f58038c4cbacbafbf15fec52, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Logo
-    second: {fileID: 2100000, guid: 705d3b419b283c54891a47eb59a17f2f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Pants
-    second: {fileID: 2100000, guid: f1db7427ca494c14ca0842dace314b6a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: RightFoot
-    second: {fileID: 2100000, guid: c6cf6726ced8c3f49a19530217c8b9ce, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: RightHand
-    second: {fileID: 2100000, guid: c6cf6726ced8c3f49a19530217c8b9ce, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Skin
-    second: {fileID: 2100004, guid: c8a420d7874f63d4d97f24eb707ba718, type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: face
-    second: {fileID: 2100004, guid: c8a420d7874f63d4d97f24eb707ba718, type: 3}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
