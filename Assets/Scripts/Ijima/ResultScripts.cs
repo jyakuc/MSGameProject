@@ -11,6 +11,7 @@ public class ResultScripts : MonoBehaviour {
     public RawImage[] PannelDigit;
     public RawImage[] PannelTenPlace;
     public RawImage[] PannelHundredPlace;
+    public RawImage[] PannelThousandPlace;
     public Texture[] Images;
     private CostManager CManager;
     public int SceneChangeTime;     //遅延フレーム数
@@ -116,6 +117,7 @@ public class ResultScripts : MonoBehaviour {
             PannelDigit[i].color = SetColors[VictoryNum];
             PannelTenPlace[i].color = SetColors[VictoryNum];
             PannelHundredPlace[i].color = SetColors[VictoryNum];
+            PannelThousandPlace[i].color = SetColors[VictoryNum];
         }
         PannelDigit[3].color = SetColors[VictoryNum];
     }
@@ -125,22 +127,27 @@ public class ResultScripts : MonoBehaviour {
         //プレイヤーナンバー
         PannelDigit[3].texture = Images[VictoryNum + 11];
 
-        int bHundredPlace = (BattlePoint[VictoryNum] / 100) % 10;   //100の位
-        int bTenPlace = (BattlePoint[VictoryNum] / 10) % 10;        //10の位
-        int bDigit = BattlePoint[VictoryNum] % 10;                //1の位
-        int aHundredPlace = (ArtisticPoint[VictoryNum] / 100) % 10;   //100の位
-        int aTenPlace = (ArtisticPoint[VictoryNum] / 10) % 10;        //10の位
-        int aDigit = ArtisticPoint[VictoryNum] % 10;                //1の位
-        int tHundredPlace = (TotalPoint[VictoryNum] / 100) % 10;   //100の位
-        int tTenPlace = (TotalPoint[VictoryNum] / 10) % 10;        //10の位
-        int tDigit = TotalPoint[VictoryNum] % 10;                //1の位
+        int bThousandPlace  = (BattlePoint[VictoryNum] / 1000) % 10;      //1000の位
+        int bHundredPlace = (BattlePoint[VictoryNum] / 100) % 10;       //100の位
+        int bTenPlace = (BattlePoint[VictoryNum] / 10) % 10;            //10の位
+        int bDigit = BattlePoint[VictoryNum] % 10;                      //1の位
 
-        //点数のセット
+        int aThousandPlace = (ArtisticPoint[VictoryNum] / 1000) % 10;   //1000の位
+        int aHundredPlace = (ArtisticPoint[VictoryNum] / 100) % 10;     //100の位
+        int aTenPlace = (ArtisticPoint[VictoryNum] / 10) % 10;          //10の位
+        int aDigit = ArtisticPoint[VictoryNum] % 10;                    //1の位
+
+        int tThousandPlace = (TotalPoint[VictoryNum] / 1000) % 10;      //1000の位
+        int tHundredPlace = (TotalPoint[VictoryNum] / 100) % 10;        //100の位
+        int tTenPlace = (TotalPoint[VictoryNum] / 10) % 10;             //10の位
+        int tDigit = TotalPoint[VictoryNum] % 10;                       //1の位
+
         Debug.Log(bHundredPlace.ToString() +  " " + aHundredPlace.ToString() + " " + tHundredPlace.ToString() );
 
         bool tFlg = false;
         bool aFlg = false;
         bool bFlg = false;
+
         for (int j = 0; j < 10; j++)
         {
             //total
@@ -162,16 +169,24 @@ public class ResultScripts : MonoBehaviour {
                 }
             }
             //100の位
-            if (tHundredPlace != 0 && tHundredPlace == j)
+            if (tHundredPlace == j)
             {
-                PannelHundredPlace[0].texture = Images[j];
-                PannelHundredPlace[0].color = SetColors[VictoryNum];
+                if (tThousandPlace == 0)
+                {
+                    if(tHundredPlace!=0) PannelHundredPlace[0].texture = Images[j];
+                    else PannelHundredPlace[0].color = SetColors[6];//桁消去
+                }
+            }
+            //1000の位
+            if (tThousandPlace != 0 && tThousandPlace == j)
+            {
+                PannelThousandPlace[0].texture = Images[j];
                 tFlg = true;
             }
             else
             {
-                if(!tFlg)
-                    PannelHundredPlace[0].color = SetColors[6];//桁消去
+                if (!tFlg)
+                    PannelThousandPlace[0].color = SetColors[6];//桁消去
             }
 
             //battle
@@ -193,16 +208,24 @@ public class ResultScripts : MonoBehaviour {
                 }
             }
             //100の位
-            if (bHundredPlace != 0 && bHundredPlace == j)
+            if (bHundredPlace == j)
             {
-                PannelHundredPlace[1].texture = Images[j+10];   //左右判定
-                PannelHundredPlace[1].color = SetColors[VictoryNum];
+                if (bThousandPlace == 0)
+                {
+                    if (bHundredPlace != 0) PannelHundredPlace[1].texture = Images[j];
+                    else PannelHundredPlace[1].color = SetColors[6];//桁消去
+                }
+            }
+            //1000の位
+            if (bThousandPlace != 0 && bThousandPlace == j)
+            {
+                PannelThousandPlace[1].texture = Images[j];
                 bFlg = true;
             }
             else
             {
-                if(!bFlg)
-                    PannelHundredPlace[1].color = SetColors[6];//桁消去
+                if (!bFlg)
+                    PannelThousandPlace[1].color = SetColors[6];//桁消去
             }
 
             //Art
@@ -224,16 +247,24 @@ public class ResultScripts : MonoBehaviour {
                 }
             }
             //100の位
-            if (aHundredPlace != 0 && aHundredPlace == j)
+            if (aHundredPlace == j)
             {
-                PannelHundredPlace[2].texture = Images[j + 10];   //左右判定
-                PannelHundredPlace[2].color = SetColors[VictoryNum];
+                if (aThousandPlace == 0)
+                {
+                    if (aHundredPlace != 0) PannelHundredPlace[2].texture = Images[j];
+                    else PannelHundredPlace[2].color = SetColors[6];//桁消去
+                }
+            }
+            //1000の位
+            if (aThousandPlace != 0 && aThousandPlace == j)
+            {
+                PannelThousandPlace[2].texture = Images[j];
                 aFlg = true;
             }
             else
             {
-                if(!aFlg)
-                    PannelHundredPlace[2].color = SetColors[6];//桁消去
+                if (!aFlg)
+                    PannelThousandPlace[2].color = SetColors[6];//桁消去
             }
 
         }
