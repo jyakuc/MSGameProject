@@ -31,7 +31,7 @@ public class ResultScripts : MonoBehaviour {
         SceneChangeFlg = false;
         ResultFinishFlg = false;
         flame = 0;
-        AudioManager.GetInstance.PlayBGM(AUDIO.BGM_TITLE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
+        AudioManager.GetInstance.PlayBGM(AUDIO.BGM_RESULT, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
         VictoryCharSet();
     }
 
