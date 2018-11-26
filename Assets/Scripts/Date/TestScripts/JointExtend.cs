@@ -12,6 +12,9 @@ public class JointExtend : MonoBehaviour {
     private bool ExtendMaxflg = false;
     private Rigidbody parentRigid;
     private Rigidbody childRigid;
+
+    private bool extendFlg;
+    private bool shrinkFlg;
     // Use this for initialization
     void Start () {
         parentRigid = transform.parent.GetComponent<Rigidbody>();
@@ -19,26 +22,34 @@ public class JointExtend : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (Input.GetKey(KeyCode.J))
         {
-            Vector3 diff = shrinkObj.transform.position - transform.position;
-            rigidbody.velocity = diff * shrinkTime;
-            Debug.Log(diff);
+            shrinkFlg = true;
         }
 
         if (Input.GetKeyUp(KeyCode.J))
         {
-           ExtendMaxflg = true;
+            shrinkFlg = false;
+            extendFlg = true;
         }
+    }
 
-        if (ExtendMaxflg)
+    private void FixedUpdate()
+    {
+        if (shrinkFlg)
         {
-            Vector3 diff = extendObj.transform.position - transform.position;
-            rigidbody.velocity = diff * extendTime;
+            Vector3 diff = shrinkObj.transform.position - transform.position;
+            rigidbody.velocity = diff * shrinkTime;
         }
 
-        //ArrivalExtendObj();
+        if (extendFlg)
+        {
+            //VelocityExtend();
+            AddForceImpulse();
+            extendFlg = false;
+        }
     }
 
     public void ArrivalExtendObj()
@@ -53,8 +64,32 @@ public class JointExtend : MonoBehaviour {
         parentRigid.angularVelocity = Vector3.zero;
         childRigid.velocity = Vector3.zero;
         childRigid.angularVelocity = Vector3.zero;
-        
+
         Debug.Log("伸びきった");
-        
+    }
+
+    // velocityを書き換えて伸ばす処理
+    public void VelocityExtend()
+    {
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            ExtendMaxflg = true;
+        }
+
+        if (ExtendMaxflg)
+        {
+            Vector3 diff = extendObj.transform.position - transform.position;
+            rigidbody.velocity = diff * extendTime;
+        }
+    }
+
+    // AddForceのForceMode.Impulseで一度だけ力を加える処理
+    public void AddForceImpulse()
+    {
+       
+        Vector3 diff = extendObj.transform.position - transform.position;
+        rigidbody.AddForce(diff * extendTime , ForceMode.Impulse);
+        Debug.Log(diff);
+        Debug.Log("離した");
     }
 }
