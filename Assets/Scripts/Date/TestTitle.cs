@@ -31,7 +31,7 @@ public class TestTitle : MonoBehaviour {
         }
         if (flame == SceneChangeTime){
 
-            SceneController.GetInstance.ChangeScene("WarmingUp", 2);
+            SceneController.GetInstance.ChangeScene("IntroMovieScene", 2);
 
         }
     }

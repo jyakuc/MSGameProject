@@ -6,42 +6,40 @@ using UnityEngine.UI;
 
 public class IntroMovieScript : MonoBehaviour {
 
-    public int MovieTime;
+    private GameObject ENDFLG;
     private int SceneChangeTime;     //遅延フレーム数
     private bool SceneChangeFlg;
     private int flame;
-    private bool OneKeyFlag = false;
+    private bool OneKeyFlag;
     private bool IntroFinishFlg;
 
     // Use this for initialization
     void Start () {
         SceneChangeTime = 60;
         flame = 0;
+        OneKeyFlag = false;
+        IntroFinishFlg = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
         if ((!IntroFinishFlg) && (!OneKeyFlag)) {
-            flame++;
-            if (flame >= MovieTime)
-            {
+            //EndFlgオブジェクトがTimeline上でactiveにされた時、シーン遷移する
+            ENDFLG = GameObject.Find("EndFlg");
+            if (ENDFLG != null){
                 IntroFinishFlg = true;
             }
         }
-        if (((Input.anyKeyDown == true) && (!OneKeyFlag)) || (IntroFinishFlg == true))
-        {
+        if (((Input.anyKeyDown == true) && (!OneKeyFlag)) || (IntroFinishFlg == true)){
             SceneChangeFlg = true;
             OneKeyFlag = true;
             AudioManager.GetInstance.PlaySE0(AUDIO.SE_Decision);
             IntroFinishFlg = false;
-            flame = 0;
         }
-        if (SceneChangeFlg == true)
-        {
+        if (SceneChangeFlg == true){
             flame++;
-            if (flame == SceneChangeTime)
-            {
-                SceneController.GetInstance.ChangeScene("TitleScene", 2);
+            if (flame == SceneChangeTime){
+                SceneController.GetInstance.ChangeScene("WarmingUp", 2);
             }
         }
     }

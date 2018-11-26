@@ -9228,6 +9228,8 @@ PlayableDirector:
     value: {fileID: 738774161}
   - key: {fileID: 0}
     value: {fileID: 738774169}
+  - key: {fileID: 114515169720188638, guid: f4a58440a71f9374e9ce5a995234f25b, type: 2}
+    value: {fileID: 1049767496}
   m_ExposedReferences:
     m_References:
     - 19fe8c70d1d6f9a48b078d6bdaf766df: {fileID: 1913128759}
@@ -9277,6 +9279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovieTime: 6000
+  ENDFLG: {fileID: 1049767496}
 --- !u!1 &416909632
 GameObject:
   m_ObjectHideFlags: 0
@@ -25554,6 +25557,34 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_ComponentOwner: {fileID: 550861324}
+--- !u!1 &1049767496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1049767497}
+  m_Layer: 0
+  m_Name: EndFlg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1049767497
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1049767496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 113.3759, y: 185.80566, z: 1476.7272}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055439230
 GameObject:
   m_ObjectHideFlags: 0
