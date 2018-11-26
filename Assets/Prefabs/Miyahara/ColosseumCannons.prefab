@@ -413,8 +413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannon: {fileID: 114932020301615292}
-  defaultFireSpeed: 35
-  defaultFireAngle: 15
+  defaultFireSpeed: 5
+  defaultFireAngle: 25
   gameController: {fileID: 0}
   myInputManager: {fileID: 0}
 --- !u!114 &114278933998958672
@@ -510,12 +510,12 @@ MonoBehaviour:
   turret: {fileID: 4566738265582986}
   firePoint: {fileID: 4424028006184794}
   projectilePrefab:
-  - {fileID: 1763243969287568, guid: 27856c8625bae1e47ba1e4c5a9315383, type: 2}
-  - {fileID: 1313503552564812, guid: 95537e0fd822b8f4ebdc507d5bc89986, type: 2}
-  - {fileID: 1404075687510486, guid: db335245b8cf11d4f9f0de3b321a1c81, type: 2}
-  - {fileID: 1127312982964314, guid: 310859255a50a2d40be7383d22e3fc01, type: 2}
-  - {fileID: 1358513346199156, guid: 393a838afd6dd1e4a9464f960a51ce66, type: 2}
-  - {fileID: 1449480356525946, guid: 119007f52dddcf842a3c2a086abd93d5, type: 2}
+  - {fileID: 1799493540375958, guid: 8dc94fa6e7cb0794da3ec8e44990740a, type: 2}
+  - {fileID: 1660915089426670, guid: 039c183a24f0bea4ebfcb9dbd198b0e6, type: 2}
+  - {fileID: 1502925073595706, guid: 168d3c7a9f998de4bab6a0b9189b6923, type: 2}
+  - {fileID: 1705155825686434, guid: 473f0cbd604d8e645a603c885b81bce0, type: 2}
+  - {fileID: 1153466462758186, guid: 2792e60fca2fdf149b627ec340e2aee2, type: 2}
+  - {fileID: 1616296411521766, guid: 023f9535902c11f49868605a5d760e39, type: 2}
   projectileArc:
   - {fileID: 114896491416470756}
   - {fileID: 114835272838590162}

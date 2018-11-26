@@ -18,6 +18,11 @@ public class RotateCamera : MonoBehaviour {
     FadeController FadeObj;
     SceneController SceneObj;
     private bool FadeFlg;
+
+    private StartTimer S_timer;
+    private GameObject g_UI;
+    private GameObject _slider_Background;
+    private GameObject _slider_Fillarea;
 	// Use this for initialization
 	void Start () {
 
@@ -27,6 +32,11 @@ public class RotateCamera : MonoBehaviour {
         FadeObj = SceneObj.transform.Find("FadeCanvas").GetComponent<FadeController>();
         Cannons = GameObject.Find("ColosseumCannons(Clone)");
         FadeFlg = false;
+        g_UI = GameObject.Find("GameUI");
+        _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject;
+        _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject;
+        S_timer = GameObject.FindObjectOfType<StartTimer>();
+
 	}
 	
 	// Update is called once per frame
@@ -49,9 +59,21 @@ public class RotateCamera : MonoBehaviour {
     {
         MainCamera.SetActive(!MainCamera.activeSelf);
         SubCamera.SetActive(!SubCamera.activeSelf);
+        this.gameObject.SetActive(false);
         Cannons.transform.Find("Cannon6Arc").gameObject.SetActive(true);
         Cannons.transform.Find("CannonMng").gameObject.SetActive(true);
+        _slider_Background.gameObject.SetActive(true);
+        _slider_Fillarea.gameObject.SetActive(true);
         FadeController.Begin(FadeObj.gameObject, true, Rate);
+        if (S_timer == null)
+        {
+            S_timer = GameObject.FindObjectOfType<StartTimer>();
+            S_timer.On_TimeStartFlg();
+        }
+        else
+        {
+            S_timer.On_TimeStartFlg();
+        }
         FadeObj.m_onFinished -= ChangeCamera;
     }
 

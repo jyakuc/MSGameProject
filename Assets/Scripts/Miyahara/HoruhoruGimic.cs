@@ -6,8 +6,6 @@ public class HoruhoruGimic : MonoBehaviour {
 
     private const int Maxpos = 8;
 
-    private const int MaxPattern = 10;
-
     private FallFloor[] ChildFloor;
     private GameObject[] MeteoPos = new GameObject[Maxpos];
     private int[,] FallList =
@@ -67,14 +65,13 @@ public class HoruhoruGimic : MonoBehaviour {
 	void Update () {
        
         
-        if (Gb.StartFlg)
+        if (Gb.IsGameStart())
         {
 
             if (Count >= 7)
                 return;
             if (SetTime < NowTime)
             {
-
                 Effect = Instantiate(FireBall, MeteoPos[FallList[RandomList,Count]].transform.position,Quaternion.identity);
                 Effect.GetComponent<FireBall>().GroundNumber = FallList[RandomList, Count];
                 NowTime = 0;

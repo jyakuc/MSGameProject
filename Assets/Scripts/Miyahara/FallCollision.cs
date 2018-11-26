@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class FallCollision : MonoBehaviour {
 
-    public List <int> Rank = new List<int>();
+    //public List <int> Rank = new List<int>();
     public RankingInGame rankingInGame;
+    private CrushPointManager CrushPointManager;
     public GameObject FallEffect;
-    public CostManager costManager;
+
 	// Use this for initialization
 	void Start () {
 		if(rankingInGame == null)
         {
             rankingInGame = FindObjectOfType<RankingInGame>();
             if (rankingInGame == null)
-                Debug.LogError("RankingInGameがシーン存在しません");
+                Debug.LogError("RankingInGameがシーンに存在しません");
+        }
+        
+        if(CrushPointManager == null)
+        {
+            CrushPointManager = FindObjectOfType<CrushPointManager>();
+            if (CrushPointManager == null)
+                Debug.LogError("CrushPointManagerがジーンに存在しません");
         }
 
-        /*   costManager = GameObject.FindObjectOfType<CostManager>();
-           if (costManager == null)
-               Debug.LogError("CostManagerがシーンに存在しません。");
-       */
+       
     }
 	
 	// Update is called once per frame
@@ -28,30 +33,23 @@ public class FallCollision : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Player")
             return;
 
         CreateEffect(other.gameObject.transform);
 
-        Transform parent = other.gameObject.transform.root;
-        int playerID = parent.GetComponent<PlayerController>().PlayerID;
-        
-        Rank.Add(playerID);
-
-        parent.GetComponent<PlayerController>().Dead();
-      /*  if (parent.GetComponent<ArtGrading>() != null)
-        {
-            parent.GetComponent<ArtGrading>().Save();
-            parent.GetComponent<ArtGrading>().ArtistGrading();
-            costManager.AddCostData(playerID, parent.GetComponent<ArtGrading>().Cost);
-            Debug.Log(parent.GetComponent<ArtGrading>().Cost);
-        }
-        */
+        // 落ちたプレイヤーのIDを取得
+        PlayerController fallPlayer = other.gameObject.transform.root.GetComponent<PlayerController>();
+        int playerID = fallPlayer.PlayerID;
+        // UIに順位更新
         rankingInGame.SetRank(playerID);
-        Destroy(parent.gameObject);
+        // CrushPointManagerを更新
+        CrushPointManager.DamageDead(playerID, fallPlayer.HitReceivePlayerID);
+        fallPlayer.Dead();
     }
+
     //Effect生成
     private void CreateEffect(Transform Trans)
     {

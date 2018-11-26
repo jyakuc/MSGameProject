@@ -54,10 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a96265953f0ad46b77548b32df086a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_deleteObjects:
-  - {fileID: 0}
-  - {fileID: 0}
   m_gameSceneController: {fileID: 114439577510134876}
+  m_selectingStage: 0
 --- !u!114 &114124246838815078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,7 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_debugMode:
-    m_debugMode: 0
+    m_debugMode: 1
     m_debugPlayerEnable: 0
-    m_debugPlayerNum: 6
+    m_debugPlayerNum: 2
     m_controllerEnable: 0
+    m_Injection: 6
+    m_debugstageCreate: 1

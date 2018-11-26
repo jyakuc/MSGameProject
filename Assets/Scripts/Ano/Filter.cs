@@ -35,7 +35,7 @@ public class Filter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Gb.StartFlg)
+        if(Gb.IsGameStart())
         {
             NowTime += Time.deltaTime;
 

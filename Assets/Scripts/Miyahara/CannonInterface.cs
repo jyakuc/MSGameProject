@@ -18,10 +18,10 @@ public class CannonInterface : MonoBehaviour
     //Text timeOfFlightText;
 
     [SerializeField]
-    float defaultFireSpeed = 35;
+    float defaultFireSpeed = 5;
 
     [SerializeField]
-    float defaultFireAngle = 45;
+    float defaultFireAngle = 25;
 
     private float initialFireAngle;
     private float initialFireSpeed;
@@ -34,6 +34,11 @@ public class CannonInterface : MonoBehaviour
     private GameController gameController;
     [SerializeField]
     private MyInputManager myInputManager;
+
+    private GameObject g_UI;
+    private GameObject _slider_Background;
+    private GameObject _slider_Fillarea;
+    private StartTimer timer;
 
     void Awake()
     {
@@ -62,6 +67,11 @@ public class CannonInterface : MonoBehaviour
         myInputManager = GameObject.FindObjectOfType<MyInputManager>();
         if (myInputManager == null)
             Debug.LogError("MyInputManagerがシーンにありません");
+
+        g_UI = GameObject.Find("GameUI");
+        _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject;
+        _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject;
+        timer = GameObject.FindObjectOfType<StartTimer>();
     }
 
     void Update()
@@ -77,15 +87,25 @@ public class CannonInterface : MonoBehaviour
             
             if (targetCursor[i].FireFlg)
             {
-                
-                if (Input.GetButtonDown("X_Player" + myInputManager.joysticks[i].ToString()))
+                if (timer.TimerFinishflg)
+                {
+                    gameController.AddPlayer(cannon.FireHuman(i));
+                    targetCursor[i].FireFlg = false;
+                    _slider_Background.gameObject.SetActive(false);
+                    _slider_Fillarea.gameObject.SetActive(false);
+                    DeleteCursor(i);
+                }
+            }
+            // デバッグ用射出
+            if(DebugModeGame.GetProperty().m_debugMode && DebugModeGame.GetProperty().m_Injection > i)
+            {
+                if (Input.GetButtonDown("Injection_" + (i + 1).ToString()))
                 {
                     gameController.AddPlayer(cannon.FireHuman(i));
                     targetCursor[i].FireFlg = false;
                     DeleteCursor(i);
                 }
             }
-
         }
         //timeOfFlightText.text = Mathf.Clamp(cannon.lastShotTimeOfFlight - (Time.time - cannon.lastShotTime), 0, float.MaxValue).ToString("F3");
     }

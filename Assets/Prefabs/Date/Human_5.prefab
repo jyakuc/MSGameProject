@@ -264,6 +264,8 @@ GameObject:
   - component: {fileID: 114177063355492992}
   - component: {fileID: 65521191200183474}
   - component: {fileID: 114867325276505346}
+  - component: {fileID: 114666344342738534}
+  - component: {fileID: 114939286276134256}
   m_Layer: 17
   m_Name: Human_5
   m_TagString: Player
@@ -2121,6 +2123,10 @@ MonoBehaviour:
   m_leftHandObj: {fileID: 1899395220044010}
   m_rightFootObj: {fileID: 1945108740893328}
   m_leftFootObj: {fileID: 1851386250820694}
+  Hand_R: {fileID: 2100000, guid: 5d29bbe8acb8b6b47b1dac49d23d0a7c, type: 2}
+  Hand_L: {fileID: 2100000, guid: 1201fc66caeb4494f8ce1d61398f4be3, type: 2}
+  Calf_R: {fileID: 2100000, guid: c793b5d9ef436a946b63619cce957c06, type: 2}
+  Calf_L: {fileID: 2100000, guid: 1a9f64afd69c8fe469e7acc7995df7b7, type: 2}
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: 0, y: -3.8, z: 0}
@@ -2142,9 +2148,14 @@ MonoBehaviour:
     decayForce: {x: 0.99, y: 0, z: 0}
   m_directionAngle: 250
   rayTest: {fileID: 114978070204711190}
-  CriticalProbability: 20
+  CriticalProbability: 80
   HitPower: 9
-  CriticalPower: 40
+  CriticalPower: 20
+  m_shrinkRightHandObj: {fileID: 0}
+  m_shrinkLeftHandObj: {fileID: 0}
+  m_shrinkRightFootObj: {fileID: 0}
+  m_shrinkLeftFootObj: {fileID: 0}
+  shrinkTime: 0
 --- !u!114 &114177063355492992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2184,6 +2195,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114143052832651144}
   PlayNum: 5
+  BattlePoint: {fileID: 0}
 --- !u!114 &114348906947774610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2222,6 +2234,18 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114143052832651144}
   PlayNum: 5
+  BattlePoint: {fileID: 0}
+--- !u!114 &114666344342738534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358513346199156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc88d01a7723394ca5c0ea50264d668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114712053345384776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2239,6 +2263,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114143052832651144}
   PlayNum: 5
+  BattlePoint: {fileID: 0}
 --- !u!114 &114867325276505346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2267,6 +2292,29 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114143052832651144}
   PlayNum: 5
+  BattlePoint: {fileID: 0}
+--- !u!114 &114939286276134256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358513346199156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bbcb701514ea04698ecc54a0ced3e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabCamera: {fileID: 1406161383581644, guid: 4b7a56cc06a7baf4aabfc4a4ea411505,
+    type: 2}
+  TargetTrans: {fileID: 4351424694018022}
+  Speed: 0.25
+  ZoomMaxTime: 0.4
+  ZoomNowTime: 0
+  ZoomFlag: 0
+  WaitNowTime: 0
+  WaitMaxTime: 1
+  FocusMode: 0
+  test: 0
 --- !u!114 &114978070204711190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2297,8 +2345,12 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: e585a8f6d6610aa449561703ce7f8bf2, type: 2}
   - {fileID: 2100000, guid: 23bf6424248fa2e439c6dfbe47b5eb44, type: 2}
   - {fileID: 2100004, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
-  - {fileID: 2100006, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  - {fileID: 2100000, guid: 5d29bbe8acb8b6b47b1dac49d23d0a7c, type: 2}
+  - {fileID: 2100008, guid: c49df7f5aed04184c9f9d7af05ff2b96, type: 3}
   - {fileID: 2100000, guid: d3769e46c72a6134d979bc743f7452fd, type: 2}
+  - {fileID: 2100000, guid: c793b5d9ef436a946b63619cce957c06, type: 2}
+  - {fileID: 2100000, guid: 1201fc66caeb4494f8ce1d61398f4be3, type: 2}
+  - {fileID: 2100000, guid: 1a9f64afd69c8fe469e7acc7995df7b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2322,7 +2374,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 9e8a606426b941d4a9cd9ecac91399be, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c49df7f5aed04184c9f9d7af05ff2b96, type: 3}
   m_Bones:
   - {fileID: 4351424694018022}
   - {fileID: 4081094994667120}

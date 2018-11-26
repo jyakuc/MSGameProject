@@ -253,6 +253,8 @@ GameObject:
   - component: {fileID: 114680210371607022}
   - component: {fileID: 65808073547637554}
   - component: {fileID: 114187187845065672}
+  - component: {fileID: 114554100226171920}
+  - component: {fileID: 114832662076064840}
   m_Layer: 18
   m_Name: Human_6
   m_TagString: Player
@@ -2131,6 +2133,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
+  BattlePoint: {fileID: 114554100226171920}
 --- !u!114 &114302950340732178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2165,6 +2168,17 @@ MonoBehaviour:
   bodyWeight: 0
   headWeight: 0
   eyeWeight: 0
+--- !u!114 &114554100226171920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449480356525946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc88d01a7723394ca5c0ea50264d668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114595034991501098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2182,6 +2196,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
+  BattlePoint: {fileID: 114554100226171920}
 --- !u!114 &114680210371607022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2221,6 +2236,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
+  BattlePoint: {fileID: 114554100226171920}
 --- !u!114 &114745635048470910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2239,6 +2255,10 @@ MonoBehaviour:
   m_leftHandObj: {fileID: 1814654181169048}
   m_rightFootObj: {fileID: 1273645417618626}
   m_leftFootObj: {fileID: 1160299987118958}
+  Hand_R: {fileID: 2100000, guid: de0acca3fdba1a2428ea7b1191e3333b, type: 2}
+  Hand_L: {fileID: 2100000, guid: 5687f72950598c340a43eaa615096942, type: 2}
+  Calf_R: {fileID: 2100000, guid: 610dd9614314a9f488d584b5b57a3eed, type: 2}
+  Calf_L: {fileID: 2100000, guid: 60e86d20b1c450045b1af5f8af0c4005, type: 2}
   m_bodyForce:
     cntForce: {x: 0, y: 0, z: 0}
     maxForce: {x: 0, y: -3.8, z: 0}
@@ -2260,9 +2280,36 @@ MonoBehaviour:
     decayForce: {x: 0.99, y: 0, z: 0}
   m_directionAngle: 250
   rayTest: {fileID: 114302950340732178}
-  CriticalProbability: 20
+  CriticalProbability: 80
   HitPower: 9
-  CriticalPower: 40
+  CriticalPower: 20
+  m_shrinkRightHandObj: {fileID: 0}
+  m_shrinkLeftHandObj: {fileID: 0}
+  m_shrinkRightFootObj: {fileID: 0}
+  m_shrinkLeftFootObj: {fileID: 0}
+  shrinkTime: 0
+--- !u!114 &114832662076064840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449480356525946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bbcb701514ea04698ecc54a0ced3e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabCamera: {fileID: 1406161383581644, guid: 4b7a56cc06a7baf4aabfc4a4ea411505,
+    type: 2}
+  TargetTrans: {fileID: 4830864763769882}
+  Speed: 0.25
+  ZoomMaxTime: 0.4
+  ZoomNowTime: 0
+  ZoomFlag: 0
+  WaitNowTime: 0
+  WaitMaxTime: 1
+  FocusMode: 0
+  test: 0
 --- !u!114 &114856401641176756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2280,6 +2327,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   P_Controller: {fileID: 114745635048470910}
   PlayNum: 6
+  BattlePoint: {fileID: 114554100226171920}
 --- !u!137 &137895979734281560
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2297,8 +2345,12 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 17bcbdf42d89dc34c8424d8611c59ee1, type: 2}
   - {fileID: 2100000, guid: aebd9f006f18fa648bf56036a9b806d3, type: 2}
   - {fileID: 2100004, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
-  - {fileID: 2100006, guid: 2218bc32be59503409d9d2b784700b3a, type: 3}
+  - {fileID: 2100000, guid: de0acca3fdba1a2428ea7b1191e3333b, type: 2}
+  - {fileID: 2100008, guid: c49df7f5aed04184c9f9d7af05ff2b96, type: 3}
   - {fileID: 2100000, guid: 705d3b419b283c54891a47eb59a17f2f, type: 2}
+  - {fileID: 2100000, guid: 610dd9614314a9f488d584b5b57a3eed, type: 2}
+  - {fileID: 2100000, guid: 5687f72950598c340a43eaa615096942, type: 2}
+  - {fileID: 2100000, guid: 60e86d20b1c450045b1af5f8af0c4005, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2322,7 +2374,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 9e8a606426b941d4a9cd9ecac91399be, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c49df7f5aed04184c9f9d7af05ff2b96, type: 3}
   m_Bones:
   - {fileID: 4830864763769882}
   - {fileID: 4852761154169230}

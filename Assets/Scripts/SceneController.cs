@@ -59,7 +59,7 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
         // 破棄されないようにする
         DontDestroyOnLoad(gameObject);
 
-        m_fader.gameObject.SetActive(false);
+       // m_fader.gameObject.SetActive(false);
     }
 
     // コンポーネント追加時に実行
@@ -70,7 +70,7 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
         // フェード用のキャンバス作成
         GameObject fadeCavas = new GameObject("FadeCanvas");
         fadeCavas.transform.SetParent(transform);
-        fadeCavas.SetActive(false);
+       // fadeCavas.SetActive(false);
 
         Canvas canvas = fadeCavas.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -115,36 +115,47 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
 
         // フェードイン
         m_fader.gameObject.SetActive(true);
-        m_fader.Play(_isFadeOut: false, _duration: m_fadeTime , _onFinished:OnFadeOutFinish);
+        m_fader.Play(_isFadeOut: false, _duration: m_fadeTime , _onFinished:OnFadeInFinish);
 
     }
 
-    private void OnFadeOutFinish()
+    private void OnFadeInFinish()
     {
-        if (onFadeOutFinished != null)
+        if (onFadeInFinished != null)
         {
-            onFadeOutFinished();
+            onFadeInFinished();
         }
-
+        Debug.Log("FadeIn:終わり");
         SceneManager.LoadScene(m_nextSceneName);
 
         m_oldSceneName = m_currentSceneName;
         m_currentSceneName = m_nextSceneName;
 
+        StartCoroutine(LoadSceneWait(SceneManager.GetSceneByName(m_currentSceneName)));
         //フェードアウト
-        m_fader.gameObject.SetActive(true);
-        m_fader.Alpha = 1;
-        m_fader.Play(_isFadeOut: true, _duration: m_fadeTime, _onFinished: OnFadeInFinish);
+        //m_fader.gameObject.SetActive(true);
+       
     }
 
-    private void OnFadeInFinish()
+    private void OnFadeOutFinish()
     {
-        m_fader.gameObject.SetActive(false);
-        if(onFadeInFinished != null)
+        //m_fader.gameObject.SetActive(false);
+        if(onFadeOutFinished != null)
         {
-            onFadeInFinished();
+            onFadeOutFinished();
         }
-
+        Debug.Log("FadeOut:終わり");
     }
     
+    IEnumerator LoadSceneWait(Scene scene)
+    {
+        while(!scene.isLoaded)
+        {
+            yield return null;
+        }
+        
+        yield return new WaitForSeconds(1);   
+        m_fader.Play(_isFadeOut: true, _duration: m_fadeTime, _onFinished: OnFadeOutFinish);
+        yield break;
+    }
 }
