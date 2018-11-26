@@ -82,7 +82,7 @@ public class WarmingDeadLine : MonoBehaviour {
                     SandData[PlayerNum] = (GameObject)Instantiate(SandPrefab, new Vector3(Random.Range(-7.0f, 7.0f), 5.0f, -250.0f), SandPrefab.transform.rotation);
                     break;
                 case 5:
-                    SandData[PlayerNum] = (GameObject)Instantiate(SandPrefab, new Vector3(Random.Range(-257.0f, -243.0f), 5.0f, -250.0f), SandPrefab.transform.rotation);
+                    SandData[PlayerNum] = (GameObject)Instantiate(SandPrefab, new Vector3(Random.Range(257.0f, 243.0f), 5.0f, -250.0f), SandPrefab.transform.rotation);
                     break;
             }
         }
