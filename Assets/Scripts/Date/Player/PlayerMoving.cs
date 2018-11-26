@@ -57,8 +57,8 @@ public class PlayerMoving : MonoBehaviour {
         Vector3 worldFootVelocity = transform.TransformDirection(m_footPower * value);
 
         // 移動力と回転力を適用
-        //m_rgBody.angularVelocity = worldAngulerVelocity;
-        //m_rgBody.AddRelativeForce(worldMoveVelocity);
+        m_rgBody.angularVelocity = worldAngulerVelocity;
+        m_rgBody.AddRelativeForce(worldMoveVelocity);
         
         // 手足の力を適用
         // うつ伏せ
