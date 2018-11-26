@@ -11,19 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fccd0c295023940b60881729738ea7, type: 3}
   m_Name: PlayerShrinkAndExtend_ParamTable
   m_EditorClassIdentifier: 
-  AddLerpTime: 1
-  extendPower:
-  - {x: -0.1, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  extendAddPower:
-  - {x: -0.02, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  extendMaxPower:
-  - {x: -0.4, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  shrinkInitPower_Hand: 20
+  extendInitPower_Hand: 100
+  shrinkMaxPower_Hand: 0
+  extendMaxPower_Hand: 0
+  shrinkAddPower_Hand: 0
+  extendAddPower_Hand: 0
+  shrinkInitPower_Foot: 10
+  extendInitPower_Foot: 60
+  shrinkMaxPower_Foot: 0
+  extendMaxPower_Foot: 0
+  shrinkAddPower_Foot: 0
+  extendAddPower_Foot: 0

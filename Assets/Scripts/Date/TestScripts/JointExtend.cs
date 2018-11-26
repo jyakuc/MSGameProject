@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JointExtend : MonoBehaviour {
-    public Rigidbody rigidbody;
-    public GameObject shrinkObj;
-    public GameObject extendObj;
-    public float shrinkTime;
-    public float extendTime;
+    [SerializeField]
+    private Rigidbody rigidbody;
+    [SerializeField]
+    private GameObject shrinkObj;
+    [SerializeField]
+    private GameObject extendObj;
+
+    private float shrinkPower;
+    private float extendPower;
 
     private bool ExtendMaxflg = false;
     private Rigidbody parentRigid;
@@ -15,6 +19,13 @@ public class JointExtend : MonoBehaviour {
 
     private bool extendFlg;
     private bool shrinkFlg;
+
+    // 手足の認識
+    [SerializeField]
+    [Header("Hand = true , Foot = false")]
+    private bool isHandFlg;
+    public bool IsHand { get { return isHandFlg; } }
+
     // Use this for initialization
     void Start () {
         parentRigid = transform.parent.GetComponent<Rigidbody>();
@@ -24,16 +35,16 @@ public class JointExtend : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        /*
         if (Input.GetKey(KeyCode.J))
         {
-            shrinkFlg = true;
+            StartShrink();
         }
 
         if (Input.GetKeyUp(KeyCode.J))
         {
-            shrinkFlg = false;
-            extendFlg = true;
-        }
+            StartExtend();
+        }*/
     }
 
     private void FixedUpdate()
@@ -41,7 +52,7 @@ public class JointExtend : MonoBehaviour {
         if (shrinkFlg)
         {
             Vector3 diff = shrinkObj.transform.position - transform.position;
-            rigidbody.velocity = diff * shrinkTime;
+            rigidbody.velocity = diff * shrinkPower;
         }
 
         if (extendFlg)
@@ -52,22 +63,31 @@ public class JointExtend : MonoBehaviour {
         }
     }
 
-    public void ArrivalExtendObj()
+    // Shrinkパラメータを設定
+    public void SetShrinkParameters(float init,float max,float add)
     {
-        if (!ExtendMaxflg) return;
-        ExtendMaxflg = false;
-
-        // バウンドを防ぐ
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.angularVelocity = Vector3.zero;
-        parentRigid.velocity = Vector3.zero;
-        parentRigid.angularVelocity = Vector3.zero;
-        childRigid.velocity = Vector3.zero;
-        childRigid.angularVelocity = Vector3.zero;
-
-        Debug.Log("伸びきった");
+        shrinkPower = init;
+    }
+    // Extendパラメータを設定
+    public void SetExtendParameters(float init, float max, float add)
+    {
+        extendPower = init;
     }
 
+    // 縮む処理開始
+    public void StartShrink()
+    {
+        shrinkFlg = true;
+    }
+
+    // 伸ばす処理開始
+    public void StartExtend()
+    {
+        shrinkFlg = false;
+        extendFlg = true;
+    }
+
+    /*
     // velocityを書き換えて伸ばす処理
     public void VelocityExtend()
     {
@@ -82,14 +102,13 @@ public class JointExtend : MonoBehaviour {
             rigidbody.velocity = diff * extendTime;
         }
     }
+    */
 
     // AddForceのForceMode.Impulseで一度だけ力を加える処理
     public void AddForceImpulse()
     {
        
         Vector3 diff = extendObj.transform.position - transform.position;
-        rigidbody.AddForce(diff * extendTime , ForceMode.Impulse);
-        Debug.Log(diff);
-        Debug.Log("離した");
+        rigidbody.AddForce(diff * extendPower, ForceMode.Impulse);
     }
 }
