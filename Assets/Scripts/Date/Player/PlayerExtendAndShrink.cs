@@ -17,74 +17,65 @@ public class PlayerExtendAndShrink : MonoBehaviour {
     {
         Idle,
         NowShrink,
-        MaxShrink,
         NowExtend,
-        MaxExtend,
         Max
     }
 
     // キャスト書くのめんどくさい用
     const int ShrinkPointMax = (int)EShrinkPoint.Max;
-
-    // 縮こまる位置（GameObject）
-    [SerializeField]
-    [Tooltip("0 RightHand\n1 LeftHand\n2 RightFoot\n3 LeftFoot")]
-    private GameObject[] m_shrinkPointObjs = new GameObject[ShrinkPointMax];
-    // 制御するIKオブジェクト
-    [SerializeField]
-    [Tooltip("0 RightHand\n1 LeftHand\n2 RightFoot\n3 LeftFoot")]
-    private GameObject[] m_IKcontrolObjs = new GameObject[ShrinkPointMax];
-
     // 手足の状態
-    private EState[]    m_state = new EState[ShrinkPointMax];
-    // 手足の縮こまり具合
-    private float[]     m_shrinkTime = new float[ShrinkPointMax];
-    // 手足の伸ばす力
-    private Vector3[]   m_extendForce = new Vector3[ShrinkPointMax];
-
+    private EState[] m_state = new EState[ShrinkPointMax];
 
     // 共通の値
     [SerializeField]
     private PlayerShrinkAndExtend_ParamTable m_paramTable;
+
+    [SerializeField]
+    [Header("JointExtendスクリプト")]
+    private JointExtend[] m_jointExtends = new JointExtend[ShrinkPointMax];
     
 	// Use this for initialization
 	void Start () {
-        // Nullチェック
-        for (int i = 0; i < ShrinkPointMax; ++i)
+       
+        // null チェック
+        for(int i=0;i<ShrinkPointMax;++i)
         {
-            if (m_shrinkPointObjs[i] == null)   Debug.LogError("縮こまりポイントのオブジェクトがありません。");
-            if (m_IKcontrolObjs[i] == null)     Debug.LogError("IKコントロールオブジェクトがありません。");
+            if (m_jointExtends[i] == null) Debug.LogError("JointExtendスクリプトをセットしてください。");
         }
 
-        // 状態初期化
+        // 状態 , パラメータ初期化
         for(int i = 0; i < ShrinkPointMax; ++i)
         {
             m_state[i] = EState.Idle;
+            
+            if (m_jointExtends[i].IsHand)
+            {
+                // 手のパラメータを設定
+                m_jointExtends[i].SetShrinkParameters(
+                    m_paramTable.shrinkInitPower_Hand,
+                    m_paramTable.shrinkMaxPower_Hand,
+                    m_paramTable.shrinkAddPower_Hand);
+                m_jointExtends[i].SetExtendParameters(
+                    m_paramTable.extendInitPower_Hand,
+                    m_paramTable.extendMaxPower_Hand,
+                    m_paramTable.extendAddPower_Hand);
+            }
+            else
+            {
+                // 足のパラメータを設定
+                m_jointExtends[i].SetShrinkParameters(
+                    m_paramTable.shrinkInitPower_Foot,
+                    m_paramTable.shrinkMaxPower_Foot,
+                    m_paramTable.shrinkAddPower_Foot);
+                m_jointExtends[i].SetExtendParameters(
+                    m_paramTable.extendInitPower_Foot,
+                    m_paramTable.extendMaxPower_Foot,
+                    m_paramTable.extendAddPower_Foot);
+            }
         }
 	}
 	
-	// Update is called once per frame
-	void FixedUpdate () {
-		for(int i = 0; i< ShrinkPointMax; ++i)
-        {
-            switch (m_state[i])
-            {
-                // 縮こまり中
-                case EState.NowShrink:
-                    DoShrink(i);
-                    break;
-                // 最大縮こまり中
-                case EState.MaxShrink:
-                    StoringTheForce(i);
-                    break;
-                case EState.NowExtend:
-                    ExtendForceRelease(i);
-                    break;
-            }
-
-        }
-	}
-
+	
     // 手足の状態取得
     public EState GetState(EShrinkPoint eShrinkPoint)
     {
@@ -94,25 +85,38 @@ public class PlayerExtendAndShrink : MonoBehaviour {
     // 縮こまり開始
     public void StartShrink(EShrinkPoint eShrinkPoint)
     {
+        int idx = (int)eShrinkPoint;
+        m_jointExtends[idx].StartShrink();
+        m_state[idx] = EState.NowShrink;
+
+        /*
         if (m_state[(int)eShrinkPoint] != EState.Idle) return;
         m_state[(int)eShrinkPoint] = EState.NowShrink;
         m_extendForce[(int)eShrinkPoint] = m_paramTable.extendPower[(int)eShrinkPoint];
+        */
     }
 
     // 伸ばし開始
     public void StartExtend(EShrinkPoint eShrinkPoint)
     {
+        int idx = (int)eShrinkPoint;
+        m_jointExtends[idx].StartExtend();
+        m_state[idx] = EState.NowExtend;
+        /*
         if (!(m_state[(int)eShrinkPoint] == EState.NowShrink || m_state[(int)eShrinkPoint] == EState.MaxShrink)) return;
         m_state[(int)eShrinkPoint] = EState.NowExtend;
+        */
     }
 
     /// ===============================================================
     /// クラス内処理
     /// ===============================================================
     
+    /*
     // 縮こまる
     private void DoShrink(int idx)
     {
+        
         Vector3 ikPos = m_IKcontrolObjs[idx].transform.position;
         Vector3 shrinkPos = m_shrinkPointObjs[idx].transform.position;
 
@@ -129,10 +133,13 @@ public class PlayerExtendAndShrink : MonoBehaviour {
             m_shrinkTime[idx] = 0.0f;
         }
     }
+    */
 
+    /*
     // 最大に縮こまって力を溜めてる
     private void StoringTheForce(int idx)
     {
+        
         Vector3 ikPos = m_IKcontrolObjs[idx].transform.position;
         Vector3 shrinkPos = m_shrinkPointObjs[idx].transform.position;
         // 縮こまり位置まで線形補間
@@ -148,8 +155,11 @@ public class PlayerExtendAndShrink : MonoBehaviour {
             add.z = 0;
 
         m_extendForce[idx] += add;
+        
     }
+    */
 
+    /*
     // 溜めた力を解放
     private void ExtendForceRelease(int idx)
     {
@@ -161,4 +171,5 @@ public class PlayerExtendAndShrink : MonoBehaviour {
 
         m_state[idx] = EState.Idle;
     }
+    */
 }

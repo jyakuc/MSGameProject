@@ -1552,8 +1552,9 @@ MonoBehaviour:
   rigidbody: {fileID: 641514289}
   shrinkObj: {fileID: 1408936814}
   extendObj: {fileID: 1593370712}
-  shrinkTime: 10
-  extendTime: 100
+  shrinkPower: 0
+  extendPower: 0
+  isHandFlg: 1
 --- !u!114 &641514287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2011,8 +2012,9 @@ MonoBehaviour:
   rigidbody: {fileID: 861667255}
   shrinkObj: {fileID: 1304458650}
   extendObj: {fileID: 65834364}
-  shrinkTime: 10
-  extendTime: 20
+  shrinkPower: 0
+  extendPower: 0
+  isHandFlg: 0
 --- !u!59 &861667257
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -2577,7 +2579,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1178781340}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7efee2521b9e3e74da33bf4520632a4e, type: 3}
   m_Name: 
@@ -2595,22 +2597,17 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1178781340}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ba853984476254469d88a5e86495d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_shrinkPointObjs:
+  m_paramTable: {fileID: 0}
+  m_jointExtends:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  m_IKcontrolObjs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_paramTable: {fileID: 11400000, guid: 5c713deadcf95074e9086afb3c603417, type: 2}
 --- !u!114 &1178781343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2679,7 +2676,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1178781340}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15316b07b0b9bd9449ce3f3e6c92712e, type: 3}
   m_Name: 
@@ -2718,7 +2715,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1178781340}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f109ae4dcf7fd7c49891750cb72a3341, type: 3}
   m_Name: 
@@ -3304,8 +3301,9 @@ MonoBehaviour:
   rigidbody: {fileID: 1371356254}
   shrinkObj: {fileID: 0}
   extendObj: {fileID: 316846430}
-  shrinkTime: 0
-  extendTime: 20
+  shrinkPower: 0
+  extendPower: 0
+  isHandFlg: 0
 --- !u!1 &1402339121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3622,8 +3620,9 @@ MonoBehaviour:
   rigidbody: {fileID: 1584305807}
   shrinkObj: {fileID: 245670900}
   extendObj: {fileID: 1894613055}
-  shrinkTime: 10
-  extendTime: 40
+  shrinkPower: 20
+  extendPower: 100
+  isHandFlg: 1
 --- !u!114 &1584305805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4632,8 +4631,9 @@ MonoBehaviour:
   rigidbody: {fileID: 2049285893}
   shrinkObj: {fileID: 46802671}
   extendObj: {fileID: 1857841717}
-  shrinkTime: 10
-  extendTime: 60
+  shrinkPower: 0
+  extendPower: 0
+  isHandFlg: 0
 --- !u!59 &2049285895
 HingeJoint:
   m_ObjectHideFlags: 0
