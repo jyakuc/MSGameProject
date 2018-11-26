@@ -22,6 +22,24 @@ public class HoruHoruCamera : MonoBehaviour {
     private GameObject g_UI;
     private GameObject _slider_Background;
     private GameObject _slider_Fillarea;
+
+
+    [SerializeField]
+    private GameObject fireball;
+    private GameObject clone;
+    private bool Fireballflg;
+
+
+    //振動
+    public float setShakeTime; // 持続振動時間
+
+    private float lifeTime;
+    private Vector3 savePosition;
+    private float lowRangeX;
+    private float maxRangeX;
+    private float lowRangeY;
+    private float maxRangeY;
+
     // Use this for initialization
     void Start()
     {
@@ -36,30 +54,69 @@ public class HoruHoruCamera : MonoBehaviour {
         _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject;
         _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject;
         S_timer = GameObject.FindObjectOfType<StartTimer>();
+        
+        Fireballflg = false;
+
+        //振動
+
+        if (setShakeTime <= 0.0f)
+            setShakeTime = 0.7f;
+        lifeTime = 0.0f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Count < 270)
+        
+
+        if(!Fireballflg){
+            clone = Instantiate(fireball, new Vector3(0.0f, 100.0f, 0.0f), Quaternion.identity);
+            Fireballflg = true;
+        }
+        if (clone == null)
         {
-            this.transform.Rotate(0, Speed * Time.deltaTime, 0);
+            Destroy(clone);
+        }
+        if (lifeTime < 0.0f)
+        {
+            transform.position = savePosition;
+            lifeTime = 0.0f;
+        }
+        if (lifeTime > 0.0f)
+        {
+            lifeTime -= Time.deltaTime;
+            float x_val = Random.Range(lowRangeX, maxRangeX);
+            float y_val = Random.Range(lowRangeY, maxRangeY);
+            transform.position = new Vector3(x_val, y_val, transform.position.z);
+        }
+        if (Count < 90)
+        {
+            CatchShake();
+            //this.transform.Rotate(-5 * Time.deltaTime, 0, 0);
             Count += Speed * Time.deltaTime;
         }
         else if (!FadeObj.IsFade && FadeFlg == false) //フェードイン
         {
+            Destroy(clone);
             FadeObj.gameObject.SetActive(true);
             FadeController.Begin(FadeObj.gameObject, false, Rate);
             FadeFlg = true;
             FadeObj.m_onFinished += ChangeCamera;
         }
+
+        if (clone != null)
+        {
+            this.transform.LookAt(clone.transform);
+        }
+        
     }
 
     public void ChangeCamera()
     {
         MainCamera.SetActive(!MainCamera.activeSelf);
         SubCamera.SetActive(!SubCamera.activeSelf);
+        this.gameObject.SetActive(false);
         Cannons.transform.Find("Cannon6Arc").gameObject.SetActive(true);
         Cannons.transform.Find("CannonMng").gameObject.SetActive(true);
         _slider_Background.gameObject.SetActive(true);
@@ -75,6 +132,16 @@ public class HoruHoruCamera : MonoBehaviour {
             S_timer.On_TimeStartFlg();
         }
         FadeObj.m_onFinished -= ChangeCamera;
+    }
+
+    void CatchShake()
+    {
+        savePosition = transform.position;
+        lowRangeY = savePosition.y - 0.5f;
+        maxRangeY = savePosition.y + 0.5f;
+        lowRangeX = savePosition.x - 0.5f;
+        maxRangeX = savePosition.x + 0.5f;
+        lifeTime = setShakeTime;
     }
 
 }

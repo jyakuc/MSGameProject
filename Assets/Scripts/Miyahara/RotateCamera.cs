@@ -59,6 +59,7 @@ public class RotateCamera : MonoBehaviour {
     {
         MainCamera.SetActive(!MainCamera.activeSelf);
         SubCamera.SetActive(!SubCamera.activeSelf);
+        this.gameObject.SetActive(false);
         Cannons.transform.Find("Cannon6Arc").gameObject.SetActive(true);
         Cannons.transform.Find("CannonMng").gameObject.SetActive(true);
         _slider_Background.gameObject.SetActive(true);
