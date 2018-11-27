@@ -16,27 +16,29 @@ public class PlayerMoving : MonoBehaviour {
     // 制御するRigidBosy
     [SerializeField]
     private Rigidbody m_rgBody;
-    [SerializeField]
-    private Rigidbody m_rgRightHand;
-    [SerializeField]
-    private Rigidbody m_rgLeftHand;
-    [SerializeField]
-    private Rigidbody m_rgRightFoot;
-    [SerializeField]
-    private Rigidbody m_rgLeftFoot;
+    //[SerializeField]
+    //private Rigidbody m_rgRightHand;
+    //[SerializeField]
+    //private Rigidbody m_rgLeftHand;
+    //[SerializeField]
+    //private Rigidbody m_rgRightFoot;
+    //[SerializeField]
+    //private Rigidbody m_rgLeftFoot;
 
     // 共通の値
     [SerializeField]
     private PlayerMoving_ParamTable m_paramTable;
+    [SerializeField]
+    private JointAddForce[] m_jointAddForces = new JointAddForce[(int)PlayerExtendAndShrink.EShrinkPoint.Max-2];
 
     // Use this for initialization
     void Start () {
         // アタッチ確認
         if (m_rgBody == null)       Debug.LogError("m_rgBodyがアタッチされていません。");
-        if (m_rgRightHand == null)  Debug.LogError("m_rgRightHandがアタッチされていません。");
-        if (m_rgLeftHand == null)   Debug.LogError("m_rgLeftHandがアタッチされていません。");
-        if (m_rgRightFoot == null)  Debug.LogError("m_rgRightFootがアタッチされていません。");
-        if (m_rgLeftFoot == null)   Debug.LogError("m_rgLeftFootがアタッチされていません。");
+        //if (m_rgRightHand == null)  Debug.LogError("m_rgRightHandがアタッチされていません。");
+        //if (m_rgLeftHand == null)   Debug.LogError("m_rgLeftHandがアタッチされていません。");
+        //if (m_rgRightFoot == null)  Debug.LogError("m_rgRightFootがアタッチされていません。");
+        //if (m_rgLeftFoot == null)   Debug.LogError("m_rgLeftFootがアタッチされていません。");
 
         m_anglePower = m_paramTable.angleForce.initForce;
         m_movePower = m_paramTable.moveForce.initForce;
@@ -64,19 +66,22 @@ public class PlayerMoving : MonoBehaviour {
         // うつ伏せ
         if (rayDirection == PlayerRay.RayDirection.Forward)
         {
-            m_rgRightHand.AddRelativeForce(worldHandVelocity, ForceMode.Force);
-            m_rgLeftHand.AddRelativeForce(worldHandVelocity, ForceMode.Force);
-            m_rgRightFoot.AddRelativeForce(worldFootVelocity, ForceMode.Force);
-            m_rgLeftFoot.AddRelativeForce(worldFootVelocity, ForceMode.Force);
-           
+            //m_rgRightHand.AddRelativeForce(worldHandVelocity, ForceMode.Force);
+            //m_rgLeftHand.AddRelativeForce(worldHandVelocity, ForceMode.Force);
+            //m_rgRightFoot.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            //m_rgLeftFoot.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            //m_jointAddForces[0].Rotation(true);
+            //m_jointAddForces[1].Rotation(true);
         }
         // 仰向き
         else if (rayDirection == PlayerRay.RayDirection.Back)
         {
-            m_rgLeftHand.AddRelativeForce(-worldHandVelocity, ForceMode.Force);
-            m_rgRightHand.AddRelativeForce(-worldHandVelocity, ForceMode.Force);
-            m_rgRightFoot.AddRelativeForce(worldFootVelocity, ForceMode.Force);
-            m_rgLeftFoot.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            //m_rgLeftHand.AddRelativeForce(-worldHandVelocity, ForceMode.Force);
+            //m_rgRightHand.AddRelativeForce(-worldHandVelocity, ForceMode.Force);
+            //m_rgRightFoot.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            //m_rgLeftFoot.AddRelativeForce(worldFootVelocity, ForceMode.Force);
+            m_jointAddForces[0].Rotation(dir_right);
+            //m_jointAddForces[1].Rotation(false);
         }
     }
 

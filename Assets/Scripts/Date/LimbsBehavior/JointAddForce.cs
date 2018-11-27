@@ -20,10 +20,10 @@ public class JointAddForce : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        Vector3 vc = axis.TransformDirection(vector);
+	void FixedUpdate () {
+//        Vector3 vc = axis.TransformDirection(vector);
         //Debug.Log(vc); 
-
+        /*
         if (Input.GetKey(KeyCode.H))
         {
             switch (forceType)
@@ -36,5 +36,25 @@ public class JointAddForce : MonoBehaviour {
                     break;
             }
         }
+        */
+    }
+
+    public void Rotation(bool right)
+    {
+        Vector3 vc = vector;
+        vc.x = right ? vc.x : -vc.x;
+
+        vc = axis.TransformDirection(vc);
+
+        switch (forceType)
+        {
+            case AddForceType.AddForce:
+                rigidbody.AddForce(vc, forceMode);
+                break;
+            case AddForceType.AddRelativeForce:
+                rigidbody.AddRelativeForce(vc, forceMode);
+                break;
+        }
+
     }
 }
