@@ -2460,7 +2460,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1109264640}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.1, y: 0, z: 0}
+  m_LocalPosition: {x: -2.92, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1584305803}
@@ -2477,7 +2477,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -4.1000004, y: 0.50000435, z: -0.000003874302}
+  m_ConnectedAnchor: {x: -2.9200006, y: 0.50000435, z: -0.000003874302}
   m_UseSpring: 1
   m_Spring:
     spring: 1
@@ -2490,8 +2490,8 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 120
+    min: 30
+    max: 90
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -2512,7 +2512,7 @@ Rigidbody:
   m_Mass: 0.3
   m_Drag: 0.8
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -3668,7 +3668,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1584305802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.39, y: 0, z: 0}
+  m_LocalPosition: {x: -5.19, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1109264641}
@@ -3704,7 +3704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1584305807}
-  vector: {x: 30, y: 30, z: 20}
+  vector: {x: 60, y: 60, z: 40}
   forceMode: 0
   axis: {fileID: 1979588803}
   forceType: 0
@@ -3719,7 +3719,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -3.39, y: 0.50000435, z: -0.000003874302}
+  m_ConnectedAnchor: {x: -5.19, y: 0.50000435, z: -0.000003874302}
   m_UseSpring: 1
   m_Spring:
     spring: 0
