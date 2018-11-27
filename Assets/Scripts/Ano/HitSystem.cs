@@ -20,7 +20,7 @@ public class HitSystem : MonoBehaviour {
     //プレイヤーID一致用
     public int PlayNum = 1;
     //ちょっと多段ヒットしているので一時的に時間で制御
-    private float DelayTime = 2.0f;
+    private float DelayTime = 1.0f;
     private float countTime = 0;
 
     private bool TimeFlag = false;
@@ -176,29 +176,24 @@ public class HitSystem : MonoBehaviour {
         }
 
     }
-    void OnTriggerExit(Collider other)
-    {
-        //レイヤーの名前取得
-        string LayerName = LayerMask.LayerToName(other.gameObject.layer);
+    //void OnTriggerExit(Collider other)
+    //{
+    //    //レイヤーの名前取得
+    //    string LayerName = LayerMask.LayerToName(other.gameObject.layer);
 
-        if ((LayerName == "Player_Chest") ||
-            (LayerName == "Player_1") ||
-            (LayerName == "Player_2") ||
-            (LayerName == "Player_3") ||
-            (LayerName == "Player_4") ||
-            (LayerName == "Player_5") ||
-            (LayerName == "Player_6") ||
-            (LayerName == "SandBack"))
-        {
-            //時間経過でEffect再生
-            if (TimeFlag)
-            {
-                HitEffectFlag = false;
-                TimeFlag = false;
-            }
-        }
+    //    if ((LayerName == "Player_Chest") ||
+    //        (LayerName == "Player_1") ||
+    //        (LayerName == "Player_2") ||
+    //        (LayerName == "Player_3") ||
+    //        (LayerName == "Player_4") ||
+    //        (LayerName == "Player_5") ||
+    //        (LayerName == "Player_6") ||
+    //        (LayerName == "SandBack"))
+    //    {
 
-    }
+    //    }
+
+    //}
     private bool PlayerCheck(Collider col)
     {
         string LayerName = LayerMask.LayerToName(col.gameObject.layer);
@@ -243,12 +238,20 @@ public class HitSystem : MonoBehaviour {
         if (HitEffectFlag)
         {
             countTime += Time.deltaTime;
+            this.transform.root.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
         }
         //一定時間経過で0に戻して発生可能にする
         if (countTime > DelayTime)
         {
             TimeFlag = true;
             countTime = 0;
+        }
+        //時間経過でEffect再生
+        if (TimeFlag)
+        {
+            HitEffectFlag = false;
+            TimeFlag = false;
         }
         //エフェクトが動的に作られていて再生終わっていたら消す
         if (NewHitEffect != null)
@@ -340,6 +343,7 @@ public class HitSystem : MonoBehaviour {
                 Debug.Log("クリティカルヒット my:" + transform.root + "your:" + HitObject);
                 break;
         }
+
     }
     //エフェクト生成処理
     private void CreateEffect(HitSelect EffectType,Transform trans)
