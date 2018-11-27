@@ -159,7 +159,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.49999964, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000001192093, y: 0.50000185, z: -6.0200067}
+  m_ConnectedAnchor: {x: 0.000001192093, y: -0.49999708, z: -6.0200067}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -1628,11 +1628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00712b5c396fed24faeb7a8b65aaf268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 641514289}
-  vector: {x: 15, y: 15, z: 10}
-  forceMode: 0
   axis: {fileID: 547079563}
-  forceType: 0
 --- !u!59 &641514288
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -1952,7 +1948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &798650623
 Transform:
   m_ObjectHideFlags: 0
@@ -2223,7 +2219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1023375352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2657,7 +2653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efee2521b9e3e74da33bf4520632a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rgBody: {fileID: 1178781348}
   m_paramTable: {fileID: 11400000, guid: 58404a7d8b8fb114b8b56f39125a02fc, type: 2}
   m_jointAddForces:
   - {fileID: 1584305805}
@@ -2669,7 +2664,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1178781340}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ba853984476254469d88a5e86495d60, type: 3}
   m_Name: 
@@ -3354,11 +3349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00712b5c396fed24faeb7a8b65aaf268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 1371356254}
-  vector: {x: 15, y: 15, z: 10}
-  forceMode: 0
   axis: {fileID: 121781456}
-  forceType: 0
 --- !u!114 &1371356261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3703,11 +3694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00712b5c396fed24faeb7a8b65aaf268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 1584305807}
-  vector: {x: 60, y: 60, z: 40}
-  forceMode: 0
   axis: {fileID: 1979588803}
-  forceType: 0
 --- !u!59 &1584305806
 HingeJoint:
   m_ObjectHideFlags: 0
