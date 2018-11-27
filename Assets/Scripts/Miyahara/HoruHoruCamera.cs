@@ -72,6 +72,8 @@ public class HoruHoruCamera : MonoBehaviour {
 
         if(!Fireballflg){
             clone = Instantiate(fireball, new Vector3(0.0f, 100.0f, 0.0f), Quaternion.identity);
+            Instantiate(fireball, new Vector3(15.0f, 120.0f, -15.0f), Quaternion.identity);
+            Instantiate(fireball, new Vector3(-15.0f, 140.0f, -15.0f), Quaternion.identity);
             Fireballflg = true;
         }
         if (clone == null)
