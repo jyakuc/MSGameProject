@@ -493,7 +493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1472871224778786
 GameObject:
   m_ObjectHideFlags: 1
@@ -956,7 +956,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697765611106828}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.39, y: 0, z: 0}
+  m_LocalPosition: {x: 5.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4090610732722644}
@@ -983,7 +983,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100607143481068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.1, y: 0, z: 0}
+  m_LocalPosition: {x: 2.92, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4032501346035994}
@@ -1123,7 +1123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1365060510494306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.1, y: 0, z: 0}
+  m_LocalPosition: {x: -2.92, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4635616336497340}
@@ -1163,7 +1163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1404841869184096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.36299986, y: 4.5, z: 0.4}
+  m_LocalPosition: {x: -0.581, y: 4.5, z: 0.56}
   m_LocalScale: {x: 0.24999988, y: 0.24999994, z: 0.24999994}
   m_Children: []
   m_Father: {fileID: 4764073004927576}
@@ -1302,7 +1302,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178327502585168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3629999, y: 4.5, z: 0.39999843}
+  m_LocalPosition: {x: 0.581, y: 4.4999995, z: 0.55999875}
   m_LocalScale: {x: 0.24999988, y: 0.24999994, z: 0.24999994}
   m_Children: []
   m_Father: {fileID: 4131478325622746}
@@ -1315,7 +1315,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1035395748133788}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -0.6779999, y: 4.629999, z: 0}
+  m_LocalPosition: {x: -0.6779999, y: 4.63, z: 0.062}
   m_LocalScale: {x: 0.25000006, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4032501346035994}
@@ -1361,7 +1361,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1324851233650116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.39, y: 0, z: 0}
+  m_LocalPosition: {x: -5.19, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4293339483319272}
@@ -1417,7 +1417,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1556387159058140}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -1.524, y: 4.632, z: 0.003}
+  m_LocalPosition: {x: -2.07, y: 4.632, z: 0.003}
   m_LocalScale: {x: 0.25000006, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 4131478325622746}
@@ -1576,7 +1576,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192673634757026}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 1.522, y: 4.629999, z: 0}
+  m_LocalPosition: {x: 1.942, y: 4.629999, z: 0}
   m_LocalScale: {x: 0.25000006, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 4764073004927576}
@@ -2604,7 +2604,7 @@ Rigidbody:
   m_Mass: 0.3
   m_Drag: 0.8
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -2634,7 +2634,7 @@ Rigidbody:
   m_Mass: 0.3
   m_Drag: 0.8
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -2683,7 +2683,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -3.39, y: 0.50000435, z: -0.000003874302}
+  m_ConnectedAnchor: {x: -5.19, y: 0.50000435, z: -0.000003874302}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2717,7 +2717,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -4.1000004, y: 0.50000435, z: -0.000003874302}
+  m_ConnectedAnchor: {x: -2.9200006, y: 0.50000435, z: -0.000003874302}
   m_UseSpring: 1
   m_Spring:
     spring: 1
@@ -2730,8 +2730,8 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: 0
-    max: 120
+    min: 30
+    max: 90
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -2751,7 +2751,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 3.3899999, y: 0.50000346, z: -0.000003874302}
+  m_ConnectedAnchor: {x: 5.1999993, y: 0.5000046, z: -0.000003874302}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2819,7 +2819,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.49999964, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000001192093, y: 0.50000185, z: -6.0200067}
+  m_ConnectedAnchor: {x: 0.000001192093, y: -0.49999708, z: -6.0200067}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2887,7 +2887,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 4.0999994, y: 0.50000346, z: -0.000003874302}
+  m_ConnectedAnchor: {x: 2.92, y: 0.5000046, z: -0.000003874302}
   m_UseSpring: 1
   m_Spring:
     spring: 1
@@ -3477,11 +3477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00712b5c396fed24faeb7a8b65aaf268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 54241173634004814}
-  vector: {x: 15, y: 15, z: 10}
-  forceMode: 0
   axis: {fileID: 4544631455657318}
-  forceType: 0
 --- !u!114 &114214092211322056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3593,11 +3589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00712b5c396fed24faeb7a8b65aaf268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 54550971834350436}
-  vector: {x: 15, y: 15, z: 10}
-  forceMode: 0
   axis: {fileID: 4985073370299360}
-  forceType: 0
 --- !u!114 &114476663925615530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3665,17 +3657,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1332152511549132}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7efee2521b9e3e74da33bf4520632a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rgBody: {fileID: 54568237358027166}
-  m_rgRightHand: {fileID: 0}
-  m_rgLeftHand: {fileID: 0}
-  m_rgRightFoot: {fileID: 0}
-  m_rgLeftFoot: {fileID: 0}
   m_paramTable: {fileID: 11400000, guid: 58404a7d8b8fb114b8b56f39125a02fc, type: 2}
+  m_jointAddForces:
+  - {fileID: 114397917203532558}
+  - {fileID: 114184362040947046}
 --- !u!114 &114730542102716440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3733,7 +3723,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1332152511549132}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ba853984476254469d88a5e86495d60, type: 3}
   m_Name: 

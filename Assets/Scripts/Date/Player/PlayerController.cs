@@ -229,35 +229,20 @@ public class PlayerController : MonoBehaviour
 
         // 右手の伸縮
         if (m_inputButton[(int)EInputButton.A].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightHand);
-        else if(m_inputButton[(int)EInputButton.A].up)
-        {
-                m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightHand);
-                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            
-        }
+        else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightHand);
+         
         // 左手の伸縮
-        if (m_inputButton[(int)EInputButton.B].stay)    m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
-        else if(m_inputButton[(int)EInputButton.B].up)
-        {
-                m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
-                Debug.Log("BBBBBBBBBBBBBBBBBBBBBBBBBBBB");
-        }
+        if (m_inputButton[(int)EInputButton.B].stay)   m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
+        else                                           m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
+        
         // 右足の伸縮
-        if (m_inputButton[(int)EInputButton.X].stay)    m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
-        else if(m_inputButton[(int)EInputButton.X].up)
-        {
-            m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
-            Debug.Log("XXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        }
+        if (m_inputButton[(int)EInputButton.X].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
+        else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
+         
         // 左足の伸縮
-        if (m_inputButton[(int)EInputButton.Y].stay)    m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
-        else if(m_inputButton[(int)EInputButton.Y].up)
-        {
-            m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
-            Debug.Log("YYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-        }
-
-
+        if (m_inputButton[(int)EInputButton.Y].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
+        else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
+            
     }
 
     public void Dead()

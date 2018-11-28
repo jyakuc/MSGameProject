@@ -32,21 +32,6 @@ public class JointExtend : MonoBehaviour {
         childRigid = transform.GetChild(0).GetComponent<Rigidbody>();
 	}
 	
-	// Update is called once per frame
-	void Update ()
-    {
-        /*
-        if (Input.GetKey(KeyCode.J))
-        {
-            StartShrink();
-        }
-
-        if (Input.GetKeyUp(KeyCode.J))
-        {
-            StartExtend();
-        }*/
-    }
-
     private void FixedUpdate()
     {
         if (shrinkFlg)
