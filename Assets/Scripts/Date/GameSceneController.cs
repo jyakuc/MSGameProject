@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour {
 
@@ -31,7 +32,7 @@ public class GameSceneController : MonoBehaviour {
         frame = 0;
         m_state = EState.Wait;
 
-        AudioManager.GetInstance.PlayBGM(AUDIO.BGM_BATTLE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
+        BgmSet();
         fadeController = FindObjectOfType<FadeController>();
         m_stageCreater = FindObjectOfType<StageCreate>();
     }
@@ -119,5 +120,17 @@ public class GameSceneController : MonoBehaviour {
     {
         fadeController.Play(true, 1);
         fadeController.m_onFinished += FadeOutFinish;
+    }
+
+    public void BgmSet()
+    {
+        if (SceneManager.GetActiveScene().name == "WarmingUp")
+        {
+            AudioManager.GetInstance.PlayBGM(AUDIO.BGM_RESULT, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
+        }
+        else
+        {
+            AudioManager.GetInstance.PlayBGM(AUDIO.BGM_BATTLE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
+        }
     }
 }
