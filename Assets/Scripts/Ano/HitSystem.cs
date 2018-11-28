@@ -17,10 +17,8 @@ public class HitSystem : MonoBehaviour {
     private PlayerController P_Controller;
     //エフェクト発生中か
     public bool HitEffectFlag = false;
-    //プレイヤーID一致用
-    public int PlayNum = 1;
     //ちょっと多段ヒットしているので一時的に時間で制御
-    private float DelayTime = 1.0f;
+    private float DelayTime = 0.5f;
     private float countTime = 0;
 
     private bool TimeFlag = false;
@@ -33,7 +31,9 @@ public class HitSystem : MonoBehaviour {
     private GameTime gametime;
 
     private PlayerCamera p_camera;
-    
+    private bool CriticalFlag = false;
+    //Critical用のオブジェクト保存
+    private GameObject SaveHitObject;
     void OnTriggerStay(Collider other)
     {
         //レイヤーの名前取得
@@ -47,6 +47,17 @@ public class HitSystem : MonoBehaviour {
                 return;
             }
 
+        }
+        //それ以外はプレイヤーではないのでこの時点で処理は終了させる
+        else
+        {
+            return;
+        }
+
+        //判定を取らないプレイヤーのオブジェクトなのか判定
+        if (!OnHitObject(other.name))
+        {
+            return;
         }
         if ((!HitEffectFlag)&&
             ((PlayerController.EState.RightMove== P_Controller.GetMyState())||
@@ -66,106 +77,47 @@ public class HitSystem : MonoBehaviour {
             }
             //プレイヤーの体判定
             if (
-                (LayerName == "Player_1") ||
-                (LayerName == "Player_2") ||
-                (LayerName == "Player_3") ||
-                (LayerName == "Player_4") ||
-                (LayerName == "Player_5") ||
-                (LayerName == "Player_6") ||
+                (LayerName == "Player_01") ||
+                (LayerName == "Player_02") ||
+                (LayerName == "Player_03") ||
+                (LayerName == "Player_04") ||
+                (LayerName == "Player_05") ||
+                (LayerName == "Player_06") ||
                 (LayerName == "SandBack"))
             {
-                //自分には判定しない
-                switch (LayerName)
+                HitSelect HitTypeCheck;
+                try
                 {
-                    case "Player_1":
-                        if (PlayNum != P_Controller.PlayerID)
-                        {
-                            //SE再生
-                            PlaysSe();
-                            //Effect生成
-                            CreateEffect(HitType(other.gameObject),other.gameObject.transform);
-                            //エフェクト発生
-                            HitEffectFlag = true;
-                            HitParticle.Play();
-                            return;
-                        }
-                        break;
-                    case "Player_2":
-                        if (PlayNum != P_Controller.PlayerID)
-                        {
-                            //SE再生
-                            PlaysSe();
-                            //Effect生成
-                            CreateEffect(HitType(other.gameObject),other.gameObject.transform);
-                            //エフェクト発生
-                            HitEffectFlag = true;
-                            HitParticle.Play();
-                            return;
-                        }
-                        break;
-                    case "Player_3":
-                        if (PlayNum != P_Controller.PlayerID)
-                        {
-                            //SE再生
-                            PlaysSe();
-                            //Effect生成
-                            CreateEffect(HitType(other.gameObject),other.gameObject.transform);
-                            //エフェクト発生
-                            HitEffectFlag = true;
-                            HitParticle.Play();
-                            return;
-                        }
-                        break;
-                    case "Player_4":
-
-                        if (PlayNum != P_Controller.PlayerID)
-                        {
-                            //SE再生
-                            PlaysSe();
-                            //Effect生成
-                            CreateEffect(HitType(other.gameObject),other.gameObject.transform);
-                            //エフェクト発生
-                            HitEffectFlag = true;
-                            HitParticle.Play();
-                            return;
-                        }
-                        break;
-                    case "Player_5":
-                        if (PlayNum != P_Controller.PlayerID)
-                        {
-                            //SE再生
-                            PlaysSe();
-                            //Effect生成
-                            CreateEffect(HitType(other.gameObject),other.gameObject.transform);
-                            //エフェクト発生
-                            HitEffectFlag = true;
-                            HitParticle.Play();
-                            return;
-                        }
-                        break;
-                    case "Player_6":
-                        if (PlayNum != P_Controller.PlayerID)
-                        {
-                            //SE再生
-                            PlaysSe();
-                            //Effect生成
-                            CreateEffect(HitType(other.gameObject),other.gameObject.transform);
-                            //エフェクト発生
-                            HitEffectFlag = true;
-                            HitParticle.Play();
-                            return;
-                        }
-                        break;
-                    case "SandBack":
-                        //SE再生
-                        PlaysSe();
-                        //Effect生成
-                        CreateEffect(HitType(other.gameObject), other.gameObject.transform);
+                    //自分には判定しないために相手のオブジェクトのプレイヤーIDを取得
+                    if(P_Controller.PlayerID!= other.gameObject.transform.root.GetComponent<PlayerController>().PlayerID)
+                    {
+                        HitTypeCheck = HitType(other.gameObject);
                         //エフェクト発生
                         HitEffectFlag = true;
-                        HitParticle.Play();
-
-                        break;
+                        if (HitSelect.Hit == HitTypeCheck)
+                        {
+                            //SE再生
+                            PlaysSe();
+                            //Effect生成
+                            CreateEffect(HitTypeCheck, other.gameObject.transform);
+                            HitParticle.Play();
+                        }
+                    }
+                }
+                catch
+                {
+                    if((LayerName == "SandBack"))
+                    {
+                        HitTypeCheck = HitType(other.gameObject);
+                        if (HitSelect.Hit == HitTypeCheck)
+                        {
+                            //SE再生
+                            PlaysSe();
+                            //Effect生成
+                            CreateEffect(HitTypeCheck, other.gameObject.transform);
+                            HitParticle.Play();
+                        }
+                    }
                 }
 
             }
@@ -194,13 +146,12 @@ public class HitSystem : MonoBehaviour {
     private bool PlayerCheck(Collider col)
     {
         string LayerName = LayerMask.LayerToName(col.gameObject.layer);
-        if ((LayerName == "Player_Chest") ||
-            (LayerName == "Player_1") ||
-            (LayerName == "Player_2") ||
-            (LayerName == "Player_3") ||
-            (LayerName == "Player_4") ||
-            (LayerName == "Player_5") ||
-            (LayerName == "Player_6") ||
+        if ((LayerName == "Player_01") ||
+            (LayerName == "Player_02") ||
+            (LayerName == "Player_03") ||
+            (LayerName == "Player_04") ||
+            (LayerName == "Player_05") ||
+            (LayerName == "Player_06") ||
             (LayerName == "SandBack"))
         {
             return true;
@@ -228,7 +179,20 @@ public class HitSystem : MonoBehaviour {
         P_Controller = transform.root.GetComponent<PlayerController>();
 
     }
-	
+	void CriticalCreate()
+    {
+        if(CriticalFlag)
+        {
+            //SE再生
+            PlaysSe();
+            //Effect生成
+            BlowAway(SaveHitObject, HitSelect.Critical);
+            CreateEffect(HitSelect.Critical, SaveHitObject.transform);
+            HitParticle.Play();
+            CriticalFlag = false;
+        }
+
+    }
 	// Update is called once per frame
 	void Update () {
         //再生させてから時間測定
@@ -236,7 +200,13 @@ public class HitSystem : MonoBehaviour {
         {
             countTime += Time.deltaTime;
             this.transform.root.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
+            if(p_camera!=null)
+            {
+                if(p_camera.GetZoomEndFlag())
+                {
+                    CriticalCreate();
+                }
+            }
         }
         //一定時間経過で0に戻して発生可能にする
         if (countTime > DelayTime)
@@ -282,16 +252,17 @@ public class HitSystem : MonoBehaviour {
     {
         Debug.Log(HitObject.name);
         if ((HitObject.name=="Haed")||
-            (HitObject.name == "Shoulder_L") ||
-            (HitObject.name == "Shoulder_R")||
-            (HitObject.name == "Ass_L") ||
-            (HitObject.name == "Ass_R"))
+            (HitObject.name == "Belly") ||
+            (HitObject.name == "Lower"))
         {
             int Probability = Random.Range(0, 100);
             Debug.Log(Probability);
             if (Probability <= m_paramTable.criticalProbability)
             {
-                BlowAway(HitObject,HitSelect.Critical);
+                CriticalFlag = true;
+                SaveHitObject = HitObject;
+                HitStop();
+                //BlowAway(HitObject,HitSelect.Critical);
                 return HitSelect.Critical;
             }
         }
@@ -312,29 +283,28 @@ public class HitSystem : MonoBehaviour {
             {
                 case HitSelect.Hit:
                     //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                    HitRigid.AddForce(this.transform.position * m_paramTable.normalHitPower, ForceMode.Impulse);
+                    HitRigid.AddForce((HitRigid.position - this.transform.position).normalized * (m_paramTable.normalHitPower*20), ForceMode.Impulse);
                     break;
                 case HitSelect.Critical:
-                    HitStop();
+
                     //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                    HitRigid.AddForce(this.transform.position * m_paramTable.criticalHitPower, ForceMode.Impulse);
+                    HitRigid.AddForce((HitRigid.position - this.transform.position).normalized *( m_paramTable.criticalHitPower*20), ForceMode.Impulse);
                     break;
             }
             return;
         }
         // 誰に吹き飛ばされたかを保持
         hitPlayer.BlowAwayNow(P_Controller.PlayerID);
-
         switch (EffectType)
         {
             case HitSelect.Hit:
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                HitRigid.AddForce(this.transform.position* m_paramTable.normalHitPower, ForceMode.Impulse);
+                HitRigid.AddForce((HitRigid.position - this.transform.position).normalized * (m_paramTable.normalHitPower*20), ForceMode.Impulse);
                 break;
             case HitSelect.Critical:
-                HitStop();
+
                 //AddForceを入れる（衝撃を与えるのでForceModeはImpulse
-                HitRigid.AddForce(this.transform.position * m_paramTable.criticalHitPower, ForceMode.Impulse);
+                HitRigid.AddForce((HitRigid.position - this.transform.position).normalized * (m_paramTable.criticalHitPower*20), ForceMode.Impulse);
                 // Add:弓達　クリティカルヒット時得点付与
                 BattlePoint.AddCriticalPoint(hitPlayer.PlayerID , P_Controller.PlayerID);
                 Debug.Log("クリティカルヒット my:" + transform.root + "your:" + HitObject);
@@ -357,5 +327,63 @@ public class HitSystem : MonoBehaviour {
         NewHitEffect.GetComponent<Transform>().LookAt(trans);
         HitParticle = NewHitEffect.GetComponent<ParticleSystem>();
         //NewHitEffect.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
+    }
+    private bool OnHitObject(string Name)
+    {
+        bool Flag = false;
+        //Hit判定を取る部位の名前はTrueにするそれ以外Falseにする
+        switch (Name)
+        {
+            case "Belly":
+                Flag = true;
+                break;
+            case "Chest":
+                Flag = true;
+                break;
+            case "Head":
+                Flag = true;
+                break;
+            case "Shoulder_L":
+                Flag = true;
+                break;
+            case "UpperArms_L":
+                Flag = true;
+                break;
+            case "Arms_L":
+                Flag = true;
+                break;
+            case "Hand_L":
+                Flag = true;
+                break;
+            case "Shoulder_R":
+                Flag = true;
+                break;
+            case "UpperArms_R":
+                Flag = true;
+                break;
+            case "Arms_R":
+                Flag = true;
+                break;
+            case "Hand_R":
+                Flag = true;
+                break;
+            case "Lower":
+                Flag = true;
+                break;
+            case "Ass_L":
+                Flag = true;
+                break;
+            case "Thighs_L":
+                Flag = true;
+                break;
+            case "Ass_R":
+                Flag = true;
+                break;
+            case "Thighs_R":
+                Flag = true;
+                break;
+        }
+
+        return Flag;
     }
 }

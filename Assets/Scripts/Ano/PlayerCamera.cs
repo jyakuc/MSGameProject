@@ -36,6 +36,7 @@ public class PlayerCamera : MonoBehaviour
     public bool FocusMode = false;
     public bool StalkingMode = false;
     private GameTime gametime;
+    public bool ZoomEndFlag = false;
     public float test = 0;
     //一旦置いておく
     //private ZoomMode Zoommode=ZoomMode.NotZoom;
@@ -148,10 +149,13 @@ public class PlayerCamera : MonoBehaviour
                     //ZoomNowTime = ZoomMaxTime;
                     NowSpeed = 0;
                     WaitNowTime += Time.deltaTime;
+                    ZoomEndFlag = true;
                     gametime.SlowDown();
+
                     if (WaitNowTime >= WaitMaxTime)
                     {
                         ZoomFlag = false;
+                        ZoomEndFlag = false;
                     }
                 }
                 CameraTrans.LookAt(TargetTrans);
@@ -213,5 +217,9 @@ public class PlayerCamera : MonoBehaviour
             CameraClone = null;
         }
 
+    }
+    public bool GetZoomEndFlag()
+    {
+        return ZoomEndFlag;
     }
 }
