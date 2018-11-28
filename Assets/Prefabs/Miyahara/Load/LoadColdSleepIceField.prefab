@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4957697545661814}
   - component: {fileID: 114153148491988774}
+  - component: {fileID: 114441412627962952}
   m_Layer: 0
   m_Name: LoadColdSleepIceField
   m_TagString: Untagged
@@ -1628,6 +1629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114041912704529604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1650,6 +1652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114153148491988774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1665,6 +1668,17 @@ MonoBehaviour:
   SetTime: 120
   IceFloorSetTime: 240
   InnerSetTime: 120
+--- !u!114 &114441412627962952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1690634762235782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74adddcd3e61b9a4fa0e6b8676db146d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114515674883611160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1676,6 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114521799824766158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1687,6 +1702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114575354589719866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1698,6 +1714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114604595219176472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1720,6 +1737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114736924648710544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1731,6 +1749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114742789038254334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1742,6 +1761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114789066835067806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1753,6 +1773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114799522731360312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1764,6 +1785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114811374996806990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1775,6 +1797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}
 --- !u!114 &114815627720568720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1786,3 +1809,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IceEffect: {fileID: 0}

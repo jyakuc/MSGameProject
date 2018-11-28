@@ -39,6 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4446185379538128}
   - component: {fileID: 114524565575851066}
+  - component: {fileID: 114880638884092682}
   m_Layer: 0
   m_Name: LoadHoruhoruMountain
   m_TagString: Untagged
@@ -1108,6 +1109,17 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d52f3fb9b2d648b44adadeb0030d30c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114880638884092682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043162351644302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74adddcd3e61b9a4fa0e6b8676db146d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114993524862454660
