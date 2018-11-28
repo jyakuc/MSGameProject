@@ -40,4 +40,7 @@ public class PlayerShrinkAndExtend_ParamTable : ScriptableObject
     [Header("Foot Add Power")]
     public float shrinkAddPower_Foot;
     public float extendAddPower_Foot;
+
+    [Header("パーツ変位スピード")]
+    public Vector2 partsSpeed;
 }
