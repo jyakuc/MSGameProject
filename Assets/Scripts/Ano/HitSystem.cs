@@ -157,17 +157,14 @@ public class HitSystem : MonoBehaviour {
                         }
                         break;
                     case "SandBack":
-                        if (PlayNum != P_Controller.PlayerID)
-                        {
-                            //SE再生
-                            PlaysSe();
-                            //Effect生成
-                            CreateEffect(HitType(other.gameObject), other.gameObject.transform);
-                            //エフェクト発生
-                            HitEffectFlag = true;
-                            HitParticle.Play();
-                            return;
-                        }
+                        //SE再生
+                        PlaysSe();
+                        //Effect生成
+                        CreateEffect(HitType(other.gameObject), other.gameObject.transform);
+                        //エフェクト発生
+                        HitEffectFlag = true;
+                        HitParticle.Play();
+
                         break;
                 }
 
