@@ -11,19 +11,10 @@ public class CrushPointManager : MonoBehaviour {
     // 撃破ポイントのコンテナ
     private Dictionary<int, int> m_crushPointIDContainer = new Dictionary<int, int>(); 
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     // 死亡時最後に攻撃されたプレイヤーのIDを格納
     public void DamageDead(int deadplayerID,int attackerID)
     {
+        if (deadplayerID == attackerID) return;
         if(!m_playerIscrushedContainer.ContainsKey(deadplayerID))
             m_playerIscrushedContainer.Add(deadplayerID, attackerID);
 
