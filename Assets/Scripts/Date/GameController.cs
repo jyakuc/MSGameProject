@@ -187,7 +187,9 @@ public class GameController : MonoBehaviour
             BattlePointGrading battlePoint = m_playerObj[i].gameObject.GetComponent<BattlePointGrading>();
             art.ArtistGrading();
             // コストマネージャーに登録
-            FindObjectOfType<CostManager>().SaveArtCostData(m_playerObj[i].PlayerID, art.Cost);
+            CostManager costManager = FindObjectOfType<CostManager>();
+            costManager.SaveArtCostData(m_playerObj[i].PlayerID, art.Cost);
+            costManager.SaveRankPointData(m_playerObj[i].PlayerID, 0);
             Debug.Log("勝者：" + m_playerObj[i].name + " 芸術ポイント：" + art.Cost.allCost);
 
             // 勝者を殺すプログラム

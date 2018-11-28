@@ -8,14 +8,16 @@ public class CostManager : MonoBehaviour {
         public int art;
         public int critical;
         public int crush;
+        public int rank;
     }
 
     private Dictionary<int, CostParts> m_playerArtCostData = new Dictionary<int, CostParts>();  // 1ステージで獲得した芸術得点
     private Dictionary<int, float> m_playerBattleCostData = new Dictionary<int, float>();       // 1ステージで獲得したバトル得点
+    private Dictionary<int, int> m_playerRankCostData = new Dictionary<int, int>();         // 1ステージで獲得した順位ポイント
     private const int MaxPlayer = 6;
 
     // 各プレイヤーの総合得点リスト
-    private PointType[] m_saveCostData = new PointType[MaxPlayer];                                          // プレイヤーごとの得点保存
+    private PointType[] m_saveCostData = new PointType[MaxPlayer];                              // 1ゲームのプレイヤーごとの得点保存
 
     [SerializeField]
     private float m_ArtMagnification;      // 芸術ポイント倍率
@@ -28,6 +30,8 @@ public class CostManager : MonoBehaviour {
         get { return m_criticalPoint; }
     }
 
+    public int[] m_rankPoint = new int[MaxPlayer];  // 順位ポイント
+    
     private CrushPointManager m_crushPointManager;
     private void Awake()
     {
@@ -45,13 +49,11 @@ public class CostManager : MonoBehaviour {
 
     public void SaveArtCostData(int playerID,CostParts cost)
     {
-        Debug.Log("芸術ポイント："+cost.allCost);
         m_playerArtCostData.Add(playerID, cost);
     }
     
     public void SaveBattleCostData(int playerID,int battleCost)
     {
-        Debug.Log("バトルポイント保存" + playerID);
         if (m_playerBattleCostData.ContainsKey(playerID))
         {
             m_playerBattleCostData[playerID] = battleCost  * m_battleMagnification;
@@ -59,6 +61,18 @@ public class CostManager : MonoBehaviour {
         else
         {
             m_playerBattleCostData.Add(playerID, battleCost  * m_battleMagnification);
+        }
+    }
+
+    public void SaveRankPointData(int playerID,int rank)
+    {
+        if (m_playerRankCostData.ContainsKey(playerID))
+        {
+            m_playerRankCostData[playerID] = m_rankPoint[rank];
+        }
+        else
+        {
+            m_playerRankCostData.Add(playerID, m_rankPoint[rank]);
         }
     }
 
@@ -70,6 +84,7 @@ public class CostManager : MonoBehaviour {
         return Mathf.RoundToInt(cost * m_battleMagnification);
     }
 
+    
     // プレイヤーの1ステージに獲得したポイントを取得
      public int GetPlayerAllCost(int playerID)
      {
@@ -83,6 +98,7 @@ public class CostManager : MonoBehaviour {
         cost += m_saveCostData[playerID - 1].art;
         cost += m_saveCostData[playerID - 1].critical;
         cost += m_saveCostData[playerID - 1].crush;
+        cost += m_saveCostData[playerID - 1].rank;
 
         return cost;
     }
@@ -114,11 +130,13 @@ public class CostManager : MonoBehaviour {
         }
         return cost;
     }
-    // プレイヤーの1ステージに獲得したクラッシュポイントを獲得
+    // プレイヤーの1ステージに獲得したクラッシュポイントを取得
     public int GetPlayerCrushPoint(int playerID)
     {
         return m_crushPointManager.GetCrushPoint(playerID);
     }
+    // プレイヤーの1ステージに獲得した順位ポイントを取得
+
 
     // 次のステージに移るためにコストを保存する
     public void Init()
@@ -128,19 +146,27 @@ public class CostManager : MonoBehaviour {
             if (m_playerArtCostData.ContainsKey(id))
             {
                 m_saveCostData[id-1].art += ConversionCost(m_playerArtCostData[id].allCost, true);
-                m_playerArtCostData.Remove(id);
+                Debug.Log(id.ToString() + "P:芸術ポイント" + m_saveCostData[id - 1].art);
             }
             if (m_playerBattleCostData.ContainsKey(id))
             {
                 m_saveCostData[id-1].critical += ConversionCost(m_playerBattleCostData[id], false);
-                m_playerBattleCostData.Remove(id);
+                Debug.Log(id.ToString() + "P:クリティカルポイント" + m_saveCostData[id - 1].critical);
+            }
+            if (m_playerRankCostData.ContainsKey(id))
+            {
+                m_saveCostData[id - 1].rank += m_playerRankCostData[id];
+                Debug.Log(id.ToString() + "P:順位ポイント" + m_saveCostData[id - 1].rank);
             }
             Debug.Log(id.ToString()+"P:撃破ポイント " + m_crushPointManager.GetCrushPoint(id));
             m_saveCostData[id-1].crush += m_crushPointManager.GetCrushPoint(id);
+
+            Debug.Log(id.ToString() + "P:総合ポイント" + GetPlayerAllCost(id));
         }
         
         m_playerArtCostData.Clear();
         m_playerBattleCostData.Clear();
+        m_playerRankCostData.Clear();
         m_crushPointManager.Init();
     }
 

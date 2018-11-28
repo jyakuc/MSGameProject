@@ -19,17 +19,26 @@ public class RankingInGame : MonoBehaviour
     public Image[] Pannel;
     public Sprite[] Image;
     private short rank = 0;
+    [SerializeField]
+    private CostManager costManager;
+
+    private void Start()
+    {
+        costManager = FindObjectOfType<CostManager>();
+    }
 
     public void SetRank(int playerID)
     {
-
+        costManager.SaveRankPointData(playerID, 5 - rank);
         if (rank < 4)
         {
             Pannel[playerID - 1].GetComponent<Image>().sprite = Image[rank];
             Pannel[playerID - 1].GetComponent<Image>().color = new Color(255, 255, 255, 1f);
-            rank++;
         }
-        
+        rank++;
+        if (rank > 5)
+            rank = 5;
+
     }
 
     // 順位表示初期化
