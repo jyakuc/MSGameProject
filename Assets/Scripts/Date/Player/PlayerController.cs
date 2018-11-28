@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
         {
             m_state = EState.Idle;
+            Debug.Log("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
         }
         if (DebugModeGame.GetProperty().m_controllerDisable)
         {
@@ -143,6 +144,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Human:" + m_state);
         if (m_state == EState.Init ||
              m_state == EState.Dead ||
              m_state == EState.Wait ||
@@ -194,7 +196,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (m_state == EState.BlowAway) return;
+        if (m_state == EState.Init ||
+            m_state == EState.Dead ||
+            m_state == EState.Wait ||
+            m_state == EState.Win  ||
+            m_state == EState.BlowAway) return;
 
         // === 横入力処理 ===
         if (m_inputAxis.x == 0.0f)
