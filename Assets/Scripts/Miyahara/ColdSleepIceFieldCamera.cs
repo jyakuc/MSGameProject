@@ -24,6 +24,11 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
     private GameObject g_UI;
     private GameObject _slider_Background;
     private GameObject _slider_Fillarea;
+
+    private GameObject PerformanceGround;
+    private VanishWall VanishGround;
+    private bool VanishGroundFlg;
+
     // Use this for initialization
     void Start()
     {
@@ -39,15 +44,22 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
         _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject;
         _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject;
         S_timer = GameObject.FindObjectOfType<StartTimer>();
-
+        VanishGroundFlg = false;
+        PerformanceGround = GameObject.Find("PerformanceGround");
+        VanishGround = PerformanceGround.GetComponent<VanishWall>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Count < 270)
+        if (!VanishGroundFlg)
         {
-            this.transform.Rotate(0, Speed * Time.deltaTime, 0);
+            VanishGround.OnVanish();
+            VanishGroundFlg = true;
+        }
+        if (Count < 400)
+        {
+            //this.transform.Rotate(0, Speed * Time.deltaTime, 0);
             Count += Speed * Time.deltaTime;
         }
         else if (!FadeObj.IsFade && FadeFlg == false) //フェードイン
