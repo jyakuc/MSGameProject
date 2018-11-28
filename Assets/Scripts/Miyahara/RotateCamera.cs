@@ -14,6 +14,8 @@ public class RotateCamera : MonoBehaviour {
     private GameObject SubCamera;
     private GameObject Cannons;
 
+    private GameObject Cursors;
+
     private float Rate;
     FadeController FadeObj;
     SceneController SceneObj;
@@ -31,6 +33,7 @@ public class RotateCamera : MonoBehaviour {
         SceneObj = GameObject.FindObjectOfType<SceneController>();
         FadeObj = SceneObj.transform.Find("FadeCanvas").GetComponent<FadeController>();
         Cannons = GameObject.Find("ColosseumCannons(Clone)");
+        Cursors = GameObject.Find("Cursors(Clone)");
         FadeFlg = false;
         g_UI = GameObject.Find("GameUI");
         _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject;
@@ -62,6 +65,7 @@ public class RotateCamera : MonoBehaviour {
         this.gameObject.SetActive(false);
         Cannons.transform.Find("Cannon6Arc").gameObject.SetActive(true);
         Cannons.transform.Find("CannonMng").gameObject.SetActive(true);
+        OnCursors();
         _slider_Background.gameObject.SetActive(true);
         _slider_Fillarea.gameObject.SetActive(true);
         FadeController.Begin(FadeObj.gameObject, true, Rate);
@@ -75,6 +79,16 @@ public class RotateCamera : MonoBehaviour {
             S_timer.On_TimeStartFlg();
         }
         FadeObj.m_onFinished -= ChangeCamera;
+    }
+
+    void OnCursors()
+    {
+        Cursors.transform.Find("Cursor").gameObject.SetActive(true);
+        Cursors.transform.Find("Cursor (1)").gameObject.SetActive(true);
+        Cursors.transform.Find("Cursor (2)").gameObject.SetActive(true);
+        Cursors.transform.Find("Cursor (3)").gameObject.SetActive(true);
+        Cursors.transform.Find("Cursor (4)").gameObject.SetActive(true);
+        Cursors.transform.Find("Cursor (5)").gameObject.SetActive(true);
     }
 
 }
