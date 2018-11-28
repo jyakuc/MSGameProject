@@ -17,4 +17,5 @@ public class PlayerWhole_ParamTable : ScriptableObject
     [Tooltip("クリティカルHit時の力")]
     [Range(0, 20)]
     public float criticalHitPower;
+
 }

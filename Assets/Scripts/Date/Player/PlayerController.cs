@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
     private PlayerExtendAndShrink m_extendAndShrink;
     private PlayerMoving m_moving;
     private PlayerCamera P_Camera;
+    private PartsScale   m_parts;
     [SerializeField]
     private PlayerRay m_ray;
 
@@ -122,14 +123,17 @@ public class PlayerController : MonoBehaviour
         P_Camera = GetComponent<PlayerCamera>();
         if (P_Camera == null) Debug.LogError("PlayerCameraをアタッチしてください。");
         // 地面とのRayの処理スクリプト
-        if (m_ray == null) Debug.LogError("PlayerRayをアタッチしてください。");
+        if (m_ray == null) Debug.LogError("PlayerRayをセットしてください。");
+        // パーツスケールのスクリプト
+        m_parts = GetComponent<PartsScale>();
+        if (m_parts == null) Debug.LogError("PartsScaleをアタッチしてください。");
+
 
         if (!DebugModeGame.GetProperty().m_debugMode) return;
         // デバッグモードONの時の設定
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
         {
             m_state = EState.Idle;
-            Debug.Log("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
         }
         if (DebugModeGame.GetProperty().m_controllerDisable)
         {
@@ -144,7 +148,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Human:" + m_state);
         if (m_state == EState.Init ||
              m_state == EState.Dead ||
              m_state == EState.Wait ||
@@ -234,22 +237,37 @@ public class PlayerController : MonoBehaviour
 
 
         // 右手の伸縮
-        if (m_inputButton[(int)EInputButton.A].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightHand);
-        else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightHand);
-         
+        if (m_inputButton[(int)EInputButton.A].stay){
+            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightHand);
+          
+        }
+        else{
+            m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightHand);
+          }
         // 左手の伸縮
-        if (m_inputButton[(int)EInputButton.B].stay)   m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
-        else                                           m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
-
+        if (m_inputButton[(int)EInputButton.B].stay) {
+            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
+          }
+        else
+        {
+            m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
+          }
         // 右足の伸縮
-        
-        if (m_inputButton[(int)EInputButton.X].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
-        else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
-        
+        if (m_inputButton[(int)EInputButton.X].stay){
+            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
+         }
+        else
+        {
+            m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
+         }
         // 左足の伸縮
-        if (m_inputButton[(int)EInputButton.Y].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
-        else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
-        
+        if (m_inputButton[(int)EInputButton.Y].stay){
+            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
+         }
+        else
+        {
+            m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
+         }
     }
 
     public void Dead()
@@ -319,6 +337,7 @@ public class PlayerController : MonoBehaviour
     {
         m_state = EState.Win;
         GetComponent<Rigidbody>().isKinematic = true;
+        P_Camera.FocusStart();
     }
 
     private void OnTriggerEnter(Collider other)
