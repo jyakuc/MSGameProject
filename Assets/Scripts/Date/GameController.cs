@@ -163,7 +163,8 @@ public class GameController : MonoBehaviour
                 deadNum++;
             }
         }
-
+        Debug.Log(playerNum);
+        Debug.Log(deadNum);
 
         if (deadNum >= playerNum - 1)
         {

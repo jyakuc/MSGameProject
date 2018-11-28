@@ -38,7 +38,7 @@ public class StageCollision : MonoBehaviour {
         if (other.tag == "OutsideColl")
         {
             WobblyFlg = true;
-            Debug.Log("hanareta");
+ //           Debug.Log("hanareta");
         }
     }
 
@@ -52,7 +52,7 @@ public class StageCollision : MonoBehaviour {
                     transform.eulerAngles = new Vector3(0, 0, Angle);
                     if (Angle >= Maxangle)
                     {
-                        Debug.Log("left");
+//                        Debug.Log("left");
                         Status = Direction.Right;
                         Count += 1;
                     }
@@ -62,7 +62,7 @@ public class StageCollision : MonoBehaviour {
                     transform.eulerAngles = new Vector3(0, 0, Angle);
                     if (Angle <= Minangle)
                     {
-                        Debug.Log("right");
+//                        Debug.Log("right");
                         Status = Direction.Left;
                         Count += 1;
                     }

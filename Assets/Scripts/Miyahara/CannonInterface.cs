@@ -7,7 +7,7 @@ public class CannonInterface : MonoBehaviour
 {
 
     private const int MaxPlayers = 6;
-
+    private int PracticalPlayers;   // é¿ç€ÇÃêlêî
     
     Cursor[] targetCursor = new Cursor[MaxPlayers];
 
@@ -54,10 +54,15 @@ public class CannonInterface : MonoBehaviour
 
     private void Start()
     {
+        PracticalPlayers = DebugModeGame.GetProperty().m_debugMode ? DebugModeGame.GetProperty().m_debugPlayerNum : MaxPlayers;
+
         GameObject ParentCursor = GameObject.Find("Cursors(Clone)");
         for (int i = 0; i < MaxPlayers; i++)
         {
-            targetCursor[i] = ParentCursor.transform.GetChild(i).GetComponent<Cursor>();
+            if (i < PracticalPlayers)
+                targetCursor[i] = ParentCursor.transform.GetChild(i).GetComponent<Cursor>();
+            else
+                ParentCursor.transform.GetChild(i).gameObject.SetActive(false);
         }
         gameController = GameObject.FindObjectOfType<GameController>();
 
@@ -72,11 +77,13 @@ public class CannonInterface : MonoBehaviour
         _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject;
         _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject;
         timer = GameObject.FindObjectOfType<StartTimer>();
+
+
     }
 
     void Update()
     {
-        for (int i = 0; i < MaxPlayers; i++)
+        for (int i = 0; i < PracticalPlayers; i++)
         {
             
             if (targetCursor[i] == null) continue;

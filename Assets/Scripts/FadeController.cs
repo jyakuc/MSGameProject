@@ -95,11 +95,9 @@ public class FadeController : MonoBehaviour {
 
         if (m_onFinished != null)
         {
-            Debug.Log("FadeFade");
+ //           Debug.Log("FadeFade");
             m_onFinished();
         }
-        else
-            Debug.Log("NoFade");
 	}
 
     /// <summary>
