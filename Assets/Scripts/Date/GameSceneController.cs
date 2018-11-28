@@ -127,10 +127,12 @@ public class GameSceneController : MonoBehaviour {
         if (SceneManager.GetActiveScene().name == "WarmingUp")
         {
             AudioManager.GetInstance.PlayBGM(AUDIO.BGM_RESULT, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
+            AudioManager.GetInstance.ChangeVolume(1.0f, 1.0f);
         }
         else
         {
             AudioManager.GetInstance.PlayBGM(AUDIO.BGM_BATTLE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
+            AudioManager.GetInstance.ChangeVolume(1.0f, 1.0f);
         }
     }
 }
