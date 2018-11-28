@@ -307,7 +307,6 @@ GameObject:
   - component: {fileID: 33231754369386570}
   - component: {fileID: 65576001266301170}
   - component: {fileID: 23112687608395428}
-  - component: {fileID: 114713782568482112}
   m_Layer: 16
   m_Name: ExtendRightObj
   m_TagString: Untagged
@@ -490,7 +489,6 @@ GameObject:
   - component: {fileID: 33953073317598694}
   - component: {fileID: 65335711758956900}
   - component: {fileID: 23232904355423844}
-  - component: {fileID: 114411590707288108}
   m_Layer: 16
   m_Name: ExtendLeftObj
   m_TagString: Untagged
@@ -597,7 +595,6 @@ GameObject:
   - component: {fileID: 33094510558870084}
   - component: {fileID: 135698203042168836}
   - component: {fileID: 23377062711603254}
-  - component: {fileID: 114955442254203664}
   m_Layer: 16
   m_Name: ExtendRightObj
   m_TagString: Untagged
@@ -773,7 +770,6 @@ GameObject:
   - component: {fileID: 33448564015726736}
   - component: {fileID: 65920202460901456}
   - component: {fileID: 23763269522226112}
-  - component: {fileID: 114216979324464606}
   m_Layer: 16
   m_Name: ExtendLeftObj
   m_TagString: Untagged
@@ -3504,28 +3500,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114216979324464606
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1847103962821876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114411590707288108
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529667530364494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114494242179815384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3632,17 +3606,6 @@ MonoBehaviour:
   shrinkObj: {fileID: 1810329542901580}
   extendObj: {fileID: 1342619958047888}
   isHandFlg: 1
---- !u!114 &114713782568482112
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1342619958047888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114748291095088424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3795,17 +3758,6 @@ MonoBehaviour:
   shrinkObj: {fileID: 1241603716908976}
   extendObj: {fileID: 1847103962821876}
   isHandFlg: 0
---- !u!114 &114955442254203664
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1653350025763424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114977536275409236
 MonoBehaviour:
   m_ObjectHideFlags: 1

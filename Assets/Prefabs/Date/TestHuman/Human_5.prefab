@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33506235872890832}
   - component: {fileID: 65159273288763554}
   - component: {fileID: 23940561784653592}
-  - component: {fileID: 114413961090011280}
   m_Layer: 17
   m_Name: ExtendLeftObj
   m_TagString: Untagged
@@ -163,7 +162,6 @@ GameObject:
   - component: {fileID: 33925907882603570}
   - component: {fileID: 65206997566653124}
   - component: {fileID: 23060477764444386}
-  - component: {fileID: 114916555162779300}
   m_Layer: 17
   m_Name: ExtendLeftObj
   m_TagString: Untagged
@@ -619,7 +617,6 @@ GameObject:
   - component: {fileID: 33197588406068596}
   - component: {fileID: 135932294339365892}
   - component: {fileID: 23040976530736194}
-  - component: {fileID: 114795880553296240}
   m_Layer: 17
   m_Name: ExtendRightObj
   m_TagString: Untagged
@@ -686,7 +683,6 @@ GameObject:
   - component: {fileID: 33932898492828052}
   - component: {fileID: 65173820797323464}
   - component: {fileID: 23466197801557844}
-  - component: {fileID: 114771037511465870}
   m_Layer: 17
   m_Name: ExtendRightObj
   m_TagString: Untagged
@@ -3491,17 +3487,6 @@ MonoBehaviour:
   shrinkObj: {fileID: 1159013928659990}
   extendObj: {fileID: 1791819432467792}
   isHandFlg: 1
---- !u!114 &114413961090011280
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1001330950508888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114419624226152916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3628,17 +3613,6 @@ MonoBehaviour:
   PlayNum: 1
   BattlePoint: {fileID: 114789703243555842}
   m_paramTable: {fileID: 11400000, guid: d7c3406c9b77608428bb40cc566e3243, type: 2}
---- !u!114 &114771037511465870
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1791819432467792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114789703243555842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3659,17 +3633,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6969ffb1e73fcde429e21004e511846d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114795880553296240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1740003725483032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114825081641900294
@@ -3727,17 +3690,6 @@ MonoBehaviour:
   shrinkObj: {fileID: 1838668476093882}
   extendObj: {fileID: 1227664538998414}
   isHandFlg: 1
---- !u!114 &114916555162779300
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1227664538998414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114932651516860674
 MonoBehaviour:
   m_ObjectHideFlags: 1
