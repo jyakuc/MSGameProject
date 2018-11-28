@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4477319911421976}
   - component: {fileID: 65196124432437146}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Shoulder_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 4188172283641316}
   - component: {fileID: 65506990480812530}
   - component: {fileID: 114730542102716440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hand_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4856376807606800}
   - component: {fileID: 65380962449646398}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: UpperArms_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4228023943057520}
   - component: {fileID: 65188638223693546}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4713999462841686}
   - component: {fileID: 65972205459745836}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Arms_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -735,7 +735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4103641879201382}
   - component: {fileID: 65625346677308496}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Shoulder_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4794421560483488}
   - component: {fileID: 65355783411905138}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +802,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4382175259061246}
   - component: {fileID: 65954655932001214}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Arms_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -819,7 +819,7 @@ GameObject:
   - component: {fileID: 4818248429557642}
   - component: {fileID: 65932581183873918}
   - component: {fileID: 114583712726010070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hand_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4303897840325792}
   - component: {fileID: 65936861617217406}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: UpperArms_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,7 +1342,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1332152511549132}
   m_LocalRotation: {x: 0, y: 0.70710677, z: 0.70710677, w: 0}
-  m_LocalPosition: {x: 0, y: -1.36, z: -0.5713749}
+  m_LocalPosition: {x: -7.92, y: -1.36, z: -0.5713749}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4458620806062006}
@@ -2649,7 +2649,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1.0000002, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000001192093, y: 1.0000025, z: -5.520007}
+  m_ConnectedAnchor: {x: -0.00000089406984, y: 1.0000025, z: -5.520007}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2683,7 +2683,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -5.19, y: 0.50000435, z: -0.000003874302}
+  m_ConnectedAnchor: {x: -5.1899996, y: 0.50000435, z: -0.000003874302}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2785,7 +2785,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1.0000002, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000059604656, y: 1.0000026, z: -5.520007}
+  m_ConnectedAnchor: {x: -0.0000011920931, y: 1.0000026, z: -5.520007}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2819,7 +2819,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.49999964, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000001192093, y: -0.49999708, z: -6.0200067}
+  m_ConnectedAnchor: {x: -0.00000089406984, y: -0.49999708, z: -6.0200067}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2853,7 +2853,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.49999964, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000059604656, y: -0.49999714, z: -6.0200067}
+  m_ConnectedAnchor: {x: -0.0000011920931, y: -0.49999714, z: -6.0200067}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -2887,7 +2887,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 2.92, y: 0.5000046, z: -0.000003874302}
+  m_ConnectedAnchor: {x: 2.9199991, y: 0.5000046, z: -0.000003874302}
   m_UseSpring: 1
   m_Spring:
     spring: 1
@@ -3015,7 +3015,7 @@ BoxCollider:
   m_GameObject: {fileID: 1210880875661140}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: 0.0005, y: 0.0045, z: 0}
@@ -3111,10 +3111,10 @@ BoxCollider:
   m_GameObject: {fileID: 1432345009075788}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.003, y: 0.005, z: 0.007}
-  m_Center: {x: -0.0005, y: 0.0035, z: 0}
+  m_Size: {x: 0.002, y: 0.005, z: 0.004}
+  m_Center: {x: -0.0003, y: 0.0035, z: -0.0007}
 --- !u!65 &65383287111080588
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -3195,9 +3195,9 @@ BoxCollider:
   m_GameObject: {fileID: 1769869589064486}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.003, y: 0.008, z: 0.007}
+  m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: -0.0005, y: 0.0045, z: 0}
 --- !u!65 &65633400969824954
 BoxCollider:
@@ -3375,7 +3375,7 @@ BoxCollider:
   m_GameObject: {fileID: 1995887367748152}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: 0.0003, y: 0.0035, z: -0.0007}
@@ -3389,8 +3389,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.003, y: 0.005, z: 0.005}
-  m_Center: {x: -0.0005, y: 0.004, z: 0.0005}
+  m_Size: {x: 0.003, y: 0.005, z: 0.003}
+  m_Center: {x: -0.0002, y: 0.004, z: 0.0005}
 --- !u!65 &65972205459745836
 BoxCollider:
   m_ObjectHideFlags: 1
