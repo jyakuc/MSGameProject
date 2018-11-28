@@ -14,7 +14,7 @@ public class ColdSleepGimic : MonoBehaviour {
     private VanishWall[] ChildWall;
 
     private GameObject ParentIceFallpos;
-    private FallFloor[] ChildIceFall;
+    private VanishWall[] ChildIceFall;
 
     private GameObject ParentInnerWall;
     private VanishWall[] ChildInnerWall;
@@ -57,15 +57,12 @@ public class ColdSleepGimic : MonoBehaviour {
     [Range(0, 360)]
     [SerializeField]
     private float InnerSetTime;
-    //[Range(0, 360)]
-    //[SerializeField]
-    //private float GroundSetTime;
 
 
     private float SaveTime;
     private float IceSaveTime;
     private float InnerSaveTime;
-    //private float GroundSaveTime;
+    
 
 
     private int RandomFloor;
@@ -91,7 +88,7 @@ public class ColdSleepGimic : MonoBehaviour {
         ParentWall = GameObject.Find("IceFieldAroundWalls");
         ChildWall = ParentWall.GetComponentsInChildren<VanishWall>();
         ParentIceFallpos = GameObject.Find("IceFieldFallObjs");
-        ChildIceFall = ParentIceFallpos.GetComponentsInChildren<FallFloor>();
+        ChildIceFall = ParentIceFallpos.GetComponentsInChildren<VanishWall>();
         ParentInnerWall = GameObject.Find("IceFieldInnerWalls");
         ChildInnerWall = ParentInnerWall.GetComponentsInChildren<VanishWall>();
         ParentGroundFall = GameObject.Find("IceFields");
@@ -104,7 +101,7 @@ public class ColdSleepGimic : MonoBehaviour {
         SaveTime = SetTime;
         IceSaveTime = IceFloorSetTime;
         InnerSaveTime = InnerSetTime;
-        //GroundSaveTime = GroundSetTime;
+        
 	}
 	
 	// Update is called once per frame
@@ -125,7 +122,7 @@ public class ColdSleepGimic : MonoBehaviour {
             }
             if (IceFloorSetTime < NowTime && FloorCount < MaxFallObj)
             {
-                ChildIceFall[FallList[RandomFloor, FloorCount]].OnFall();
+                ChildIceFall[FallList[RandomFloor, FloorCount]].OnVanish();
                 FloorCount += 1;
                 IceFloorSetTime = IceSaveTime * (FloorCount + 1);
             }
@@ -134,12 +131,6 @@ public class ColdSleepGimic : MonoBehaviour {
                 ChildGroundWall[GroundVanishList[RandomGroundFloor, GroundCount]].OnVanish();
                 GroundCount += 1;
             }
-            //if (GroundSetTime < NowTime && GroundCount < MaxGroundFall - 1)
-            //{
-            //    ChildGroundWall[GroundVanishList[RandomGroundFloor, GroundCount]].OnVanish();
-            //    GroundCount += 1;
-            //    GroundSetTime = GroundSaveTime * (GroundCount + 1);
-            //}
 
             NowTime += Interval * Time.deltaTime;
         }

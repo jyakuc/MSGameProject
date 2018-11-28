@@ -6,6 +6,8 @@ public class VanishWall : MonoBehaviour {
 
     private bool VanishFlg;
     Color Alpha = new Color(0, 0, 0, 0.01f);
+    [SerializeField]
+    private IceSmoke IceEffect;
 
     Material WallMaterial;
 	// Use this for initialization
@@ -20,9 +22,13 @@ public class VanishWall : MonoBehaviour {
         if (VanishFlg)
         {
             if (WallMaterial.color.a >= 0)
+            {
+                IceEffect.PlaysEffect();
                 WallMaterial.color -= Alpha;
+            }
             if (WallMaterial.color.a <= 0)
             {
+                IceEffect.EndEffect();
                 Destroy(this.gameObject);
             }
         }
