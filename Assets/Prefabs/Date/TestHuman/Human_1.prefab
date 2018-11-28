@@ -1349,7 +1349,7 @@ Transform:
   - {fileID: 4855520143080084}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 270, y: -90, z: -90}
+  m_LocalEulerAnglesHint: {x: 270, y: -90.00001, z: -90.00001}
 --- !u!4 &4635616336497340
 Transform:
   m_ObjectHideFlags: 1
@@ -3638,8 +3638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_paramTable: {fileID: 11400000, guid: 58404a7d8b8fb114b8b56f39125a02fc, type: 2}
   m_jointAddForces:
-  - {fileID: 114397917203532558}
-  - {fileID: 114184362040947046}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114730542102716440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3743,7 +3743,7 @@ MonoBehaviour:
   rigidbody: {fileID: 54241173634004814}
   shrinkObj: {fileID: 1178327502585168}
   extendObj: {fileID: 1556387159058140}
-  isHandFlg: 1
+  isHandFlg: 0
 --- !u!114 &114893375435546078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3769,7 +3769,7 @@ MonoBehaviour:
   rigidbody: {fileID: 54550971834350436}
   shrinkObj: {fileID: 1404841869184096}
   extendObj: {fileID: 1192673634757026}
-  isHandFlg: 1
+  isHandFlg: 0
 --- !u!135 &135450684578658530
 SphereCollider:
   m_ObjectHideFlags: 1
