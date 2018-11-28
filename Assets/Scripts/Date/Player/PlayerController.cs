@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
         m_inputButton[(int)EInputButton.X].dowm = Input.GetButtonDown(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]);
         m_inputButton[(int)EInputButton.X].up = Input.GetButtonUp(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]);
 
-        m_inputButton[(int)EInputButton.X].stay = Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
+        m_inputButton[(int)EInputButton.Y].stay = Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
         m_inputButton[(int)EInputButton.Y].dowm = Input.GetButtonDown(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
         m_inputButton[(int)EInputButton.Y].up = Input.GetButtonUp(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
         
@@ -234,15 +234,16 @@ public class PlayerController : MonoBehaviour
         // 左手の伸縮
         if (m_inputButton[(int)EInputButton.B].stay)   m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
         else                                           m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
-        
+
         // 右足の伸縮
+        
         if (m_inputButton[(int)EInputButton.X].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
         else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
-         
+        
         // 左足の伸縮
         if (m_inputButton[(int)EInputButton.Y].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
         else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
-            
+        
     }
 
     public void Dead()
