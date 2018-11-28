@@ -41,9 +41,6 @@ public class GameController : MonoBehaviour
     int playerLayer4;
     int playerLayer5;
     int playerLayer6;
-    int IKOperationLayer;
-    int IKRangeLayer;
-    int playerChestLayer;
     int[] PlayerLayers;
 
     private void Awake()
@@ -56,11 +53,8 @@ public class GameController : MonoBehaviour
         playerLayer4 = LayerMask.NameToLayer("Player_04");
         playerLayer5 = LayerMask.NameToLayer("Player_05");
         playerLayer6 = LayerMask.NameToLayer("Player_06");
-        IKOperationLayer = LayerMask.NameToLayer("IKOperationCollider");
-        IKRangeLayer = LayerMask.NameToLayer("IKRangeCollider");
-        playerChestLayer = LayerMask.NameToLayer("Player_Chest");
 
-        PlayerLayers = new int[] { playerLayer1, playerLayer2, playerLayer3, playerLayer4, playerLayer5, playerLayer6,IKOperationLayer,IKRangeLayer , playerChestLayer };
+        PlayerLayers = new int[] { playerLayer1, playerLayer2, playerLayer3, playerLayer4, playerLayer5, playerLayer6};
 
     }
 

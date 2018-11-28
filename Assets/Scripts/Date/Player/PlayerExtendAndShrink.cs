@@ -100,6 +100,7 @@ public class PlayerExtendAndShrink : MonoBehaviour {
     public void StartExtend(EShrinkPoint eShrinkPoint)
     {
         int idx = (int)eShrinkPoint;
+        if (m_state[idx] != EState.NowShrink) return;
         m_jointExtends[idx].StartExtend();
         m_state[idx] = EState.NowExtend;
         /*

@@ -13,16 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angleForce:
     initForce: {x: 0, y: -3.8, z: 0}
-    decayForce: {x: 1, y: 0.995, z: 1}
+    decayForce: {x: 1, y: 1, z: 1}
   moveForce:
     initForce: {x: -1.5, y: 0, z: 0}
     decayForce: {x: 0.99, y: 1, z: 1}
-  handForce:
-    initForce: {x: -5, y: 20, z: 0}
-    decayForce: {x: 1, y: 1, z: 1}
-  footForce:
-    initForce: {x: -3, y: 0, z: 0}
-    decayForce: {x: 1, y: 1, z: 1}
+  handForce: {x: 60, y: 60, z: 40}
   dirAngleForce:
-    initForce: {x: 0, y: 250, z: 0}
+    initForce: {x: 0, y: 120, z: 0}
     decayForce: {x: 1, y: 1, z: 1}

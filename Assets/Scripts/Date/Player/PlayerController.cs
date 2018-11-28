@@ -4,14 +4,33 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // ============ Input 系 ============
     public enum EInput
     {
         Horizontal,
         Vertical,
         A, B, X, Y,
-        MAX
+        MAX,
     }
+    public enum EInputButton
+    {
+        A, B, X, Y,
+        MAX,
+    }
+    public struct Button
+    {
+        public bool stay;   // 押し続けてる
+        public bool dowm;   // 押された瞬間
+        public bool up;     // 離した瞬間
+    };
+    // アナログスティック入力
+    private Vector2 m_inputAxis;
+    // ボタン入力
+    private Button[] m_inputButton = new Button[(int)EInput.MAX];
+    private MyInputManager myInputManager;
+    private string[] InputName = new string[(int)EInput.MAX];
 
+    // ============ 状態 ============ 
     public enum EState
     {
         Init,
@@ -24,7 +43,10 @@ public class PlayerController : MonoBehaviour
         Dead,
         Win
     }
-
+    private EState m_state;
+    private float FlayTime_Max = 1;
+    //飛んでる経過時間
+    private float FlayNowTime = 0;
     // プレイヤー番号
     [SerializeField]
     private int m_playerID;
@@ -41,13 +63,9 @@ public class PlayerController : MonoBehaviour
     // デフォルトの肌の色を保存用
     private Color SaveColor;
     */
-    private MyInputManager myInputManager;
-    private string[] InputName = new string[(int)EInput.MAX];
-    private EState m_state;
-    private float FlayTime_Max = 1;
-    //飛んでる経過時間
-    private float FlayNowTime = 0;
-    private bool[] m_isInputFlg = new bool[(int)EInput.MAX];
+
+
+
     // 攻撃された相手のプレイヤーID
     private int m_hitReceivePlayerID;
     public int HitReceivePlayerID
@@ -57,11 +75,14 @@ public class PlayerController : MonoBehaviour
 
     private CrushPointManager m_crushPointManager;
 
+    // ============ プレイヤー動作スクリプト ============
     private PlayerExtendAndShrink m_extendAndShrink;
     private PlayerMoving m_moving;
     private PlayerCamera P_Camera;
     [SerializeField]
     private PlayerRay m_ray;
+
+
 
     // Use this for initialization
     void Start()
@@ -108,6 +129,7 @@ public class PlayerController : MonoBehaviour
         if (DebugModeGame.GetProperty().m_debugPlayerEnable)
         {
             m_state = EState.Idle;
+            Debug.Log("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
         }
         if (DebugModeGame.GetProperty().m_controllerDisable)
         {
@@ -119,13 +141,14 @@ public class PlayerController : MonoBehaviour
     {
         return m_state;
     }
-    // Update is called once per frame
-    void FixedUpdate()
+
+    void Update()
     {
+        Debug.Log("Human:" + m_state);
         if (m_state == EState.Init ||
-            m_state == EState.Dead ||
-            m_state == EState.Wait ||
-            m_state == EState.Win) return;
+             m_state == EState.Dead ||
+             m_state == EState.Wait ||
+             m_state == EState.Win) return;
 
         if (m_state == EState.BlowAway)
         {
@@ -137,97 +160,27 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
+
         // 入力値
-        float lsh = Input.GetAxis(InputName[(int)EInput.Horizontal] + myInputManager.joysticks[m_playerID - 1].ToString());
-        float lsv = Input.GetAxis(InputName[(int)EInput.Vertical] + myInputManager.joysticks[m_playerID - 1].ToString());
+        m_inputAxis.x = Input.GetAxis(InputName[(int)EInput.Horizontal] + myInputManager.joysticks[m_playerID - 1].ToString());
+        m_inputAxis.y = Input.GetAxis(InputName[(int)EInput.Vertical] + myInputManager.joysticks[m_playerID - 1].ToString());
 
+        m_inputButton[(int)EInputButton.A].stay = Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]);
+        m_inputButton[(int)EInputButton.A].dowm = Input.GetButtonDown(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]);
+        m_inputButton[(int)EInputButton.A].up = Input.GetButtonUp(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]);
 
-        if (lsh == 0.0f)
-        {
-            m_state = EState.Idle;
-            m_isInputFlg[(int)EInput.Vertical] = m_isInputFlg[(int)EInput.Horizontal] = false;
-        }
-        else if (lsh > 0.0f)
-        {
-            m_moving.Move(m_ray.Dir, true);
-            m_state = EState.RightMove;
-            m_isInputFlg[(int)EInput.Horizontal] = true;
-        }
-        // 左方向
-        else if (lsh < 0.0f)
-        {
-            m_moving.Move(m_ray.Dir, false);
-            m_state = EState.LeftMove;
-            m_isInputFlg[(int)EInput.Horizontal] = true;
-        }
+        m_inputButton[(int)EInputButton.B].stay = Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]);
+        m_inputButton[(int)EInputButton.B].dowm = Input.GetButtonDown(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]);
+        m_inputButton[(int)EInputButton.B].up = Input.GetButtonUp(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]);
 
-        if (lsv > 0.0f)
-        {
-            m_moving.Rotation(true);
-            m_isInputFlg[(int)EInput.Vertical] = true;
-        }
-        else if (lsv < 0.0f)
-        {
-            m_moving.Rotation(false);
-            m_isInputFlg[(int)EInput.Vertical] = true;
-        }
+        m_inputButton[(int)EInputButton.X].stay = Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]);
+        m_inputButton[(int)EInputButton.X].dowm = Input.GetButtonDown(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]);
+        m_inputButton[(int)EInputButton.X].up = Input.GetButtonUp(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]);
 
-
-        // 右手の伸縮
-        if (Input.GetButton(InputName[(int)EInput.A] + myInputManager.joysticks[m_playerID - 1]))
-        {
-            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightHand);
-            m_isInputFlg[(int)EInput.A] = true;
-        }
-        else 
-        {
-            if(m_isInputFlg[(int)EInput.A])
-            {
-                m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightHand);
-                m_isInputFlg[(int)EInput.A] = false;
-                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            }
-        }
-        // 左手の伸縮
-        if (Input.GetButton(InputName[(int)EInput.B] + myInputManager.joysticks[m_playerID - 1]))
-        {
-            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
-            m_isInputFlg[(int)EInput.B] = true;
-        }
-        else
-        {
-            if (m_isInputFlg[(int)EInput.B])
-            {
-                m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
-                m_isInputFlg[(int)EInput.B] = false;
-                Debug.Log("BBBBBBBBBBBBBBBBBBBBBBBBBBBB");
-            }
-        }
-        // 右足の伸縮
-        if (Input.GetButton(InputName[(int)EInput.X] + myInputManager.joysticks[m_playerID - 1]))
-        {
-            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
-            m_isInputFlg[(int)EInput.X] = true;
-        }
-        else
-        {
-            if (m_isInputFlg[(int)EInput.X])  m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
-            m_isInputFlg[(int)EInput.X] = false;
-            Debug.Log("XXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        }
-        // 左足の伸縮
-        if (Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]))
-        {
-            m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
-            m_isInputFlg[(int)EInput.Y] = true;
-        }
-        else
-        {
-            if (m_isInputFlg[(int)EInput.Y]) m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
-            m_isInputFlg[(int)EInput.Y] = false;
-            Debug.Log("YYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-        }
-
+        m_inputButton[(int)EInputButton.Y].stay = Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
+        m_inputButton[(int)EInputButton.Y].dowm = Input.GetButtonDown(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
+        m_inputButton[(int)EInputButton.Y].up = Input.GetButtonUp(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
+        
         // 回転減衰
         if (m_state == EState.LeftMove || m_state == EState.RightMove)
             m_moving.DecayForce();
@@ -236,9 +189,67 @@ public class PlayerController : MonoBehaviour
         {
             m_state = EState.Idle;
             m_ray.InitDiffDirection();
-
             m_moving.Init();
         }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (m_state == EState.Init ||
+            m_state == EState.Dead ||
+            m_state == EState.Wait ||
+            m_state == EState.Win  ||
+            m_state == EState.BlowAway) return;
+
+        // === 横入力処理 ===
+        if (m_inputAxis.x == 0.0f)
+        {
+            m_state = EState.Idle;
+        }
+        // 右方向
+        else if (m_inputAxis.x > 0.0f)
+        {
+            Debug.Log("ifOK");
+            m_moving.Move(m_ray.Dir, true);
+            m_state = EState.RightMove;
+        }
+        // 左方向
+        else if (m_inputAxis.x < 0.0f)
+        {
+            m_moving.Move(m_ray.Dir, false);
+            m_state = EState.LeftMove;
+        }
+
+
+        // === 縦入力処理 ===
+        if (m_inputAxis.y > 0.0f)
+        {
+            m_moving.Rotation(true);
+        }
+        else if (m_inputAxis.y < 0.0f)
+        {
+            m_moving.Rotation(false);
+        }
+
+
+        // 右手の伸縮
+        if (m_inputButton[(int)EInputButton.A].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightHand);
+        else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightHand);
+         
+        // 左手の伸縮
+        if (m_inputButton[(int)EInputButton.B].stay)   m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
+        else                                           m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftHand);
+
+        // 右足の伸縮
+        
+        if (m_inputButton[(int)EInputButton.X].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
+        else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.RightFoot);
+        
+        // 左足の伸縮
+        if (m_inputButton[(int)EInputButton.Y].stay)  m_extendAndShrink.StartShrink(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
+        else                                          m_extendAndShrink.StartExtend(PlayerExtendAndShrink.EShrinkPoint.LeftFoot);
+        
     }
 
     public void Dead()
@@ -281,6 +292,7 @@ public class PlayerController : MonoBehaviour
         m_hitReceivePlayerID = hitReceiveID;
         m_state = EState.BlowAway;
     }
+    /*
     // 入力フラグ（クリティカルヒット用）
     public bool IsInputFlagParts(EInput eInput)
     {
@@ -295,7 +307,7 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-
+    */
     // 最後のアタックしたPlayerID
     public int LastAttackPlayerID()
     {
