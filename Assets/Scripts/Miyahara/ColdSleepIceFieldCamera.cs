@@ -25,9 +25,19 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
     private GameObject _slider_Background;
     private GameObject _slider_Fillarea;
 
+
+    //カメラ演出用
     private GameObject PerformanceGround;
     private VanishWall VanishGround;
+    private GameObject ParentGround1;
+    private GameObject ParentGround2;
+    private GameObject ParentGround3;
+    private VanishWall VanishParent1;
+    private VanishWall VanishParent2;
+    private VanishWall VanishParent3;
     private bool VanishGroundFlg;
+    private GameObject LookTarget;
+
 
     // Use this for initialization
     void Start()
@@ -46,7 +56,14 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
         S_timer = GameObject.FindObjectOfType<StartTimer>();
         VanishGroundFlg = false;
         PerformanceGround = GameObject.Find("PerformanceGround");
+        ParentGround1 = GameObject.Find("IceField_FallObj01");
+        ParentGround2 = GameObject.Find("IceField_FallObj02");
+        ParentGround3 = GameObject.Find("IceField_FallObj03");
         VanishGround = PerformanceGround.GetComponent<VanishWall>();
+        VanishParent1 = ParentGround1.GetComponent<VanishWall>();
+        VanishParent2 = ParentGround2.GetComponent<VanishWall>();
+        VanishParent3 = ParentGround3.GetComponent<VanishWall>();
+        LookTarget = GameObject.Find("LookTarget");
     }
 
     // Update is called once per frame
@@ -55,10 +72,14 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
         if (!VanishGroundFlg)
         {
             VanishGround.OnVanish();
+            VanishParent1.OnVanish();
+            VanishParent2.OnVanish();
+            VanishParent3.OnVanish();
             VanishGroundFlg = true;
         }
-        if (Count < 400)
+        if (Count < 110)
         {
+            this.transform.position -= new Vector3(Speed* Time.deltaTime, 0.0f, 0.0f);
             //this.transform.Rotate(0, Speed * Time.deltaTime, 0);
             Count += Speed * Time.deltaTime;
         }
@@ -69,6 +90,9 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
             FadeFlg = true;
             FadeObj.m_onFinished += ChangeCamera;
         }
+
+        this.transform.LookAt(LookTarget.transform);
+
     }
 
     public void ChangeCamera()
