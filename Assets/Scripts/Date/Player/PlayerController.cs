@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
         Horizontal,
         Vertical,
         A, B, X, Y,
+        Start,
         MAX,
     }
     public enum EInputButton
@@ -106,6 +107,7 @@ public class PlayerController : MonoBehaviour
         InputName[3] = "B_Player";
         InputName[4] = "X_Player";
         InputName[5] = "Y_Player";
+        InputName[6] = "ST_Player";
 
         myInputManager = FindObjectOfType<MyInputManager>();
         if (myInputManager == null) Debug.LogError("MyInputManagerがシーンに存在しません");
@@ -183,7 +185,19 @@ public class PlayerController : MonoBehaviour
         m_inputButton[(int)EInputButton.Y].stay = Input.GetButton(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
         m_inputButton[(int)EInputButton.Y].dowm = Input.GetButtonDown(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
         m_inputButton[(int)EInputButton.Y].up = Input.GetButtonUp(InputName[(int)EInput.Y] + myInputManager.joysticks[m_playerID - 1]);
-        
+
+        // ポーズ
+        if(Input.GetButtonDown(InputName[(int)EInput.Start] + myInputManager.joysticks[m_playerID - 1].ToString()))
+        {
+            Debug.Log("ポーズ");
+            PauseManager.OnPause(m_playerID);
+        }
+
+        if(m_inputButton[(int)EInputButton.A].stay && m_inputButton[(int)EInputButton.B].stay &&
+            m_inputButton[(int)EInputButton.X].stay && m_inputButton[(int)EInputButton.Y].stay && PauseManager.IsPause)
+        {
+            PauseManager.PauseToTitle(m_playerID);
+        }
         // 回転減衰
         if (m_state == EState.LeftMove || m_state == EState.RightMove)
             m_moving.DecayForce();

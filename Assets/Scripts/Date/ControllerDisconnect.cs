@@ -32,10 +32,10 @@ public class ControllerDisconnect : MonoBehaviour {
     // コントローラーが抜けたとき表示
     public void OnDisconnected(List<int> playerID)
     {
-        if (m_eControllerConnected == EControllerConnected.Disconnect) return;
+        //if (m_eControllerConnected == EControllerConnected.Disconnect) return;
         m_eControllerConnected = EControllerConnected.Disconnect;
-        m_mask.gameObject.SetActive(true);
-        m_warningImage.gameObject.SetActive(true);
+        if(!m_mask.gameObject.activeSelf) m_mask.gameObject.SetActive(true);
+        if(!m_warningImage.gameObject.activeSelf) m_warningImage.gameObject.SetActive(true);
         m_warningImage.Display(playerID);
     }
 
