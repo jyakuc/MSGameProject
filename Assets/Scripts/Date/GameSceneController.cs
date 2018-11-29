@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour {
 
+
+    private int MaxPlayer = 6;
+
     enum EState
     {
         Wait,
@@ -14,6 +17,7 @@ public class GameSceneController : MonoBehaviour {
         Unstage,
         UnLoad,
         DisplayLoad,
+        WaitInput,
         Load,
         Restart,
     }
@@ -28,7 +32,8 @@ public class GameSceneController : MonoBehaviour {
     private FadeController fadeController;
     private ArtArmatureSave armatureSave;
 
-    //public GameController gameController;
+    private bool[] StDownflg;
+
     private EState m_state;
 
     private void Start()
@@ -41,6 +46,13 @@ public class GameSceneController : MonoBehaviour {
         m_stageCreater = FindObjectOfType<StageCreate>();
         m_LoadCreater = FindObjectOfType<LoadCreate>();
         armatureSave = FindObjectOfType<ArtArmatureSave>();
+        MaxPlayer = DebugModeGame.GetProperty().m_debugMode ? DebugModeGame.GetProperty().m_debugPlayerNum : 6;
+        StDownflg = new bool[MaxPlayer];
+        for (int i = 0; i < MaxPlayer; i++)
+        {
+            StDownflg[i] = false;
+        }
+            
     }
 
     void Update()
@@ -76,7 +88,17 @@ public class GameSceneController : MonoBehaviour {
                 Debug.Log("ロード画面");
                 // ロード画面生成
                 m_LoadCreater.Loadinfo();
-                m_state = EState.NotUpdate;
+                m_state = EState.WaitInput;
+                break;
+            case EState.WaitInput:
+                for (int i = 0; i < MaxPlayer; i++)
+                {
+                    if (StDownflg[i]) continue;
+                    StDownflg[i] = Input.GetButtonDown("ST_Player" + (i + 1));
+                    if (!StDownflg[i])
+                        return;
+                }
+                m_state = EState.Load;
                 break;
             case EState.Load:
                 Debug.Log("Load");
