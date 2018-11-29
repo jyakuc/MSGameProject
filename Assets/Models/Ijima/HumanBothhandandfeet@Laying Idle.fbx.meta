@@ -78,8 +78,38 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: LeftFoot
+    second: {fileID: 2100000, guid: bd995404f58038c4cbacbafbf15fec52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LeftHand
+    second: {fileID: 2100000, guid: bd995404f58038c4cbacbafbf15fec52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Logo
     second: {fileID: 2100002, guid: 0e8fc0b2fb54ef94a85b67ce24352982, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RightFoot
+    second: {fileID: 2100000, guid: c6cf6726ced8c3f49a19530217c8b9ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RightHand
+    second: {fileID: 2100000, guid: c6cf6726ced8c3f49a19530217c8b9ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100004, guid: ae5b37ad2ade3454c859f60f43f9a9f8, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: face
+    second: {fileID: 2100004, guid: 3dd6e9b881e8e6e4abe1d12c68a9e67d, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
