@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 4354948551468090}
   - component: {fileID: 65151568568008772}
   - component: {fileID: 114449077574805404}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: Calf_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,6 +215,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4011796074903836}
+  - component: {fileID: 114975323587149318}
   m_Layer: 18
   m_Name: Head_end
   m_TagString: Untagged
@@ -285,7 +286,7 @@ GameObject:
   - component: {fileID: 4344087441598566}
   - component: {fileID: 65507915449901848}
   - component: {fileID: 114660682888186230}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: Hand_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +671,7 @@ GameObject:
   - component: {fileID: 4861052041619880}
   - component: {fileID: 65657019594806810}
   - component: {fileID: 114337317891410088}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: Calf_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,7 +704,7 @@ GameObject:
   - component: {fileID: 4429013577498948}
   - component: {fileID: 65521785173661486}
   - component: {fileID: 114492852673053430}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: Hand_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2951,7 +2952,7 @@ BoxCollider:
   m_GameObject: {fileID: 1739941390449286}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0045, y: 0.01, z: 0.005}
   m_Center: {x: 0, y: 0.005, z: 0}
@@ -2999,7 +3000,7 @@ BoxCollider:
   m_GameObject: {fileID: 1886130623014484}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.004, y: 0.0035, z: 0.006}
   m_Center: {x: 0, y: 0.004, z: 0}
@@ -3083,7 +3084,7 @@ BoxCollider:
   m_GameObject: {fileID: 1008987105147748}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: -0.0005, y: 0.0045, z: 0}
@@ -3095,7 +3096,7 @@ BoxCollider:
   m_GameObject: {fileID: 1442051953596052}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.004, y: 0.0035, z: 0.006}
   m_Center: {x: 0, y: 0.004, z: 0}
@@ -3155,7 +3156,7 @@ BoxCollider:
   m_GameObject: {fileID: 1356512203546322}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: 0.0005, y: 0.0045, z: 0}
@@ -3179,7 +3180,7 @@ BoxCollider:
   m_GameObject: {fileID: 1809091155107892}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0045, y: 0.01, z: 0.005}
   m_Center: {x: 0, y: 0.005, z: 0}
@@ -3227,7 +3228,7 @@ BoxCollider:
   m_GameObject: {fileID: 1053660538426142}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: 0.0003, y: 0.0035, z: -0.0007}
@@ -3395,7 +3396,7 @@ BoxCollider:
   m_GameObject: {fileID: 1298730889793330}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: -0.0003, y: 0.0035, z: -0.0007}
@@ -3541,6 +3542,7 @@ MonoBehaviour:
   WaitMaxTime: 1
   FocusMode: 0
   StalkingMode: 0
+  ZoomEndFlag: 0
   test: 0
 --- !u!114 &114337317891410088
 MonoBehaviour:
@@ -3770,6 +3772,18 @@ MonoBehaviour:
   - {fileID: 114099175476278440}
   - {fileID: 114895988505154416}
   - {fileID: 114206641383279304}
+--- !u!114 &114975323587149318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1245763443552782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19d1930699888344a9de703557cd583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 1738391738287554, guid: 0ce368a98c25f41419f54a57fcd71acd, type: 2}
 --- !u!135 &135441680233209718
 SphereCollider:
   m_ObjectHideFlags: 1

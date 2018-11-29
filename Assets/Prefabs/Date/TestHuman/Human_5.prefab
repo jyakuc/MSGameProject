@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4230802980484856}
   - component: {fileID: 65341639395066074}
   - component: {fileID: 114932651516860674}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Calf_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,6 +430,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4301706836214908}
+  - component: {fileID: 114436532808996558}
   m_Layer: 17
   m_Name: Head_end
   m_TagString: Untagged
@@ -578,7 +579,7 @@ GameObject:
   - component: {fileID: 4120264601110696}
   - component: {fileID: 65057793721595652}
   - component: {fileID: 114107684544786628}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Hand_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +761,7 @@ GameObject:
   - component: {fileID: 4446584581116166}
   - component: {fileID: 65121159195428794}
   - component: {fileID: 114712884777322110}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Calf_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +850,7 @@ GameObject:
   - component: {fileID: 4012151141254272}
   - component: {fileID: 65480569600553764}
   - component: {fileID: 114660437497570290}
-  m_Layer: 17
+  m_Layer: 0
   m_Name: Hand_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3059,7 +3060,7 @@ BoxCollider:
   m_GameObject: {fileID: 1787781884709406}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0045, y: 0.01, z: 0.005}
   m_Center: {x: 0, y: 0.005, z: 0}
@@ -3083,7 +3084,7 @@ BoxCollider:
   m_GameObject: {fileID: 1227948265181138}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: 0.0005, y: 0.0045, z: 0}
@@ -3095,7 +3096,7 @@ BoxCollider:
   m_GameObject: {fileID: 1953716210670968}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0045, y: 0.01, z: 0.005}
   m_Center: {x: 0, y: 0.005, z: 0}
@@ -3131,7 +3132,7 @@ BoxCollider:
   m_GameObject: {fileID: 1489436133856014}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: -0.0003, y: 0.0035, z: -0.0007}
@@ -3227,7 +3228,7 @@ BoxCollider:
   m_GameObject: {fileID: 1232875512298960}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.004, y: 0.0035, z: 0.006}
   m_Center: {x: 0, y: 0.004, z: 0}
@@ -3251,7 +3252,7 @@ BoxCollider:
   m_GameObject: {fileID: 1955429102285404}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: -0.0005, y: 0.0045, z: 0}
@@ -3263,7 +3264,7 @@ BoxCollider:
   m_GameObject: {fileID: 1754765359821602}
   m_Material: {fileID: 13400000, guid: 51814504e6aa0084ab1e0ac4875d9fc1, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.002, y: 0.005, z: 0.004}
   m_Center: {x: 0.0003, y: 0.0035, z: -0.0007}
@@ -3407,7 +3408,7 @@ BoxCollider:
   m_GameObject: {fileID: 1086390128335752}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.004, y: 0.0035, z: 0.006}
   m_Center: {x: 0, y: 0.004, z: 0}
@@ -3502,6 +3503,18 @@ MonoBehaviour:
   m_jointAddForces:
   - {fileID: 114936537746297352}
   - {fileID: 114881699141145404}
+--- !u!114 &114436532808996558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482604988342590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19d1930699888344a9de703557cd583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 1738391738287554, guid: 0ce368a98c25f41419f54a57fcd71acd, type: 2}
 --- !u!114 &114475142334174512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3754,6 +3767,7 @@ MonoBehaviour:
   WaitMaxTime: 1
   FocusMode: 0
   StalkingMode: 0
+  ZoomEndFlag: 0
   test: 0
 --- !u!114 &114981363099650094
 MonoBehaviour:
