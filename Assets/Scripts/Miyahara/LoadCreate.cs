@@ -13,6 +13,9 @@ public class LoadCreate : MonoBehaviour {
     public GameObject LoadColdSleepCamera;      //ロードシーンのコールドスリープアイスフィールドのカメラ
     public GameObject LoadColdSleep;            //コールドスリープアイスフィールドのロード
 
+    // 生成したステージを格納　破棄に使う
+    public List<GameObject> createLoadObjects = new List<GameObject>();
+
     public enum SelectingLoad
     {
         Colloseum,
@@ -24,7 +27,7 @@ public class LoadCreate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Load();
+        Loadinfo();
 	}
 	
 	// Update is called once per frame
@@ -32,26 +35,49 @@ public class LoadCreate : MonoBehaviour {
        
 	}
 
-    public void Load()
+    public void Loadinfo()
     {
+        createLoadObjects.Clear();
         switch (Stages)
         {
             case SelectingLoad.Colloseum:
-                Instantiate(LoadColloseumCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);           //カメラ生成
-                Instantiate(LoadColloseum, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                 //ステージ生成
+                createLoadObjects.Add(Instantiate(LoadColloseumCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));           //カメラ生成
+                createLoadObjects.Add(Instantiate(LoadColloseum, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                 //ステージ生成
                 Stages = SelectingLoad.Colloseum;
                 break;
             case SelectingLoad.HoruhoruMountain:
-                Instantiate(LoadHoruHoruCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);           //カメラ生成
-                Instantiate(LoadHoruHoru, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                 //ステージ生成
+                createLoadObjects.Add(Instantiate(LoadHoruHoruCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));           //カメラ生成
+                createLoadObjects.Add(Instantiate(LoadHoruHoru, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                 //ステージ生成
                 Stages = SelectingLoad.HoruhoruMountain;
                 break;
             case SelectingLoad.ColdSleepMountain:
-                Instantiate(LoadColdSleepCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);           //カメラ生成
-                Instantiate(LoadColdSleep, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);                 //ステージ生成
+                createLoadObjects.Add(Instantiate(LoadColdSleepCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));           //カメラ生成
+                createLoadObjects.Add(Instantiate(LoadColdSleep, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                 //ステージ生成
                 Stages = SelectingLoad.ColdSleepMountain;
                 break;
         }
+    }
+
+    // ステージ破棄
+    public void Unload()
+    {
+        for (int i = 0; i < createLoadObjects.Count; ++i)
+        {
+            Debug.Log("消去：" + createLoadObjects[i]);
+            Destroy(createLoadObjects[i].gameObject);
+        }
+        Stages++;
+        //createStageObjects.Clear();
+    }
+
+    // ステージがすべて破棄されたか確認
+    public bool IsLoadDestroy()
+    {
+        for (int i = 0; i < createLoadObjects.Count; ++i)
+        {
+            if (createLoadObjects[i] != null) return false;
+        }
+        return true;
     }
 
 }

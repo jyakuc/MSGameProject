@@ -26,9 +26,6 @@ public class StageCreate : MonoBehaviour {
     // 生成したステージを格納　破棄に使う
     public List<GameObject> createStageObjects = new List<GameObject>();
 
-    private int min = -2;
-    private int max = 2;
-
     [SerializeField]
     private float x, y, z;
 
@@ -99,7 +96,7 @@ public class StageCreate : MonoBehaviour {
     }
 
     // ステージ破棄
-    public void Unload()
+    public void Unstage()
     {
         for(int i = 0; i < createStageObjects.Count; ++i)
         {
@@ -111,7 +108,7 @@ public class StageCreate : MonoBehaviour {
     }
 
     // ステージがすべて破棄されたか確認
-    public bool IsDestroy()
+    public bool IsStageDestroy()
     {
         for (int i = 0; i < createStageObjects.Count; ++i)
         {
