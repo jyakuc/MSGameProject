@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadCreate : MonoBehaviour {
 
@@ -15,6 +16,11 @@ public class LoadCreate : MonoBehaviour {
 
     // 生成したステージを格納　破棄に使う
     public List<GameObject> createLoadObjects = new List<GameObject>();
+    [SerializeField]
+    private GameObject LoadUI;
+    private GameObject CollseumText;
+    private GameObject ColdSleepText;
+    private GameObject HoruHoruText;
 
     public enum SelectingLoad
     {
@@ -27,35 +33,46 @@ public class LoadCreate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Loadinfo();
+        CollseumText = LoadUI.transform.GetChild(0).transform.GetChild(1).gameObject;
+        ColdSleepText = LoadUI.transform.GetChild(0).transform.GetChild(2).gameObject;
+        HoruHoruText = LoadUI.transform.GetChild(0).transform.GetChild(3).gameObject;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-       
+        
 	}
 
     public void Loadinfo()
     {
+        
+
         createLoadObjects.Clear();
+        SelectText(Stages);         //テキストを選択
         switch (Stages)
         {
             case SelectingLoad.Colloseum:
+                LoadUI.SetActive(true);
                 createLoadObjects.Add(Instantiate(LoadColloseumCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));           //カメラ生成
                 createLoadObjects.Add(Instantiate(LoadColloseum, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                 //ステージ生成
                 Stages = SelectingLoad.Colloseum;
                 break;
             case SelectingLoad.HoruhoruMountain:
+                LoadUI.SetActive(true);
                 createLoadObjects.Add(Instantiate(LoadHoruHoruCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));           //カメラ生成
                 createLoadObjects.Add(Instantiate(LoadHoruHoru, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                 //ステージ生成
                 Stages = SelectingLoad.HoruhoruMountain;
                 break;
             case SelectingLoad.ColdSleepMountain:
+                LoadUI.SetActive(true);
                 createLoadObjects.Add(Instantiate(LoadColdSleepCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));           //カメラ生成
                 createLoadObjects.Add(Instantiate(LoadColdSleep, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                 //ステージ生成
                 Stages = SelectingLoad.ColdSleepMountain;
                 break;
         }
+        Canvas canvas = GameObject.Find("FadeCanvas").GetComponent<Canvas>();
+        canvas.worldCamera = createLoadObjects[0].GetComponent<Camera>();
+
     }
 
     // ステージ破棄
@@ -78,6 +95,28 @@ public class LoadCreate : MonoBehaviour {
             if (createLoadObjects[i] != null) return false;
         }
         return true;
+    }
+
+    void SelectText(SelectingLoad nowLoad)
+    {
+        switch (nowLoad)
+        {
+            case SelectingLoad.Colloseum:
+                CollseumText.SetActive(true);
+                ColdSleepText.SetActive(false);
+                HoruHoruText.SetActive(false);
+                break;
+            case SelectingLoad.HoruhoruMountain:
+                HoruHoruText.SetActive(true);
+                CollseumText.SetActive(false);
+                ColdSleepText.SetActive(false);
+                break;
+            case SelectingLoad.ColdSleepMountain:
+                ColdSleepText.SetActive(true);
+                HoruHoruText.SetActive(false);
+                CollseumText.SetActive(false);
+                break;
+        }
     }
 
 }

@@ -28,6 +28,9 @@ public class StageCreate : MonoBehaviour {
 
     [SerializeField]
     private float x, y, z;
+    [SerializeField]
+    private GameObject L_UI;
+
 
     public enum SelectingStage
     {
@@ -67,6 +70,7 @@ public class StageCreate : MonoBehaviour {
         {
             case SelectingStage.Colloseum:
                 // プレハブからインスタンスを生成
+                L_UI.SetActive(false);
                 createStageObjects.Add(Instantiate(ColosseumCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                    //カメラ生成
                 createStageObjects.Add(Instantiate(NormalStage, new Vector3(x, y, z), Quaternion.identity));                                 //ステージ生成
                 createStageObjects.Add(Instantiate(Colosseum, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                          //外枠生成
@@ -78,6 +82,7 @@ public class StageCreate : MonoBehaviour {
                 break;
             case SelectingStage.HoruhoruMountain:
                 //プレハブからインスタンスを生成
+                L_UI.SetActive(false);
                 createStageObjects.Add(Instantiate(HoruhoruCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                     //カメラ生成
                 createStageObjects.Add(Instantiate(HoruHoruMountain, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                   //ステージ生成
                 createStageObjects.Add(Instantiate(HoruHoruCannons, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                    //キャノン生成
@@ -86,6 +91,7 @@ public class StageCreate : MonoBehaviour {
                 break;
             case SelectingStage.ColdSleepMountain:
                 //プレハブからインスタンスを生成
+                L_UI.SetActive(false);
                 createStageObjects.Add(Instantiate(ColdSleepCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                    //カメラ生成
                 createStageObjects.Add(Instantiate(ColdSleepMountain, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                  //ステージ生成
                 createStageObjects.Add(Instantiate(ColdSleepCannons, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                      //キャノン生成

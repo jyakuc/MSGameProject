@@ -191,6 +191,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 166ffd972dbfb544784729884c50c4f3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &289972743 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1085364776886074, guid: 33ae67035ea75d74d80bdb6ff2ede6f3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1534249481}
 --- !u!1 &330460315
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +300,8 @@ MonoBehaviour:
     type: 2}
   LoadColdSleep: {fileID: 1690634762235782, guid: 1f49bbb004c8517489d5675b94bf2a56,
     type: 2}
+  createLoadObjects: []
+  LoadUI: {fileID: 0}
   Stages: 1
 --- !u!4 &600258741
 Transform:
@@ -438,7 +445,7 @@ Prefab:
     - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
       propertyPath: m_debugMode.m_debugstageCreate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
@@ -453,7 +460,7 @@ Prefab:
     - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114116800811218258, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
@@ -549,6 +556,18 @@ Prefab:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1085364776886074, guid: 33ae67035ea75d74d80bdb6ff2ede6f3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425448426095756, guid: 33ae67035ea75d74d80bdb6ff2ede6f3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683250612417232, guid: 33ae67035ea75d74d80bdb6ff2ede6f3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984954421685626, guid: 33ae67035ea75d74d80bdb6ff2ede6f3, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -651,7 +670,8 @@ MonoBehaviour:
   x: -9
   y: 1
   z: -9
-  Stages: 0
+  L_UI: {fileID: 289972743}
+  Stages: 1
 --- !u!4 &1800838732
 Transform:
   m_ObjectHideFlags: 0
@@ -671,7 +691,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1800838730}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b260c3e124f187c4fa2a2e25cea06474, type: 3}
   m_Name: 
@@ -688,7 +708,9 @@ MonoBehaviour:
     type: 2}
   LoadColdSleep: {fileID: 1690634762235782, guid: 1f49bbb004c8517489d5675b94bf2a56,
     type: 2}
-  Stages: 0
+  createLoadObjects: []
+  LoadUI: {fileID: 289972743}
+  Stages: 1
 --- !u!114 &1915988211 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114402365842373260, guid: 166ffd972dbfb544784729884c50c4f3,
