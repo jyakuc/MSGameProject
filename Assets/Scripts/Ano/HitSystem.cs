@@ -7,6 +7,7 @@ public class HitSystem : MonoBehaviour {
     //生成するPrefab
     public GameObject HitPrefab;
     public GameObject CriticalPrefab;
+    public GameObject BlowSmokePrefab;
     //オーディオ
     public AudioManager audio;
     //エフェクト
@@ -328,9 +329,11 @@ public class HitSystem : MonoBehaviour {
         {
             case HitSelect.Hit:
                 NewHitEffect = (GameObject)Instantiate(HitPrefab, transform.position, Quaternion.identity);
+                Instantiate(BlowSmokePrefab, trans.parent);
                 break;
             case HitSelect.Critical:
                 NewHitEffect = (GameObject)Instantiate(CriticalPrefab, transform.position, Quaternion.identity);
+                Instantiate(BlowSmokePrefab, trans.parent);
                 break;
         }
         NewHitEffect.GetComponent<Transform>().LookAt(trans);
