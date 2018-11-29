@@ -68,7 +68,6 @@ public class MyInputManager:MonoBehaviour {
         {
             if (oldJoysticks[i] != joysticks[i])
                 disconnectedNum.Add(i + 1);
-
         }
         Debug.Log("動的接続:" + directNum);
         if (directNum == 6)
