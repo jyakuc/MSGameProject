@@ -18,6 +18,8 @@ public class LoadCreate : MonoBehaviour {
     public List<GameObject> createLoadObjects = new List<GameObject>();
     [SerializeField]
     private GameObject LoadUI;
+    [SerializeField]
+    private GameObject Game_UI;
     private GameObject CollseumText;
     private GameObject ColdSleepText;
     private GameObject HoruHoruText;
@@ -53,26 +55,31 @@ public class LoadCreate : MonoBehaviour {
         {
             case SelectingLoad.Colloseum:
                 LoadUI.SetActive(true);
+                Game_UI.SetActive(false);
                 createLoadObjects.Add(Instantiate(LoadColloseumCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));           //カメラ生成
                 createLoadObjects.Add(Instantiate(LoadColloseum, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                 //ステージ生成
                 Stages = SelectingLoad.Colloseum;
                 break;
             case SelectingLoad.HoruhoruMountain:
                 LoadUI.SetActive(true);
+                Game_UI.SetActive(false);
                 createLoadObjects.Add(Instantiate(LoadHoruHoruCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));           //カメラ生成
                 createLoadObjects.Add(Instantiate(LoadHoruHoru, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                 //ステージ生成
                 Stages = SelectingLoad.HoruhoruMountain;
                 break;
             case SelectingLoad.ColdSleepMountain:
                 LoadUI.SetActive(true);
+                Game_UI.SetActive(false);
                 createLoadObjects.Add(Instantiate(LoadColdSleepCamera, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));           //カメラ生成
                 createLoadObjects.Add(Instantiate(LoadColdSleep, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity));                 //ステージ生成
                 Stages = SelectingLoad.ColdSleepMountain;
                 break;
         }
-        Canvas canvas = GameObject.Find("FadeCanvas").GetComponent<Canvas>();
-        canvas.worldCamera = createLoadObjects[0].GetComponent<Camera>();
 
+        GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+        GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().transform.position = new Vector3(0.0f, 0.0f, 100.0f);
+        GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().worldCamera = createLoadObjects[0].GetComponent<Camera>();
+        
     }
 
     // ステージ破棄

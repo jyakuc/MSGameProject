@@ -173,7 +173,7 @@ Prefab:
     - target: {fileID: 224734914340801992, guid: 166ffd972dbfb544784729884c50c4f3,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1848002435303196, guid: 166ffd972dbfb544784729884c50c4f3, type: 2}
       propertyPath: m_IsActive
@@ -182,7 +182,7 @@ Prefab:
     - target: {fileID: 224734914340801992, guid: 166ffd972dbfb544784729884c50c4f3,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1115407867339004, guid: 166ffd972dbfb544784729884c50c4f3, type: 2}
       propertyPath: m_IsActive
@@ -191,6 +191,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 166ffd972dbfb544784729884c50c4f3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &116253312 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1115407867339004, guid: 166ffd972dbfb544784729884c50c4f3,
+    type: 2}
+  m_PrefabInternal: {fileID: 91088894}
 --- !u!1 &289972743 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1085364776886074, guid: 33ae67035ea75d74d80bdb6ff2ede6f3,
@@ -302,6 +307,7 @@ MonoBehaviour:
     type: 2}
   createLoadObjects: []
   LoadUI: {fileID: 0}
+  Game_UI: {fileID: 0}
   Stages: 1
 --- !u!4 &600258741
 Transform:
@@ -671,6 +677,7 @@ MonoBehaviour:
   y: 1
   z: -9
   L_UI: {fileID: 289972743}
+  G_UI: {fileID: 1115407867339004, guid: 166ffd972dbfb544784729884c50c4f3, type: 2}
   Stages: 1
 --- !u!4 &1800838732
 Transform:
@@ -710,6 +717,7 @@ MonoBehaviour:
     type: 2}
   createLoadObjects: []
   LoadUI: {fileID: 289972743}
+  Game_UI: {fileID: 116253312}
   Stages: 1
 --- !u!114 &1915988211 stripped
 MonoBehaviour:
