@@ -56,9 +56,9 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
         S_timer = GameObject.FindObjectOfType<StartTimer>();
         VanishGroundFlg = false;
         PerformanceGround = GameObject.Find("PerformanceGround");
-        ParentGround1 = GameObject.Find("IceField_FallObj01");
-        ParentGround2 = GameObject.Find("IceField_FallObj02");
-        ParentGround3 = GameObject.Find("IceField_FallObj03");
+        ParentGround1 = GameObject.Find("PerfomanceObj01");
+        ParentGround2 = GameObject.Find("PerfomanceObj02");
+        ParentGround3 = GameObject.Find("PerfomanceObj03");
         VanishGround = PerformanceGround.GetComponent<VanishWall>();
         VanishParent1 = ParentGround1.GetComponent<VanishWall>();
         VanishParent2 = ParentGround2.GetComponent<VanishWall>();

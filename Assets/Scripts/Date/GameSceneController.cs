@@ -11,7 +11,8 @@ public class GameSceneController : MonoBehaviour {
         FrameCount,
         Transition,
         NotUpdate,
-        Unload,
+        Unstage,
+        UnLoad,
         DisplayLoad,
         Load,
         Restart,
@@ -23,6 +24,7 @@ public class GameSceneController : MonoBehaviour {
     private int frame;
 
     private StageCreate m_stageCreater;
+    private LoadCreate m_LoadCreater;
     private FadeController fadeController;
     private ArtArmatureSave armatureSave;
 
@@ -37,6 +39,7 @@ public class GameSceneController : MonoBehaviour {
         BgmSet();
         fadeController = FindObjectOfType<FadeController>();
         m_stageCreater = FindObjectOfType<StageCreate>();
+        m_LoadCreater = FindObjectOfType<LoadCreate>();
         armatureSave = FindObjectOfType<ArtArmatureSave>();
     }
 
@@ -57,17 +60,22 @@ public class GameSceneController : MonoBehaviour {
                 fadeController.m_onFinished += FadeInFinish;
                 m_state = EState.NotUpdate;
                 break;
-            case EState.Unload:
-                Debug.Log("Unload");
-                m_stageCreater.Unload();
+            case EState.Unstage:
+                Debug.Log("Unstage");
+                m_stageCreater.Unstage();
                 armatureSave.SetAllActives(false);
                 StartCoroutine(UnLoadEnumrator());
+                m_state = EState.NotUpdate;
+                break;
+            case EState.UnLoad:
+                Debug.Log("UnLoad");
+                m_LoadCreater.Unload();
                 m_state = EState.NotUpdate;
                 break;
             case EState.DisplayLoad:
                 Debug.Log("ロード画面");
                 // ロード画面生成
-
+                m_LoadCreater.Loadinfo();
                 m_state = EState.NotUpdate;
                 break;
             case EState.Load:
@@ -96,7 +104,7 @@ public class GameSceneController : MonoBehaviour {
     public void FadeInFinish()
     {
         fadeController.m_onFinished -= FadeInFinish;
-        m_state = EState.Unload;
+        m_state = EState.Unstage;
     }
 
     // フェードアウトが終了したコールバック関数
