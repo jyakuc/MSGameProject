@@ -18,6 +18,8 @@ public static class AUDIO
     public const string SE_Hit02 = "Hit02";
     public const string SE_Magma = "Magma";
     public const string SE_Wind = "Wind";
+    public const string SE_Vanish = "Vanish";
+    public const string SE_Explosion = "Explosion";
 
     //intro
     public const string SE_Buzzer = "Buzzer";

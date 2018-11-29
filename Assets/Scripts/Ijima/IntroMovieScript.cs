@@ -19,6 +19,8 @@ public class IntroMovieScript : MonoBehaviour {
         flame = 0;
         OneKeyFlag = false;
         IntroFinishFlg = false;
+        AudioManager.GetInstance.ChangeVolume(0.2f, 1.0f);
+        AudioManager.GetInstance.PlayBGM(AUDIO.BGM_MOVIE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
     }
 	
 	// Update is called once per frame
