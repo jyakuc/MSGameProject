@@ -57,12 +57,12 @@ public class WarmingSystem : MonoBehaviour {
     {
         if (Input.GetButton("ST_Player" + MyInput.joysticks[Num]))
         {
-            PlayerReadys[Num] = true;
+            PlayerReadys[Num] = !PlayerReadys[Num];
             Debug.Log("押されたよ" + MyInput.joysticks[Num]);
         }
         if (Input.GetKeyDown(KeyCode.Alpha1+ Num))
         {
-            PlayerReadys[Num] = true;
+            PlayerReadys[Num] = !PlayerReadys[Num];
             Debug.Log("押されたよ" + MyInput.joysticks[Num]);
         }
     }
