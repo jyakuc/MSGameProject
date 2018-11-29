@@ -73,11 +73,11 @@ public class PlayerCamera : MonoBehaviour
                     break;
                 case 3:
                     P_Camera.depth = 1;
-                    P_Camera.rect = new Rect(0.0f, 0.34f, 0.34f, 0.34f);
+                    P_Camera.rect = new Rect(0.68f, 0.68f, 0.34f, 0.34f);
                     break;
                 case 4:
                     P_Camera.depth = 1;
-                    P_Camera.rect = new Rect(0.68f, 0.34f, 0.34f, 0.34f);
+                    P_Camera.rect = new Rect(0.0f, 0.0f, 0.34f, 0.34f);
                     break;
                 case 5:
                     P_Camera.depth = 1;
