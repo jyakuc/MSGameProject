@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour
     private CostManager m_costManager;
     [SerializeField]
     private GameUIScripts m_gameUIScripts;
+    [SerializeField]
+    private ArtArmatureSave m_artArmatureSave;
 
     private PlayerController m_winnerPlayer;
     /// <summary>
@@ -190,6 +192,7 @@ public class GameController : MonoBehaviour
             CostManager costManager = FindObjectOfType<CostManager>();
             costManager.SaveArtCostData(m_playerObj[i].PlayerID, art.Cost);
             costManager.SaveRankPointData(m_playerObj[i].PlayerID, 0);
+            m_artArmatureSave.InContainer(m_playerObj[i].gameObject,art.Cost.allCost);
             Debug.Log("勝者：" + m_playerObj[i].name + " 芸術ポイント：" + art.Cost.allCost);
 
             // 勝者を殺すプログラム
@@ -211,10 +214,10 @@ public class GameController : MonoBehaviour
         // ポイントリスト初期化
         m_costManager.Init();
         // プレイヤリスト初期化
-        if (m_winnerPlayer)
-        {
-            m_winnerPlayer.Dead();
-        }
+        //if (m_winnerPlayer)
+        //{
+        //    m_winnerPlayer.Dead();
+        //}
 
         m_playerObj.Clear();
         

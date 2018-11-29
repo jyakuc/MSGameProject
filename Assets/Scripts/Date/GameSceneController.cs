@@ -24,6 +24,7 @@ public class GameSceneController : MonoBehaviour {
 
     private StageCreate m_stageCreater;
     private FadeController fadeController;
+    private ArtArmatureSave armatureSave;
 
     //public GameController gameController;
     private EState m_state;
@@ -36,6 +37,7 @@ public class GameSceneController : MonoBehaviour {
         BgmSet();
         fadeController = FindObjectOfType<FadeController>();
         m_stageCreater = FindObjectOfType<StageCreate>();
+        armatureSave = FindObjectOfType<ArtArmatureSave>();
     }
 
     void Update()
@@ -58,6 +60,7 @@ public class GameSceneController : MonoBehaviour {
             case EState.Unload:
                 Debug.Log("Unload");
                 m_stageCreater.Unload();
+                armatureSave.SetAllActives(false);
                 StartCoroutine(UnLoadEnumrator());
                 m_state = EState.NotUpdate;
                 break;
