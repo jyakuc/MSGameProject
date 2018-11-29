@@ -12,6 +12,7 @@ public class GameSceneController : MonoBehaviour {
         Transition,
         NotUpdate,
         Unload,
+        DisplayLoad,
         Load,
         Restart,
     }
@@ -60,6 +61,12 @@ public class GameSceneController : MonoBehaviour {
                 StartCoroutine(UnLoadEnumrator());
                 m_state = EState.NotUpdate;
                 break;
+            case EState.DisplayLoad:
+                Debug.Log("ロード画面");
+                // ロード画面生成
+
+                m_state = EState.NotUpdate;
+                break;
             case EState.Load:
                 Debug.Log("Load");
                 m_stageCreater.Load();
@@ -101,7 +108,7 @@ public class GameSceneController : MonoBehaviour {
     {
         //yield return new WaitUntil(()=> m_stageCreater.IsDestroy()==true);
         yield return new WaitForSeconds(FadeTimeSecond);
-        m_state = EState.Load;
+        m_state = EState.DisplayLoad;
     }
 
     public bool IsRestart()
