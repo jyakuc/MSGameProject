@@ -432,6 +432,7 @@ MonoBehaviour:
   LoadColdSleep: {fileID: 1690634762235782, guid: 1f49bbb004c8517489d5675b94bf2a56,
     type: 2}
   createLoadObjects: []
+  LoadUI: {fileID: 0}
   Stages: 1
 --- !u!4 &600258741
 Transform:
@@ -1164,7 +1165,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1085364776886074, guid: 33ae67035ea75d74d80bdb6ff2ede6f3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33ae67035ea75d74d80bdb6ff2ede6f3, type: 2}
@@ -1401,6 +1402,7 @@ MonoBehaviour:
   x: -9
   y: 1
   z: -9
+  L_UI: {fileID: 1840164209}
   Stages: 0
 --- !u!4 &1800838732
 Transform:
@@ -1421,7 +1423,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1800838730}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b260c3e124f187c4fa2a2e25cea06474, type: 3}
   m_Name: 
@@ -1439,7 +1441,13 @@ MonoBehaviour:
   LoadColdSleep: {fileID: 1690634762235782, guid: 1f49bbb004c8517489d5675b94bf2a56,
     type: 2}
   createLoadObjects: []
+  LoadUI: {fileID: 1840164209}
   Stages: 0
+--- !u!1 &1840164209 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1085364776886074, guid: 33ae67035ea75d74d80bdb6ff2ede6f3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1534249481}
 --- !u!114 &1915988211 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114402365842373260, guid: 166ffd972dbfb544784729884c50c4f3,
