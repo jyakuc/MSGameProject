@@ -33,6 +33,18 @@ public class ReadyImage : MonoBehaviour {
             {
                 image.color = new Color(image.color.r, image.color.g, image.color.b, 1.0f);
             }
+            
         }	
+        else
+        {
+            if (image.color.a > 0)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - 0.1f);
+            }
+            else
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 0.0f);
+            }
+        }
 	}
 }
