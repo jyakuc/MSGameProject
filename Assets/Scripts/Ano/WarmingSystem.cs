@@ -21,11 +21,17 @@ public class WarmingSystem : MonoBehaviour {
         if(!NextFlag)
         {
             NextSceneTimer -= Time.deltaTime;
-            if ((NextSceneTimer <=0 ) ||(AllReadyCheck()))
+            if (AllReadyCheck())
             {
                 NextFlag = true;
                 SceneController.GetInstance.ChangeScene("GameScene", 2);
             }
+            //if ((NextSceneTimer <=0 ) ||(AllReadyCheck()))
+            //{
+            //    NextFlag = true;
+            //    SceneController.GetInstance.ChangeScene("GameScene", 2);
+            //}
+
         }
 
         for (int i = 0; i < 6; i++)
@@ -49,10 +55,12 @@ public class WarmingSystem : MonoBehaviour {
     }
     void ReadyInput(int Num)
     {
-        if ((Input.GetButton("A_Player" + MyInput.joysticks[Num])) &&
-            (Input.GetButton("B_Player" + MyInput.joysticks[Num]))&&
-            (Input.GetButton("X_Player" + MyInput.joysticks[Num]))&&
-            (Input.GetButton("Y_Player" + MyInput.joysticks[Num])))
+        if (Input.GetButton("ST_Player" + MyInput.joysticks[Num]))
+        {
+            PlayerReadys[Num] = true;
+            Debug.Log("押されたよ" + MyInput.joysticks[Num]);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1+ Num))
         {
             PlayerReadys[Num] = true;
             Debug.Log("押されたよ" + MyInput.joysticks[Num]);
