@@ -12,22 +12,30 @@ public class LoadScript : MonoBehaviour
     public RawImage[] PannelTenPlace;
     public RawImage[] PannelHundredPlace;
     public Image[] PlayerNumber;
+    public Image[] Startbutton;
     public Texture[] Images;
     public Sprite[] ImagesNumber;
+    public Sprite[] Sbutton;
     private CostManager CManager;
     private int[] BattlePoint = new int[6]; //バトルポイントの格納配列
     private int[] Rank = new int[6];
     private Color[] SetColors = new Color[7];
+    private int flame;
+    private int now_s;
 
     private void Start()
     {
         CManager = FindObjectOfType<CostManager>();
         Init();
+        flame = 0;
+        now_s = 0;
     }
 
     void Update()
     {
-
+        flame++;
+        if (flame % 90 == 0) SButtonAnimation();
+        if (flame >= 50000) flame = 0;
     }
 
     //勝利プレイヤー判定と点数格納
@@ -129,6 +137,14 @@ public class LoadScript : MonoBehaviour
 
             }
         }
+    }
+
+    void SButtonAnimation()
+    {
+        now_s++;
+        if (now_s > 1) now_s = 0;
+        Startbutton[0].sprite = Sbutton[now_s]; //Ready前こっちだけ
+        Startbutton[1].sprite = Sbutton[now_s]; //Ready後こっちだけにしたい
     }
 }
 
