@@ -13,6 +13,9 @@ public class SleepEffectCreater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        CreateObject.transform.position = this.transform.position;
-	}
+        if(CreateObject!=null)
+        {
+            CreateObject.transform.position = this.transform.position;
+        }
+    }
 }

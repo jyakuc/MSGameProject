@@ -41,11 +41,19 @@ public class HitSystem : MonoBehaviour {
         //プレイヤーオブジェクトに当たったかどうか
         if (PlayerCheck(other))
         {
-            //当たったオブジェクトが吹っ飛び状態なのか
-            if(other.gameObject.transform.root.gameObject.GetComponent<PlayerController>().GetMyState()== PlayerController.EState.BlowAway)
+            try
+            {
+                //当たったオブジェクトが吹っ飛び状態なのか
+                if (other.gameObject.transform.root.gameObject.GetComponent<PlayerController>().GetMyState() == PlayerController.EState.BlowAway)
+                {
+                    return;
+                }
+            }
+            catch
             {
                 return;
             }
+
 
         }
         //それ以外はプレイヤーではないのでこの時点で処理は終了させる
@@ -190,6 +198,7 @@ public class HitSystem : MonoBehaviour {
             CreateEffect(HitSelect.Critical, SaveHitObject.transform);
             HitParticle.Play();
             CriticalFlag = false;
+            SaveHitObject = null;
         }
 
     }
