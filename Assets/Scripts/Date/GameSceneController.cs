@@ -117,7 +117,9 @@ public class GameSceneController : MonoBehaviour {
 
         // 最後のステージならリザルトシーンに移行
         if (m_stageCreater.Stages == StageCreate.SelectingStage.HoruhoruMountain)
+        {
             SceneController.GetInstance.ChangeScene("ResultScene");
+        }
         else
             m_state = EState.FrameCount;
     }

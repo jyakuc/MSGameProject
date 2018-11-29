@@ -32,6 +32,7 @@ public class PauseManager : MonoBehaviour {
     {
         if (playerID != saveID) return;
         saveID = -1;
+        GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
         SceneController.GetInstance.ChangeScene("TitleScene");
     }
 }
