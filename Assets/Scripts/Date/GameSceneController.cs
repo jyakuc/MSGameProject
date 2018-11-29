@@ -91,8 +91,10 @@ public class GameSceneController : MonoBehaviour {
                 m_state = EState.WaitInput;
                 break;
             case EState.WaitInput:
+                Debug.Log("入力待ち");
                 for (int i = 0; i < MaxPlayer; i++)
                 {
+                    Debug.Log(StDownflg[0]);
                     if (StDownflg[i]) continue;
                     StDownflg[i] = Input.GetButtonDown("ST_Player" + (i + 1));
                     if (!StDownflg[i])
