@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class MyInputManager:MonoBehaviour {
 
@@ -61,11 +63,11 @@ public class MyInputManager:MonoBehaviour {
             }
         }
         // どこか抜けてないか確認
-        int disconnectedNum = 0;
+        List<int> disconnectedNum = new List<int>();
         for(int i = 0;i< oldJoysticks.Length; i++)
         {
             if (oldJoysticks[i] != joysticks[i])
-                disconnectedNum = i + 1;
+                disconnectedNum.Add(i + 1);
 
         }
         Debug.Log("動的接続:" + directNum);
