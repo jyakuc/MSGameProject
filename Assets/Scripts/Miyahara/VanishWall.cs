@@ -28,6 +28,7 @@ public class VanishWall : MonoBehaviour {
             }
             if (WallMaterial.color.a <= 0)
             {
+                AudioManager.GetInstance.PlaySE0(AUDIO.SE_Vanish, 0.0f);
                 IceEffect.EndEffect();
                 Destroy(this.gameObject);
             }

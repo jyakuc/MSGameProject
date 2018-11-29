@@ -35,7 +35,7 @@ public class FireBall : MonoBehaviour {
             NewHitEffect.GetComponent<Transform>().localScale = MyParticle.transform.localScale;
 
             AtomicEffect.Play();
-
+            AudioManager.GetInstance.PlaySE0(AUDIO.SE_Explosion, 0.0f);
             Debug.Log(other.transform.name);
             other.GetComponent<FallFloor>().OnFall();
         }
