@@ -23,7 +23,6 @@ public class LoadScript : MonoBehaviour
     {
         CManager = FindObjectOfType<CostManager>();
         Init();
-        //AudioManager.GetInstance.PlayBGM(AUDIO.BGM_TITLE, AudioManager.BGM_FADE_SPEED_RATE_HIGH); //BGM再生
     }
 
     void Update()
