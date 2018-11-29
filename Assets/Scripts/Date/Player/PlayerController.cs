@@ -192,10 +192,18 @@ public class PlayerController : MonoBehaviour
             Debug.Log("ポーズ");
             PauseManager.OnPause(m_playerID);
         }
-
+        if(m_playerID == 2)
+        {
+            Debug.Log(m_inputButton[(int)EInputButton.A].stay);
+            Debug.Log(m_inputButton[(int)EInputButton.B].stay);
+            Debug.Log(m_inputButton[(int)EInputButton.X].stay);
+            Debug.Log(m_inputButton[(int)EInputButton.Y].stay);
+            Debug.Log("flg" +PauseManager.IsPause);
+        }
         if(m_inputButton[(int)EInputButton.A].stay && m_inputButton[(int)EInputButton.B].stay &&
             m_inputButton[(int)EInputButton.X].stay && m_inputButton[(int)EInputButton.Y].stay && PauseManager.IsPause)
         {
+            Debug.Log("ccccccc");
             PauseManager.PauseToTitle(m_playerID);
         }
         // 回転減衰

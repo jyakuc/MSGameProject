@@ -136,7 +136,7 @@ public class MyInputManagerSetter {
                 BKey = "p";
                 XKey = "k";
                 YKey = "l";
-                STKey = "enter";
+                STKey = "return";
                 break;
         }
     }
