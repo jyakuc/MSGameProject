@@ -26,8 +26,9 @@ public class MyInputManagerSetter {
     //プレイヤーごとの入力設定を追加する
     private static void AddPlayerInputSettings(MyInputManagerGenerator myInputManagerGenerator,int playerIndex)
     {
-        string upKey = "", downKey = "", leftKey = "", rightKey = "", AKey = "", BKey = "", XKey = "", YKey = "";
-        GetAxisKey(out upKey, out downKey, out rightKey, out leftKey, out AKey, out BKey, out XKey, out YKey, playerIndex);
+        string upKey = "", downKey = "", leftKey = "", rightKey = "",
+               AKey = "", BKey = "", XKey = "", YKey = "" , STKey = "" ;
+        GetAxisKey(out upKey, out downKey, out rightKey, out leftKey, out AKey, out BKey, out XKey, out YKey,out STKey , playerIndex);
 
         int joystickNum = playerIndex + 1;
 
@@ -60,6 +61,11 @@ public class MyInputManagerSetter {
             var name = string.Format("Y_Player{0}", joystickNum);
             var button = string.Format("joystick {0} button 3", joystickNum);
             myInputManagerGenerator.AddAxis(InputInfo.CreateButton(name, button, YKey));
+        }
+        {
+            var name = string.Format("ST_Player{0}", joystickNum);
+            var button = string.Format("joystick {0} button 7", joystickNum);
+            myInputManagerGenerator.AddAxis(InputInfo.CreateButton(name, button, STKey));
         }
 
     }
@@ -96,7 +102,7 @@ public class MyInputManagerSetter {
 
     // キーボード用割り当て
     private static void GetAxisKey(out string upKey,out string downKey,out string leftKey,out string rightKey,
-        out string AKey,out string BKey , out string XKey,out string YKey,int playerIndex)
+        out string AKey,out string BKey , out string XKey,out string YKey, out string STKey ,int playerIndex)
     {
         upKey = "";
         downKey = "";
@@ -106,6 +112,7 @@ public class MyInputManagerSetter {
         BKey = "";
         XKey = "";
         YKey = "";
+        STKey = "";
 
         switch (playerIndex)
         {
@@ -118,6 +125,7 @@ public class MyInputManagerSetter {
                 BKey = "r";
                 XKey = "f";
                 YKey = "g";
+                STKey = "space";
                  break;
             case 1:
                 upKey = "up";
@@ -128,6 +136,7 @@ public class MyInputManagerSetter {
                 BKey = "p";
                 XKey = "k";
                 YKey = "l";
+                STKey = "enter";
                 break;
         }
     }
