@@ -259,7 +259,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -671,7 +671,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -974,7 +974,7 @@ MonoBehaviour:
   delay: 0
   style: 2
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.02
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -1259,7 +1259,7 @@ MonoBehaviour:
   delay: 0
   style: 0
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.02
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   delay: 0
   style: 2
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.02
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -1735,7 +1735,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -2211,7 +2211,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.0066666664
   usePosition: 1
   useRotation: 0
   useScale: 0
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -3123,7 +3123,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -3788,6 +3788,7 @@ MonoBehaviour:
   - {fileID: 947079518}
   - {fileID: 395181421}
   - {fileID: 1113553871}
+  audio: {fileID: 0}
   NextSceneTimer: 60
   CountTimer: 0
 --- !u!4 &1137082448
@@ -4240,6 +4241,20 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1052671282108844, guid: dc1de046339e85049a4a76553bc9f8c9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223269582960311406, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223269582960311406, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc1de046339e85049a4a76553bc9f8c9, type: 2}
   m_IsPrefabParent: 0
@@ -4380,7 +4395,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -5375,7 +5390,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 1
   useScale: 0
@@ -5944,7 +5959,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -6229,7 +6244,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -6619,7 +6634,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.005
   usePosition: 0
   useRotation: 1
   useScale: 0
@@ -6896,7 +6911,7 @@ MonoBehaviour:
   delay: 0
   style: 0
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.02
   usePosition: 0
   useRotation: 0
   useScale: 1
@@ -7095,7 +7110,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 0.0066666664
   usePosition: 1
   useRotation: 0
   useScale: 0

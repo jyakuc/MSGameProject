@@ -24,6 +24,8 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
     private GameObject g_UI;
     private GameObject _slider_Background;
     private GameObject _slider_Fillarea;
+    private GameObject _sliderText1;
+    private GameObject _sliderText2;
 
 
     //カメラ演出用
@@ -51,8 +53,10 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
         Cursors = GameObject.Find("Cursors(Clone)");
         FadeFlg = false;
         g_UI = GameObject.Find("GameUI");
-        _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject;
-        _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject;
+        _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(0).gameObject;
+        _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(1).gameObject;
+        _sliderText1 = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(2).gameObject;
+        _sliderText2 = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(3).gameObject;
         S_timer = GameObject.FindObjectOfType<StartTimer>();
         VanishGroundFlg = false;
         PerformanceGround = GameObject.Find("PerformanceGround");
@@ -105,6 +109,8 @@ public class ColdSleepIceFieldCamera : MonoBehaviour {
         OnCursors();
         _slider_Background.gameObject.SetActive(true);
         _slider_Fillarea.gameObject.SetActive(true);
+        _sliderText1.gameObject.SetActive(true);
+        _sliderText2.gameObject.SetActive(true);
         FadeController.Begin(FadeObj.gameObject, true, Rate);
         if (S_timer == null)
         {

@@ -73,6 +73,7 @@ public class GameSceneController : MonoBehaviour {
                 Debug.Log("Unstage");
                 m_stageCreater.Unstage();
                 armatureSave.SetAllActives(false);
+                armatureSave.WinnerCameraDestroy();
                 StartCoroutine(UnLoadEnumrator());
                 m_state = EState.NotUpdate;
                 break;

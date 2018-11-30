@@ -6,6 +6,7 @@ public class ArtArmatureSave : MonoBehaviour {
 
     const int ChildMax = 3;
     private float[] artPoint = new float[ChildMax];
+    private PlayerCamera destroyCamera;
     void Awake()
     {
         // ResultSceneにもってく
@@ -19,8 +20,9 @@ public class ArtArmatureSave : MonoBehaviour {
         child.transform.parent = transform;
 
         // Resultに必要ないスクリプト消去
+        destroyCamera = child.GetComponent<PlayerCamera>();
         Destroy(child.GetComponent<PlayerController>());
-        Destroy(child.GetComponent<PlayerCamera>());
+        //Destroy(child.GetComponent<PlayerCamera>());
         Destroy(child.GetComponent<PlayerExtendAndShrink>());
         Destroy(child.GetComponent<PlayerMoving>());
     }
@@ -46,6 +48,11 @@ public class ArtArmatureSave : MonoBehaviour {
     {
         for(int i=0;i<transform.childCount;++i)
             transform.GetChild(i).gameObject.SetActive(active);
+    }
+
+    public void WinnerCameraDestroy()
+    {
+        destroyCamera.CameraDelete();
     }
 
     public void ChildClear()
