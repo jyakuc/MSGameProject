@@ -71,7 +71,7 @@ public class ColdSleepGimic : MonoBehaviour {
 
     private int RandomGroundFloor;
     private int minGround = 0;
-    private int maxGround = 2;
+    private int maxGround = 3;
 
 	// Use this for initialization
 	void Start () {
