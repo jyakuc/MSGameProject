@@ -228,4 +228,17 @@ public class GameController : MonoBehaviour
         SetPlayerBothCollider(false); // プレイヤー同士の当たり判定無効化
 
     }
+
+    // 生きているHumanの数取得
+    public int GetLivePlayerNum()
+    {
+        int num = 0;
+        for(int i = 0; i <m_playerObj.Count;++i)
+        {
+            if (!m_playerObj[i]) continue;
+            if (m_playerObj[i].IsDead()) continue;
+            num++;
+        }
+        return num;
+    }
 }
