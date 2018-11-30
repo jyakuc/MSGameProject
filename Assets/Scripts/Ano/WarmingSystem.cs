@@ -3,6 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WarmingSystem : MonoBehaviour {
+    public enum EInput
+    {
+        Horizontal,
+        Vertical,
+        A, B, X, Y,
+        Start,
+        MAX,
+    }
+    public enum EInputButton
+    {
+        A, B, X, Y,
+        MAX,
+    }
+    public struct Button
+    {
+        public bool stay;   // 押し続けてる
+        public bool dowm;   // 押された瞬間
+        public bool up;     // 離した瞬間
+    };
     public PlayerController[] PlayersController;
     private MyInputManager MyInput;
     //オーディオ
@@ -12,9 +31,17 @@ public class WarmingSystem : MonoBehaviour {
     public float NextSceneTimer=20;
     public float CountTimer = 0;
     bool NextFlag = false;
-	// Use this for initialization
-	void Start () {
+    private string[] InputName = new string[(int)EInput.MAX];
+    // Use this for initialization
+    void Start () {
         MyInput = FindObjectOfType<MyInputManager>();
+        InputName[0] = "Horizontal_Player";
+        InputName[1] = "Vertical_Player";
+        InputName[2] = "A_Player";
+        InputName[3] = "B_Player";
+        InputName[4] = "X_Player";
+        InputName[5] = "Y_Player";
+        InputName[6] = "ST_Player";
         for (int i = 0; i < 6; i++) PlayerReadys[i] = false;
     }
 	
@@ -57,7 +84,7 @@ public class WarmingSystem : MonoBehaviour {
     }
     void ReadyInput(int Num)
     {
-        if (Input.GetButtonDown("ST_Player" + MyInput.joysticks[Num]))
+        if (Input.GetButtonDown(InputName[(int)EInput.Start] + MyInput.joysticks[Num].ToString()))
         {
             PlayerReadys[Num] = !PlayerReadys[Num];
             PlaysSe();
