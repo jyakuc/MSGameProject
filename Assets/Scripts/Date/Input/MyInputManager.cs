@@ -8,6 +8,7 @@ public class MyInputManager:MonoBehaviour {
     public PlayerController[] input = new PlayerController[6];
     public int[] joysticks = new int[6];
     private int[] oldJoysticks = new int[6];
+    private bool[] IsConnectFlgs = new bool[6];
     [SerializeField]
     private string controllerName;
     [SerializeField]
@@ -17,14 +18,21 @@ public class MyInputManager:MonoBehaviour {
     {
         get { return m_isAllConnectFlag; }
     }
-	// Use this for initialization
-	void Start () {
+    private List<int> m_disconnectedNum = new List<int>();
+    // Use this for initialization
+    void Start () {
         name = new string[10];
+        var stick = Input.GetJoystickNames();
+        for(int i = 0; i < stick.Length; ++i)
+        {
+            name[i] = stick[i];
+        }
         // ダミー
-        for(int i = 0; i < 6; ++i)
+        for (int i = 0; i < 6; ++i)
         {
             oldJoysticks[i] = i + 1;
-            joysticks[i] = i+1;
+            joysticks[i] = -1;
+            IsConnectFlgs[i] = true;
         }
         if (canvasInterruption == null) Debug.LogError("コントローラー抜け表示のCanvasをセットしてください。");
 
@@ -41,33 +49,55 @@ public class MyInputManager:MonoBehaviour {
         int num = 0;
         int directNum = 0;
 
-        // 前フレームでのコントローラー接続退避
-        for(int i = 0; i < oldJoysticks.Length; i++)
+        for (int i = 0; i < joysticks.Length; ++i)
         {
-            oldJoysticks[i] = joysticks[i];
-        }
-
-        for (int i = 0; i < stick.Length; ++i)
-        {
-            name[i] = stick[i];
+            //if(name[i] != stick[i])
+                //name[i] = stick[i];
             if (!string.IsNullOrEmpty(stick[i]))
             {
-                num++;
+                // 文字列にコントローラ名がある
                 if (stick[i] == controllerName)
                 {
+                    num++;
                     directNum++;
-                    //input[directNum - 1].JoystickNum = i+1;
                     joysticks[directNum - 1] = i + 1;
+                    IsConnectFlgs[num - 1] = true;
                 }
-
             }
+            else
+            {
+                // 前フレームのコントローラ情報と比較
+                if (name[i] == stick[i])
+                {
+                    num++;
+                    IsConnectFlgs[num - 1] = false;
+                }
+            }
+            name[i] = stick[i];
         }
         // どこか抜けてないか確認
-        List<int> disconnectedNum = new List<int>();
-        for(int i = 0;i< oldJoysticks.Length; i++)
+        /*
+        int diffNum = 0;
+        int maxNum = 0;
+        int lastcount = 0;
+        for (int i = 0; i < oldJoysticks.Length; i++)
         {
-            if (oldJoysticks[i] != joysticks[i])
-                disconnectedNum.Add(i + 1);
+            maxNum = i + 1 + diffNum;
+            if (maxNum > 6) maxNum = 6;
+            if (joysticks[i] == 6) lastcount++;
+            if (joysticks[i] != maxNum)
+            {
+                m_disconnectedNum.Add(i + 1);
+                    diffNum++;
+                }
+            }
+        Debug.Log("mmmm" + lastcount);
+            Debug.Log("llll" + m_disconnectedNum.Count);
+            */
+        for(int i = 0; i < IsConnectFlgs.Length; ++i)
+        {
+            // falseの時（i+1）= playerIDをリストに追加
+            if (!IsConnectFlgs[i]) m_disconnectedNum.Add(i + 1);
         }
         Debug.Log("動的接続:" + directNum);
         if (directNum == 6)
@@ -77,9 +107,22 @@ public class MyInputManager:MonoBehaviour {
         }
         else
         {
+ 
             m_isAllConnectFlag = false;
-            canvasInterruption.OnDisconnected(disconnectedNum);
+            canvasInterruption.OnDisconnected(m_disconnectedNum);
         }
+        m_disconnectedNum.Clear();
     }
     
+    private bool IsAllController()
+    {
+        int num = 0;
+        for(int i = 0; i < name.Length; ++i)
+        {
+            if (!string.IsNullOrEmpty(name[i]))
+                num++;
+        }
+        if (num == 6) return true;
+        return false;
+    }
 }

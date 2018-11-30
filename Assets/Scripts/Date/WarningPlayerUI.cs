@@ -24,15 +24,16 @@ public class WarningPlayerUI : MonoBehaviour {
 
     public void Display(List<int> disconnectedList)
     {
-        for (int i = 0; i < warningImages.Count; ++i)
+        for(int i = 0; i < warningImages.Count; ++i)
         {
             warningImages[i].gameObject.SetActive(true);
             warningImages[i].sprite = connectSprite[i];
-            for (int j = 0; j < disconnectedList.Count; ++j)
-            {
-                if (i == disconnectedList[j] - 1)
-                    warningImages[i].sprite = disconnectSprite[i];
-            }
         }
+        for (int j = 0; j < disconnectedList.Count; ++j)
+        {
+            Debug.Log("hhhh"+disconnectedList[j]);
+            warningImages[disconnectedList[j]-1].sprite = disconnectSprite[j];
+        }
+        
     }
 }
