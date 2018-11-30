@@ -20,7 +20,7 @@ public class ColdSleepGimic : MonoBehaviour {
     private VanishWall[] ChildInnerWall;
 
     private GameObject ParentGroundFall;
-    private VanishWall[] ChildGroundWall;
+    private VanishFloor[] ChildGroundWall;
 
     private int[,] FallList = 
     {
@@ -92,7 +92,7 @@ public class ColdSleepGimic : MonoBehaviour {
         ParentInnerWall = GameObject.Find("IceFieldInnerWalls");
         ChildInnerWall = ParentInnerWall.GetComponentsInChildren<VanishWall>();
         ParentGroundFall = GameObject.Find("IceFields");
-        ChildGroundWall = ParentGroundFall.GetComponentsInChildren<VanishWall>();
+        ChildGroundWall = ParentGroundFall.GetComponentsInChildren<VanishFloor>();
 
 
         RandomFloor = UnityEngine.Random.Range(min, max);
@@ -128,7 +128,7 @@ public class ColdSleepGimic : MonoBehaviour {
             }
             if (ChildWall[6] == null && GroundCount < 2)
             {
-                ChildGroundWall[GroundVanishList[RandomGroundFloor, GroundCount]].OnVanish();
+                ChildGroundWall[GroundVanishList[RandomGroundFloor, GroundCount]].OnVanishFloor();
                 GroundCount += 1;
             }
 

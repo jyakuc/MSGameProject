@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 33273151580071902}
   - component: {fileID: 23794953858358034}
   - component: {fileID: 64071443915290260}
-  - component: {fileID: 114040975081991838}
+  - component: {fileID: 114382045181905110}
   m_Layer: 11
   m_Name: IceField_quarter2
   m_TagString: Untagged
@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 33585258685862942}
   - component: {fileID: 23116158933005678}
   - component: {fileID: 64031307585016388}
-  - component: {fileID: 114542919686102260}
+  - component: {fileID: 114586384962846776}
   m_Layer: 11
   m_Name: IceField_quarter3
   m_TagString: Untagged
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 33400294354796644}
   - component: {fileID: 23226152443824486}
   - component: {fileID: 64927001502375894}
-  - component: {fileID: 114922835907917558}
+  - component: {fileID: 114370413273884610}
   m_Layer: 11
   m_Name: IceField_quarter1
   m_TagString: Untagged
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 33537324480934236}
   - component: {fileID: 23168001017386642}
   - component: {fileID: 64308293347396182}
-  - component: {fileID: 114248128780704418}
+  - component: {fileID: 114834975788646906}
   m_Layer: 11
   m_Name: IceField_quarter4
   m_TagString: Untagged
@@ -3711,7 +3711,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: eeebde7d3d02f7741b0c96ed48e0d8a6, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4496,18 +4496,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 0}
---- !u!114 &114040975081991838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1312393323363044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IceEffect: {fileID: 114009159566318092}
 --- !u!114 &114054752877709770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4654,18 +4642,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
---- !u!114 &114248128780704418
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1478312081490958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IceEffect: {fileID: 114397122243171254}
 --- !u!114 &114251191221547768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4811,6 +4787,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 0}
+--- !u!114 &114370413273884610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1448901682165272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd911708e5e64a45952667e95cf47d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IceEffect: {fileID: 114687563447904050}
+--- !u!114 &114382045181905110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1312393323363044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd911708e5e64a45952667e95cf47d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IceEffect: {fileID: 114009159566318092}
 --- !u!114 &114397122243171254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4920,18 +4920,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IceEffect: {fileID: 114886143903784564}
---- !u!114 &114542919686102260
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1432120888258692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IceEffect: {fileID: 114330897831793482}
 --- !u!114 &114550470074443958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4945,6 +4933,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
+--- !u!114 &114586384962846776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1432120888258692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd911708e5e64a45952667e95cf47d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IceEffect: {fileID: 114330897831793482}
 --- !u!114 &114598366091340392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5126,6 +5126,18 @@ MonoBehaviour:
   SetTime: 120
   IceFloorSetTime: 240
   InnerSetTime: 120
+--- !u!114 &114834975788646906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478312081490958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd911708e5e64a45952667e95cf47d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IceEffect: {fileID: 114397122243171254}
 --- !u!114 &114886143903784564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5150,18 +5162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IceEffect: {fileID: 114431392385415684}
---- !u!114 &114922835907917558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1448901682165272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a95594e6f49dd04892ed8bbae18787e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IceEffect: {fileID: 114687563447904050}
 --- !u!198 &198001570315409514
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -48915,7 +48915,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1355145797
+  randomSeed: -2079604873
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -62359,7 +62359,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1178932048
+  randomSeed: 786820974
   InitialModule:
     serializedVersion: 3
     enabled: 1
