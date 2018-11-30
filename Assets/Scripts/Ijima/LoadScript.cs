@@ -26,13 +26,13 @@ public class LoadScript : MonoBehaviour
     private void Start()
     {
         CManager = FindObjectOfType<CostManager>();
-        Init();
+ //       Init();
         flame = 0;
         now_s = 0;
 
-        PointColorSet();
-        RankSet();
-        PointSet();
+ //       PointColorSet();
+ //       RankSet();
+ //       PointSet();
     }
 
     void Update()
@@ -43,23 +43,49 @@ public class LoadScript : MonoBehaviour
     }
 
     //勝利プレイヤー判定と点数格納
-    public void Init()
+    public void UpdateDisplay()
     {
         for (int i = 0; i < 6; i++)
         {
             Rank[i] = 0;
-            BattlePoint[i] = CManager.GetPlayerCost(i + 1).critical + CManager.GetPlayerCost(i + 1).crush;
+            BattlePoint[i] = CManager.GetPlayerCost(i + 1).critical + CManager.GetPlayerCost(i + 1).crush + CManager.GetPlayerCost(i+1).rank;
         }
         for (int i = 0; i < 6; i++)
         {
-            for (int j = i + 1; j < 6; ++j)
+            for (int j = 0; j < 6; ++j)
             {
-                if (BattlePoint[i] <= BattlePoint[j])
+                if (BattlePoint[i] < BattlePoint[j])
                 {
                     Rank[i]++;  //順位の格納
                 }
             }
         }
+        for(int i = 0; i < Rank.Length; ++i)
+        {
+            int num = 0;
+            for (int j = 0; j < Rank.Length; ++j)
+            {
+                if (i == j) continue;
+                if (Rank[i] == Rank[j])
+                {
+                    num++;
+                    Rank[j]+=num;
+                }
+            }
+
+        }
+        PointSet();
+        RankSet();
+    }
+
+    public void Init()
+    {
+        for(int i = 0; i < Rank.Length; ++i)
+        {
+            Rank[i] = i;
+        }
+        PointSet();
+        RankSet();
     }
 
     void PointColorSet()
@@ -108,18 +134,27 @@ public class LoadScript : MonoBehaviour
                 if (Digit == j)
                 {
                     PannelDigit[Rank[i]].texture = Images[j];
+                    PannelDigit[Rank[i]].color = Color.white;
                 }
                 //10の位
                 if (TenPlace == j)
                 {
                     if (HundredPlace == 0)
                     {
-                        if (TenPlace != 0) PannelTenPlace[Rank[i]].texture = Images[j];
-                        else PannelTenPlace[Rank[i]].color = SetColors[6]; //桁消去
+                        if (TenPlace != 0)
+                        {
+                            PannelTenPlace[Rank[i]].texture = Images[j];
+                            PannelTenPlace[Rank[i]].color =Color.white;
+                        }
+                        else if (PannelTenPlace[Rank[i]].texture == Images[0] && HundredPlace == 0)
+                        {
+                            PannelTenPlace[Rank[i]].color = SetColors[6]; //桁消去
+                        }
                     }
                     else
                     {
                         PannelTenPlace[Rank[i]].texture = Images[j];
+                        PannelTenPlace[Rank[i]].color = Color.white;
                     }
                 }
                 //100の位
@@ -128,11 +163,13 @@ public class LoadScript : MonoBehaviour
                     if (HundredPlace == j)
                     {
                         PannelHundredPlace[Rank[i]].texture = Images[j];
+                        PannelHundredPlace[Rank[i]].color = Color.white;
                     }
                 }
                 else
                 {
-                    PannelHundredPlace[Rank[i]].color = SetColors[6];//桁消去
+                    if(PannelHundredPlace[Rank[i]].texture == Images[0])
+                        PannelHundredPlace[Rank[i]].color = SetColors[6];//桁消去
                 }
 
             }

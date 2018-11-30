@@ -17,6 +17,7 @@ public class GameSceneController : MonoBehaviour {
         Unstage,
         UnLoad,
         DisplayLoad,
+        InitDisplayLoad,
         WaitInput,
         Load,
         Restart,
@@ -40,7 +41,7 @@ public class GameSceneController : MonoBehaviour {
     private void Start()
     {
         frame = 0;
-        m_state = EState.DisplayLoad;
+        m_state = EState.InitDisplayLoad;
 
         BgmSet();
         fadeController = FindObjectOfType<FadeController>();
@@ -86,8 +87,13 @@ public class GameSceneController : MonoBehaviour {
             case EState.DisplayLoad:
                 Debug.Log("ロード画面");
                 // ロード画面生成
-                m_LoadScript.Init();
                 m_LoadCreater.Loadinfo();
+                m_LoadScript.UpdateDisplay();
+                m_state = EState.WaitInput;
+                break;
+            case EState.InitDisplayLoad:
+                m_LoadCreater.Loadinfo();
+                m_LoadScript.Init();
                 m_state = EState.WaitInput;
                 break;
             case EState.WaitInput:
