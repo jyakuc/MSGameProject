@@ -125,7 +125,7 @@ public class GameController : MonoBehaviour
     void StartUpdate()
     {
         int playerNum = DebugModeGame.GetProperty().m_debugMode ? DebugModeGame.GetProperty().m_debugPlayerNum : m_playerNum;
-        
+        Debug.Log("参加人数" + m_playerObj.Count);
         if (m_playerObj.Count != playerNum) return;
         for (int i = 0; i < playerNum; ++i)
         {
@@ -224,7 +224,7 @@ public class GameController : MonoBehaviour
         
         m_gameSceneController.ReStart();
         m_state = EState.Start;
-
+        m_playerObj.Clear();
         SetPlayerBothCollider(false); // プレイヤー同士の当たり判定無効化
 
     }
