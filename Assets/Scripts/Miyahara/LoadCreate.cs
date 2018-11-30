@@ -83,6 +83,7 @@ public class LoadCreate : MonoBehaviour {
                 break;
         }
         Canvas canvas = GameObject.Find("FadeCanvas").GetComponent<Canvas>();
+        canvas.planeDistance = 150.0f;
         canvas.worldCamera = createLoadObjects[0].GetComponentInChildren<Camera>();
         
     }
