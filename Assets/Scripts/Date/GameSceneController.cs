@@ -80,6 +80,7 @@ public class GameSceneController : MonoBehaviour {
             case EState.UnLoad:
                 Debug.Log("UnLoad");
                 m_LoadCreater.Unload();
+                StDownflg = false;
                 m_state = EState.Load;
                 break;
             case EState.DisplayLoad:
@@ -87,7 +88,6 @@ public class GameSceneController : MonoBehaviour {
                 // ロード画面生成
                 m_LoadScript.Init();
                 m_LoadCreater.Loadinfo();
-                StDownflg = false;
                 m_state = EState.WaitInput;
                 break;
             case EState.WaitInput:
