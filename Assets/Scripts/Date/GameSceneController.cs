@@ -80,6 +80,7 @@ public class GameSceneController : MonoBehaviour {
             case EState.UnLoad:
                 Debug.Log("UnLoad");
                 m_LoadCreater.Unload();
+                StDownflg = false;
                 m_state = EState.Load;
                 break;
             case EState.DisplayLoad:
