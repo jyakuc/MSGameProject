@@ -5,6 +5,8 @@ using UnityEngine;
 public class WarmingSystem : MonoBehaviour {
     public PlayerController[] PlayersController;
     private MyInputManager MyInput;
+    //オーディオ
+    public AudioManager audio;
     private bool[] PlayerReadys = new bool[6];
     [Range(0,60)]
     public float NextSceneTimer=20;
@@ -58,11 +60,13 @@ public class WarmingSystem : MonoBehaviour {
         if (Input.GetButton("ST_Player" + MyInput.joysticks[Num]))
         {
             PlayerReadys[Num] = !PlayerReadys[Num];
+            PlaysSe();
             Debug.Log("押されたよ" + MyInput.joysticks[Num]);
         }
         if (Input.GetKeyDown(KeyCode.Alpha1+ Num))
         {
             PlayerReadys[Num] = !PlayerReadys[Num];
+            PlaysSe();
             Debug.Log("押されたよ" + MyInput.joysticks[Num]);
         }
     }
@@ -78,5 +82,11 @@ public class WarmingSystem : MonoBehaviour {
             PlayersController[Num].PlayStart();
         }
         //もしReadyになって止めるならここに書く
+    }
+    //SE再生処理
+    private void PlaysSe()
+    {
+        //仮に使っているので新しいSEが届き次第変更
+        AudioManager.GetInstance.PlaySE0(AUDIO.SE_Hit01);
     }
 }
