@@ -919,7 +919,7 @@ Prefab:
         type: 2}
       propertyPath: canvasInterruption
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1602725035}
     - target: {fileID: 224420501003491338, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
       propertyPath: m_RootOrder
@@ -1405,6 +1405,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33ae67035ea75d74d80bdb6ff2ede6f3, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1602725035 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114329685122194486, guid: dc1de046339e85049a4a76553bc9f8c9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1017582763}
+  m_Script: {fileID: 11500000, guid: 04d1c683f79276a41a798266deeab31b, type: 3}
 --- !u!114 &1635042300 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114188798583847628, guid: 166ffd972dbfb544784729884c50c4f3,
