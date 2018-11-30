@@ -12,7 +12,7 @@ public class LoadScript : MonoBehaviour
     public RawImage[] PannelTenPlace;
     public RawImage[] PannelHundredPlace;
     public Image[] PlayerNumber;
-    public Image[] Startbutton;
+    public Image Startbutton;
     public Texture[] Images;
     public Sprite[] ImagesNumber;
     public Sprite[] Sbutton;
@@ -143,8 +143,7 @@ public class LoadScript : MonoBehaviour
     {
         now_s++;
         if (now_s > 1) now_s = 0;
-        Startbutton[0].sprite = Sbutton[now_s]; //Ready前こっちだけ
-        Startbutton[1].sprite = Sbutton[now_s]; //Ready後こっちだけにしたい
+        Startbutton.sprite = Sbutton[now_s]; //Ready前こっちだけ
     }
 }
 

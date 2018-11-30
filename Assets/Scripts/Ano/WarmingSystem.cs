@@ -57,7 +57,7 @@ public class WarmingSystem : MonoBehaviour {
     }
     void ReadyInput(int Num)
     {
-        if (Input.GetButton("ST_Player" + MyInput.joysticks[Num]))
+        if (Input.GetButtonDown("ST_Player" + MyInput.joysticks[Num]))
         {
             PlayerReadys[Num] = !PlayerReadys[Num];
             PlaysSe();

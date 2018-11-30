@@ -25,6 +25,7 @@ public class LoadCreate : MonoBehaviour {
     private GameObject HoruHoruText;
 
     private GameObject ReadyImage;
+    private GameObject StartImage;
     private bool animOnce = false;
 
     public enum SelectingLoad
@@ -42,6 +43,7 @@ public class LoadCreate : MonoBehaviour {
         ColdSleepText = LoadUI.transform.GetChild(0).transform.GetChild(2).gameObject;
         HoruHoruText = LoadUI.transform.GetChild(0).transform.GetChild(3).gameObject;
         ReadyImage = LoadUI.transform.GetChild(0).transform.GetChild(5).gameObject;
+        StartImage = LoadUI.transform.GetChild(0).transform.GetChild(6).gameObject;
 	}
 	
 	// Update is called once per frame
@@ -51,6 +53,8 @@ public class LoadCreate : MonoBehaviour {
 
     public void Loadinfo()
     {
+        animOnce = false;
+        ReadyImage.SetActive(false);
 
         createLoadObjects.Clear();
         SelectText(Stages);         //テキストを選択
@@ -79,6 +83,7 @@ public class LoadCreate : MonoBehaviour {
                 break;
         }
         Canvas canvas = GameObject.Find("FadeCanvas").GetComponent<Canvas>();
+        canvas.planeDistance = 150.0f;
         canvas.worldCamera = createLoadObjects[0].GetComponentInChildren<Camera>();
         
     }
@@ -139,6 +144,9 @@ public class LoadCreate : MonoBehaviour {
             ReadyImage.GetComponent<Animation>().Play();
             animOnce = true;
             DownFlg = false;
+            StartImage.GetComponent<Image>().color = new Color(255.0f, 255.0F, 255.0f, 0);
+            StartImage.GetComponent<RectTransform>().localPosition = new Vector3(350, -70, 0);
+            StartImage.GetComponent<Image>().color = new Color(255.0f, 255.0F, 255.0f, 255/0f);
         }
 
         if (!ReadyImage.GetComponent<Animation>().IsPlaying("ReadyAnim") && animOnce)

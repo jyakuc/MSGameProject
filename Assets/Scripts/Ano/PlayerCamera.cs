@@ -38,6 +38,8 @@ public class PlayerCamera : MonoBehaviour
     private GameTime gametime;
     public bool ZoomEndFlag = false;
     public float test = 0;
+
+    private MainCameraZoom MainCameraSystem;
     //一旦置いておく
     //private ZoomMode Zoommode=ZoomMode.NotZoom;
     private void Awake()
@@ -52,6 +54,16 @@ public class PlayerCamera : MonoBehaviour
         P_Camera.depth = 0;
         WaitNowTime = 0;
         ZoomNowTime = 0;
+        try
+        {
+            MainCameraSystem = GameObject.Find("MainCamera").GetComponent<MainCameraZoom>();
+
+            MainCameraSystem.SetPlayerData(this.gameObject, P_Controller.PlayerID);
+        }
+        catch
+        {
+
+        }
         //どのキャラクターの中継か判別
         RelayTV Relay;
         Relay = P_Camera.GetComponent<RelayTV>();
@@ -120,6 +132,7 @@ public class PlayerCamera : MonoBehaviour
             FocusCamera();
         }
         //StalkingCamera();
+
     }
     public void ZoomStart()
     {
@@ -222,5 +235,5 @@ public class PlayerCamera : MonoBehaviour
     {
         return ZoomEndFlag;
     }
-    
+
 }
