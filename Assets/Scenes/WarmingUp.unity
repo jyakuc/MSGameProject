@@ -4219,7 +4219,7 @@ Prefab:
     - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
       propertyPath: m_debugMode.m_controllerDisable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114562380259625914, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
@@ -4251,6 +4251,16 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 223269582960311406, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439577510134876, guid: dc1de046339e85049a4a76553bc9f8c9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114116800811218258, guid: dc1de046339e85049a4a76553bc9f8c9,
         type: 2}
       propertyPath: m_Enabled
       value: 0

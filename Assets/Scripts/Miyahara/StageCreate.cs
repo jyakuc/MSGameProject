@@ -54,7 +54,7 @@ public class StageCreate : MonoBehaviour {
             Stages = SelectingStage.Colloseum;
         }
         
-        Load();
+        //Load();
         
 	}
 	

@@ -40,7 +40,7 @@ public class GameSceneController : MonoBehaviour {
     private void Start()
     {
         frame = 0;
-        m_state = EState.Wait;
+        m_state = EState.DisplayLoad;
 
         BgmSet();
         fadeController = FindObjectOfType<FadeController>();

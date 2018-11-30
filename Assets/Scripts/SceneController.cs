@@ -102,7 +102,7 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
     /// </summary>
     /// <param name="_sceneName">遷移するシーンの名前</param>
     /// <param name="_fadaTime">フェードする時間</param>
-    public void ChangeScene(string _sceneName , float _fadaTime = FADE_TIME)
+    public void ChangeScene(string _sceneName , float _fadaTime = FADE_TIME,bool _fadeOutSoon = true)
     {
         if (IsFadeing)
         {
@@ -114,9 +114,11 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
         m_fadeTime = _fadaTime;
 
         // フェードイン
-       // m_fader.gameObject.SetActive(true);
-        m_fader.Play(_isFadeOut: false, _duration: m_fadeTime , _onFinished:OnFadeInFinish);
-
+        // m_fader.gameObject.SetActive(true);
+        if (_fadeOutSoon)
+            m_fader.Play(_isFadeOut: false, _duration: m_fadeTime, _onFinished: OnFadeInFinish);
+        else
+            m_fader.Play(_isFadeOut: false, _duration: m_fadeTime, _onFinished: OnFadeInFinish_NoFadeOut);
     }
 
     private void OnFadeInFinish()
@@ -135,6 +137,21 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
         //フェードアウト
         //m_fader.gameObject.SetActive(true);
        
+    }
+
+    private void OnFadeInFinish_NoFadeOut()
+    {
+        if (onFadeInFinished != null)
+        {
+            onFadeInFinished();
+        }
+        Debug.Log("FadeIn:終わり");
+        SceneManager.LoadScene(m_nextSceneName);
+
+        m_oldSceneName = m_currentSceneName;
+        m_currentSceneName = m_nextSceneName;
+
+        //StartCoroutine(LoadSceneWait(SceneManager.GetSceneByName(m_currentSceneName)));
     }
 
     private void OnFadeOutFinish()
