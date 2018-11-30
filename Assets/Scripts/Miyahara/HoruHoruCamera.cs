@@ -54,8 +54,8 @@ public class HoruHoruCamera : MonoBehaviour {
         Cursors = GameObject.Find("Cursors(Clone)");
         FadeFlg = false;
         g_UI = GameObject.Find("GameUI");
-        _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(0).gameObject;
-        _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).gameObject;
+        _slider_Background = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(0).gameObject;
+        _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(1).gameObject;
         S_timer = GameObject.FindObjectOfType<StartTimer>();
         
         Fireballflg = false;
