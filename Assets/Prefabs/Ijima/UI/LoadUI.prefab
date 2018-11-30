@@ -162,13 +162,14 @@ GameObject:
   - component: {fileID: 224068869772985294}
   - component: {fileID: 222304329695012358}
   - component: {fileID: 114650240734154856}
+  - component: {fileID: 111170524798231104}
   m_Layer: 5
   m_Name: Ready
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1151948047736120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,6 +2654,21 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024844374836124}
   m_Enabled: 1
+--- !u!111 &111170524798231104
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1103654566990614}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c51ef4eb57035c4469bcc379ab3e5f86, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c51ef4eb57035c4469bcc379ab3e5f86, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114034643856999710
 MonoBehaviour:
   m_ObjectHideFlags: 1
