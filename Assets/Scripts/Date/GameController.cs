@@ -194,8 +194,9 @@ public class GameController : MonoBehaviour
         m_state = EState.End;
 
         m_destroyCollisionPlayers.DestroyFallPlayer();
+        CostManager costManager = FindObjectOfType<CostManager>();
         // 勝者の芸術ポイント保存
-        for(int i = 0; i < m_playerObj.Count; ++i)
+        for (int i = 0; i < m_playerObj.Count; ++i)
         {
             if (m_playerObj[i] == null) continue;
             if (m_playerObj[i].GetMyState() == PlayerController.EState.Dead) {
@@ -209,7 +210,6 @@ public class GameController : MonoBehaviour
             BattlePointGrading battlePoint = m_playerObj[i].gameObject.GetComponent<BattlePointGrading>();
             art.ArtistGrading();
             // コストマネージャーに登録
-            CostManager costManager = FindObjectOfType<CostManager>();
             costManager.SaveArtCostData(m_playerObj[i].PlayerID, art.Cost);
             costManager.SaveRankPointData(m_playerObj[i].PlayerID, 0);
             m_artArmatureSave.InContainer(m_playerObj[i].gameObject,art.Cost.allCost);
@@ -218,7 +218,7 @@ public class GameController : MonoBehaviour
             // 勝者を殺すプログラム
             //m_playerObj[i].Dead();
         }
-
+        costManager.Init();
         m_gameSceneController.ChangeScene();
     }
 
