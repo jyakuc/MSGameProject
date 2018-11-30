@@ -189,7 +189,6 @@ public class PlayerController : MonoBehaviour
         // ポーズ
         if(Input.GetButtonDown(InputName[(int)EInput.Start] + myInputManager.joysticks[m_playerID - 1].ToString()))
         {
-            Debug.Log("ポーズ");
             PauseManager.OnPause(m_playerID);
         }
         if(m_playerID == 2)
@@ -198,12 +197,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log(m_inputButton[(int)EInputButton.B].stay);
             Debug.Log(m_inputButton[(int)EInputButton.X].stay);
             Debug.Log(m_inputButton[(int)EInputButton.Y].stay);
-            Debug.Log("flg" +PauseManager.IsPause);
-        }
+            }
         if(m_inputButton[(int)EInputButton.A].stay && m_inputButton[(int)EInputButton.B].stay &&
             m_inputButton[(int)EInputButton.X].stay && m_inputButton[(int)EInputButton.Y].stay && PauseManager.IsPause)
         {
-            Debug.Log("ccccccc");
             PauseManager.PauseToTitle(m_playerID);
         }
         // 回転減衰
@@ -235,7 +232,6 @@ public class PlayerController : MonoBehaviour
         // 右方向
         else if (m_inputAxis.x > 0.0f)
         {
-            Debug.Log("ifOK");
             m_moving.Move(m_ray.Dir, true);
             m_state = EState.RightMove;
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
     private static bool gPauseFlg = false;
@@ -12,6 +13,7 @@ public class PauseManager : MonoBehaviour {
 
     public static void OnPause(int playerID)
     {
+        if (!SceneManager.GetSceneByName("GameScene").isLoaded) return;
         if (gPauseFlg && saveID != playerID) return;
         gPauseFlg = !gPauseFlg;
         saveID = playerID;
