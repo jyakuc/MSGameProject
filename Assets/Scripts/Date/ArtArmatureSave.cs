@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArtArmatureSave : MonoBehaviour {
 
     const int ChildMax = 3;
+    private int[] childPlayerID = new int[ChildMax];
     private float[] artPoint = new float[ChildMax];
     private PlayerCamera destroyCamera;
     void Awake()
@@ -18,6 +19,7 @@ public class ArtArmatureSave : MonoBehaviour {
         if (transform.childCount == ChildMax) return;
         artPoint[transform.childCount] = point;
         child.transform.parent = transform;
+        childPlayerID[transform.childCount - 1] = child.GetComponent<PlayerController>().PlayerID;
 
         // Resultに必要ないスクリプト消去
         destroyCamera = child.GetComponent<PlayerCamera>();
