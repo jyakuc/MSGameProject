@@ -53,7 +53,8 @@ public class LoadCreate : MonoBehaviour {
 
     public void Loadinfo()
     {
-
+        animOnce = false;
+        ReadyImage.SetActive(false);
         createLoadObjects.Clear();
         SelectText(Stages);         //テキストを選択
         switch (Stages)
