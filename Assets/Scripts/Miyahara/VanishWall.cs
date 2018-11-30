@@ -5,7 +5,7 @@ using UnityEngine;
 public class VanishWall : MonoBehaviour {
 
     private bool VanishFlg;
-    Color Alpha = new Color(0, 0, 0, 0.01f);
+    Color Alpha = new Color(0, 0, 0, 0.3f);
     [SerializeField]
     private IceSmoke IceEffect;
 
@@ -24,7 +24,7 @@ public class VanishWall : MonoBehaviour {
             if (WallMaterial.color.a >= 0)
             {
                 IceEffect.PlaysEffect();
-                WallMaterial.color -= Alpha;
+                WallMaterial.color -= Alpha * Time.deltaTime;
             }
             if (WallMaterial.color.a <= 0)
             {
