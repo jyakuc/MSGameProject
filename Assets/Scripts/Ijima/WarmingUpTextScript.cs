@@ -118,5 +118,6 @@ public class WarmingUpTextScript : MonoBehaviour
 
         target2Text2.gameObject.SetActive(false);
         target2Text2.gameObject.SetActive(true);
+        AudioManager.GetInstance.PlaySE3(AUDIO.SE_Telop);
     }
 }
