@@ -27,7 +27,10 @@ public class ControllerDisconnect : MonoBehaviour {
         m_mask.gameObject.SetActive(false);
         m_connectReadyImage.gameObject.SetActive(false);
         m_warningImage.gameObject.SetActive(false);
+
+        m_eControllerConnected = EControllerConnected.Connect;
     }
+
 
     // コントローラーが抜けたとき表示
     public void OnDisconnected(List<int> playerID)
@@ -37,6 +40,8 @@ public class ControllerDisconnect : MonoBehaviour {
         if(!m_mask.gameObject.activeSelf) m_mask.gameObject.SetActive(true);
         if(!m_warningImage.gameObject.activeSelf) m_warningImage.gameObject.SetActive(true);
         m_warningImage.Display(playerID);
+
+        Time.timeScale = 0;
     }
 
     // 接続が確認されて準備中の時表示
@@ -45,6 +50,7 @@ public class ControllerDisconnect : MonoBehaviour {
         if (m_eControllerConnected != EControllerConnected.Disconnect) return;
         m_eControllerConnected = EControllerConnected.ReConnect;
         m_connectReadyImage.gameObject.SetActive(true);
+        OnConnectComplete();
     }
 
     // 準備中が確認できたとき処理
@@ -56,5 +62,6 @@ public class ControllerDisconnect : MonoBehaviour {
         m_mask.gameObject.SetActive(false);
         m_warningImage.gameObject.SetActive(false);
         m_connectReadyImage.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }
