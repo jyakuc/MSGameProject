@@ -29,10 +29,11 @@ public class GameSceneController : MonoBehaviour {
 
     private StageCreate m_stageCreater;
     private LoadCreate m_LoadCreater;
+    private LoadScript m_LoadScript;
     private FadeController fadeController;
     private ArtArmatureSave armatureSave;
 
-    private bool[] StDownflg;
+    private bool StDownflg;
 
     private EState m_state;
 
@@ -45,14 +46,10 @@ public class GameSceneController : MonoBehaviour {
         fadeController = FindObjectOfType<FadeController>();
         m_stageCreater = FindObjectOfType<StageCreate>();
         m_LoadCreater = FindObjectOfType<LoadCreate>();
+        m_LoadScript = FindObjectOfType<LoadScript>();
         armatureSave = FindObjectOfType<ArtArmatureSave>();
         MaxPlayer = DebugModeGame.GetProperty().m_debugMode ? DebugModeGame.GetProperty().m_debugPlayerNum : 6;
-        StDownflg = new bool[MaxPlayer];
-        for (int i = 0; i < MaxPlayer; i++)
-        {
-            StDownflg[i] = false;
-        }
-            
+        StDownflg = false;            
     }
 
     void Update()
@@ -88,6 +85,7 @@ public class GameSceneController : MonoBehaviour {
             case EState.DisplayLoad:
                 Debug.Log("ロード画面");
                 // ロード画面生成
+                m_LoadScript.Init();
                 m_LoadCreater.Loadinfo();
                 m_state = EState.WaitInput;
                 break;
@@ -95,13 +93,14 @@ public class GameSceneController : MonoBehaviour {
                 Debug.Log("入力待ち");
                 for (int i = 0; i < MaxPlayer; i++)
                 {
-                    Debug.Log(StDownflg[0]);
-                    if (StDownflg[i]) continue;
-                    StDownflg[i] = Input.GetButtonDown("ST_Player" + (i + 1));
-                    if (!StDownflg[i])
-                        return;
+                    if (Input.GetButtonDown("ST_Player" + (i + 1)))
+                    {
+                        StDownflg = true;
+                    }
                 }
-                m_state = EState.UnLoad;
+
+                if(m_LoadCreater.Wait(ref StDownflg))
+                    m_state = EState.UnLoad;
                 break;
             case EState.Load:
                 Debug.Log("Load");
