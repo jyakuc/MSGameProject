@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ResultScripts : MonoBehaviour {
 
-    public GameObject[] Human = new GameObject[6];
+    //public GameObject[] Human = new GameObject[6];
     public RawImage[] PannelDigit;
     public RawImage[] PannelTenPlace;
     public RawImage[] PannelHundredPlace;
@@ -24,6 +24,7 @@ public class ResultScripts : MonoBehaviour {
     private int[] TotalPoint = new int[6]; //バトルポイントの格納配列
     private int VictoryNum; //yuusyo
     private Color[] SetColors = new Color[7];
+    private ArtArmatureSave ArtArmature;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class ResultScripts : MonoBehaviour {
         flame = 0;
         AudioManager.GetInstance.PlayBGM(AUDIO.BGM_RESULT, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
         VictoryCharSet();
+        ArtArmature = FindObjectOfType<ArtArmatureSave>();
     }
 
     void Update()
@@ -60,6 +62,8 @@ public class ResultScripts : MonoBehaviour {
             flame++;
             if (flame == SceneChangeTime)
             {
+                if(ArtArmature != null)
+                    Destroy(ArtArmature.gameObject);
                 SceneController.GetInstance.ChangeScene("TitleScene", 2);
             }
         }
@@ -91,7 +95,7 @@ public class ResultScripts : MonoBehaviour {
     void VictoryCharSet()
     {
         //勝利キャラの表示
-        Human[VictoryNum].SetActive(true);
+        //Human[VictoryNum].SetActive(true);
         PointColorSet();
         PointSet();
     }
