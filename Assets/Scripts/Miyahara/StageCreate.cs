@@ -104,7 +104,7 @@ public class StageCreate : MonoBehaviour {
                 break;
         }
 
-        GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        
 
     }
 

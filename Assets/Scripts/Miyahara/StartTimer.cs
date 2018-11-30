@@ -48,6 +48,13 @@ public class StartTimer : MonoBehaviour {
         {
             TimerFinishflg = true;
         }
+        if (TimerFinishflg)
+        {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+        }
 	}
     public void TimerInit()
     {
