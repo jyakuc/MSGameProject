@@ -24,6 +24,9 @@ public class LoadCreate : MonoBehaviour {
     private GameObject ColdSleepText;
     private GameObject HoruHoruText;
 
+    private GameObject ReadyImage;
+    private bool animOnce = false;
+
     public enum SelectingLoad
     {
         Colloseum,
@@ -38,6 +41,7 @@ public class LoadCreate : MonoBehaviour {
         CollseumText = LoadUI.transform.GetChild(0).transform.GetChild(1).gameObject;
         ColdSleepText = LoadUI.transform.GetChild(0).transform.GetChild(2).gameObject;
         HoruHoruText = LoadUI.transform.GetChild(0).transform.GetChild(3).gameObject;
+        ReadyImage = LoadUI.transform.GetChild(0).transform.GetChild(5).gameObject;
 	}
 	
 	// Update is called once per frame
@@ -47,7 +51,6 @@ public class LoadCreate : MonoBehaviour {
 
     public void Loadinfo()
     {
-        
 
         createLoadObjects.Clear();
         SelectText(Stages);         //テキストを選択
@@ -75,10 +78,8 @@ public class LoadCreate : MonoBehaviour {
                 Stages = SelectingLoad.ColdSleepMountain;
                 break;
         }
-
-        //GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
-        //GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().transform.position = new Vector3(0.0f, 0.0f, 100.0f);
-        //GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().worldCamera = createLoadObjects[0].GetComponent<Camera>();
+        Canvas canvas = GameObject.Find("FadeCanvas").GetComponent<Canvas>();
+        canvas.worldCamera = createLoadObjects[0].GetComponentInChildren<Camera>();
         
     }
 
@@ -126,4 +127,26 @@ public class LoadCreate : MonoBehaviour {
         }
     }
 
+
+    public bool Wait(ref bool DownFlg)
+    {
+        bool animEnd = false;
+        bool nextStage = false;
+
+        if (!animOnce && DownFlg)
+        {
+            ReadyImage.SetActive(true);
+            ReadyImage.GetComponent<Animation>().Play();
+            animOnce = true;
+            DownFlg = false;
+        }
+
+        if (!ReadyImage.GetComponent<Animation>().IsPlaying("ReadyAnim") && animOnce)
+            animEnd = true;
+
+        if (animEnd && DownFlg)
+            nextStage = true;
+
+        return nextStage;
+    } 
 }

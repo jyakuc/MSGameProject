@@ -29,6 +29,10 @@ public class LoadScript : MonoBehaviour
         Init();
         flame = 0;
         now_s = 0;
+
+        PointColorSet();
+        RankSet();
+        PointSet();
     }
 
     void Update()
@@ -39,7 +43,7 @@ public class LoadScript : MonoBehaviour
     }
 
     //勝利プレイヤー判定と点数格納
-    void Init()
+    public void Init()
     {
         for (int i = 0; i < 6; i++)
         {
@@ -57,9 +61,6 @@ public class LoadScript : MonoBehaviour
                 }
             }
         }
-        PointColorSet();
-        RankSet();
-        PointSet();
     }
 
     void PointColorSet()
