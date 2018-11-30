@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4785429917765418}
   - component: {fileID: 108373051558828454}
   m_Layer: 0
-  m_Name: Spotlight
+  m_Name: Spotlight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,6 +85,22 @@ GameObject:
   - component: {fileID: 4712606101207314}
   m_Layer: 0
   m_Name: MeteoPos05
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1188309348912990
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4054168124821172}
+  - component: {fileID: 108602222080351386}
+  m_Layer: 0
+  m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -741,6 +757,19 @@ Transform:
   m_Father: {fileID: 4949918670648372}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4054168124821172
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188309348912990}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 117.28275, y: 164.62, z: -55.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4099121487772722}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4073135003845462
 Transform:
   m_ObjectHideFlags: 1
@@ -767,8 +796,9 @@ Transform:
   m_LocalPosition: {x: -117.28275, y: -61.90858, z: 56.67637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4785429917765418}
+  - {fileID: 4054168124821172}
   - {fileID: 4936662203265574}
+  - {fileID: 4785429917765418}
   m_Father: {fileID: 4849214234450884}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1117,12 +1147,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006197549342938}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 117.28275, y: 164.62, z: -55.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 117.28275, y: 47.9, z: -55.2}
+  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 4099121487772722}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4807072818221730
 Transform:
@@ -2366,7 +2396,43 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 1, g: 0.88843817, b: 0.2647059, a: 1}
+  m_Color: {r: 1, g: 0.87616634, b: 0.18382353, a: 1}
+  m_Intensity: 3.23
+  m_Range: 1000
+  m_SpotAngle: 130
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 1
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0
+    m_NormalBias: 0
+    m_NearPlane: 0.1
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!108 &108602222080351386
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188309348912990}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 0.8583165, b: 0.066176474, a: 1}
   m_Intensity: 1
   m_Range: 1000
   m_SpotAngle: 60
@@ -2484,7 +2550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114223499436674988
 MonoBehaviour:
@@ -2531,7 +2596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114476568865608004
 MonoBehaviour:
@@ -2544,7 +2608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114478801937379000
 MonoBehaviour:
@@ -2579,7 +2642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114596308577618624
 MonoBehaviour:
@@ -2603,7 +2665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114693751098964378
 MonoBehaviour:
@@ -2678,7 +2739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!198 &198959652404148352
 ParticleSystem:
