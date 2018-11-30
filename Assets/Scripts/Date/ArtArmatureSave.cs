@@ -40,6 +40,8 @@ public class ArtArmatureSave : MonoBehaviour {
         return transform.GetChild(maxChildNum);
     }
 
+    // 
+
     public void SetActives(bool active,int childNum)
     {
         if (childNum >= 3) return;

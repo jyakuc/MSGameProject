@@ -40,7 +40,7 @@ public class GameSceneController : MonoBehaviour {
     private void Start()
     {
         frame = 0;
-        m_state = EState.Wait;
+        m_state = EState.DisplayLoad;
 
         BgmSet();
         fadeController = FindObjectOfType<FadeController>();
@@ -166,7 +166,7 @@ public class GameSceneController : MonoBehaviour {
 
     public void ReStart()
     {
-        fadeController.Play(true, 0.025f);
+        fadeController.Play(true,1);
         fadeController.m_onFinished += FadeOutFinish;
     }
 

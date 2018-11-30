@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public enum EState
     {
         Start,
+        Wait,
         Main,
         Finish,
         End
@@ -59,6 +60,7 @@ public class GameController : MonoBehaviour
 
         PlayerLayers = new int[] { playerLayer1, playerLayer2, playerLayer3, playerLayer4, playerLayer5, playerLayer6};
 
+
     }
 
     // Use this for initialization
@@ -84,6 +86,9 @@ public class GameController : MonoBehaviour
         {
             case EState.Start:
                 StartUpdate();
+                break;
+            case EState.Wait:
+                WaitUpdate();
                 break;
             case EState.Main:
                 MainUpdate();
@@ -121,9 +126,19 @@ public class GameController : MonoBehaviour
         Debug.Log(human + "追加");
         m_playerObj.Add(human.GetComponent<PlayerController>());
     }
-    
+
     // 状態別Update関数
     void StartUpdate()
+    {
+        SceneController.GetInstance.transform.GetChild(0).GetComponent<FadeController>().Alpha = 1.0f;
+        if (!m_gameSceneController.IsRestart()) return;
+        if (!m_gameSceneController.IsRestartReady()) return;
+        m_gameSceneController.ReStart();
+        SetPlayerBothCollider(false); // プレイヤー同士の当たり判定無効化
+        m_state = EState.Wait;
+    }
+
+    void WaitUpdate()
     {
         int playerNum = DebugModeGame.GetProperty().m_debugMode ? DebugModeGame.GetProperty().m_debugPlayerNum : m_playerNum;
         Debug.Log("参加人数" + m_playerObj.Count);
@@ -225,7 +240,7 @@ public class GameController : MonoBehaviour
         //}
         
         m_gameSceneController.ReStart();
-        m_state = EState.Start;
+        m_state = EState.Wait;
         m_playerObj.Clear();
         SetPlayerBothCollider(false); // プレイヤー同士の当たり判定無効化
 

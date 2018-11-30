@@ -53,7 +53,7 @@ public class WarmingSystem : MonoBehaviour {
             if (AllReadyCheck())
             {
                 NextFlag = true;
-                SceneController.GetInstance.ChangeScene("GameScene", 2);
+                SceneController.GetInstance.ChangeScene("GameScene", 2,false);
             }
             //if ((NextSceneTimer <=0 ) ||(AllReadyCheck()))
             //{
