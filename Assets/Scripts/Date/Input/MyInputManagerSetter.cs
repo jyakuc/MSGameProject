@@ -64,7 +64,7 @@ public class MyInputManagerSetter {
         }
         {
             var name = string.Format("ST_Player{0}", joystickNum);
-            var button = string.Format("joystick {0} button 7", joystickNum);
+            var button = string.Format("joystick {0} button 11", joystickNum);
             myInputManagerGenerator.AddAxis(InputInfo.CreateButton(name, button, STKey));
         }
 
