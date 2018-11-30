@@ -121,6 +121,8 @@ public class GameSceneController : MonoBehaviour {
         // 最後のステージならリザルトシーンに移行
         if (m_stageCreater.Stages == StageCreate.SelectingStage.HoruhoruMountain)
         {
+            armatureSave.SetAllActives(false);
+            armatureSave.WinnerCameraDestroy();
             SceneController.GetInstance.ChangeScene("ResultScene");
         }
         else
