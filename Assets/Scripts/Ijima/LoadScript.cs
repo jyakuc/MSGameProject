@@ -49,7 +49,6 @@ public class LoadScript : MonoBehaviour
         {
             Rank[i] = 0;
             BattlePoint[i] = CManager.GetPlayerCost(i + 1).critical + CManager.GetPlayerCost(i + 1).crush;
-            Debug.Log("Battle " + BattlePoint[i]);
         }
         for (int i = 0; i < 6; i++)
         {

@@ -31,7 +31,7 @@ public class MyInputManager:MonoBehaviour {
         for (int i = 0; i < 6; ++i)
         {
             oldJoysticks[i] = i + 1;
-            joysticks[i] = -1;
+            joysticks[i] = i+1;
             IsConnectFlgs[i] = true;
         }
         if (canvasInterruption == null) Debug.LogError("コントローラー抜け表示のCanvasをセットしてください。");
