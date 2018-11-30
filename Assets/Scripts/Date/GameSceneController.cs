@@ -166,7 +166,7 @@ public class GameSceneController : MonoBehaviour {
 
     public void ReStart()
     {
-        fadeController.Play(true, 0.025f);
+        fadeController.Play(true,1);
         fadeController.m_onFinished += FadeOutFinish;
     }
 

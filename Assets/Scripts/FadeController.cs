@@ -51,7 +51,7 @@ public class FadeController : MonoBehaviour {
 
     // フェード時間
     [SerializeField]
-    private float m_duration;
+    private float m_duration = 1.0f;
     public float Duration
     {
         get { return m_duration; }
@@ -137,6 +137,7 @@ public class FadeController : MonoBehaviour {
         {
             Alpha = 1;
             m_fadeState = FadeState.FadeOut;
+            m_duration = _duration;
         }
         else
         {
