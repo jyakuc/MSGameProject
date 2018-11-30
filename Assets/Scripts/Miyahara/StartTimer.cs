@@ -54,6 +54,7 @@ public class StartTimer : MonoBehaviour {
             this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
             this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
             this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(4).gameObject.SetActive(false);
         }
 	}
     public void TimerInit()

@@ -27,9 +27,10 @@ public class RotateCamera : MonoBehaviour {
     private GameObject _slider_Fillarea;
     private GameObject _sliderText1;
     private GameObject _sliderText2;
+    private GameObject _slider_Handle;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         Rate = 1;
         Count = 0;
@@ -43,6 +44,7 @@ public class RotateCamera : MonoBehaviour {
         _slider_Fillarea = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(1).gameObject;
         _sliderText1 = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(2).gameObject;
         _sliderText2 = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(3).gameObject;
+        _slider_Handle = g_UI.transform.GetChild(0).transform.GetChild(4).transform.GetChild(4).gameObject;
         S_timer = GameObject.FindObjectOfType<StartTimer>();
 
 	}
@@ -75,6 +77,7 @@ public class RotateCamera : MonoBehaviour {
         _slider_Fillarea.gameObject.SetActive(true);
         _sliderText1.gameObject.SetActive(true);
         _sliderText2.gameObject.SetActive(true);
+        _slider_Handle.gameObject.SetActive(true);
         FadeController.Begin(FadeObj.gameObject, true, Rate);
         if (S_timer == null)
         {
