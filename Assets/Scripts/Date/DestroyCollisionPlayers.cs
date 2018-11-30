@@ -21,7 +21,7 @@ public class DestroyCollisionPlayers : MonoBehaviour {
         
         if (m_fallPlayerList.Count >= m_restrictionNum) return;
         // UIに順位更新
-        m_rankingInGame.SetRank(fallplayer.PlayerID);
+        // m_rankingInGame.SetRank(fallplayer.PlayerID);
         // CrushPointManagerを更新
         m_crushPointManager.DamageDead(fallplayer.PlayerID, fallplayer.HitReceivePlayerID);
         // Active = false
