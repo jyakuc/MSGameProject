@@ -58,7 +58,7 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
 
         // 破棄されないようにする
         DontDestroyOnLoad(gameObject);
-
+        SceneManager.sceneUnloaded += OnSceneUnLoadScene;
        // m_fader.gameObject.SetActive(false);
     }
 
@@ -114,7 +114,7 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
         m_fadeTime = _fadaTime;
 
         // フェードイン
-        m_fader.gameObject.SetActive(true);
+       // m_fader.gameObject.SetActive(true);
         m_fader.Play(_isFadeOut: false, _duration: m_fadeTime , _onFinished:OnFadeInFinish);
 
     }
@@ -151,11 +151,21 @@ public class SceneController : SingletonMonoBehaviour<SceneController> {
     {
         while(!scene.isLoaded)
         {
+            Debug.Log("dddd");
             yield return null;
         }
-        
-        yield return new WaitForSeconds(1);   
+        Debug.Log("eeee");
+        yield return new WaitForSecondsRealtime(0.5f);
+        Debug.Log("ffff");
         m_fader.Play(_isFadeOut: true, _duration: m_fadeTime, _onFinished: OnFadeOutFinish);
         yield break;
+    }
+
+    void OnSceneUnLoadScene(Scene scene)
+    {
+        if(SceneManager.GetSceneByName("GameScene") == scene)
+        {
+            Time.timeScale = 1;
+        }
     }
 }

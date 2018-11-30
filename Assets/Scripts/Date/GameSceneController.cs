@@ -82,7 +82,7 @@ public class GameSceneController : MonoBehaviour {
             case EState.UnLoad:
                 Debug.Log("UnLoad");
                 m_LoadCreater.Unload();
-                m_state = EState.NotUpdate;
+                m_state = EState.Load;
                 break;
             case EState.DisplayLoad:
                 Debug.Log("ロード画面");
@@ -100,7 +100,7 @@ public class GameSceneController : MonoBehaviour {
                     if (!StDownflg[i])
                         return;
                 }
-                m_state = EState.Load;
+                m_state = EState.UnLoad;
                 break;
             case EState.Load:
                 Debug.Log("Load");
@@ -138,6 +138,7 @@ public class GameSceneController : MonoBehaviour {
     {
         fadeController.m_onFinished -= FadeOutFinish;
         m_state = EState.Wait;
+        Debug.Log("vvvv");
     }
 
     // 全て破棄されるまで処理を進めない
@@ -162,7 +163,7 @@ public class GameSceneController : MonoBehaviour {
 
     public void ReStart()
     {
-        fadeController.Play(true, 1);
+        fadeController.Play(true, 0.025f);
         fadeController.m_onFinished += FadeOutFinish;
     }
 
