@@ -8,7 +8,7 @@ public class FallCollision : MonoBehaviour {
     public RankingInGame rankingInGame;
     private CrushPointManager CrushPointManager;
     public GameObject FallEffect;
-
+    private GameController gameController;
 	// Use this for initialization
 	void Start () {
 		if(rankingInGame == null)
@@ -24,7 +24,12 @@ public class FallCollision : MonoBehaviour {
             if (CrushPointManager == null)
                 Debug.LogError("CrushPointManagerがジーンに存在しません");
         }
-
+        if(gameController == null)
+        {
+            gameController = FindObjectOfType<GameController>();
+            if (gameController == null)
+                Debug.LogError("GameControllerがシーンに存在しません");
+        }
        
     }
 	
@@ -35,6 +40,7 @@ public class FallCollision : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (gameController.GetLivePlayerNum() == 1) return;
         if (other.gameObject.tag != "Player")
             return;
 
