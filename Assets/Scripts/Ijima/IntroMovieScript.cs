@@ -17,7 +17,6 @@ public class IntroMovieScript : MonoBehaviour {
     void Start () {
         SceneChangeTime = 60;
         flame = 0;
-        OneKeyFlag = false;
         IntroFinishFlg = false;
         AudioManager.GetInstance.ChangeVolume(0.2f, 1.0f);
         AudioManager.GetInstance.PlayBGM(AUDIO.BGM_MOVIE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
@@ -25,17 +24,16 @@ public class IntroMovieScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if ((!IntroFinishFlg) && (!OneKeyFlag)) {
+        if (!IntroFinishFlg) {
             //EndFlgオブジェクトがTimeline上でactiveにされた時、シーン遷移する
             ENDFLG = GameObject.Find("EndFlg");
             if (ENDFLG != null){
                 IntroFinishFlg = true;
             }
         }
-        if (((Input.anyKeyDown == true) && (!OneKeyFlag)) || (IntroFinishFlg == true)){
+        if (IntroFinishFlg==true){
             SceneChangeFlg = true;
-            OneKeyFlag = true;
-            AudioManager.GetInstance.PlaySE0(AUDIO.SE_Decision);
+           // AudioManager.GetInstance.PlaySE1(AUDIO.SE_Decision);
             IntroFinishFlg = false;
         }
         if (SceneChangeFlg == true){

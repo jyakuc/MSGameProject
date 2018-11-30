@@ -4349,7 +4349,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 1, g: 0.88843817, b: 0.2647059, a: 1}
+  m_Color: {r: 0.6397059, g: 0.8509128, b: 1, a: 1}
   m_Intensity: 2.5
   m_Range: 150
   m_SpotAngle: 60
@@ -4385,7 +4385,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 1, g: 0.88843817, b: 0.2647059, a: 1}
+  m_Color: {r: 0.6397059, g: 0.8509128, b: 1, a: 1}
   m_Intensity: 2.5
   m_Range: 150
   m_SpotAngle: 60
@@ -4421,7 +4421,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 1, g: 0.88843817, b: 0.2647059, a: 1}
+  m_Color: {r: 0.6397059, g: 0.8509128, b: 1, a: 1}
   m_Intensity: 2.5
   m_Range: 150
   m_SpotAngle: 60
@@ -4457,7 +4457,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 1, g: 0.88843817, b: 0.2647059, a: 1}
+  m_Color: {r: 0.6397059, g: 0.8509128, b: 1, a: 1}
   m_Intensity: 2.5
   m_Range: 150
   m_SpotAngle: 60
@@ -4507,7 +4507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114054794894249676
 MonoBehaviour:
@@ -4640,7 +4639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114251191221547768
 MonoBehaviour:
@@ -4736,7 +4734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114334359161736336
 MonoBehaviour:
@@ -4761,7 +4758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114349973400127678
 MonoBehaviour:
@@ -4906,7 +4902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114517725382586780
 MonoBehaviour:
@@ -4931,7 +4926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37758c2e303f1a345b8726116fd78e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rankingInGame: {fileID: 0}
   FallEffect: {fileID: 1586995048826264, guid: 08b2951d2315f264cbe928a9d0204c20, type: 2}
 --- !u!114 &114586384962846776
 MonoBehaviour:
