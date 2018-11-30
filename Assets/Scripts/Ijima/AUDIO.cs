@@ -30,4 +30,5 @@ public static class AUDIO
     //menu
     public const string SE_Spray = "Spray";
     public const string SE_Decision = "Decision";
+    public const string SE_Telop = "telop";
 }
