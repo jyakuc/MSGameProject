@@ -4,31 +4,17 @@ using UnityEngine;
 
 public class FallCollision : MonoBehaviour {
 
-    //public List <int> Rank = new List<int>();
-    public RankingInGame rankingInGame;
-    private CrushPointManager CrushPointManager;
+    //public List <int> Rank = new List<int>()
     public GameObject FallEffect;
-    private GameController gameController;
+    private DestroyCollisionPlayers destroyer;
 	// Use this for initialization
 	void Start () {
-		if(rankingInGame == null)
+		
+        if(destroyer == null)
         {
-            rankingInGame = FindObjectOfType<RankingInGame>();
-            if (rankingInGame == null)
-                Debug.LogError("RankingInGameがシーンに存在しません");
-        }
-        
-        if(CrushPointManager == null)
-        {
-            CrushPointManager = FindObjectOfType<CrushPointManager>();
-            if (CrushPointManager == null)
-                Debug.LogError("CrushPointManagerがジーンに存在しません");
-        }
-        if(gameController == null)
-        {
-            gameController = FindObjectOfType<GameController>();
-            if (gameController == null)
-                Debug.LogError("GameControllerがシーンに存在しません");
+            destroyer = FindObjectOfType<DestroyCollisionPlayers>();
+            if (destroyer == null)
+                Debug.LogError("DestroyCollisionPlayersがシーンに存在しません");
         }
        
     }
@@ -40,20 +26,12 @@ public class FallCollision : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameController.GetLivePlayerNum() == 1) return;
+        //if (gameController.GetLivePlayerNum() == 1) return;
         if (other.gameObject.tag != "Player")
             return;
 
         CreateEffect(other.gameObject.transform);
-
-        // 落ちたプレイヤーのIDを取得
-        PlayerController fallPlayer = other.gameObject.transform.root.GetComponent<PlayerController>();
-        int playerID = fallPlayer.PlayerID;
-        // UIに順位更新
-        rankingInGame.SetRank(playerID);
-        // CrushPointManagerを更新
-        CrushPointManager.DamageDead(playerID, fallPlayer.HitReceivePlayerID);
-        fallPlayer.Dead();
+        destroyer.AddFallPlayer(other.GetComponent<PlayerController>());
     }
 
     //Effect生成
