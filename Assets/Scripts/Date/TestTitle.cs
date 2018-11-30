@@ -14,26 +14,39 @@ public class TestTitle : MonoBehaviour {
     private Animator TitleAnim;
     private SpriteMask fadeMask;
 
+    public Canvas canvas;
+    private Camera mainCamera;
+
     private void Start(){
         SceneChangeFlg = false;
         flame = 0;
         AudioManager.GetInstance.PlayBGM(AUDIO.BGM_TITLE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
-        TitleAnim = GameObject.Find("Canvas").GetComponent<Animator>();
+        TitleAnim = canvas.GetComponent<Animator>();
         fadeMask = GameObject.Find("CircleFadeMask").GetComponent<SpriteMask>();
+        mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+        fadeMask.alphaCutoff = 1;
+        TitleAnim.SetBool("start", false);
     }
 
-    void Update(){
+    void Update()
+    {
         AnimatorStateInfo state = TitleAnim.GetCurrentAnimatorStateInfo(0);
-        if ((Input.anyKeyDown == true)&&(state.IsName("PressStart") == true)){
-            SceneChangeFlg = true;
-            //OneKeyFlag = true;
-            TitleAnim.SetBool("start", true);
-            AudioManager.GetInstance.PlaySE0(AUDIO.SE_Decision);
-            fadeMask.alphaCutoff = 1;
+        if(state.IsName("PressStart") == true)
+        {
+            if (canvas.worldCamera != mainCamera)
+                canvas.worldCamera = mainCamera;
+            if (Input.anyKeyDown == true)
+            {
+                SceneChangeFlg = true;
+                //OneKeyFlag = true;
+                TitleAnim.SetBool("start", true);
+                AudioManager.GetInstance.PlaySE0(AUDIO.SE_Decision);
+            }
         }
         if (SceneChangeFlg == true){
             flame++;
-            fadeMask.alphaCutoff -= speed;
+            if(flame > SceneChangeTime/4)
+                fadeMask.alphaCutoff -= speed;
         }
 
         if (flame == SceneChangeTime){
