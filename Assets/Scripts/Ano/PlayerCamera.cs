@@ -101,6 +101,10 @@ public class PlayerCamera : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            CameraClone.SetActive(false);
+        }
     }
     // Use this for initialization
     void Start()
@@ -137,10 +141,12 @@ public class PlayerCamera : MonoBehaviour
     public void ZoomStart()
     {
         ZoomFlag = true;
+        CameraClone.SetActive(true);
     }
     public void FocusStart()
     {
         ZoomFlag = false;
+        CameraClone.SetActive(true);
         P_Camera.depth = 0;
         CameraTrans.position = new Vector3(0, 90, -60);
         NowSpeed = Speed;
@@ -169,6 +175,7 @@ public class PlayerCamera : MonoBehaviour
                     {
                         ZoomFlag = false;
                         ZoomEndFlag = false;
+                        CameraClone.SetActive(false);
                     }
                 }
                 CameraTrans.LookAt(TargetTrans);
