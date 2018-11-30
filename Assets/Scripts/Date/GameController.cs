@@ -181,7 +181,10 @@ public class GameController : MonoBehaviour
         for(int i = 0; i < m_playerObj.Count; ++i)
         {
             if (m_playerObj[i] == null) continue;
-            if (m_playerObj[i].GetMyState() == PlayerController.EState.Dead) continue;
+            if (m_playerObj[i].GetMyState() == PlayerController.EState.Dead) {
+                Destroy(m_playerObj[i].gameObject);
+                continue;
+            }
             m_playerObj[i].Win();
             m_winnerPlayer = m_playerObj[i];
             // 芸術点採点
@@ -218,8 +221,6 @@ public class GameController : MonoBehaviour
         //{
         //    m_winnerPlayer.Dead();
         //}
-
-        m_playerObj.Clear();
         
         m_gameSceneController.ReStart();
         m_state = EState.Start;

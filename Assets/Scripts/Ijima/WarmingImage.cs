@@ -47,7 +47,7 @@ public class WarmingImage : MonoBehaviour {
     void StickAnimation()
     {
         now_st++;
-        if (now_st > 4) now_st = 0;
+        if (now_st > 3) now_st = 0;
         Pannels[0].sprite = LRSticks[now_st];
         Pannels[1].sprite = UDSticks[now_st];
     }

@@ -75,13 +75,8 @@ public class LoadCreate : MonoBehaviour {
                 Stages = SelectingLoad.ColdSleepMountain;
                 break;
         }
-
         Canvas canvas = GameObject.Find("FadeCanvas").GetComponent<Canvas>();
         canvas.worldCamera = createLoadObjects[0].GetComponentInChildren<Camera>();
-
-        //GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().renderMode = RenderMode.WorldSpace;
-        //GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().transform.position = new Vector3(0.0f, 0.0f, 100.0f);
-        //GameObject.Find("SceneController/FadeCanvas").GetComponent<Canvas>().worldCamera = createLoadObjects[0].GetComponent<Camera>();
         
     }
 
