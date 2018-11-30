@@ -29,8 +29,9 @@ public class GameController : MonoBehaviour
     private GameUIScripts m_gameUIScripts;
     [SerializeField]
     private ArtArmatureSave m_artArmatureSave;
-
-    private PlayerController m_winnerPlayer;
+    [SerializeField]
+    private DestroyCollisionPlayers m_destroyCollisionPlayers;
+    //private PlayerController m_winnerPlayer;
     /// <summary>
     /// 関数群
     /// </summary>
@@ -177,6 +178,7 @@ public class GameController : MonoBehaviour
     {
         m_state = EState.End;
 
+        m_destroyCollisionPlayers.DestroyFallPlayer();
         // 勝者の芸術ポイント保存
         for(int i = 0; i < m_playerObj.Count; ++i)
         {
@@ -186,7 +188,7 @@ public class GameController : MonoBehaviour
                 continue;
             }
             m_playerObj[i].Win();
-            m_winnerPlayer = m_playerObj[i];
+           // m_winnerPlayer = m_playerObj[i];
             // 芸術点採点
             ArtGrading art =  m_playerObj[i].gameObject.GetComponent<ArtGrading>();
             BattlePointGrading battlePoint = m_playerObj[i].gameObject.GetComponent<BattlePointGrading>();
