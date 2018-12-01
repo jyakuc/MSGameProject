@@ -30,7 +30,7 @@ public class GameUIScripts : MonoBehaviour {
     void Update () {
         for (int i = 0; i < 6; i++)
         {
-            BattlePoints[i] = CManager.GetPlayerCost(i+1).critical + CManager.GetPlayerCost(i + 1).crush + CManager.GetPlayerCost(i+1).rank;
+            BattlePoints[i] = CManager.GetPlayerBattlePoint(i + 1) + CManager.GetPlayerCost(i + 1).critical + CManager.GetPlayerCost(i + 1).crush + CManager.GetPlayerCost(i + 1).rank;
             int ThousandPlace = (BattlePoints[i] / 1000) % 10;   //100の位
             int HundredPlace = (BattlePoints[i] / 100)%10;   //100の位
             int TenPlace = (BattlePoints[i] / 10)%10;        //10の位
