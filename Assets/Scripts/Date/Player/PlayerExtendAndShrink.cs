@@ -132,4 +132,12 @@ public class PlayerExtendAndShrink : MonoBehaviour {
         }
         return PartsScale.Parts.AllParts;
     }
+
+    public void PartsOnKinematic()
+    {
+        for(int i = 0; i < ShrinkPointMax; ++i)
+        {
+            m_jointExtends[i].OnKinematic();
+        }
+    }
 }

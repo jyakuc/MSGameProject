@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ResultScripts : MonoBehaviour {
 
-    //public GameObject[] Human = new GameObject[6];
+    public GameObject[] Human = new GameObject[6];
     public RawImage[] PannelDigit;
     public RawImage[] PannelTenPlace;
     public RawImage[] PannelHundredPlace;
@@ -77,7 +77,7 @@ public class ResultScripts : MonoBehaviour {
         {
             ArtisticPoint[i] = CManager.GetPlayerCost(i+1).art;
             BattlePoint[i] = CManager.GetPlayerCost(i+1).critical + CManager.GetPlayerCost(i+1).crush;
-            TotalPoint[i] = ArtisticPoint[i] + BattlePoint[i];
+            TotalPoint[i] = CManager.GetPlayerAllCost(i+1);
 
             Debug.Log("芸術 " + ArtisticPoint[i]);
             Debug.Log("Battle " + BattlePoint[i]);
@@ -96,6 +96,17 @@ public class ResultScripts : MonoBehaviour {
     {
         //勝利キャラの表示
         //Human[VictoryNum].SetActive(true);
+        if(ArtArmature == null)
+            ArtArmature = FindObjectOfType<ArtArmatureSave>(); ;
+        var winner = ArtArmature.GetPlayerIDArmature(VictoryNum + 1);
+        if (winner==null)
+        {
+            Human[VictoryNum].SetActive(true);
+        }
+        else
+        {
+            winner.gameObject.SetActive(true);
+        }
         PointColorSet();
         PointSet();
     }
