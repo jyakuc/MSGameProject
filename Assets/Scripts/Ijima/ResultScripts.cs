@@ -49,7 +49,7 @@ public class ResultScripts : MonoBehaviour {
         if (ResultFinishFlg == false)
         {
             flame++;
-            if (flame >= 1000)
+            if (flame >= 500)
             {
                 ResultFinishFlg = true;
                 flame = 0;
@@ -86,7 +86,7 @@ public class ResultScripts : MonoBehaviour {
         for (int i = 0; i < 6; i++)
         {
             ArtisticPoint[i] = CManager.GetPlayerCost(i+1).art;
-            BattlePoint[i] = CManager.GetPlayerCost(i+1).critical + CManager.GetPlayerCost(i+1).crush;
+            BattlePoint[i] = CManager.GetPlayerCost(i+1).critical + CManager.GetPlayerCost(i+1).crush + CManager.GetPlayerCost(i+1).rank;
             TotalPoint[i] = CManager.GetPlayerAllCost(i+1);
 
 
