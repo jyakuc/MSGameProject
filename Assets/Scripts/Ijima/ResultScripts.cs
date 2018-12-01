@@ -69,6 +69,7 @@ public class ResultScripts : MonoBehaviour {
             {
                 if(ArtArmature != null)
                     Destroy(ArtArmature.gameObject);
+                CManager.Clear();
                 SceneController.GetInstance.ChangeScene("TitleScene", 2);
             }
         }
