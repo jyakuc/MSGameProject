@@ -170,4 +170,15 @@ public class CostManager : MonoBehaviour {
         m_crushPointManager.Init();
     }
 
+    public void Clear()
+    {
+        for(int i = 0; i < m_saveCostData.Length; ++i)
+        {
+            m_saveCostData[i].art = 0;
+            m_saveCostData[i].critical = 0;
+            m_saveCostData[i].crush = 0;
+            m_saveCostData[i].rank = 0;
+        }
+    }
+
 }
