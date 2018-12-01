@@ -49,7 +49,7 @@ public class ResultScripts : MonoBehaviour {
         if (ResultFinishFlg == false)
         {
             flame++;
-            if (flame >= 1000)
+            if (flame >= 500)
             {
                 ResultFinishFlg = true;
                 flame = 0;
