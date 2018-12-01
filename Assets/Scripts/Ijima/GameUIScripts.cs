@@ -12,6 +12,7 @@ public class GameUIScripts : MonoBehaviour {
     public RawImage[] PannelDigit;
     public RawImage[] PannelTenPlace;
     public RawImage[] PannelHundredPlace;
+    public RawImage[] PannelThousandPlace;
     public Texture[] Images;
     private CostManager CManager;
     private int[] BattlePoints= new int[6]; //バトルポイントの格納配列
@@ -29,12 +30,13 @@ public class GameUIScripts : MonoBehaviour {
     void Update () {
         for (int i = 0; i < 6; i++)
         {
-            BattlePoints[i] = CManager.GetPlayerBattlePoint(i+1);
+            BattlePoints[i] = CManager.GetPlayerCost(i+1).critical + CManager.GetPlayerCost(i + 1).crush + CManager.GetPlayerCost(i+1).rank;
+            int ThousandPlace = (BattlePoints[i] / 1000) % 10;   //100の位
             int HundredPlace = (BattlePoints[i] / 100)%10;   //100の位
             int TenPlace = (BattlePoints[i] / 10)%10;        //10の位
             int Digit = BattlePoints[i] % 10;                //1の位
-            Debug.Log("位確認"+HundredPlace.ToString() + TenPlace.ToString() + Digit.ToString());
-
+            Debug.Log("位確認" + ThousandPlace.ToString() + HundredPlace.ToString() + TenPlace.ToString() + Digit.ToString());
+            Debug.Log(CManager.GetPlayerCost(1).rank);
             for (int j = 0; j < 10; j++)
             {
                 if (Digit == j)
@@ -45,12 +47,22 @@ public class GameUIScripts : MonoBehaviour {
                 //10の位
                 if (TenPlace == j)
                 {
-                    if (HundredPlace == 0)
+                    if (ThousandPlace == 0)
                     {
-                        if (TenPlace != 0) {
-                           if (i < 3) PannelTenPlace[i].texture = Images[j];   //左右判定
-                           else PannelTenPlace[i].texture = Images[j + 10];
-                           ColsetTen(i);
+                        if (HundredPlace == 0)
+                        {
+                            if (TenPlace != 0)
+                            {
+                                if (i < 3) PannelTenPlace[i].texture = Images[j];   //左右判定
+                                else PannelTenPlace[i].texture = Images[j + 10];
+                                ColsetTen(i);
+                            }
+                        }
+                        else
+                        {
+                            if (i < 3) PannelTenPlace[i].texture = Images[j];   //左右判定
+                            else PannelTenPlace[i].texture = Images[j + 10];
+                            ColsetTen(i);
                         }
                     }
                     else
@@ -61,11 +73,30 @@ public class GameUIScripts : MonoBehaviour {
                     }
                 }
                 //100の位
-                if (HundredPlace != 0 && HundredPlace == j)
+                if (HundredPlace == j)
                 {
-                    if (i < 3) PannelHundredPlace[i].texture = Images[j];   //左右判定
-                    else PannelHundredPlace[i].texture = Images[j + 10];
-                    ColsetHundred(i);
+                    if (ThousandPlace == 0)
+                    {
+                        if (HundredPlace != 0)
+                        {
+                            if (i < 3) PannelHundredPlace[i].texture = Images[j];   //左右判定
+                            else PannelHundredPlace[i].texture = Images[j + 10];
+                            ColsetHundred(i);
+                        }
+                    }
+                    else
+                    {
+                        if (i < 3) PannelHundredPlace[i].texture = Images[j];   //左右判定
+                        else PannelHundredPlace[i].texture = Images[j + 10];
+                        ColsetHundred(i);
+                    }
+                }
+                //1000
+                if (ThousandPlace != 0 && ThousandPlace == j)
+                {
+                    if (i < 3) PannelThousandPlace[i].texture = Images[j];   //左右判定
+                    else PannelThousandPlace[i].texture = Images[j + 10];
+                    ColsetThousand(i);
                 }
             }
         }
@@ -73,24 +104,27 @@ public class GameUIScripts : MonoBehaviour {
 
     public void Init()
     {
-
+        Debug.Log("ゲームUIポイント初期化");
         ColsetDigit();
         // ポイント表示初期化
         for(int i = 0; i < 6; ++i)
         {
             ColsetTen(i,0);
             ColsetHundred(i,0);
+            ColsetThousand(i, 0);
             if (i<3)
             {
                 PannelDigit[i].texture = Images[0];
                 PannelTenPlace[i].texture = null;
                 PannelHundredPlace[i].texture = null;
+                PannelThousandPlace[i].texture = null;
             }
             else
             {
                 PannelDigit[i].texture = Images[10];
                 PannelTenPlace[i].texture = null;
                 PannelHundredPlace[i].texture = null;
+                PannelThousandPlace[i].texture = null;
             }
         }
 
@@ -130,5 +164,15 @@ public class GameUIScripts : MonoBehaviour {
         if (i == 3) PannelHundredPlace[3].color = new Color(0, 255, 0, alpha);
         if (i == 4) PannelHundredPlace[4].color = new Color(255, 0, 255, alpha);
         if (i == 5) PannelHundredPlace[5].color = new Color(0, 255, 255, alpha);
+    }
+
+    void ColsetThousand(int i, float alpha = 1f)
+    {
+        if (i == 0) PannelThousandPlace[0].color = new Color(255, 0, 0, alpha);
+        if (i == 1) PannelThousandPlace[1].color = new Color(0, 0, 100, alpha); 
+        if (i == 2) PannelThousandPlace[2].color = new Color(255, 200, 0, alpha);
+        if (i == 3) PannelThousandPlace[3].color = new Color(0, 255, 0, alpha);
+        if (i == 4) PannelThousandPlace[4].color = new Color(255, 0, 255, alpha);
+        if (i == 5) PannelThousandPlace[5].color = new Color(0, 255, 255, alpha);
     }
 }
