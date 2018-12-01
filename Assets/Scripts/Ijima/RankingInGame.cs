@@ -33,7 +33,7 @@ public class RankingInGame : MonoBehaviour
         if (rank < 4)
         {
             Pannel[playerID - 1].GetComponent<Image>().sprite = Image[rank];
-            Pannel[playerID - 1].GetComponent<Image>().color = new Color(255, 255, 255, 1f);
+            Pannel[playerID - 1].GetComponent<Image>().color = new Color(255, 255, 255, 0f);
         }
         rank++;
         if (rank > 5)
