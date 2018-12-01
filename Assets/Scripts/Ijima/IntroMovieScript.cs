@@ -18,7 +18,7 @@ public class IntroMovieScript : MonoBehaviour {
         SceneChangeTime = 60;
         flame = 0;
         IntroFinishFlg = false;
-        AudioManager.GetInstance.ChangeVolume(0.2f, 1.0f);
+        AudioManager.GetInstance.ChangeVolume(0.5f, 1.0f);
         AudioManager.GetInstance.PlayBGM(AUDIO.BGM_MOVIE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
     }
 	

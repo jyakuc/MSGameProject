@@ -11,6 +11,7 @@ public class LoadScript : MonoBehaviour
     public RawImage[] PannelDigit;
     public RawImage[] PannelTenPlace;
     public RawImage[] PannelHundredPlace;
+    public RawImage[] PannelThousandPlace;
     public Image[] PlayerNumber;
     public Image Startbutton;
     public Texture[] Images;
@@ -124,6 +125,7 @@ public class LoadScript : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
+            int ThousandPlace = (BattlePoint[i] / 1000) % 10;   //1000の位
             int HundredPlace = (BattlePoint[i] / 100) % 10;   //100の位
             int TenPlace = (BattlePoint[i] / 10) % 10;        //10の位
             int Digit = BattlePoint[i] % 10;                //1の位
@@ -144,7 +146,7 @@ public class LoadScript : MonoBehaviour
                         if (TenPlace != 0)
                         {
                             PannelTenPlace[Rank[i]].texture = Images[j];
-                            PannelTenPlace[Rank[i]].color =Color.white;
+                            PannelTenPlace[Rank[i]].color = Color.white;
                         }
                         else if (PannelTenPlace[Rank[i]].texture == Images[0] && HundredPlace == 0)
                         {
@@ -158,18 +160,31 @@ public class LoadScript : MonoBehaviour
                     }
                 }
                 //100の位
-                if (HundredPlace != 0)
+                if (HundredPlace == j)
                 {
-                    if (HundredPlace == j)
+                    if (ThousandPlace == 0)
+                    {
+                        if (HundredPlace != 0)
+                        {
+                            PannelHundredPlace[Rank[i]].texture = Images[j];
+                            PannelHundredPlace[Rank[i]].color = Color.white;
+                        }
+                        else if (PannelHundredPlace[Rank[i]].texture == Images[0] && ThousandPlace == 0)
+                        {
+                            PannelHundredPlace[Rank[i]].color = SetColors[6]; //桁消去
+                        }
+                    }
+                    else
                     {
                         PannelHundredPlace[Rank[i]].texture = Images[j];
                         PannelHundredPlace[Rank[i]].color = Color.white;
                     }
                 }
-                else
+                //1000の位
+                if (ThousandPlace == j)
                 {
-                    if(PannelHundredPlace[Rank[i]].texture == Images[0])
-                        PannelHundredPlace[Rank[i]].color = SetColors[6];//桁消去
+                    if (ThousandPlace != 0) PannelThousandPlace[Rank[i]].texture = Images[j];
+                    else PannelThousandPlace[Rank[i]].color = SetColors[6];//桁消去
                 }
 
             }
