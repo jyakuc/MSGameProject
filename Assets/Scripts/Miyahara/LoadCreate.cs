@@ -55,6 +55,7 @@ public class LoadCreate : MonoBehaviour {
     {
         animOnce = false;
         ReadyImage.SetActive(false);
+        StartImage.GetComponent<RectTransform>().localPosition = new Vector3(350, -190, 0);
 
         createLoadObjects.Clear();
         SelectText(Stages);         //テキストを選択
