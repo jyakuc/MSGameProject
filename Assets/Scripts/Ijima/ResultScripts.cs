@@ -19,12 +19,16 @@ public class ResultScripts : MonoBehaviour {
     private int flame;
     private bool OneKeyFlag = false;
     private bool ResultFinishFlg;
+    private bool RotationFlg = false;
     private int[] ArtisticPoint = new int[6]; //アートポイントの格納配列
     private int[] BattlePoint = new int[6]; //バトルポイントの格納配列
     private int[] TotalPoint = new int[6]; //バトルポイントの格納配列
     private int VictoryNum; //yuusyo
     private Color[] SetColors = new Color[7];
     private ArtArmatureSave ArtArmature;
+    private GameObject winnerObj;
+    [SerializeField]
+    private float rotationSpeed;
 
     private void Start()
     {
@@ -32,6 +36,7 @@ public class ResultScripts : MonoBehaviour {
         Init();
         SceneChangeFlg = false;
         ResultFinishFlg = false;
+        RotationFlg = false;
         flame = 0;
         AudioManager.GetInstance.PlayBGM(AUDIO.BGM_RESULT, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
         VictoryCharSet();
@@ -66,6 +71,11 @@ public class ResultScripts : MonoBehaviour {
                     Destroy(ArtArmature.gameObject);
                 SceneController.GetInstance.ChangeScene("TitleScene", 2);
             }
+        }
+
+        if (RotationFlg)
+        {
+            winnerObj.transform.Rotate(new Vector3(0, Time.deltaTime * rotationSpeed, 0));
         }
     }
 
@@ -102,13 +112,16 @@ public class ResultScripts : MonoBehaviour {
         if (winner==null)
         {
             Human[VictoryNum].SetActive(true);
+            winnerObj = Human[VictoryNum];
         }
         else
         {
             winner.gameObject.SetActive(true);
+            winnerObj = winner.gameObject;
         }
         PointColorSet();
         PointSet();
+        RotationFlg = true;
     }
 
     void PointColorSet()
