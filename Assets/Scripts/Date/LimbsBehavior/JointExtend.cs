@@ -19,6 +19,7 @@ public class JointExtend : MonoBehaviour {
 
     private bool extendFlg;
     private bool shrinkFlg;
+    
 
     // 手足の認識
     [SerializeField]
@@ -95,5 +96,12 @@ public class JointExtend : MonoBehaviour {
        
         Vector3 diff = extendObj.transform.position - transform.position;
         rigidbody.AddForce(diff * extendPower, ForceMode.Impulse);
+    }
+
+    public void OnKinematic()
+    {
+        rigidbody.isKinematic = true;
+        transform.parent.GetComponent<Rigidbody>().isKinematic = true;
+        transform.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
     }
 }

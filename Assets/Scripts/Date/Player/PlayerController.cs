@@ -355,6 +355,7 @@ public class PlayerController : MonoBehaviour
     {
         m_state = EState.Win;
         GetComponent<Rigidbody>().isKinematic = true;
+        m_extendAndShrink.PartsOnKinematic();
         P_Camera.FocusStart();
     }
 

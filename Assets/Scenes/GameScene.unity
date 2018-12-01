@@ -2032,7 +2032,7 @@ MonoBehaviour:
   z: -9
   L_UI: {fileID: 289972743}
   G_UI: {fileID: 116253312}
-  Stages: 0
+  Stages: 1
 --- !u!4 &1800838732
 Transform:
   m_ObjectHideFlags: 0
@@ -2072,7 +2072,7 @@ MonoBehaviour:
   createLoadObjects: []
   LoadUI: {fileID: 289972743}
   Game_UI: {fileID: 116253312}
-  Stages: 0
+  Stages: 1
 --- !u!114 &1915988211 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114402365842373260, guid: 166ffd972dbfb544784729884c50c4f3,
@@ -2153,6 +2153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b606aae6a274254da27e727a095ea38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FixationPos: {x: -1, y: -0.5, z: 0}
+  FixationRotation: {x: 0, y: 180, z: 0}
 --- !u!1 &2037524707
 GameObject:
   m_ObjectHideFlags: 0

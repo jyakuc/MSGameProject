@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ArtArmatureSave : MonoBehaviour {
+    [SerializeField]
+    private Vector3 FixationPos;
+    [SerializeField]
+    private Vector3 FixationRotation;
 
     const int ChildMax = 3;
     private int[] childPlayerID = new int[ChildMax];
@@ -12,6 +16,8 @@ public class ArtArmatureSave : MonoBehaviour {
     {
         // ResultSceneにもってく
         DontDestroyOnLoad(gameObject);
+
+
     }
 
     public void InContainer(GameObject child,float point)
@@ -21,6 +27,8 @@ public class ArtArmatureSave : MonoBehaviour {
         child.transform.parent = transform;
         childPlayerID[transform.childCount - 1] = child.GetComponent<PlayerController>().PlayerID;
 
+        child.transform.position = FixationPos;
+        child.transform.rotation = Quaternion.Euler(FixationRotation);
         // Resultに必要ないスクリプト消去
         destroyCamera = child.GetComponent<PlayerCamera>();
         Destroy(child.GetComponent<PlayerController>());
@@ -39,8 +47,20 @@ public class ArtArmatureSave : MonoBehaviour {
 
         return transform.GetChild(maxChildNum);
     }
-
-    // 
+    
+    // PlayerIDのArmature取得
+    public Transform GetPlayerIDArmature(int playerID)
+    {
+        int childId = -1;
+        for(int i = 0; i < childPlayerID.Length; ++i)
+        {
+            if (childPlayerID[i] == playerID)
+                childId = i;
+        }
+        if (childId != -1)
+            return transform.GetChild(childId);
+        return null;
+    }
 
     public void SetActives(bool active,int childNum)
     {
@@ -57,6 +77,7 @@ public class ArtArmatureSave : MonoBehaviour {
     public void WinnerCameraDestroy()
     {
         destroyCamera.CameraDelete();
+        Destroy(destroyCamera);
     }
 
     public void ChildClear()
